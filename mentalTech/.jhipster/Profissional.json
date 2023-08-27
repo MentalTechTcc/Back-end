@@ -1,0 +1,30 @@
+{
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "cpf",
+      "fieldType": "Long",
+      "fieldValidateRules": []
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": []
+    }
+  ],
+  "jpaMetamodelFiltering": false,
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "id": true,
+      "otherEntityField": "id",
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "profissional",
+      "ownerSide": true,
+      "relationshipName": "usuario",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

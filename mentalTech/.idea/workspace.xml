@@ -5,9 +5,191 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b89c278-ff64-4bed-b652-3c56f9945a63" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress-audits.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cypress.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/aop/logging/LoggingAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/aop/logging/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/UserSqlHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/rowmapper/UserRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/rowmapper/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/security/SecurityUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/dto/AdminUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/mapper/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/filter/SpaWebFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/filter/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/AccountResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/PublicUserResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/errors/ErrorConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/errors/ExceptionTranslator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/errors/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/IntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/config/JHipsterBlockHoundIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/security/SecurityUtilsUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/service/UserServiceIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/service/mapper/UserMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/filter/SpaWebFilterIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/AccountResourceIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/PublicUserResourceIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/UserResourceIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/errors/ExceptionTranslatorIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/e2e/administration/administration.cy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/e2e/lighthouse.audits.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/fixtures/integration-test.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/plugins/global.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/plugins/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/support/commands.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/support/entity.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/support/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/support/management.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/support/navbar.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.jhipster/Profissional.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nvmrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/npmw" beforeDir="false" afterPath="$PROJECT_DIR$/npmw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/docker/jhipster-control-center.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/docker/jhipster-control-center.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/docker/jib/entrypoint.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/docker/jib/entrypoint.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/mentalTech/Development.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/mentalTech/MinhaConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/mentalTech/UsuariosApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/mentalTech/model/entity/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/mentalTech/repository/UsuarioRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/mentalTech/service/UsuarioService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/GeneratedByJHipster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/GeneratedByJHipster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/MentalTechApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/MentalTechApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/aop/logging/LoggingAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/aop/logging/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/ApplicationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/ApplicationProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/AsyncConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/AsyncConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/CRLFLogConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/CRLFLogConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/DatabaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/DatabaseConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/DateTimeFormatConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/DateTimeFormatConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/JacksonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/JacksonConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/LiquibaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/LiquibaseConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/LocaleConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/LocaleConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/LoggingAspectConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/LoggingAspectConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/LoggingConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/LoggingConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/ReactorConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/ReactorConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/SecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/SecurityJwtConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/WebConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/WebConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/config/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/config/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/domain/AbstractAuditingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/AbstractAuditingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/domain/Authority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/Authority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/domain/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/domain/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/management/SecurityMetersService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/management/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/AuthorityRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/AuthorityRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/EntityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EntityManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/UserSqlHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/rowmapper/ColumnConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/rowmapper/ColumnConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/rowmapper/UserRowMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/repository/rowmapper/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/security/AuthoritiesConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/security/AuthoritiesConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/security/DomainUserDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/security/SecurityUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/security/UserNotActivatedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/security/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/security/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/EmailAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/InvalidPasswordException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/MailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/UsernameAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/dto/AdminUserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/dto/PasswordChangeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/dto/package-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/dto/package-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/mapper/UserMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/mapper/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/service/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/filter/SpaWebFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/filter/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/AccountResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/AuthenticateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/PublicUserResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/UserResource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/BadRequestAlertException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/errors/BadRequestAlertException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/EmailAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/ErrorConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/ExceptionTranslator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/FieldErrorVM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/errors/FieldErrorVM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/InvalidPasswordException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/LoginAlreadyUsedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/errors/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/vm/KeyAndPasswordVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/vm/LoginVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/vm/ManagedUserVM.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/myapp/web/rest/vm/package-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/.h2.server.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/.h2.server.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-development.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-production.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/tls/keystore.p12" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/tls/keystore.p12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/IntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/TechnicalStructureTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/TechnicalStructureTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/config/AsyncSyncConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/config/AsyncSyncConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/config/EmbeddedSQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/config/EmbeddedSQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/config/JHipsterBlockHoundIntegration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/config/PostgreSqlTestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/config/PostgreSqlTestContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/config/SpringBootTestClassOrderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/config/SpringBootTestClassOrderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/config/SqlTestContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/config/SqlTestContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/config/SqlTestContainersSpringContextCustomizerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/config/SqlTestContainersSpringContextCustomizerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/management/SecurityMetersServiceTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/security/DomainUserDetailsServiceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/security/SecurityUtilsUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/security/jwt/AuthenticationIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/security/jwt/JwtAuthenticationTestUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/security/jwt/TokenAuthenticationIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/security/jwt/TokenAuthenticationSecurityMetersIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/service/MailServiceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/service/UserServiceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/service/mapper/UserMapperTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/filter/SpaWebFilterIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/filter/SpaWebFilterTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/filter/SpaWebFilterTestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/AccountResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/AuthenticateControllerIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/PublicUserResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/TestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/TestUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/UserResourceIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/WithUnauthenticatedMockUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/WithUnauthenticatedMockUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/errors/ExceptionTranslatorIT.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mycompany/myapp/web/rest/errors/ExceptionTranslatorTestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/errors/ExceptionTranslatorTestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/META-INF/services/reactor.blockhound.integration.BlockHoundIntegration" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/META-INF/services/reactor.blockhound.integration.BlockHoundIntegration" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/META-INF/spring.factories" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/config/application-testdev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config/application-testdev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/config/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/config/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/junit-platform.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/junit-platform.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack/webpack.custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack/webpack.custom.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +207,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="corretto-18" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2TiKahzfA3OmrFDx2VzkMm06O4e" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,14 +233,30 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/sofia/Documentos/curso-spring/mentalTech",
+    "last_opened_file_path": "/home/sofia/Documentos/mentalTech/mentalTech",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.importing"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2b89c278-ff64-4bed-b652-3c56f9945a63" name="Changes" comment="" />
@@ -55,5 +266,9 @@
       <updated>1691520535604</updated>
     </task>
     <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

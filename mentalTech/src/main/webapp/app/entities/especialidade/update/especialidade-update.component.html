@@ -1,0 +1,102 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-especialidade-heading"
+        data-cy="EspecialidadeCreateUpdateHeading"
+        jhiTranslate="mentalTechApp.especialidade.home.createOrEditLabel"
+      >
+        Criar ou editar Especialidade
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="mentalTechApp.especialidade.idEspecialidade" for="field_idEspecialidade"
+            >Id Especialidade</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="idEspecialidade"
+            id="field_idEspecialidade"
+            data-cy="idEspecialidade"
+            formControlName="idEspecialidade"
+          />
+          <div
+            *ngIf="
+              editForm.get('idEspecialidade')!.invalid &&
+              (editForm.get('idEspecialidade')!.dirty || editForm.get('idEspecialidade')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('idEspecialidade')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              O campo é obrigatório.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('idEspecialidade')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              Este campo é do tipo numérico.
+            </small>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" jhiTranslate="mentalTechApp.especialidade.nomeEspecialidade" for="field_nomeEspecialidade"
+            >Nome Especialidade</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomeEspecialidade"
+            id="field_nomeEspecialidade"
+            data-cy="nomeEspecialidade"
+            formControlName="nomeEspecialidade"
+          />
+          <div
+            *ngIf="
+              editForm.get('nomeEspecialidade')!.invalid &&
+              (editForm.get('nomeEspecialidade')!.dirty || editForm.get('nomeEspecialidade')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomeEspecialidade')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 150 }"
+            >
+              Este campo não pode ter mais de 150 caracteres.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Salvar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

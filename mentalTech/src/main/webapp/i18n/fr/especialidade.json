@@ -1,0 +1,25 @@
+{
+  "mentalTechApp": {
+    "especialidade": {
+      "home": {
+        "title": "Especialidades",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Especialidade",
+        "createOrEditLabel": "Créer ou éditer un Especialidade",
+        "notFound": "Aucun Especialidade trouvé"
+      },
+      "created": "Un nouveau Especialidade a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Especialidade avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Especialidade avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Especialidade {{ id }} ?"
+      },
+      "detail": {
+        "title": "Especialidade"
+      },
+      "id": "ID",
+      "idEspecialidade": "Id Especialidade",
+      "nomeEspecialidade": "Nome Especialidade"
+    }
+  }
+}

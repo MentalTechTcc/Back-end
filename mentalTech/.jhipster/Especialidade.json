@@ -1,0 +1,25 @@
+{
+  "changelogDate": "20230830230344",
+  "dto": "no",
+  "entityTableName": "especialidade",
+  "fields": [
+    {
+      "fieldName": "idEspecialidade",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "nomeEspecialidade",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "150"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Especialidade",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

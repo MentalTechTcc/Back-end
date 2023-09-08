@@ -10,39 +10,39 @@ import {
   entityConfirmDeleteButtonSelector,
 } from '../../support/entity';
 
-describe('Especialidade e2e test', () => {
-  const especialidadePageUrl = '/especialidade';
-  const especialidadePageUrlPattern = new RegExp('/especialidade(\\?.*)?$');
+describe('Pessoa e2e test', () => {
+  const pessoaPageUrl = '/pessoa';
+  const pessoaPageUrlPattern = new RegExp('/pessoa(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const especialidadeSample = { idEspecialidade: 17102 };
+  const pessoaSample = { idPessoa: 12981, dataNascimento: '2023-09-08', email: 'Marina_Xavier@yahoo.com', sexo: 'M' };
 
-  let especialidade;
+  let pessoa;
 
   beforeEach(() => {
     cy.login(username, password);
   });
 
   beforeEach(() => {
-    cy.intercept('GET', '/api/especialidades+(?*|)').as('entitiesRequest');
-    cy.intercept('POST', '/api/especialidades').as('postEntityRequest');
-    cy.intercept('DELETE', '/api/especialidades/*').as('deleteEntityRequest');
+    cy.intercept('GET', '/api/pessoas+(?*|)').as('entitiesRequest');
+    cy.intercept('POST', '/api/pessoas').as('postEntityRequest');
+    cy.intercept('DELETE', '/api/pessoas/*').as('deleteEntityRequest');
   });
 
   afterEach(() => {
-    if (especialidade) {
+    if (pessoa) {
       cy.authenticatedRequest({
         method: 'DELETE',
-        url: `/api/especialidades/${especialidade.id}`,
+        url: `/api/pessoas/${pessoa.id}`,
       }).then(() => {
-        especialidade = undefined;
+        pessoa = undefined;
       });
     }
   });
 
-  it('Especialidades menu should load Especialidades page', () => {
+  it('Pessoas menu should load Pessoas page', () => {
     cy.visit('/');
-    cy.clickOnEntityMenuItem('especialidade');
+    cy.clickOnEntityMenuItem('pessoa');
     cy.wait('@entitiesRequest').then(({ response }) => {
       if (response.body.length === 0) {
         cy.get(entityTableSelector).should('not.exist');
@@ -50,27 +50,27 @@ describe('Especialidade e2e test', () => {
         cy.get(entityTableSelector).should('exist');
       }
     });
-    cy.getEntityHeading('Especialidade').should('exist');
-    cy.url().should('match', especialidadePageUrlPattern);
+    cy.getEntityHeading('Pessoa').should('exist');
+    cy.url().should('match', pessoaPageUrlPattern);
   });
 
-  describe('Especialidade page', () => {
+  describe('Pessoa page', () => {
     describe('create button click', () => {
       beforeEach(() => {
-        cy.visit(especialidadePageUrl);
+        cy.visit(pessoaPageUrl);
         cy.wait('@entitiesRequest');
       });
 
-      it('should load create Especialidade page', () => {
+      it('should load create Pessoa page', () => {
         cy.get(entityCreateButtonSelector).click();
-        cy.url().should('match', new RegExp('/especialidade/new$'));
-        cy.getEntityCreateUpdateHeading('Especialidade');
+        cy.url().should('match', new RegExp('/pessoa/new$'));
+        cy.getEntityCreateUpdateHeading('Pessoa');
         cy.get(entityCreateSaveButtonSelector).should('exist');
         cy.get(entityCreateCancelButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', especialidadePageUrlPattern);
+        cy.url().should('match', pessoaPageUrlPattern);
       });
     });
 
@@ -78,66 +78,66 @@ describe('Especialidade e2e test', () => {
       beforeEach(() => {
         cy.authenticatedRequest({
           method: 'POST',
-          url: '/api/especialidades',
-          body: especialidadeSample,
+          url: '/api/pessoas',
+          body: pessoaSample,
         }).then(({ body }) => {
-          especialidade = body;
+          pessoa = body;
 
           cy.intercept(
             {
               method: 'GET',
-              url: '/api/especialidades+(?*|)',
+              url: '/api/pessoas+(?*|)',
               times: 1,
             },
             {
               statusCode: 200,
               headers: {
-                link: '<http://localhost/api/especialidades?page=0&size=20>; rel="last",<http://localhost/api/especialidades?page=0&size=20>; rel="first"',
+                link: '<http://localhost/api/pessoas?page=0&size=20>; rel="last",<http://localhost/api/pessoas?page=0&size=20>; rel="first"',
               },
-              body: [especialidade],
+              body: [pessoa],
             }
           ).as('entitiesRequestInternal');
         });
 
-        cy.visit(especialidadePageUrl);
+        cy.visit(pessoaPageUrl);
 
         cy.wait('@entitiesRequestInternal');
       });
 
-      it('detail button click should load details Especialidade page', () => {
+      it('detail button click should load details Pessoa page', () => {
         cy.get(entityDetailsButtonSelector).first().click();
-        cy.getEntityDetailsHeading('especialidade');
+        cy.getEntityDetailsHeading('pessoa');
         cy.get(entityDetailsBackButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', especialidadePageUrlPattern);
+        cy.url().should('match', pessoaPageUrlPattern);
       });
 
-      it('edit button click should load edit Especialidade page and go back', () => {
+      it('edit button click should load edit Pessoa page and go back', () => {
         cy.get(entityEditButtonSelector).first().click();
-        cy.getEntityCreateUpdateHeading('Especialidade');
+        cy.getEntityCreateUpdateHeading('Pessoa');
         cy.get(entityCreateSaveButtonSelector).should('exist');
         cy.get(entityCreateCancelButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', especialidadePageUrlPattern);
+        cy.url().should('match', pessoaPageUrlPattern);
       });
 
-      it.skip('edit button click should load edit Especialidade page and save', () => {
+      it.skip('edit button click should load edit Pessoa page and save', () => {
         cy.get(entityEditButtonSelector).first().click();
-        cy.getEntityCreateUpdateHeading('Especialidade');
+        cy.getEntityCreateUpdateHeading('Pessoa');
         cy.get(entityCreateSaveButtonSelector).click();
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', especialidadePageUrlPattern);
+        cy.url().should('match', pessoaPageUrlPattern);
       });
 
-      it('last delete button click should delete instance of Especialidade', () => {
+      it('last delete button click should delete instance of Pessoa', () => {
         cy.get(entityDeleteButtonSelector).last().click();
-        cy.getEntityDeleteDialogHeading('especialidade').should('exist');
+        cy.getEntityDeleteDialogHeading('pessoa').should('exist');
         cy.get(entityConfirmDeleteButtonSelector).click();
         cy.wait('@deleteEntityRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(204);
@@ -145,37 +145,52 @@ describe('Especialidade e2e test', () => {
         cy.wait('@entitiesRequest').then(({ response }) => {
           expect(response.statusCode).to.equal(200);
         });
-        cy.url().should('match', especialidadePageUrlPattern);
+        cy.url().should('match', pessoaPageUrlPattern);
 
-        especialidade = undefined;
+        pessoa = undefined;
       });
     });
   });
 
-  describe('new Especialidade page', () => {
+  describe('new Pessoa page', () => {
     beforeEach(() => {
-      cy.visit(`${especialidadePageUrl}`);
+      cy.visit(`${pessoaPageUrl}`);
       cy.get(entityCreateButtonSelector).click();
-      cy.getEntityCreateUpdateHeading('Especialidade');
+      cy.getEntityCreateUpdateHeading('Pessoa');
     });
 
-    it('should create an instance of Especialidade', () => {
-      cy.get(`[data-cy="idEspecialidade"]`).type('18859');
-      cy.get(`[data-cy="idEspecialidade"]`).should('have.value', '18859');
+    it('should create an instance of Pessoa', () => {
+      cy.get(`[data-cy="idPessoa"]`).type('21987');
+      cy.get(`[data-cy="idPessoa"]`).should('have.value', '21987');
 
-      cy.get(`[data-cy="nomeEspecialidade"]`).type('International Mesa');
-      cy.get(`[data-cy="nomeEspecialidade"]`).should('have.value', 'International Mesa');
+      cy.get(`[data-cy="nome"]`).type('do Roupas');
+      cy.get(`[data-cy="nome"]`).should('have.value', 'do Roupas');
+
+      cy.get(`[data-cy="dataNascimento"]`).type('2023-09-08');
+      cy.get(`[data-cy="dataNascimento"]`).blur();
+      cy.get(`[data-cy="dataNascimento"]`).should('have.value', '2023-09-08');
+
+      cy.get(`[data-cy="email"]`).type('Felicia.Franco14@hotmail.com');
+      cy.get(`[data-cy="email"]`).should('have.value', 'Felicia.Franco14@hotmail.com');
+
+      cy.get(`[data-cy="sexo"]`).select('F');
+
+      cy.get(`[data-cy="telefone"]`).type('10');
+      cy.get(`[data-cy="telefone"]`).should('have.value', '10');
+
+      cy.get(`[data-cy="senha"]`).type('Lustroso Tocantins Atentende');
+      cy.get(`[data-cy="senha"]`).should('have.value', 'Lustroso Tocantins Atentende');
 
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {
         expect(response.statusCode).to.equal(201);
-        especialidade = response.body;
+        pessoa = response.body;
       });
       cy.wait('@entitiesRequest').then(({ response }) => {
         expect(response.statusCode).to.equal(200);
       });
-      cy.url().should('match', especialidadePageUrlPattern);
+      cy.url().should('match', pessoaPageUrlPattern);
     });
   });
 });

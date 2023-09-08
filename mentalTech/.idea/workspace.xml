@@ -5,53 +5,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b89c278-ff64-4bed-b652-3c56f9945a63" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.jhipster/Especialidade.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/Especialidade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/criteria/EspecialidadeCriteria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/criteria/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EspecialidadeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EspecialidadeRepositoryInternalImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EspecialidadeSqlHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/rowmapper/EspecialidadeRowMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/EspecialidadeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/EspecialidadeResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/20230830230344_added_entity_Especialidade.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/fake-data/especialidade.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/delete/especialidade-delete-dialog.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/delete/especialidade-delete-dialog.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/delete/especialidade-delete-dialog.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/detail/especialidade-detail.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/detail/especialidade-detail.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/detail/especialidade-detail.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/especialidade.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/especialidade.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/especialidade.test-samples.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/list/especialidade.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/list/especialidade.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/list/especialidade.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/route/especialidade-routing-resolve.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/route/especialidade-routing-resolve.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/service/especialidade.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/service/especialidade.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/update/especialidade-form.service.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/update/especialidade-form.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/update/especialidade-update.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/update/especialidade-update.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/update/especialidade-update.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/en/especialidade.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/fr/especialidade.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/especialidade.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/domain/EspecialidadeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/EspecialidadeResourceIT.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/e2e/entity/especialidade.cy.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.jhipster/Pessoa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/Pessoa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/criteria/PessoaCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/enumeration/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/enumeration/sexoEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/PessoaRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/PessoaRepositoryInternalImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/PessoaSqlHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/rowmapper/PessoaRowMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/PessoaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/dto/PessoaDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/mapper/EntityMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/service/mapper/PessoaMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/PessoaResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/20230908171438_added_entity_Pessoa.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/fake-data/pessoa.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/enumerations/sexo-enum.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/delete/pessoa-delete-dialog.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/delete/pessoa-delete-dialog.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/delete/pessoa-delete-dialog.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/detail/pessoa-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/detail/pessoa-detail.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/detail/pessoa-detail.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/list/pessoa.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/list/pessoa.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/list/pessoa.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/pessoa.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/pessoa.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/pessoa.test-samples.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/route/pessoa-routing-resolve.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/route/pessoa-routing-resolve.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/service/pessoa.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/service/pessoa.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/update/pessoa-form.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/update/pessoa-form.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/update/pessoa-update.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/update/pessoa-update.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/pessoa/update/pessoa-update.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/en/pessoa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/en/sexoEnum.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/fr/pessoa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/fr/sexoEnum.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/pessoa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/sexoEnum.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/domain/PessoaTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/service/dto/PessoaDTOTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/service/mapper/PessoaMapperTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/PessoaResourceIT.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/javascript/cypress/e2e/entity/pessoa.cy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.yo-rc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.yo-rc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/Especialidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/domain/Especialidade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EspecialidadeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EspecialidadeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EspecialidadeRepositoryInternalImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/repository/EspecialidadeRepositoryInternalImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/EspecialidadeResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mental/tech/web/rest/EspecialidadeResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/master.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/entity-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/entity-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/especialidade.test-samples.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/entities/especialidade/especialidade.test-samples.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/app/layouts/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/app/layouts/navbar/navbar.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/en/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/en/global.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/fr/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/fr/global.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/i18n/pt-br/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/EspecialidadeResourceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mental/tech/web/rest/EspecialidadeResourceIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/javascript/cypress/e2e/entity/especialidade.cy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/javascript/cypress/e2e/entity/especialidade.cy.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

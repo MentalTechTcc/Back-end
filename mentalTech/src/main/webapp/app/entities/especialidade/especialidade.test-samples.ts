@@ -1,24 +1,23 @@
 import { IEspecialidade, NewEspecialidade } from './especialidade.model';
 
 export const sampleWithRequiredData: IEspecialidade = {
-  id: 13099,
-  idEspecialidade: 30886,
+  id: 27193,
+  idEspecialidade: 4820,
 };
 
 export const sampleWithPartialData: IEspecialidade = {
-  id: 20342,
-  idEspecialidade: 30978,
-  nomeEspecialidade: 'bronze Masculino Iêmen',
+  id: 4133,
+  idEspecialidade: 9793,
 };
 
 export const sampleWithFullData: IEspecialidade = {
-  id: 13375,
-  idEspecialidade: 24701,
-  nomeEspecialidade: 'Feminino Desenvolvedor',
+  id: 12710,
+  idEspecialidade: 9128,
+  nomeEspecialidade: 'Casa',
 };
 
 export const sampleWithNewData: NewEspecialidade = {
-  idEspecialidade: 31454,
+  idEspecialidade: 1162,
   id: null,
 };
 

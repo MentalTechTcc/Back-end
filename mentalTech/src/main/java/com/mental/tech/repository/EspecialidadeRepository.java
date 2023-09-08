@@ -3,8 +3,6 @@ package com.mental.tech.repository;
 import com.mental.tech.domain.Especialidade;
 import com.mental.tech.domain.criteria.EspecialidadeCriteria;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.r2dbc.repository.Query;
-import org.springframework.data.relational.core.query.Criteria;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;

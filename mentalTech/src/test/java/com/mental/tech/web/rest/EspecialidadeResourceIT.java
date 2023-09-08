@@ -8,7 +8,6 @@ import com.mental.tech.IntegrationTest;
 import com.mental.tech.domain.Especialidade;
 import com.mental.tech.repository.EntityManager;
 import com.mental.tech.repository.EspecialidadeRepository;
-import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;

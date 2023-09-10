@@ -26,3 +26,6 @@ class PessoaRepositoryBaseModel(Protocol):
     def find_by_id(self, pessoa_id: int) -> Pessoa | None:
         """Faz uma busca pelo id e retorna os dados do Pessoa caso existe"""
         ...
+    def find_by_email(self, email: str) -> Pessoa | None:
+        '''Função para fazer uma query por login de um objeto Pessoa na DB'''
+        ...

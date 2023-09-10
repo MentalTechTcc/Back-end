@@ -63,3 +63,15 @@ def find_by_id(id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Pessoa não encontrado")
 
     return pessoa
+
+
+@router_pessoa.get("/email/{email}", response_model=PessoaResponse, status_code=status.HTTP_200_OK)
+def find_by_email(email: str):
+    '''Faz uma query de um objeto assistente na DB pelo email'''
+    pessoa = pessoaUseCase.find_by_email(email)
+
+    if pessoa is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="email não encontrado")
+
+    return pessoa
+

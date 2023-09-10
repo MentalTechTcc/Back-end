@@ -50,6 +50,13 @@ class PessoaRepository:
         session = self.database()
         session.close()
         return session.query(Pessoa).filter(Pessoa.idPessoa == pessoa_id).first()
+    
+    def find_by_email(self, email: str) -> Pessoa | None:
+        """Faz uma busca pelo email no banco e retorna o objeto"""
+        session = self.database()
+        return session.query(Pessoa).filter(Pessoa.email == email).first()
+    
+    
 
 assert isinstance(PessoaRepository(
     {}), PessoaRepositoryBaseModel.PessoaRepositoryBaseModel)

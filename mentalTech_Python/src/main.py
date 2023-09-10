@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 from src.application.controllers.PessoaController import router_pessoa 
+from src.application.controllers.UserController import routerLoginPessoa 
 
 load_dotenv()
 from fastapi.middleware.cors import CORSMiddleware
@@ -19,6 +20,7 @@ app.add_middleware(
 )
 
 app.include_router(router_pessoa)
+app.include_router(routerLoginPessoa)
 
 @app.get("/")
 async def root():

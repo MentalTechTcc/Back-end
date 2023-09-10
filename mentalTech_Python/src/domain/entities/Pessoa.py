@@ -21,7 +21,7 @@ class Pessoa(Base):
     senha: str = Column(String(100), nullable=False)
     dataNascimento: str = Column(String(10), nullable=False)    
     telefone: str = Column(String(11), nullable=False)
-    email: str = Column(String(100), nullable=False)
+    email: str = Column(String(100), nullable=False, unique=True)
     sexo: Enum = Column(EnumDB(Sexo), nullable=False)
     administrador: bool = Column(Boolean, nullable=False)
 

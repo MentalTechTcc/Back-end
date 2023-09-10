@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  amis-classroom-service:
+    container_name: mental-tech
+    build: .
+    ports:
+      - "9091:9091"
+    volumes:
+      - ./:/app

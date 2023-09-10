@@ -1,4 +1,5 @@
 from dotenv import load_dotenv
+from src.application.controllers.PessoaController import router_pessoa 
 
 load_dotenv()
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,7 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(router_pessoa)
 
 @app.get("/")
 async def root():
-    return {"message": "Amis !"}
+    return {"message": "mentalTech !"}

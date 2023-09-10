@@ -1,5 +1,6 @@
 from database import engine, Base
 from fastapi import APIRouter, status, Response, status, HTTPException
+from security import get_password_hash
 from domain.entities.Pessoa import (PessoaResponse,
                                    PessoaRequest,
                                    Pessoa,
@@ -20,6 +21,7 @@ router_pessoa = APIRouter(
 def create(pessoa_request: PessoaRequest):
 
     pessoa_entitie = Pessoa(**pessoa_request.__dict__)
+    pessoa_entitie.senha = get_password_hash(pessoa_entitie.senha) 
 
     pessoaUseCase.save(pessoaSent=pessoa_entitie)
 

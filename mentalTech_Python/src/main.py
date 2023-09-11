@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 from src.application.controllers.PessoaController import router_pessoa 
+from src.application.controllers.ProfissionalController import router_profissional
 from src.application.controllers.UserController import routerLoginPessoa 
 
 load_dotenv()
@@ -21,6 +22,7 @@ app.add_middleware(
 
 app.include_router(router_pessoa)
 app.include_router(routerLoginPessoa)
+app.include_router(router_profissional)
 
 @app.get("/")
 async def root():

@@ -29,7 +29,7 @@ def create(pessoa_request: PessoaRequest):
 
 @router_pessoa.put("/{idPessoa}", status_code=status.HTTP_201_CREATED)
 def update(pessoaSent: PessoaRequestId):
-    if pessoaUseCase.find_by_id(pessoaSent.id) is None:
+    if pessoaUseCase.find_by_id(pessoaSent.idPessoa) is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND,
                             detail="Pessoa não existente")
     pessoaUseCase.update(pessoaSent)

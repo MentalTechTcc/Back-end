@@ -6,6 +6,11 @@ from src.application.useCases.ConsultaUseCase import ConsultaUseCase
 from database import SessionLocal
 from src.application.useCases.ProfissionalUseCase import ProfissionalUseCase
 from src.infrastructure.repositories.ProfissionalRepository import ProfissionalRepository
+from src.application.useCases.AgendaUseCase import AgendaUseCase
+from src.infrastructure.repositories.AgendaRepository import AgendaRepository
+
+
+
 
 databaseSessionGenerator = SessionLocal
 tokensRepository = TokensRepository()
@@ -26,4 +31,14 @@ profissionalUseCase = ProfissionalUseCase(
 consultaRepository = ConsultaRepository(databaseSessionGenerator)
 consultaUseCase = ConsultaUseCase(
     consultaRepository=consultaRepository
+)
+
+consultaRepository = ConsultaRepository(databaseSessionGenerator)
+consultaUseCase = ConsultaUseCase(
+    consultaRepository=consultaRepository
+)
+
+agendaRepository = AgendaRepository(databaseSessionGenerator)
+agendaUseCase = AgendaUseCase(
+    agendaRepository=agendaRepository
 )

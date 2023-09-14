@@ -3,6 +3,7 @@ from src.application.controllers.PessoaController import router_pessoa
 from src.application.controllers.ProfissionalController import router_profissional
 from src.application.controllers.UserController import routerLoginPessoa 
 from src.application.controllers.ConsultaController import router_consulta 
+from src.application.controllers.AgendaController import router_agenda
 
 load_dotenv()
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,6 +26,7 @@ app.include_router(router_pessoa)
 app.include_router(routerLoginPessoa)
 app.include_router(router_profissional)
 app.include_router(router_consulta)
+app.include_router(router_agenda)
 
 @app.get("/")
 async def root():

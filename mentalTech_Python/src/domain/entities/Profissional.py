@@ -18,7 +18,7 @@ class Profissional(Base):
     email: str = Column(String(100), nullable=False, unique=True)
     sexo: Enum = Column(EnumDB(Sexo), nullable=False)
     administrador: bool = Column(Boolean, nullable=False)
-    cpf: str = Column(String(11), nullable=False)
+    cpf: str = Column(String(11), nullable=False, unique=True)
     codigoProfissional: str = Column(String(100), nullable=False)
     descricaoProfissional: str = Column(String(500), nullable=False)
 

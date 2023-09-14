@@ -14,7 +14,7 @@ class Consulta(Base):
 
     idConsulta: int = Column(Integer, primary_key=True, nullable=False,  index= True)
     valor: float = Column(Float, nullable=False)
-    idAgenda: int = Column(Integer, nullable=False)    
+    idAgenda: int = Column("idAgenda", ForeignKey("agenda.idAgenda"), index=True)
     idPessoa: int = Column("idPessoa", ForeignKey("pessoa.idPessoa"), index=True)
     permiteCompartilharConhecimento: bool = Column(Boolean, nullable=False)
     ocorreu: bool = Column(Boolean, nullable=False)

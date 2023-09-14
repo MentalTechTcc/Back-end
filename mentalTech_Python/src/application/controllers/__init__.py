@@ -8,7 +8,8 @@ from src.application.useCases.ProfissionalUseCase import ProfissionalUseCase
 from src.infrastructure.repositories.ProfissionalRepository import ProfissionalRepository
 from src.application.useCases.AgendaUseCase import AgendaUseCase
 from src.infrastructure.repositories.AgendaRepository import AgendaRepository
-
+from src.application.useCases.RelatorioUseCase import RelatorioUseCase
+from src.infrastructure.repositories.RelatorioRepository import RelatorioRepository
 
 
 
@@ -41,4 +42,9 @@ consultaUseCase = ConsultaUseCase(
 agendaRepository = AgendaRepository(databaseSessionGenerator)
 agendaUseCase = AgendaUseCase(
     agendaRepository=agendaRepository
+)
+
+relatorioRepository = RelatorioRepository(databaseSessionGenerator)
+relatorioUseCase = RelatorioUseCase(
+    relatorioRepository=relatorioRepository
 )

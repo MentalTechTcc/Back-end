@@ -24,7 +24,7 @@ class ConsultaUseCase():
 
     def find_all(self) -> list[ConsultaResponse]:
         consulta_db = self.__consultaRepository__.find_all()
-        profissionais = []
+        consultas = []
         for consulta_db in consulta_db:
             consulta = ConsultaResponse(
                 idConsulta =  consulta_db.idConsulta,
@@ -34,8 +34,8 @@ class ConsultaUseCase():
                 permiteCompartilharConhecimento=consulta_db.permiteCompartilharConhecimento,
                 ocorreu=consulta_db.ocorreu
             )
-            profissionais.append(consulta)
-        return profissionais
+            consultas.append(consulta)
+        return consultas
 
     def find_by_id(self, consulta_id : int) -> ConsultaBase | None:
         return self.__consultaRepository__.find_by_id(consulta_id=consulta_id)

@@ -37,10 +37,10 @@ class ConsultaRepository:
     def delete_by_id(self, consulta_id: int) -> NoReturn:
         """Função para deletar um profissional do DB, caso exista"""
         session = self.database()
-        pessoa_session = session.query(Consulta).filter(Consulta.idConsulta == consulta_id).first()
+        consulta_session = session.query(Consulta).filter(Consulta.idConsulta == consulta_id).first()
 
-        if pessoa_session is not None:
-            session.delete(pessoa_session)
+        if consulta_session is not None:
+            session.delete(consulta_session)
             session.commit()
 
         session.close()

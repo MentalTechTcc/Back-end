@@ -37,6 +37,6 @@ class ConsultaRequestId(ConsultaBase):
 
 class ConsultaResponse(ConsultaBase):
     '''...'''
-    idPessoa:int
+    idConsulta:int
     class Config:
         orm_mode = True

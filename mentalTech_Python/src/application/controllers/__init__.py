@@ -11,7 +11,8 @@ from src.infrastructure.repositories.AgendaRepository import AgendaRepository
 from src.application.useCases.RelatorioUseCase import RelatorioUseCase
 from src.infrastructure.repositories.RelatorioRepository import RelatorioRepository
 
-
+from src.application.useCases.TematicasPrincipaisUseCase import TematicasPrincipaisUseCase
+from src.infrastructure.repositories.TematicasPrincipaisRepository import TematicasPrincipaisRepository
 
 databaseSessionGenerator = SessionLocal
 tokensRepository = TokensRepository()
@@ -47,4 +48,9 @@ agendaUseCase = AgendaUseCase(
 relatorioRepository = RelatorioRepository(databaseSessionGenerator)
 relatorioUseCase = RelatorioUseCase(
     relatorioRepository=relatorioRepository
+)
+
+tematicasPrincipaisRepository = TematicasPrincipaisRepository(databaseSessionGenerator)
+tematicasPrincipaisUseCase = TematicasPrincipaisUseCase(
+    tematicasPrincipaisRepository=tematicasPrincipaisRepository
 )

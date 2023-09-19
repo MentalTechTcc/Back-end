@@ -1,9 +1,11 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, Boolean
-from sqlalchemy import Column, Integer, String, Enum as EnumDB
+from sqlalchemy import Column, Integer, String, Boolean, Enum as EnumDB
+from sqlalchemy.orm import relationship
 from enum import Enum
 from database import Base
 from domain.entities.Pessoa import PessoaBase, Sexo
+from domain.entities.Endereco import profissional_possui_endereco
+from domain.entities.Especialidade import profissional_possui_especialidade
+
 
 class Profissional(Base):
     '''Classe para estabelecer o modelo da tabela na DB'''
@@ -21,6 +23,16 @@ class Profissional(Base):
     cpf: str = Column(String(11), nullable=False, unique=True)
     codigoProfissional: str = Column(String(100), nullable=False)
     descricaoProfissional: str = Column(String(500), nullable=False)
+    enderecos = relationship(
+        "Endereco",
+        secondary=profissional_possui_endereco,
+        back_populates="profissionais",
+    )
+    especialidades = relationship(
+        "Especialidade",
+        secondary=profissional_possui_especialidade,
+        back_populates="profissionais",
+    )
 
 class ProfissionalBase(PessoaBase): 
     codigoProfissional: str

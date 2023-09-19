@@ -10,6 +10,10 @@ from src.application.useCases.AgendaUseCase import AgendaUseCase
 from src.infrastructure.repositories.AgendaRepository import AgendaRepository
 from src.application.useCases.RelatorioUseCase import RelatorioUseCase
 from src.infrastructure.repositories.RelatorioRepository import RelatorioRepository
+from src.application.useCases.EnderecoUseCase import EnderecoUseCase
+from src.infrastructure.repositories.EnderecoRepository import EnderecoRepository
+from src.application.useCases.EspecialidadeUseCase import EspecialidadeUseCase
+from src.infrastructure.repositories.EspecialidadeRepository import EspecialidadeRepository 
 
 from src.application.useCases.TematicasPrincipaisUseCase import TematicasPrincipaisUseCase
 from src.infrastructure.repositories.TematicasPrincipaisRepository import TematicasPrincipaisRepository
@@ -53,4 +57,14 @@ relatorioUseCase = RelatorioUseCase(
 tematicasPrincipaisRepository = TematicasPrincipaisRepository(databaseSessionGenerator)
 tematicasPrincipaisUseCase = TematicasPrincipaisUseCase(
     tematicasPrincipaisRepository=tematicasPrincipaisRepository
+)
+
+enderecoRepository = EnderecoRepository(databaseSessionGenerator)
+enderecoUseCase = EnderecoUseCase(
+    enderecoRepository=enderecoRepository
+)
+
+especialidadeRepository = EspecialidadeRepository(databaseSessionGenerator)
+especialidadeUseCase = EspecialidadeUseCase(
+    especialidadeRepository=especialidadeRepository
 )

@@ -6,6 +6,9 @@ from src.application.controllers.ConsultaController import router_consulta
 from src.application.controllers.AgendaController import router_agenda
 from src.application.controllers.RelatorioController import router_relatorio
 from src.application.controllers.TematicasPrincipaisController import router_tematicas_principais
+from src.application.controllers.EnderecoController import router_endereco
+# from src.application.controllers.EspecialidadeController import router_especialidade
+
 
 load_dotenv()
 from fastapi.middleware.cors import CORSMiddleware
@@ -31,6 +34,10 @@ app.include_router(router_consulta)
 app.include_router(router_agenda)
 app.include_router(router_relatorio)
 app.include_router(router_tematicas_principais)
+# app.include_router(router_especialidade)
+app.include_router(router_endereco)
+
+
 
 
 @app.get("/")

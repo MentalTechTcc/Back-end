@@ -21,6 +21,9 @@ from src.infrastructure.repositories.TematicasPrincipaisRepository import Temati
 from src.application.useCases.DicaSaudeUseCase import DicaSaudeUseCase
 from src.infrastructure.repositories.DicaSaudeRepository import DicaSaudeRepository
 
+from src.application.useCases.AvaliacaoUseCase import AvaliacaoUseCase
+from src.infrastructure.repositories.AvaliacaoRepository import AvaliacaoRepository
+
 databaseSessionGenerator = SessionLocal
 tokensRepository = TokensRepository()
 
@@ -75,4 +78,9 @@ especialidadeUseCase = EspecialidadeUseCase(
 dicaSaudeRepository = DicaSaudeRepository(databaseSessionGenerator)
 dicaSaudeUseCase = DicaSaudeUseCase(
     dicaSaudeRepository=dicaSaudeRepository
+)
+
+avaliacaoRepository = AvaliacaoRepository(databaseSessionGenerator)
+avaliacaoUseCase = AvaliacaoUseCase(
+    avaliacaoRepository=avaliacaoRepository
 )

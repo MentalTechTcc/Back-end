@@ -24,6 +24,10 @@ from src.infrastructure.repositories.DicaSaudeRepository import DicaSaudeReposit
 from src.application.useCases.AvaliacaoUseCase import AvaliacaoUseCase
 from src.infrastructure.repositories.AvaliacaoRepository import AvaliacaoRepository
 
+from src.application.useCases.DiagnosticoUseCase import DiagnosticoUseCase
+from src.infrastructure.repositories.DiagnosticoRepository import DiagnosticoRepository
+
+
 databaseSessionGenerator = SessionLocal
 tokensRepository = TokensRepository()
 
@@ -83,4 +87,9 @@ dicaSaudeUseCase = DicaSaudeUseCase(
 avaliacaoRepository = AvaliacaoRepository(databaseSessionGenerator)
 avaliacaoUseCase = AvaliacaoUseCase(
     avaliacaoRepository=avaliacaoRepository
+)
+
+diagnosticoRepository = DiagnosticoRepository(databaseSessionGenerator)
+diagnosticoUseCase = DiagnosticoUseCase(
+    diagnosticoRepository=diagnosticoRepository
 )

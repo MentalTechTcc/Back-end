@@ -10,6 +10,8 @@ from src.application.controllers.EnderecoController import router_endereco
 from src.application.controllers.EspecialidadeController import router_especialidade
 from src.application.controllers.DicaSaudeController import router_dica_saude
 from src.application.controllers.Avaliacao import router_avaliacao
+from src.application.controllers.DiagnosticoController import router_diagnostico
+
 
 load_dotenv()
 from fastapi.middleware.cors import CORSMiddleware
@@ -39,6 +41,7 @@ app.include_router(router_especialidade)
 app.include_router(router_endereco)
 app.include_router(router_dica_saude)
 app.include_router(router_avaliacao)
+app.include_router(router_diagnostico)
 
 
 

@@ -2,6 +2,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Table, Enum
 from sqlalchemy.orm import relationship
 from enum import Enum
 from database import Base
+from pydantic import BaseModel
+
 
 profissional_possui_especialidade = Table(
     'profissional_possui_especialidade',
@@ -28,7 +30,7 @@ class Especialidade(Base):
         back_populates="especialidades",
     )
 
-class EspecialidadeBase(Especialidade): 
+class EspecialidadeBase(BaseModel): 
     idEspecialidade: int
 
 class EspecialidadeRequest(EspecialidadeBase):

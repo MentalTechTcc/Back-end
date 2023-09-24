@@ -18,6 +18,11 @@ router_endereco = APIRouter(
 @router_endereco.post("/", status_code=status.HTTP_201_CREATED)
 def create(endereco_request: EnderecoRequest):
 
+    validaCampos = enderecoUseCase.valida_endereco_create(Endereco(**endereco_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
     endereco_entitie = Endereco(**endereco_request.__dict__)
 
     enderecoUseCase.save(enderecoSent=endereco_entitie)

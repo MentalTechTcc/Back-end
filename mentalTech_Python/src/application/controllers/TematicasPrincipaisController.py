@@ -19,6 +19,10 @@ router_tematicas_principais = APIRouter(
 
 @router_tematicas_principais.post("/", status_code=status.HTTP_201_CREATED)
 def create(tematicasPrincipais_request: TematicasPrincipaisRequest):
+    validaCampos = tematicasPrincipaisUseCase.valida_tematica_create(TematicasPrincipais(**tematicasPrincipais_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
 
     tematicasPrincipais_entitie = TematicasPrincipais(**tematicasPrincipais_request.__dict__)
 

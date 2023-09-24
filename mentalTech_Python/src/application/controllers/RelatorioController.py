@@ -20,6 +20,11 @@ router_relatorio = APIRouter(
 @router_relatorio.post("/", status_code=status.HTTP_201_CREATED)
 def create(relatorio_request: RelatorioRequest):
 
+    validaCampos = relatorioUseCase.valida_relatorio_create(Relatorio(**relatorio_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
     relatorio_entitie = Relatorio(**relatorio_request.__dict__)
 
     relatorioUseCase.save(relatorioSent=relatorio_entitie)

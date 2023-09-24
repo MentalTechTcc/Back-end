@@ -19,6 +19,11 @@ router_diagnostico = APIRouter(
 @router_diagnostico.post("/", status_code=status.HTTP_201_CREATED)
 def create(diagnostico_request: DiagnosticoRequest):
 
+    validaCampos = diagnosticoUseCase.valida_diagnostico_create(Diagnostico(**diagnostico_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
     diagnostico_entitie = Diagnostico(**diagnostico_request.__dict__)
 
     diagnosticoUseCase.save(diagnosticoSent=diagnostico_entitie)

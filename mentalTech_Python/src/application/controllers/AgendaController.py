@@ -18,6 +18,11 @@ router_agenda = APIRouter(
 @router_agenda.post("/", status_code=status.HTTP_201_CREATED)
 def create(agenda_request: AgendaRequest):
 
+    validaCampos = agendaUseCase.valida_agenda_create(Agenda(**agenda_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
     agenda_entitie = Agenda(**agenda_request.__dict__)
 
     agendaUseCase.save(agendaSent=agenda_entitie)

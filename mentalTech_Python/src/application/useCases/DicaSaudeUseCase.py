@@ -1,5 +1,6 @@
 from domain.entities.DicaSaude import DicaSaude, DicaSaudeResponse, DicaSaudeBase, DicaSaudeRequestId
 from domain.repositories.DicaSaudeRepositoryBaseModel import DicaSaudeRepositoryBaseModel
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 from typing import NoReturn
 
 class DicaSaudeUseCase():
@@ -39,3 +40,17 @@ class DicaSaudeUseCase():
     def update(self, dicaSaudeSent: DicaSaudeRequestId) -> NoReturn:
         """Sobrescreve os dados de dicaSaude, assume que ele já exista"""
         self.__dicaSaudeRepository__.update(DicaSaude(**dicaSaudeSent.__dict__))
+
+    def valida_dica_create(self, dica: DicaSaude) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["descricaoDica"] = vars(ValidacaoCamposUseCase.descricaoDicaValidation(
+            dica.descricaoDica))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

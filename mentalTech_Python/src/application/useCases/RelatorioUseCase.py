@@ -1,6 +1,7 @@
 from domain.entities.Relatorio import Relatorio, RelatorioResponse, RelatorioBase, RelatorioRequestId
 from domain.repositories.RelatorioRepositoryBaseModel import RelatorioRepositoryBaseModel
 from typing import NoReturn
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 
 
 class RelatorioUseCase():
@@ -41,3 +42,17 @@ class RelatorioUseCase():
     def update(self, relatorioSent: RelatorioRequestId) -> NoReturn:
         """Sobrescreve os dados de relatorio, assume que ele já exista"""
         self.__relatorioRepository__.update(Relatorio(**relatorioSent.__dict__))
+
+    def valida_relatorio_create(self, relatorio: Relatorio) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["descricao"] = vars(ValidacaoCamposUseCase.descricaoValidation(
+            relatorio.descricao))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

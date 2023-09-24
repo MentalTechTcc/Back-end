@@ -20,6 +20,11 @@ router_avaliacao = APIRouter(
 @router_avaliacao.post("/", status_code=status.HTTP_201_CREATED)
 def create(avaliacao_request: AvaliacaoRequest):
 
+    validaCampos = avaliacaoUseCase.valida_avaliacao_create(Avaliacao(**avaliacao_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
     avaliacao_entitie = Avaliacao(**avaliacao_request.__dict__)
 
     avaliacaoUseCase.save(avaliacaoSent=avaliacao_entitie)

@@ -1,5 +1,6 @@
 from domain.entities.Avaliacao import Avaliacao, AvaliacaoResponse, AvaliacaoBase, AvaliacaoRequestId
 from domain.repositories.AvaliacaoRepositoryBaseModel import AvaliacaoRepositoryBaseModel
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 from security import verify_password
 from typing import NoReturn
 from fastapi import HTTPException, status
@@ -45,3 +46,23 @@ class AvaliacaoUseCase():
     def update(self, avaliacaoSent: AvaliacaoRequestId) -> NoReturn:
         """Sobrescreve os dados de avaliacao, assume que ele já exista"""
         self.__avaliacaoRepository__.update(Avaliacao(**avaliacaoSent.__dict__))
+
+    def valida_avaliacao_create(self, avaliacao: Avaliacao) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["cpf"] = vars(ValidacaoCamposUseCase.cpfValidation(
+            avaliacao.cpfProfissional))
+        fieldInfoDict["notaGeral"] = vars(ValidacaoCamposUseCase.notaValidation(
+            avaliacao.notaGeral))
+        fieldInfoDict["notaAtendimento"] = vars(ValidacaoCamposUseCase.notaValidation(
+            avaliacao.notaAtendimento))
+        fieldInfoDict["notaPontualidade"] = vars(ValidacaoCamposUseCase.notaValidation(
+            avaliacao.notaPontualidade))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

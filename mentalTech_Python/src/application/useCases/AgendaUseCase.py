@@ -1,5 +1,6 @@
 from domain.entities.Agenda import Agenda, AgendaResponse, AgendaBase, AgendaRequestId
 from domain.repositories.AgendaRepositoryBaseModel import AgendaRepositoryBaseModel
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 from security import verify_password
 from typing import NoReturn
 from fastapi import HTTPException, status
@@ -44,3 +45,17 @@ class AgendaUseCase():
     def update(self, agendaSent: AgendaRequestId) -> NoReturn:
         """Sobrescreve os dados de agenda, assume que ele já exista"""
         self.__agendaRepository__.update(Agenda(**agendaSent.__dict__))
+
+    def valida_agenda_create(self, agenda: Agenda) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["cpf"] = vars(ValidacaoCamposUseCase.cpfValidation(
+            agenda.cpfProfissional))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

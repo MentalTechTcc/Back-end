@@ -19,6 +19,11 @@ router_dica_saude = APIRouter(
 
 @router_dica_saude.post("/", status_code=status.HTTP_201_CREATED)
 def create(dicaSaude_request: DicaSaudeRequest):
+    validaCampos = dicaSaudeUseCase.valida_dica_create(DicaSaude(**dicaSaude_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
 
     dicaSaude_entitie = DicaSaude(**dicaSaude_request.__dict__)
 

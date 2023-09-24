@@ -19,6 +19,11 @@ router_consulta = APIRouter(
 
 @router_consulta.post("/", status_code=status.HTTP_201_CREATED)
 def create(consulta_request: ConsultaRequest):
+    
+    validaCampos = consultaUseCase.valida_consulta_create(Consulta(**consulta_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
 
     consulta_entitie = Consulta(**consulta_request.__dict__)
 

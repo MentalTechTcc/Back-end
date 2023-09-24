@@ -1,6 +1,7 @@
 from domain.entities.TematicasPrincipais import TematicasPrincipais, TematicasPrincipaisResponse, TematicasPrincipaisBase, TematicasPrincipaisRequestId
 from domain.repositories.TematicasPrincipaisRepositoryBaseModel import TematicasPrincipaisRepositoryBaseModel
 from typing import NoReturn
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 
 
 class TematicasPrincipaisUseCase():
@@ -39,3 +40,17 @@ class TematicasPrincipaisUseCase():
     def update(self, tematicasPrincipaisSent: TematicasPrincipaisRequestId) -> NoReturn:
         """Sobrescreve os dados de tematicasPrincipais, assume que ele já exista"""
         self.__tematicasPrincipaisRepository__.update(TematicasPrincipais(**tematicasPrincipaisSent.__dict__))
+
+    def valida_tematica_create(self, tematicas: TematicasPrincipais) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["descricao"] = vars(ValidacaoCamposUseCase.descricaoTematicaValidation(
+            tematicas.nomeTematica))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

@@ -1,5 +1,6 @@
 from domain.entities.Endereco import Endereco, EnderecoResponse, EnderecoBase, EnderecoRequestId
 from domain.repositories.EnderecoRepositoryBaseModel import EnderecoRepositoryBaseModel
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 from security import verify_password
 from typing import NoReturn
 from fastapi import HTTPException, status
@@ -41,3 +42,21 @@ class EnderecoUseCase():
     def update(self, enderecoSent: EnderecoRequestId) -> NoReturn:
         """Sobrescreve os dados de endereco, assume que ele já exista"""
         self.__enderecoRepository__.update(Endereco(**enderecoSent.__dict__))
+
+    def valida_endereco_create(self, endereco: Endereco) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["bairro"] = vars(ValidacaoCamposUseCase.bairroValidation(
+            endereco.bairro))
+        fieldInfoDict["cep"] = vars(ValidacaoCamposUseCase.cepValidation(
+            endereco.cep))
+        fieldInfoDict["cidade"] = vars(ValidacaoCamposUseCase.cidadeValidation(
+        endereco.cidade))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

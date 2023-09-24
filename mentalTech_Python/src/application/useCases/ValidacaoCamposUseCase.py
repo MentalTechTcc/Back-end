@@ -181,3 +181,9 @@ class ValidacaoCamposUseCase:
             return CampoInfo(False,"Temática inválida")
         return CampoInfo(True,"Temática válida")
     
+    @classmethod
+    def valorValidation(cls, valor:float):
+        if valor<0:
+            return CampoInfo(False,"Valor inválido")
+        return CampoInfo(True,"Valor válido")
+    

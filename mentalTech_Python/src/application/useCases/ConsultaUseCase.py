@@ -1,5 +1,6 @@
 from domain.entities.Consulta import Consulta, ConsultaResponse, ConsultaBase, ConsultaRequestId
 from domain.repositories.ConsultaRepositoryBaseModel import ConsultaRepositoryBaseModel
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 from security import verify_password
 from typing import NoReturn
 from fastapi import HTTPException, status
@@ -44,3 +45,17 @@ class ConsultaUseCase():
     def update(self, consultaSent: ConsultaRequestId) -> NoReturn:
         """Sobrescreve os dados de consulta, assume que ele já exista"""
         self.__consultaRepository__.update(Consulta(**consultaSent.__dict__))
+
+    def valida_consulta_create(self, consulta: Consulta) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["valor"] = vars(ValidacaoCamposUseCase.valorValidation(
+            consulta.valor))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

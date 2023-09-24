@@ -3,6 +3,7 @@ from domain.repositories.DiagnosticoRepositoryBaseModel import DiagnosticoReposi
 from security import verify_password
 from typing import NoReturn
 from fastapi import HTTPException, status
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 
 class DiagnosticoUseCase():
     __diagnosticoRepository__: DiagnosticoRepositoryBaseModel
@@ -40,3 +41,17 @@ class DiagnosticoUseCase():
     def update(self, diagnosticoSent: DiagnosticoRequestId) -> NoReturn:
         """Sobrescreve os dados de diagnostico, assume que ele já exista"""
         self.__diagnosticoRepository__.update(Diagnostico(**diagnosticoSent.__dict__))
+
+    def valida_diagnostico_create(self, consulta: Diagnostico) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["descricaoDiagnostico"] = vars(ValidacaoCamposUseCase.descricaoDiagnosticoValidation(
+            consulta.descricaoDiagnostico))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

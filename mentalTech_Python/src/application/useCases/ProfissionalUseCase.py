@@ -1,9 +1,11 @@
 from domain.entities.Profissional import Profissional, ProfissionalResponse, ProfissionalBase, ProfissionalRequestId
 from domain.repositories.TokenRepositoryBaseModel import TokensRepositoryBaseModel
 from domain.repositories.ProfissionalRepositoryBaseModel import ProfissionalRepositoryBaseModel
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 from security import verify_password
 from typing import NoReturn
 from fastapi import HTTPException, status
+
 
 class ProfissionalUseCase():
     __profissionalRepository__: ProfissionalRepositoryBaseModel
@@ -91,3 +93,27 @@ class ProfissionalUseCase():
     def update(self, profissionalSent: ProfissionalRequestId) -> NoReturn:
         """Sobrescreve os dados de profissional, assume que ele já exista"""
         self.__profissionalRepository__.update(Profissional(**profissionalSent.__dict__))
+
+    def valida_profissional_create(self, profissional: Profissional) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["nome"] = vars(ValidacaoCamposUseCase.nomeValidation(
+            profissional.nome))
+        fieldInfoDict["senha"] = vars(ValidacaoCamposUseCase.senhaValidation(
+            profissional.senha))
+        fieldInfoDict["dataNascimento"] = vars(ValidacaoCamposUseCase.dNascimentoValidation(
+        profissional.dataNascimento))
+        fieldInfoDict["telefone"] = vars(ValidacaoCamposUseCase.telefoneValidation(
+            profissional.telefone))
+        fieldInfoDict["email"] = vars(ValidacaoCamposUseCase.emailValidation(
+            profissional.email))
+        fieldInfoDict["descricaoProfissional"] = vars(ValidacaoCamposUseCase.descricaoProfissionalValidation(
+            profissional.descricaoProfissional))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

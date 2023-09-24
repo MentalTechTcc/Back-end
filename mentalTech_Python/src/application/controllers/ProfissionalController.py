@@ -18,7 +18,13 @@ router_profissional = APIRouter(
 @router_profissional.post("/", status_code=status.HTTP_201_CREATED)
 def create(profissional_request: ProfissionalRequest):
 
+    validaCampos = profissionalUseCase.valida_profissional_create(Profissional(**profissional_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
     profissional_entitie = Profissional(**profissional_request.__dict__)
+    
     profissional_entitie.senha = get_password_hash(profissional_entitie.senha) 
 
     profissionalUseCase.save(profissionalSent=profissional_entitie)

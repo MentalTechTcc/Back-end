@@ -40,7 +40,7 @@ app.include_router(router_tematicas_principais)
 app.include_router(router_especialidade)
 app.include_router(router_endereco)
 app.include_router(router_dica_saude)
-app.include_router(router_avaliacao)
+# app.include_router(router_avaliacao)
 app.include_router(router_diagnostico)
 
 

@@ -1,6 +1,7 @@
 from domain.entities.Pessoa import Pessoa, PessoaResponse, PessoaBase, PessoaRequestId
 from domain.repositories.PessoaRepositoryBaseModel import PessoaRepositoryBaseModel
 from domain.repositories.TokenRepositoryBaseModel import TokensRepositoryBaseModel
+from .ValidacaoCamposUseCase import ValidacaoCamposUseCase
 from security import verify_password
 from typing import NoReturn
 from fastapi import HTTPException, status
@@ -85,3 +86,26 @@ class PessoaUseCase():
     def update(self, pessoaSent: PessoaRequestId) -> NoReturn:
         """Sobrescreve os dados de pessoa, assume que ele já exista"""
         self.__pessoaRepository__.update(Pessoa(**pessoaSent.__dict__))
+
+    
+    def valida_pessoa_create(self, pessoa: Pessoa) -> dict:
+
+        fieldInfoDict = {}
+        fieldInfoDict["nome"] = vars(ValidacaoCamposUseCase.nomeValidation(
+            pessoa.nome))
+        fieldInfoDict["senha"] = vars(ValidacaoCamposUseCase.senhaValidation(
+            pessoa.senha))
+        fieldInfoDict["dataNascimento"] = vars(ValidacaoCamposUseCase.dNascimentoValidation(
+        pessoa.dataNascimento))
+        fieldInfoDict["telefone"] = vars(ValidacaoCamposUseCase.telefoneValidation(
+            pessoa.telefone))
+        fieldInfoDict["email"] = vars(ValidacaoCamposUseCase.emailValidation(
+            pessoa.email))
+        completeStatus = True
+        for key in fieldInfoDict:
+            if fieldInfoDict[key]['status'] == False:
+                completeStatus = False
+                break
+        fieldInfoDict['completeStatus'] = completeStatus
+
+        return fieldInfoDict

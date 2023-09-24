@@ -19,6 +19,11 @@ router_pessoa = APIRouter(
 
 @router_pessoa.post("/", status_code=status.HTTP_201_CREATED)
 def create(pessoa_request: PessoaRequest):
+    validaCampos = pessoaUseCase.valida_pessoa_create(Pessoa(**pessoa_request.__dict__))
+    
+    if not validaCampos['completeStatus']:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
+
 
     pessoa_entitie = Pessoa(**pessoa_request.__dict__)
     pessoa_entitie.senha = get_password_hash(pessoa_entitie.senha) 

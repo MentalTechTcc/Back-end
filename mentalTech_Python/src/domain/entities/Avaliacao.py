@@ -1,7 +1,7 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, ForeignKey
 from pydantic import BaseModel
-from sqlalchemy import Column, Integer, String, Enum as EnumDB
+from sqlalchemy import Integer, String, Enum as EnumDB
 from enum import Enum
 from database import Base
 from pydantic import BaseModel
@@ -23,12 +23,12 @@ class Avaliacao(Base):
 
 
 class AvaliacaoBase(BaseModel):
-    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True)
-    idPessoa: int = Column("idPessoa", ForeignKey("pessoa.idPessoa"), index=True)
-    notaGeral: int = Column(Integer, nullable=False)
-    notaPontualidade: int = Column(Integer, nullable=True)
-    notaAtendimento: int = Column(Integer, nullable=True)
-    observacoes: str = Column(String(500), nullable=True)
+    cpfProfissional: str
+    idPessoa: int 
+    notaGeral: int 
+    notaPontualidade: int 
+    notaAtendimento: int 
+    observacoes: str
 
 class AvaliacaoRequest(AvaliacaoBase):
     '''...'''

@@ -1,24 +1,26 @@
 from fastapi import APIRouter, FastAPI, HTTPException, Request, Depends, Query
+from fastapi.responses import HTMLResponse
 from starlette.responses import RedirectResponse
 from pydantic import BaseModel
 from authlib.integrations.starlette_client import OAuth
 from httpx import AsyncClient
 from fastapi.middleware.cors import CORSMiddleware
 import urllib.parse
-import secrets
 import httpx
+import requests
+import requests.auth
+import secrets
 
 route_zoom = APIRouter(
     prefix="/zoom",
     tags=["zoom"]
 )
 
-# Informações da sua conta Zoom
-CLIENT_ID = "1f3IHLSmQg2m9DgaD2fUFQ"  # Preencha com o seu Client ID do Zoom
-CLIENT_SECRET = "9nPM2MRyOmV31uYIbltRl72foT3pFC6R"  # Preencha com o seu Client Secret do Zoom
-REDIRECT_URI = "http://localhost:9091/zoom_callback"  # Defina o seu URI de redirecionamento
+CLIENT_ID = "1f3IHLSmQg2m9DgaD2fUFQ" 
+CLIENT_SECRET = "9nPM2MRyOmV31uYIbltRl72foT3pFC6R"  
+REDIRECT_URI = "http://localhost:9091/zoom_callback"  
 
-# Crie um cliente HTTP para fazer solicitações ao Zoom
+
 client = AsyncClient()
 
 # Modelo para a resposta
@@ -51,73 +53,52 @@ oauth.register(
     redirect_to=None,
 )
 
-# Endpoint para gerar um link de autorização do Zoom
-@route_zoom.get('/')
-async def homepage(request: Request):
-    authorization_url, state = make_authorization_url()
-    request.session["oauth_state"] = state
-    return {"authorization_url": authorization_url}
 
+@route_zoom.get('/')
+def homepage():
+    authorization_url = make_authorization_url()
+    return {
+        "message": "Autentique-se com o Zoom",
+        "authorization_url": authorization_url
+    }
+
+
+# Função para gerar a URL de autorização
 def make_authorization_url():
-    state = secrets.token_urlsafe(16)
     params = {
         "client_id": CLIENT_ID,
         "response_type": "code",
-        "redirect_uri": REDIRECT_URI,
-        "state": state,
+        "redirect_uri": REDIRECT_URI
     }
     url = "https://zoom.us/oauth/authorize?" + urllib.parse.urlencode(params)
-    return url, state
+    return url
 
-# Rota de retorno do Zoom após a autorização
+
+
 @route_zoom.get('/zoom_callback')
-async def zoom_callback(
-    request: Request, 
-    code: str = Query(...),  # Captura o código de autorização da URL de retorno
-    state: str = Query(...),  # Captura o estado gerado anteriormente
-):
-    # Verificar se o estado na resposta corresponde ao estado gerado anteriormente
-    if state != request.session.get("oauth_state"):
-        raise HTTPException(status_code=400, detail="Mismatching state")
+async def zoom_callback(request: Request, code:str):
+    #code = request.query_params.get('code')
+    if code:
+        # Agcódigo para solicitar um token de acesso ao Zoom
+        access_token = await get_access_token(code)
 
-    # O código de autorização agora está disponível como `code`
-    # Use-o para obter o token de acesso
-    access_token = await get_token(code)
-
-    # Agora você possui o "access token" e pode usá-lo para fazer solicitações à API do Zoom em nome do usuário autenticado
-    return {"access_token": access_token}
-
-# Função para obter o access token usando o código de autorização
-async def get_token(code):
-    # Implemente a lógica para obter o access token usando o código de autorização.
-    # Você pode usar sua implementação anterior aqui.
-
-    # Exemplo de obtenção do access token usando a biblioteca Authlib
-    from authlib.integrations.starlette_client import OAuth
-    oauth = OAuth()
-    oauth.register(
-        name="zoom",
-        client_id=CLIENT_ID,
-        client_secret=CLIENT_SECRET,
-        authorize_url="https://zoom.us/oauth/authorize",
-        authorize_params=None,
-        authorize_prompt=None,
-        authorize_response=None,
-        authorize_token=None,
-        authorize_redirect_uri=None,
-        authorize_token_params=None,
-        authorize_scope=None,
-        authorize_redirect_error=None,
-        authorize_refresh_token=None,
-        authorize_refresh_token_params=None,
-        authorize_issuer=None,
-        authorize_client_kwargs=None,
-        client_kwargs=None,
-        redirect_to=None,
-    )
+        return {"access_token": access_token}
+    else:
+        return {"error": "Código de autorização não encontrado na URL"}
     
-    token = await oauth.zoom.authorize_access_token(code)
-    return token["access_token"]
+# Função para obter o token de acesso usando o código de autorização
+async def get_access_token(code):
+    async with httpx.AsyncClient() as client:
+        data = {
+            "grant_type": "authorization_code",
+            "code": code,
+            "redirect_uri": REDIRECT_URI
+        }
+        auth = httpx.BasicAuth(CLIENT_ID, CLIENT_SECRET)
+        response = await client.post("https://zoom.us/oauth/token", data=data, auth=auth)
+        token_data = response.json()
+        access_token = token_data.get("access_token")
+        return access_token
 
 
 

@@ -13,3 +13,6 @@ passlib
 python-multipart
 requests
 mock-alchemy
+authlib
+httpx
+fastapi-sessions

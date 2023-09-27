@@ -11,10 +11,12 @@ from src.application.controllers.EspecialidadeController import router_especiali
 from src.application.controllers.DicaSaudeController import router_dica_saude
 from src.application.controllers.Avaliacao import router_avaliacao
 from src.application.controllers.DiagnosticoController import router_diagnostico
+from src.application.controllers.ZoomController import route_zoom
 
 
 load_dotenv()
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.sessions import SessionMiddleware
 from fastapi import FastAPI
 
 load_dotenv()
@@ -30,6 +32,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+# Adicione o SessionMiddleware à sua aplicação
+app.add_middleware(SessionMiddleware, secret_key="sua_chave_secreta", session_cookie="sua_sessao_cookie")
+
+
 app.include_router(router_pessoa)
 app.include_router(routerLoginPessoa)
 app.include_router(router_profissional)
@@ -42,7 +49,7 @@ app.include_router(router_endereco)
 app.include_router(router_dica_saude)
 app.include_router(router_avaliacao)
 app.include_router(router_diagnostico)
-
+app.include_router(route_zoom)
 
 
 

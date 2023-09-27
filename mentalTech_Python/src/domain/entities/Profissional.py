@@ -5,6 +5,7 @@ from database import Base
 from domain.entities.Pessoa import PessoaBase, Sexo
 from domain.entities.Endereco import profissional_possui_endereco
 from domain.entities.Especialidade import profissional_possui_especialidade
+from domain.entities.Diagnostico import PessoaPossuiDiagnostico
 
 
 class Profissional(Base):
@@ -32,6 +33,12 @@ class Profissional(Base):
         "Especialidade",
         secondary=profissional_possui_especialidade,
         back_populates="profissionais",
+    )
+    diagnosticos = relationship(
+        "Diagnostico",
+        secondary="pessoaPossuiDiagnostico",
+        back_populates="profissionais",
+        overlaps="pessoas, diagnosticos",
     )
 
 class ProfissionalBase(PessoaBase): 

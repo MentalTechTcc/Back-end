@@ -5,6 +5,8 @@ from sqlalchemy import Column, Integer, String, Enum as EnumDB
 from enum import Enum
 from database import Base
 from pydantic import BaseModel
+from sqlalchemy.orm import relationship
+from domain.entities.Diagnostico import PessoaPossuiDiagnostico
 
 class Sexo(Enum):
     F = 1
@@ -24,6 +26,12 @@ class Pessoa(Base):
     email: str = Column(String(100), nullable=False, unique=True)
     sexo: Enum = Column(EnumDB(Sexo), nullable=False)
     administrador: bool = Column(Boolean, nullable=False)
+    diagnosticos = relationship(
+        "Diagnostico",
+        secondary="pessoaPossuiDiagnostico",
+        back_populates="pessoas",
+        overlaps="profissionais",
+    )
 
 
 class PessoaBase(BaseModel):

@@ -27,6 +27,8 @@ from src.infrastructure.repositories.AvaliacaoRepository import AvaliacaoReposit
 from src.application.useCases.DiagnosticoUseCase import DiagnosticoUseCase
 from src.infrastructure.repositories.DiagnosticoRepository import DiagnosticoRepository
 
+from src.application.useCases.PessoaPossuiDiagnosticoUseCase import PessoaPossuiDiagnosticoUseCase
+from src.infrastructure.repositories.PessoaPossuiDiagnosticoRepository import PessoaPossuiDiagnosticoRepository
 
 databaseSessionGenerator = SessionLocal
 tokensRepository = TokensRepository()
@@ -92,4 +94,9 @@ avaliacaoUseCase = AvaliacaoUseCase(
 diagnosticoRepository = DiagnosticoRepository(databaseSessionGenerator)
 diagnosticoUseCase = DiagnosticoUseCase(
     diagnosticoRepository=diagnosticoRepository
+)
+
+pessoaPossuiDiagnosticoRepository = PessoaPossuiDiagnosticoRepository(databaseSessionGenerator)
+pessoaPossuiDiagnosticoUseCase = PessoaPossuiDiagnosticoUseCase(
+    pessoaPossuiDiagnosticoRepository=pessoaPossuiDiagnosticoRepository
 )

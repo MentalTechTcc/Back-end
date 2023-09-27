@@ -146,7 +146,7 @@ class ValidacaoCamposUseCase:
     
     @classmethod
     def descricaoValidation(cls, descricao:str):
-        if len(descricao > 100):
+        if len(descricao) > 100:
             return CampoInfo(False,"Descrição muito grande")
         return CampoInfo(True,"Descrição válida")
     
@@ -159,25 +159,25 @@ class ValidacaoCamposUseCase:
         
     @classmethod
     def observacaoValidation(cls, observacao:str):
-        if len(observacao > 500):
+        if len(observacao)> 500:
             return CampoInfo(False,"Observação inválida")
         return CampoInfo(True,"Observação válida")
     
     @classmethod
     def descricaoDiagnosticoValidation(cls, descricao:str):
-        if len(descricao > 250):
+        if len(descricao) > 250:
             return CampoInfo(False,"Descrição diagnóstico inválida")
         return CampoInfo(True,"Descrição diagnóstico válida")
     
     @classmethod
     def descricaoDicaValidation(cls, descricao:str):
-        if len(descricao > 500):
+        if len(descricao) > 500:
             return CampoInfo(False,"Descrição de dica inválida")
         return CampoInfo(True,"Descrição de dica válida")
     
     @classmethod
     def descricaoTematicaValidation(cls, tematica:str):
-        if len(tematica > 250):
+        if len(tematica) > 250:
             return CampoInfo(False,"Temática inválida")
         return CampoInfo(True,"Temática válida")
     

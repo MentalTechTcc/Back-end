@@ -33,6 +33,11 @@ from src.infrastructure.repositories.PessoaPossuiDiagnosticoRepository import Pe
 from src.application.useCases.ProfissionalPossuiEnderecoUseCase import ProfissionalPossuiEnderecoUseCase
 from src.infrastructure.repositories.ProfissionalPossuiEnderecoRepository import ProfissionalPossuiEnderecoRepository
 
+from src.application.useCases.ProfissionalPossuiEspecialidadeUseCase import ProfissionalPossuiEspecialidadeUseCase
+from src.infrastructure.repositories.ProfissionalPossuiEspecialidadeRepository import ProfissionalPossuiEspecialidadeRepository
+
+
+
 databaseSessionGenerator = SessionLocal
 tokensRepository = TokensRepository()
 
@@ -108,4 +113,9 @@ pessoaPossuiDiagnosticoUseCase = PessoaPossuiDiagnosticoUseCase(
 profissionalPossuiEnderecoRepository = ProfissionalPossuiEnderecoRepository(databaseSessionGenerator)
 profissionalPossuiEnderecoUseCase = ProfissionalPossuiEnderecoUseCase(
     profissionalPossuiEnderecoRepository=profissionalPossuiEnderecoRepository
+)
+
+profissionalPossuiEspecialidadeRepository = ProfissionalPossuiEspecialidadeRepository(databaseSessionGenerator)
+profissionalPossuiEspecialidadeUseCase = ProfissionalPossuiEspecialidadeUseCase(
+    profissionalPossuiEspecialidadeRepository=profissionalPossuiEspecialidadeRepository
 )

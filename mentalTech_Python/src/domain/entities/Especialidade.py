@@ -5,12 +5,23 @@ from database import Base
 from pydantic import BaseModel
 
 
-profissional_possui_especialidade = Table(
-    'profissional_possui_especialidade',
-    Base.metadata,
-    Column('profissional_id', Integer, ForeignKey('profissional.idPessoa')),
-    Column('especialidade_id', Integer, ForeignKey('especialidade.idEspecialidade'))
-)
+class ProfissionalPossuiEspecialidade(Base):
+    '''Classe para estabelecer o modelo da tabela na DB'''
+    __tablename__ = "profissionalPossuiEspecialidade"
+
+    idEspecialidade: int =  Column("idEspecialidade", ForeignKey("especialidade.idEspecialidade"), index=True,  primary_key=True)
+    cpfProfissional: int = Column("idProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+
+class ProfissionalPossuiEspecialidadeBase(BaseModel):
+    idEspecialidade:int
+    cpfProfissional:str
+    class Config:
+        orm_mode = True
+
+class ProfissionalPossuiEspecialidadeRequest(ProfissionalPossuiEspecialidadeBase):
+    ...
+    pass
+
 
 class DescricaoEspecialidade(Enum):
     PSCICOLOGIA = 1
@@ -26,12 +37,12 @@ class Especialidade(Base):
     descricaoEspecialidade: Enum = Column(EnumDB(DescricaoEspecialidade), nullable=False)
     profissionais = relationship(
         "Profissional",
-        secondary=profissional_possui_especialidade,
+        secondary="profissionalPossuiEspecialidade",
         back_populates="especialidades",
     )
 
 class EspecialidadeBase(BaseModel): 
-    idEspecialidade: int
+    descricaoEspecialidade: DescricaoEspecialidade
 
 class EspecialidadeRequest(EspecialidadeBase):
     '''...'''

@@ -3,7 +3,6 @@ from sqlalchemy.orm import relationship
 from enum import Enum
 from database import Base
 from domain.entities.Pessoa import PessoaBase, Sexo
-from domain.entities.Especialidade import profissional_possui_especialidade
 from domain.entities.Diagnostico import PessoaPossuiDiagnostico
 
 
@@ -30,7 +29,7 @@ class Profissional(Base):
     )
     especialidades = relationship(
         "Especialidade",
-        secondary=profissional_possui_especialidade,
+        secondary="profissionalPossuiEspecialidade",
         back_populates="profissionais",
     )
     diagnosticos = relationship(

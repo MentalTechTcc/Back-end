@@ -1,11 +1,15 @@
 from database import engine, Base
 from fastapi import APIRouter, status, Response, status, HTTPException
 from security import get_password_hash
+from typing import List
 from domain.entities.Especialidade import (EspecialidadeResponse,
                                    EspecialidadeRequest,
                                    Especialidade,
-                                   EspecialidadeRequestId)
-from application.controllers import especialidadeUseCase
+                                   EspecialidadeRequestId,
+                                   ProfissionalPossuiEspecialidade,
+                                   ProfissionalPossuiEspecialidadeRequest,
+                                   ProfissionalPossuiEspecialidadeBase)
+from application.controllers import especialidadeUseCase, profissionalPossuiEspecialidadeUseCase
 
 Base.metadata.create_all(bind=engine)
 
@@ -61,5 +65,43 @@ def find_by_id(id: int):
 
     return especialidade
 
+
+
+@router_especialidade.post("/PessoaPossuiEspecialidade", status_code=status.HTTP_201_CREATED)
+def create(especialidade_request: ProfissionalPossuiEspecialidadeBase):
+
+    pessoa_especialidade_entitie = ProfissionalPossuiEspecialidade(**especialidade_request.__dict__)
+    profissionalPossuiEspecialidadeUseCase.save(profissionalPossuiEspecialidadeSent=pessoa_especialidade_entitie)
+
+    return especialidade_request
+
+
+@router_especialidade.get("/PessoaPossuiEspecialidade/{cpf}",
+                  response_model=List[ProfissionalPossuiEspecialidadeRequest],
+                  status_code=status.HTTP_200_OK)
+def find_by_idPessoa(cpf: str):
+    '''Faz uma query de um objeto assistente na DB pelo id'''
+    profissionalEspecialidades = profissionalPossuiEspecialidadeUseCase.find_by_cpfProfissional(cpf)
+
+    if not profissionalEspecialidades:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="especialidade não encontrado")
+
+    response_data = [
+        ProfissionalPossuiEspecialidadeRequest(
+            cpfProfissional=pessoaEspecialidade.cpfProfissional,
+            idEspecialidade=pessoaEspecialidade.idEspecialidade,
+        )
+        for pessoaEspecialidade in profissionalEspecialidades
+    ]
+
+    return response_data
+
+
+@router_especialidade.delete("/PessoaPossuiEspecialidade/{cpf}/{idEspecialidade}", status_code=status.HTTP_204_NO_CONTENT)
+def delete(cpf: str,  idEspecialidade:int):
+
+    profissionalPossuiEspecialidadeUseCase.delete(cpf=cpf,idEspecialidade=idEspecialidade)
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 

@@ -6,12 +6,23 @@ from enum import Enum
 from database import Base
 from pydantic import BaseModel
 
-profissional_possui_endereco = Table(
-    "profissional_possui_endereco",
-    Base.metadata,
-    Column("endereco_id", Integer, ForeignKey("endereco.idEndereco")),
-    Column("profissional_cpf", String, ForeignKey("profissional.cpf")),
-)
+class ProfissionalPossuiEndereco(Base):
+    '''Classe para estabelecer o modelo da tabela na DB'''
+    __tablename__ = "profissionalPossuiEndereco"
+
+    idEndereco: int = Column("idEndereco", ForeignKey("endereco.idEndereco"), index=True,  primary_key=True)
+    cpfProfissional: str =  Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+ 
+class ProfissionalPossuiEnderecoBase(BaseModel):
+    idEndereco:int
+    cpfProfissional:str
+    class Config:
+        orm_mode = True
+
+class ProfissionalPossuiEnderecoRequest(ProfissionalPossuiEnderecoBase):
+    ...
+    pass
+
 
 class Endereco(Base):
     __tablename__ = "endereco"
@@ -26,7 +37,7 @@ class Endereco(Base):
     
     profissionais = relationship(
         "Profissional",
-        secondary=profissional_possui_endereco,
+        secondary="profissionalPossuiEndereco",
         back_populates="enderecos",
     )
 

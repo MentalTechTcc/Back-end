@@ -107,7 +107,7 @@ class ProfissionalUseCase():
             profissional.telefone))
         fieldInfoDict["email"] = vars(ValidacaoCamposUseCase.emailValidation(
             profissional.email))
-        fieldInfoDict["cpf"] = vars(ValidacaoCamposUseCase.emailValidation(
+        fieldInfoDict["cpf"] = vars(ValidacaoCamposUseCase.cpfValidation(
             profissional.cpf))
         fieldInfoDict["descricaoProfissional"] = vars(ValidacaoCamposUseCase.descricaoProfissionalValidation(
             profissional.descricaoProfissional))

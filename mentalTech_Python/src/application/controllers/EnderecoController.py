@@ -1,11 +1,15 @@
 from database import engine, Base
 from fastapi import APIRouter, status, Response, status, HTTPException
+from typing import List
 from security import get_password_hash
 from domain.entities.Endereco import (EnderecoResponse,
                                    EnderecoRequest,
                                    Endereco,
-                                   EnderecoRequestId)
-from application.controllers import enderecoUseCase
+                                   EnderecoRequestId,
+                                   ProfissionalPossuiEndereco,
+                                   ProfissionalPossuiEnderecoBase,
+                                   ProfissionalPossuiEnderecoRequest)
+from application.controllers import enderecoUseCase, profissionalPossuiEnderecoUseCase
 
 Base.metadata.create_all(bind=engine)
 
@@ -66,5 +70,46 @@ def find_by_id(id: int):
 
     return endereco
 
+
+
+
+
+
+@router_endereco.post("/PessoaPossuiEndereco", status_code=status.HTTP_201_CREATED)
+def create(endereco_request: ProfissionalPossuiEnderecoBase):
+
+    pessoa_endereco_entitie = ProfissionalPossuiEndereco(**endereco_request.__dict__)
+    profissionalPossuiEnderecoUseCase.save(profissionalPossuiEnderecoSent=pessoa_endereco_entitie)
+
+    return endereco_request
+
+
+@router_endereco.get("/PessoaPossuiEndereco/{cpf}",
+                  response_model=List[ProfissionalPossuiEnderecoRequest],
+                  status_code=status.HTTP_200_OK)
+def find_by_idPessoa(cpf: str):
+    '''Faz uma query de um objeto assistente na DB pelo id'''
+    profissionalEnderecos = profissionalPossuiEnderecoUseCase.find_by_cpfProfissional(cpf)
+
+    if not profissionalEnderecos:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="endereco não encontrado")
+
+    response_data = [
+        ProfissionalPossuiEnderecoRequest(
+            cpfProfissional=pessoaEndereco.cpfProfissional,
+            idEndereco=pessoaEndereco.idEndereco,
+        )
+        for pessoaEndereco in profissionalEnderecos
+    ]
+
+    return response_data
+
+
+@router_endereco.delete("/PessoaPossuiEndereco/{cpf}/{enderecoId}", status_code=status.HTTP_204_NO_CONTENT)
+def delete(cpf: str,  enderecoId:int):
+
+    profissionalPossuiEnderecoUseCase.delete(cpf=cpf,enderecoId=enderecoId)
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 

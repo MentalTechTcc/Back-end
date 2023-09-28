@@ -69,10 +69,14 @@ class PessoaUseCase():
         for pessoa_db in pessoas_db:
             pessoa = PessoaResponse(
                 nome=pessoa_db.nome,
+                idPessoa = pessoa_db.idPessoa,
+                senha = pessoa_db.senha,
                 email=pessoa_db.email,
                 telefone=pessoa_db.telefone,
                 dataNascimento=pessoa_db.dataNascimento,
-                sexo=pessoa_db.sexo
+                sexo=pessoa_db.sexo,
+                administrador=pessoa_db.administrador
+                
             )
             pessoas.append(pessoa)
         return pessoas

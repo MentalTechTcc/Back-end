@@ -28,7 +28,8 @@ class DicaSaudeUseCase():
             dicaSaude = DicaSaudeResponse(
                 idDicaSaude =  dicaSaude_db.idDicaSaude,
                 descricaoDica=dicaSaude_db.descricaoDica,
-                cpfProfissional= dicaSaude_db.cpfProfissional
+                cpfProfissional= dicaSaude_db.cpfProfissional,
+                dataCadastro= dicaSaude_db.dataCadastro
             )
             dicaSaudes.append(dicaSaude)
         return dicaSaudes

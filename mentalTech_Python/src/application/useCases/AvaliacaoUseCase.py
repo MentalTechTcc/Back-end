@@ -34,7 +34,8 @@ class AvaliacaoUseCase():
                 notaGeral=avaliacao_db.notaGeral,
                 notaPontualidade=avaliacao_db.notaPontualidade,
                 notaAtendimento=avaliacao_db.notaAtendimento,
-                observacoes =avaliacao_db.observacoes
+                observacoes =avaliacao_db.observacoes,
+                dataCadastro= avaliacao_db.dataCadastro
             )
             avaliacoes.append(avaliacao)
         return avaliacoes

@@ -6,6 +6,8 @@ from enum import Enum
 from database import Base
 from pydantic import BaseModel
 from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String,func, DateTime, Date
+from datetime import date
 from domain.entities.Diagnostico import PessoaPossuiDiagnostico
 
 class Sexo(Enum):
@@ -21,11 +23,12 @@ class Pessoa(Base):
     nome: str = Column(String(100), nullable=False)
     idPessoa: int = Column(Integer, primary_key=True, nullable=False,  index= True)
     senha: str = Column(String(100), nullable=False)
-    dataNascimento: str = Column(String(10), nullable=False)    
+    dataNascimento =Column(Date, nullable=False)    
     telefone: str = Column(String(11), nullable=False)
     email: str = Column(String(100), nullable=False, unique=True)
     sexo: Enum = Column(EnumDB(Sexo), nullable=False)
     administrador: bool = Column(Boolean, nullable=False)
+    dataCadastro = Column(DateTime, server_default=func.now()) 
     diagnosticos = relationship(
         "Diagnostico",
         secondary="pessoaPossuiDiagnostico",
@@ -37,11 +40,12 @@ class Pessoa(Base):
 class PessoaBase(BaseModel):
     nome: str
     senha: str
-    dataNascimento: str
+    dataNascimento: date
     telefone: str
     email: str
     administrador: bool
     sexo: Sexo
+    dataCadastro: date 
 
 
 class PessoaRequest(PessoaBase):

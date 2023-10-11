@@ -18,7 +18,7 @@ class Agenda(Base):
     idAgenda: int = Column(Integer, primary_key=True, nullable=False, index=True)
     data= Column(Date, nullable=False)
     hora = Column(Time, nullable=False)
-    duracao: str = Column(String(10), nullable=False) 
+    duracao: int = Column(Integer, nullable=False) 
     cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True)
     modalidadeAtendimento: Enum = Column(EnumDB(Modalidade), nullable=False)
 
@@ -27,7 +27,7 @@ class AgendaBase(BaseModel):
     idAgenda: int 
     data: date
     hora: time
-    duracao: str
+    duracao: int
     cpfProfissional: str
     modalidadeAtendimento: Modalidade 
 

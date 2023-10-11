@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum
 import re
+from datetime import date
 
 
 @dataclass
@@ -22,19 +23,20 @@ class ValidacaoCamposUseCase:
         return CampoInfo(True, "Nome válido")
 
     @classmethod
-    def dNascimentoValidation(cls, dNascimento: str) -> CampoInfo:
-        if len(dNascimento) > 10:
-            return CampoInfo(False, "Data de nascimento muito grande")
-        pattern = r'^\d{4}-\d{2}-\d{2}$'
-        if not re.match(pattern, dNascimento):
-            return CampoInfo(False, "Formato data de nascimento inválida")
-
-        try:
-            datetime.strptime(dNascimento, '%Y-%m-%d')
-        except Exception as e:
-            return CampoInfo(False, f"Data de nascimento inválida ({e})")
-
-        return CampoInfo(True, "Data de nascimento válida")
+    def dNascimentoValidation(cls, dNascimento: date) -> CampoInfo:
+        if isinstance(dNascimento, date):
+            # Se 'dNascimento' é um objeto 'date', não há necessidade de validação adicional.
+            return CampoInfo(True, "Data de nascimento válida")
+        
+        if isinstance(dNascimento, str):
+            try:
+                dNascimento = date.fromisoformat(dNascimento)
+                # A data está no formato 'YYYY-MM-DD' e foi convertida com sucesso.
+                return CampoInfo(True, "Data de nascimento válida")
+            except ValueError as e:
+                return CampoInfo(False, f"Data de nascimento inválida ({e})")
+        
+        return CampoInfo(False, "Tipo de dado inválido para data de nascimento")
 
     @classmethod
     def cpfValidation(cls, cpf: str) -> CampoInfo:

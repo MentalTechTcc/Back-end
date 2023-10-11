@@ -75,7 +75,8 @@ class PessoaUseCase():
                 telefone=pessoa_db.telefone,
                 dataNascimento=pessoa_db.dataNascimento,
                 sexo=pessoa_db.sexo,
-                administrador=pessoa_db.administrador
+                administrador=pessoa_db.administrador,
+                dataCadastro= pessoa_db.dataCadastro
                 
             )
             pessoas.append(pessoa)

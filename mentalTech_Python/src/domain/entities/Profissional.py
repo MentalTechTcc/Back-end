@@ -1,10 +1,10 @@
-from sqlalchemy import Column, Integer, String, Boolean, Enum as EnumDB
+from sqlalchemy import Column, Integer, String, Boolean,func , DateTime, Enum as EnumDB
 from sqlalchemy.orm import relationship
 from enum import Enum
 from database import Base
 from domain.entities.Pessoa import PessoaBase, Sexo
 from domain.entities.Diagnostico import PessoaPossuiDiagnostico
-
+from datetime import date
 
 class Profissional(Base):
     '''Classe para estabelecer o modelo da tabela na DB'''
@@ -22,6 +22,7 @@ class Profissional(Base):
     cpf: str = Column(String(11), nullable=False, unique=True)
     codigoProfissional: str = Column(String(100), nullable=False)
     descricaoProfissional: str = Column(String(500), nullable=False)
+    dataCadastro = Column(DateTime, server_default=func.now()) 
     enderecos = relationship(
         "Endereco",
         secondary="profissionalPossuiEndereco",

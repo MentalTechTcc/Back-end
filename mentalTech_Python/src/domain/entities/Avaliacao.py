@@ -1,10 +1,11 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, ForeignKey
 from pydantic import BaseModel
-from sqlalchemy import Integer, String, Enum as EnumDB
+from sqlalchemy import Integer, String, DateTime, func,Enum as EnumDB
 from enum import Enum
 from database import Base
 from pydantic import BaseModel
+from datetime import date
 
 
 
@@ -19,6 +20,7 @@ class Avaliacao(Base):
     notaPontualidade: int = Column(Integer, nullable=True)
     notaAtendimento: int = Column(Integer, nullable=True)
     observacoes: str = Column(String(500), nullable=True)
+    dataCadastro = Column(DateTime, server_default=func.now()) 
 
 
 
@@ -29,6 +31,7 @@ class AvaliacaoBase(BaseModel):
     notaPontualidade: int 
     notaAtendimento: int 
     observacoes: str
+    dataCadastro:date
 
 class AvaliacaoRequest(AvaliacaoBase):
     '''...'''

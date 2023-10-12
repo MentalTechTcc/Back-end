@@ -1,0 +1,51 @@
+.cabecalho header   {
+  padding: 0rem 0rem;
+  float: left;
+}
+.cabecalho img{
+  width: 20%;
+}
+.cabecalho nav ul {
+  list-style: none;
+}
+
+.cabecalho nav li {
+  display: inline-block;
+  margin-right: 80px; /* adicione o espaçamento desejado */
+}
+
+.cabecalho nav li:last-child {
+  margin-right: 20; /* remova a margem direita do último item */
+}
+
+.cabecalho nav a {
+  display: block;
+  padding: 5px 5px; /* adicione o espaçamento desejado */
+  text-decoration: none;
+  color: #333;
+}
+
+.cabecalho nav{
+  float: right;
+  font-size: 20px; /* tamanho da fonte em pixels */
+  font-family: Sanchez;
+  margin-top: -8%;
+}
+
+@media (max-width: 576px) {
+  .cabecalho .logo {
+    padding: 2rem;
+  }
+  .cabecalho p {
+    font-size: 1.5rem
+  }
+}
+
+@media (max-width: 768px) {
+  .cabecalho .logo {
+    width: 90%;
+  }
+  .cabecalho .imagem {
+    display: none;
+  }
+}

@@ -4,8 +4,12 @@ from security import get_password_hash
 from domain.entities.TematicasPrincipais import (TematicasPrincipaisResponse,
                                    TematicasPrincipaisRequest,
                                    TematicasPrincipais,
-                                   TematicasPrincipaisRequestId)
-from application.controllers import tematicasPrincipaisUseCase
+                                   TematicasPrincipaisRequestId,
+                                   ProfissionalTrataTematicas,
+                                   ProfissionalTrataTematicasRequest,
+                                   ProfissionalTrataTematicasBase)
+from application.controllers import tematicasPrincipaisUseCase, profissionalTrataTematicasUseCase
+from typing import List
 
 Base.metadata.create_all(bind=engine)
 
@@ -66,6 +70,53 @@ def find_by_id(id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="TematicasPrincipais não encontrado")
 
     return tematicasPrincipais
+
+
+### profissional trata temáticas principais #####
+
+@router_tematicas_principais.post("/ProfissionalTrataTematicas", status_code=status.HTTP_201_CREATED)
+def create(tematicasPrincipais_request: ProfissionalTrataTematicasBase):
+
+    pessoaTematicasPrincipaisEntitie = ProfissionalTrataTematicas(**tematicasPrincipais_request.__dict__)
+    pessoa_sent = pessoaTematicasPrincipaisEntitie
+    idsTematicas=pessoa_sent.idTematicasPrincipais.split(',')
+
+    for id in idsTematicas:
+        pessoa_tematicasPrincipais = ProfissionalTrataTematicas(**tematicasPrincipais_request.__dict__) 
+        pessoa_tematicasPrincipais.idTematicasPrincipais= int(id)
+        profissionalTrataTematicasUseCase.save(profissionalTrataTematicasSent=pessoa_tematicasPrincipais)
+
+    return tematicasPrincipais_request
+
+
+@router_tematicas_principais.get("/ProfissionalTrataTematicas/{cpf}",
+                  response_model=List[ProfissionalTrataTematicasRequest],
+                  status_code=status.HTTP_200_OK)
+def find_by_idPessoa(cpf: str):
+    '''Faz uma query de um objeto assistente na DB pelo id'''
+    profissionalEspecialidades = profissionalTrataTematicasUseCase.find_by_cpfProfissional(cpf)
+
+    if not profissionalEspecialidades:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="tematicasPrincipais não encontrado")
+
+    response_data = [
+        ProfissionalTrataTematicasRequest(
+            cpfProfissional=pessoaEspecialidade.cpfProfissional,
+            idTematicasPrincipais=pessoaEspecialidade.idTematicasPrincipais,
+        )
+        for pessoaEspecialidade in profissionalEspecialidades
+    ]
+
+    return response_data
+
+
+@router_tematicas_principais.delete("/ProfissionalTrataTematicas/{cpf}/{idTematicasPrincipais}", status_code=status.HTTP_204_NO_CONTENT)
+def delete(cpf: str,  idTematicasPrincipais:int):
+
+    profissionalTrataTematicasUseCase.delete(cpf=cpf,idTematicasPrincipais=idTematicasPrincipais)
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
 
 
 

@@ -10,7 +10,7 @@ class ProfissionalPossuiEspecialidade(Base):
     __tablename__ = "profissionalPossuiEspecialidade"
 
     idEspecialidade: int =  Column("idEspecialidade", ForeignKey("especialidade.idEspecialidade"), index=True,  primary_key=True)
-    cpfProfissional: int = Column("idProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
 
 class ProfissionalPossuiEspecialidadeBase(BaseModel):
     idEspecialidade:str

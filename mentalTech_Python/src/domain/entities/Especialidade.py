@@ -13,7 +13,7 @@ class ProfissionalPossuiEspecialidade(Base):
     cpfProfissional: int = Column("idProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
 
 class ProfissionalPossuiEspecialidadeBase(BaseModel):
-    idEspecialidade:int
+    idEspecialidade:str
     cpfProfissional:str
     class Config:
         orm_mode = True
@@ -24,7 +24,7 @@ class ProfissionalPossuiEspecialidadeRequest(ProfissionalPossuiEspecialidadeBase
 
 
 class DescricaoEspecialidade(Enum):
-    PSCICOLOGIA = 1
+    PSICOLOGIA = 1
     PSIQUIATRIA = 2
     PSICANALISE = 3
 

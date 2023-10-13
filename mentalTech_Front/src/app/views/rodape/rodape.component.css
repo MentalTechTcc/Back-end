@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+  footer {
+    background-color: #9EC4BB;
+    height: 50px;
+    border: none;
+  }
+
+  .TextoCopyright {
+    grid-area: TextoCopyright;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    display: flex; /* Adicionando esta propriedade */
+    justify-content: center; /* Adicionando esta propriedade */
+    align-self: center;
+  }
+
+  img{
+    width: 15%;
+    float: right;
+  }
+  .TextoCopyright {
+    grid-area: TextoCopyright;
+    align-items: center;
+    align-content: center;
+  }
+
+  .LogoRodape {
+    justify-self: right;
+    grid-area: LogoRodape;
+  }
+
+  footer small {
+    color: white;
+  }
+
+  @media (max-width: 600px) {
+    .cabecalho .logo {
+      padding: 10rem;
+    }
+
+    .cabecalho p {
+      font-size: 1.5rem
+    }
+  }
+
+  @media (max-width: 800px) {
+    footer {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 1rem;
+    }
+  }

@@ -10,10 +10,10 @@ class ProfissionalPossuiEspecialidade(Base):
     __tablename__ = "profissionalPossuiEspecialidade"
 
     idEspecialidade: int =  Column("idEspecialidade", ForeignKey("especialidade.idEspecialidade"), index=True,  primary_key=True)
-    cpfProfissional: int = Column("idProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
 
 class ProfissionalPossuiEspecialidadeBase(BaseModel):
-    idEspecialidade:int
+    idEspecialidade:str
     cpfProfissional:str
     class Config:
         orm_mode = True
@@ -24,7 +24,7 @@ class ProfissionalPossuiEspecialidadeRequest(ProfissionalPossuiEspecialidadeBase
 
 
 class DescricaoEspecialidade(Enum):
-    PSCICOLOGIA = 1
+    PSICOLOGIA = 1
     PSIQUIATRIA = 2
     PSICANALISE = 3
 

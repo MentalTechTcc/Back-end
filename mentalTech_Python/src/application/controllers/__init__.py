@@ -36,6 +36,9 @@ from src.infrastructure.repositories.ProfissionalPossuiEnderecoRepository import
 from src.application.useCases.ProfissionalPossuiEspecialidadeUseCase import ProfissionalPossuiEspecialidadeUseCase
 from src.infrastructure.repositories.ProfissionalPossuiEspecialidadeRepository import ProfissionalPossuiEspecialidadeRepository
 
+from src.application.useCases.ProfissionalTrataTematicasUseCase import ProfissionalTrataTematicasUseCase
+from src.infrastructure.repositories.ProfissionalTrataTematicasRepository import ProfissionalTrataTematicasRepository
+
 
 
 databaseSessionGenerator = SessionLocal
@@ -118,4 +121,10 @@ profissionalPossuiEnderecoUseCase = ProfissionalPossuiEnderecoUseCase(
 profissionalPossuiEspecialidadeRepository = ProfissionalPossuiEspecialidadeRepository(databaseSessionGenerator)
 profissionalPossuiEspecialidadeUseCase = ProfissionalPossuiEspecialidadeUseCase(
     profissionalPossuiEspecialidadeRepository=profissionalPossuiEspecialidadeRepository
+)
+
+
+profissionalTrataTematicasRepository = ProfissionalTrataTematicasRepository(databaseSessionGenerator)
+profissionalTrataTematicasUseCase = ProfissionalTrataTematicasUseCase(
+    profissionalTrataTematicasRepository=profissionalTrataTematicasRepository
 )

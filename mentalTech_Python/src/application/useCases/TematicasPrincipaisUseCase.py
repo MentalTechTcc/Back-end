@@ -28,7 +28,7 @@ class TematicasPrincipaisUseCase():
         for tematicasPrincipais_db in tematicasPrincipais_db:
             tematicasPrincipais = TematicasPrincipaisResponse(
                 idTematicasPrincipais =  tematicasPrincipais_db.idTematicasPrincipais,
-                idConsulta = tematicasPrincipais_db.nomeTematica
+                nomeTematica = tematicasPrincipais_db.nomeTematica
             )
             tematicasPrincipaisList.append(tematicasPrincipais)
         return tematicasPrincipaisList

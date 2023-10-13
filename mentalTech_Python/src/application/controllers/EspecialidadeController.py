@@ -66,12 +66,17 @@ def find_by_id(id: int):
     return especialidade
 
 
-
 @router_especialidade.post("/PessoaPossuiEspecialidade", status_code=status.HTTP_201_CREATED)
 def create(especialidade_request: ProfissionalPossuiEspecialidadeBase):
 
     pessoa_especialidade_entitie = ProfissionalPossuiEspecialidade(**especialidade_request.__dict__)
-    profissionalPossuiEspecialidadeUseCase.save(profissionalPossuiEspecialidadeSent=pessoa_especialidade_entitie)
+    pessoa_sent = pessoa_especialidade_entitie
+    idsEspecialidades=pessoa_sent.idEspecialidade.split(',')
+
+    for id in idsEspecialidades:
+        pessoa_especialidade = ProfissionalPossuiEspecialidade(**especialidade_request.__dict__) 
+        pessoa_especialidade.idEspecialidade= int(id)
+        profissionalPossuiEspecialidadeUseCase.save(profissionalPossuiEspecialidadeSent=pessoa_especialidade)
 
     return especialidade_request
 

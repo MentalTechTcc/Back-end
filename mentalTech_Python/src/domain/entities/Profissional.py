@@ -39,6 +39,11 @@ class Profissional(Base):
         back_populates="profissionais",
         overlaps="pessoas, diagnosticos",
     )
+    tematicasPrincipais = relationship(
+        "TematicasPrincipais",
+        secondary="profissionalTrataTematicasPrincipais",
+        back_populates="profissionais",
+    )
 
 class ProfissionalBase(PessoaBase): 
     codigoProfissional: str

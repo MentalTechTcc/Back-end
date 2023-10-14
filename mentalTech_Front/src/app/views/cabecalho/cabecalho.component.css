@@ -1,51 +1,59 @@
-.cabecalho header   {
+.cabecalho header {
   padding: 0rem 0rem;
   float: left;
 }
-.cabecalho img{
+
+.cabecalho img {
   width: 20%;
 }
+
 .cabecalho nav ul {
   list-style: none;
 }
 
 .cabecalho nav li {
   display: inline-block;
-  margin-right: 80px; /* adicione o espaçamento desejado */
+  margin-right: 100px; /* Ajustei o espaçamento para 20px */
 }
 
 .cabecalho nav li:last-child {
-  margin-right: 20; /* remova a margem direita do último item */
+  margin-right: 100px; /* Removi a margem direita do último item */
 }
 
 .cabecalho nav a {
   display: block;
-  padding: 5px 5px; /* adicione o espaçamento desejado */
+  padding: 5px 10px; /* Ajustei o espaçamento para 5px 10px */
   text-decoration: none;
   color: #333;
+  border: 2px solid transparent; /* Adiciona borda transparente inicialmente */
+  transition: border 0.3s ease; /* Adiciona uma transição suave para a mudança de cor da borda */
 }
 
-.cabecalho nav{
+.cabecalho nav a:hover {
+  border-color: black; /* Muda a cor da borda ao passar o mouse */
+}
+
+.cabecalho nav {
   float: right;
-  font-size: 20px; /* tamanho da fonte em pixels */
+  font-size: 20px;
   font-family: Sanchez;
   margin-top: -8%;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 600px) {
   .cabecalho .logo {
-    padding: 2rem;
+    padding: 10rem;
   }
+
   .cabecalho p {
-    font-size: 1.5rem
+    font-size: 1.5rem;
   }
 }
 
-@media (max-width: 768px) {
-  .cabecalho .logo {
-    width: 90%;
-  }
-  .cabecalho .imagem {
-    display: none;
+@media (max-width: 800px) {
+  footer {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
   }
 }

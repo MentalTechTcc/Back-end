@@ -1,0 +1,122 @@
+/* Reset de margens e preenchimentos padrão */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para centralizar o conteúdo na tela */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 62vh; /* 100% da altura da tela */
+  background-color: #fff; /* Cinza claro */
+  margin-bottom: 30px;
+}
+
+/* Estilo para o retângulo de login */
+.login-box {
+  background-color: #F5F5F5; /* Fundo branco */
+  padding: 50px;
+  border-radius: 8px; /* Cantos arredondados */
+  text-align: center;
+  width: 400px;
+}
+
+/* Estilo para os campos de entrada e rótulos */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-family: Sanchez;
+  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+
+}
+
+label > span {
+  margin-right: 10px; /* Espaço entre o rótulo e o campo de entrada */
+}
+
+input {
+  width: calc(100% - 20px); /* Largura do input com descontos para o padding */
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+}
+
+.entrar-button {
+  background-color: #9EC4BB; /* Cor de sua escolha para o botão "Entrar" */
+  color: #fff; /* Texto branco */
+  padding: 15px 20px; /* Ajuste o tamanho do padding conforme necessário */
+  font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
+  border: none;
+  border-radius: 4px;
+  font-family: Sanchez;
+  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+
+}
+.entrar-button:hover {
+  background-color: #82beb0; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo para os botões */
+/* Estilo para os botões */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px; /* Adicione espaço entre os campos e os botões */
+}
+
+/* Estilo para os botões */
+.right-button,
+.left-button {
+  padding: 15px 20px; /* Ajuste o tamanho do padding conforme necessário */
+  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: -5px;
+  margin-bottom: 15px;/* Adicione margem superior para distanciar dos campos */
+  font-family: Sanchez;
+
+}
+
+.right-button {
+  /* Estilo específico para o botão "Paciente" */
+  background-color: #fff; /* Cor azul para o botão "Paciente" */
+  color: black; /* Texto branco */
+}
+
+.left-button {
+  /* Estilo específico para o botão "Profissional" */
+  background-color: #fff; /* Cor verde para o botão "Profissional" */
+  color: black; /* Texto branco */
+}
+
+.right-button:hover,
+.left-button:hover {
+  /* Adicione estilos de hover conforme necessário */
+  background-color: #9EC4BB;
+}
+.custom-label label {
+  display: block;
+  font-size: 16px;
+  margin-top: 20px; /* Adicione margem superior para distanciar do botão */
+  font-family: Sanchez;
+}
+
+.custom-label a {
+  color: black; /* Define a cor do texto do link como preto */
+  text-decoration: none; /* Remove o sublinhado padrão do link */
+}
+
+.custom-label a:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse sobre o link */
+}

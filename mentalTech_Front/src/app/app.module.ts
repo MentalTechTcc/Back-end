@@ -7,6 +7,7 @@ import { CabecalhoComponent } from './views/cabecalho/cabecalho.component';
 import { RodapeComponent } from './views/rodape/rodape.component';
 import { PrincipalComponent } from './views/principal/principal.component';
 import { EntrarComponent } from './views/entrar/entrar.component';
+import { EscolhaPerfilComponent } from './views/escolha-perfil/escolha-perfil.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EntrarComponent } from './views/entrar/entrar.component';
     CabecalhoComponent,
     RodapeComponent,
     PrincipalComponent,
-    EntrarComponent
+    EntrarComponent,
+    EscolhaPerfilComponent
   ],
   imports: [
     BrowserModule,

@@ -53,7 +53,7 @@ input {
 
 .entrar-button {
   background-color: #9EC4BB; /* Cor de sua escolha para o botão "Entrar" */
-  color: #fff; /* Texto branco */
+  color: black; /* Texto branco */
   padding: 15px 20px; /* Ajuste o tamanho do padding conforme necessário */
   font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
   border: none;

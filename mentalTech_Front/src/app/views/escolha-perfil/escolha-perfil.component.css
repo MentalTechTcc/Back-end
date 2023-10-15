@@ -1,0 +1,75 @@
+/* Estilo para o retângulo do componente escolha-perfil */
+.escolha-perfil-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 67vh;
+  background-color: #fff;
+}
+
+.escolha-perfil-box {
+  background-color: #F5F5F5;
+  padding: 50px;
+  border-radius: 8px;
+  text-align: center;
+  width: 500px;
+  height: 300px;
+  position: relative;
+}
+
+/* Estilo para o label "Escolha o tipo de perfil" */
+label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-family: Sanchez;
+}
+
+/* Estilo para os botões "Profissional" e "Paciente" */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.left-button,
+.right-button {
+  margin-top: 50px;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Sanchez;
+}
+
+.left-button {
+  background-color: #fff; /* Cor verde para o botão "Profissional" */
+  color: black;
+}
+
+.right-button {
+  background-color: #fff; /* Cor azul para o botão "Paciente" */
+  color: black;
+}
+
+.left-button:hover,
+.right-button:hover {
+  background-color: #9EC4BB;
+}
+
+/* Estilo para o botão "Próximo" */
+.proximo-button {
+  background-color: #9EC4BB;
+  color: black;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  font-family: Sanchez;
+  margin-top: 50px;
+}
+
+.proximo-button:hover {
+  background-color: #82beb0;
+}

@@ -8,6 +8,9 @@ import { RodapeComponent } from './views/rodape/rodape.component';
 import { PrincipalComponent } from './views/principal/principal.component';
 import { EntrarComponent } from './views/entrar/entrar.component';
 import { EscolhaPerfilComponent } from './views/escolha-perfil/escolha-perfil.component';
+import { CadastroComponent } from './views/cadastro/cadastro.component';
+import { CadastroUsuarioService } from './services/cadastro-usuario.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +19,15 @@ import { EscolhaPerfilComponent } from './views/escolha-perfil/escolha-perfil.co
     RodapeComponent,
     PrincipalComponent,
     EntrarComponent,
-    EscolhaPerfilComponent
+    EscolhaPerfilComponent,
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [CadastroUsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

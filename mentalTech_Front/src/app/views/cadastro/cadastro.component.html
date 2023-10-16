@@ -1,0 +1,74 @@
+<div class="cadastro-container">
+  <div class="cadastro-box">
+    <label>Cadastro de {{ escolhaPerfil }}</label>
+
+    <div *ngIf="escolhaPerfil === 'Profissional'">
+      <!-- Campos específicos para Profissional -->
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" [(ngModel)]="cpf" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" [(ngModel)]="senha" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="dataNascimento" required>
+      </div>
+    </div>
+
+    <div *ngIf="escolhaPerfil === 'Paciente'">
+      <!-- Campos específicos para Paciente -->
+      <div class="form-group">
+        <label for="nomePaciente">Nome:</label>
+        <input type="text" id="nomePaciente" name="nomePaciente" [(ngModel)]="nomePaciente" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" [(ngModel)]="telefone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="emailPaciente">Email:</label>
+        <input type="email" id="emailPaciente" name="emailPaciente" [(ngModel)]="emailPaciente" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senhaPaciente">Senha:</label>
+        <input type="password" id="senhaPaciente" name="senhaPaciente" [(ngModel)]="senhaPaciente" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dataNascimentoPaciente">Data de Nascimento:</label>
+        <input type="date" id="dataNascimentoPaciente" name="dataNascimentoPaciente" [(ngModel)]="dataNascimentoPaciente" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gênero:</label>
+        <div class="radio-buttons">
+          <input type="radio" id="masculino" name="genero" value="masculino" [(ngModel)]="genero" required>
+          <label for="masculino">Masculino</label>
+
+          <input type="radio" id="feminino" name="genero" value="feminino" [(ngModel)]="genero" required>
+          <label for="feminino">Feminino</label>
+        </div>
+      </div>
+    </div>
+
+    <button class="cadastrar-button" (click)="cadastrar()">Cadastrar</button>
+  </div>
+</div>

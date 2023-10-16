@@ -1,0 +1,67 @@
+/* Estilo para o retângulo do componente cadastro */
+.cadastro-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 110vh;
+  background-color: #fff;
+}
+
+.cadastro-box {
+  background-color: #F5F5F5;
+  padding: 50px;
+  border-radius: 8px;
+  text-align: center;
+  width: 400px;
+  position: relative;
+}
+
+/* Estilo para o label "Cadastro de Profissional/Paciente" */
+label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-family: Sanchez;
+}
+
+/* Estilo para os campos de entrada e rótulos */
+label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  font-family: Sanchez;
+  font-size: 18px;
+}
+
+input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilo para o botão "Cadastrar" */
+.cadastrar-button {
+  background-color: #9EC4BB;
+  color: #fff;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  font-family: Sanchez;
+}
+
+.cadastrar-button:hover {
+  background-color: #82beb0;
+}
+/* Estilo para os botões de gênero */
+.radio-buttons {
+  display: flex;
+  align-items: flex-start; /* Alterado para flex-start */
+  margin-bottom: 16px; /* Adicionado para dar algum espaço abaixo dos botões */
+}
+
+.radio-buttons input {
+  margin-right: 4px;
+}

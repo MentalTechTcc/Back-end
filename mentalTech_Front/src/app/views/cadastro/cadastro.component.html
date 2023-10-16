@@ -60,10 +60,10 @@
       <div class="form-group">
         <label>Gênero:</label>
         <div class="radio-buttons">
-          <input type="radio" id="masculino" name="genero" value="masculino" [(ngModel)]="genero" required>
+          <input type="radio" id="masculino" name="genero" value="masculino" [(ngModel)]="genero" (change)="mapearGenero('masculino')" required>
           <label for="masculino">Masculino</label>
 
-          <input type="radio" id="feminino" name="genero" value="feminino" [(ngModel)]="genero" required>
+          <input type="radio" id="feminino" name="genero" value="feminino" [(ngModel)]="genero" (change)="mapearGenero('feminino')" required>
           <label for="feminino">Feminino</label>
         </div>
       </div>

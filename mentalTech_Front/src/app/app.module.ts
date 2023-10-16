@@ -11,6 +11,9 @@ import { EscolhaPerfilComponent } from './views/escolha-perfil/escolha-perfil.co
 import { CadastroComponent } from './views/cadastro/cadastro.component';
 import { CadastroUsuarioService } from './services/cadastro-usuario.service';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material';
+import { CadastroPacienteService } from './services/cadastro-paciente.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    HttpClientModule
   ],
-  providers: [CadastroUsuarioService],
+  providers: [CadastroUsuarioService, CadastroPacienteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

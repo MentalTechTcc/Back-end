@@ -15,6 +15,7 @@ import { MatSnackBarModule } from '@angular/material';
 import { CadastroPacienteService } from './services/cadastro-paciente.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastroProfissionalComponent } from './views/cadastro-profissional/cadastro-profissional.component';
+import { SobreComponent } from './views/sobre/sobre.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CadastroProfissionalComponent } from './views/cadastro-profissional/cad
     EntrarComponent,
     EscolhaPerfilComponent,
     CadastroPacienteComponent,
-    CadastroProfissionalComponent
+    CadastroProfissionalComponent,
+    SobreComponent
   ],
   imports: [
     BrowserModule,

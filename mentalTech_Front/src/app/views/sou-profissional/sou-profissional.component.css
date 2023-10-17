@@ -1,0 +1,48 @@
+/* Seus estilos existentes aqui */
+
+.corpo {
+  display: flex;
+  height:  120vh; /* 50% da altura da viewport */
+}
+
+.metade-imagem, .metade-texto {
+  flex: 1; /* Cada div ocupa metade da largura disponível */
+  overflow: hidden; /* Garante que a imagem não ultrapasse sua div */
+}
+
+.metade-imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Mantém a proporção da imagem e a corta se necessário */
+}
+
+.metade-texto {
+  padding: 20px;
+  box-sizing: border-box; /* Inclui padding no tamanho total da div */
+}
+
+.metade-texto {
+  padding: 20px;
+  font-family: Sanchez;
+  box-sizing: border-box; /* Inclui padding no tamanho total da div */
+  font-size: 20px; /* Tamanho do texto em pixels, ajuste conforme necessário */
+  color: #9EC4BB; /* Cor do texto, você pode usar um nome de cor ou código hexadecimal */
+  text-align: justify;
+}
+
+/* Media query para telas menores, ajuste conforme necessário */
+@media (max-width: 768px) {
+  .corpo {
+    flex-direction: column; /* Empilhe as divs verticalmente em telas menores */
+    height: auto; /* Altura automática para se ajustar ao conteúdo */
+  }
+
+  .metade-imagem, .metade-texto {
+    flex: none; /* Retire a flexibilidade para que as divs tenham largura total */
+    width: 100%;
+  }
+
+  .metade-texto {
+    font-size: 30px; /* Reduza o tamanho do texto para telas menores */
+  }
+}

@@ -16,6 +16,7 @@ import { CadastroPacienteService } from './services/cadastro-paciente.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CadastroProfissionalComponent } from './views/cadastro-profissional/cadastro-profissional.component';
 import { SobreComponent } from './views/sobre/sobre.component';
+import { SouProfissionalComponent } from './views/sou-profissional/sou-profissional.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SobreComponent } from './views/sobre/sobre.component';
     EscolhaPerfilComponent,
     CadastroPacienteComponent,
     CadastroProfissionalComponent,
-    SobreComponent
+    SobreComponent,
+    SouProfissionalComponent
   ],
   imports: [
     BrowserModule,

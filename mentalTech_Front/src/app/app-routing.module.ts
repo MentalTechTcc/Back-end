@@ -6,6 +6,7 @@ import { EscolhaPerfilComponent } from './views/escolha-perfil/escolha-perfil.co
 import { CadastroPacienteComponent } from './views/cadastro-paciente/cadastro-paciente.component';
 import { CadastroProfissionalComponent } from './views/cadastro-profissional/cadastro-profissional.component';
 import { SobreComponent } from './views/sobre/sobre.component';
+import { SouProfissionalComponent } from './views/sou-profissional/sou-profissional.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'sobre',
     component: SobreComponent
+  },
+  {
+    path: 'sou-profissional',
+    component: SouProfissionalComponent
   }
 ];
 

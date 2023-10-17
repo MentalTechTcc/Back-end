@@ -1,0 +1,61 @@
+<div class="cadastro-container">
+  <div class="cadastro-box">
+    <label>Cadastro de {{ escolhaPerfil }}</label>
+
+    <div *ngIf="escolhaPerfil === 'Profissional'">
+      <!-- Campos específicos para Profissional -->
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" [(ngModel)]="nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" [(ngModel)]="telefone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" [(ngModel)]="senha" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="dataNascimento" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gênero:</label>
+        <div class="radio-buttons">
+          <input type="radio" id="masculino" name="genero" value="1" [(ngModel)]="genero" required>
+          <label for="masculino">Masculino</label>
+
+          <input type="radio" id="feminino" name="genero" value="2" [(ngModel)]="genero" required>
+          <label for="feminino">Feminino</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="codigoProfissional">Código Profissional:</label>
+        <input type="text" id="codigoProfissional" name="codigoProfissional" [(ngModel)]="codigoProfissional" required>
+      </div>
+
+      <div class="form-group">
+        <label for="descricaoProfissional">Descrição Profissional:</label>
+        <textarea id="descricaoProfissional" name="descricaoProfissional" [(ngModel)]="descricaoProfissional" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" [(ngModel)]="cpf" required>
+      </div>
+    </div>
+
+    <button class="cadastrar-button" (click)="cadastrar()">Cadastrar</button>
+  </div>
+</div>

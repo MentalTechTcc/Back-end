@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PrincipalComponent } from './views/principal/principal.component';
 import { EntrarComponent } from './views/entrar/entrar.component';
 import { EscolhaPerfilComponent } from './views/escolha-perfil/escolha-perfil.component';
-import { CadastroComponent } from './views/cadastro/cadastro.component';
+import { CadastroPacienteComponent } from './views/cadastro-paciente/cadastro-paciente.component';
+import { CadastroProfissionalComponent } from './views/cadastro-profissional/cadastro-profissional.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,12 @@ const routes: Routes = [
     component: EscolhaPerfilComponent
   },
   {
-    path: 'cadastro-usuario',
-    component: CadastroComponent
+    path: 'cadastro-paciente',
+    component: CadastroPacienteComponent
+  },
+  {
+    path: 'cadastro-profissional',
+    component: CadastroProfissionalComponent
   }
 ];
 

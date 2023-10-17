@@ -1,4 +1,4 @@
-export interface Paciente{
+export interface Profissional{
   nome: string;
   senha: string;
   dataNascimento: Date;
@@ -6,4 +6,7 @@ export interface Paciente{
   email: string;
   administrador: boolean;
   sexo: number;
+  codigoProfissional: string;
+  descricaoProfissional: string;
+  cpf: string
 }

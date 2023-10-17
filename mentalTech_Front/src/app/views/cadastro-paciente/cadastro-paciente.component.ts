@@ -1,27 +1,21 @@
-import { Paciente } from './../../models/Paciente.models';
-import { CadastroPacienteService } from './../../services/cadastro-paciente.service';
+import { Paciente } from '../../models/Paciente.models';
+import { CadastroPacienteService } from '../../services/cadastro-paciente.service';
 import { Component, OnInit } from '@angular/core';
 import { CadastroUsuarioService } from 'src/app/services/cadastro-usuario.service';
 
 @Component({
   selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.css']
+  templateUrl: './cadastro-paciente.component.html',
+  styleUrls: ['./cadastro-paciente.component.css']
 })
-export class CadastroComponent {
+export class CadastroPacienteComponent {
 
-  escolhaPerfil: string = ''; // Certifique-se de inicializar conforme necessário
-  nome: string = '';
-  cpf: string = '';
-  email: string = '';
-  senha: string = '';
-  dataNascimento: string = '';
-
+  escolhaPerfil: string = '';
   nomePaciente: string = '';
   telefone: string = '';
   emailPaciente: string = '';
   senhaPaciente: string = '';
-  dataNascimentoPaciente: Date = new Date(); // Inicializa com a data atual
+  dataNascimentoPaciente: Date = new Date();
   genero: number = 1;
 
   constructor(private cadastroService: CadastroUsuarioService, private cadastroPacienteService: CadastroPacienteService) {
@@ -32,6 +26,7 @@ export class CadastroComponent {
     console.log('Escolha de perfil recebida:', this.escolhaPerfil);
   }
   cadastrar() {
+
     if (this.escolhaPerfil === 'Paciente') {
       const paciente: Paciente = {
         nome: this.nomePaciente,
@@ -40,8 +35,7 @@ export class CadastroComponent {
         senha: this.senhaPaciente,
         dataNascimento: this.dataNascimentoPaciente,
         sexo: this.genero,
-        administrador: false,
-        dataCadastro: new Date() // Inicializa com a data e hora atuais
+        administrador: false
       };
 
       console.log(paciente);

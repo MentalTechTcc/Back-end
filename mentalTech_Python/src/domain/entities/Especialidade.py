@@ -23,18 +23,12 @@ class ProfissionalPossuiEspecialidadeRequest(ProfissionalPossuiEspecialidadeBase
     pass
 
 
-class DescricaoEspecialidade(Enum):
-    PSICOLOGIA = 1
-    PSIQUIATRIA = 2
-    PSICANALISE = 3
-
-
 class Especialidade(Base):
     '''Classe para estabelecer o modelo da tabela na DB'''
     __tablename__ = "especialidade"
     
     idEspecialidade: int = Column(Integer, nullable=False, primary_key=True)
-    descricaoEspecialidade: Enum = Column(EnumDB(DescricaoEspecialidade), nullable=False)
+    descricaoEspecialidade: str = Column(String(200), nullable=False)
     profissionais = relationship(
         "Profissional",
         secondary="profissionalPossuiEspecialidade",
@@ -42,7 +36,7 @@ class Especialidade(Base):
     )
 
 class EspecialidadeBase(BaseModel): 
-    descricaoEspecialidade: DescricaoEspecialidade
+    descricaoEspecialidade: str
 
 class EspecialidadeRequest(EspecialidadeBase):
     '''...'''

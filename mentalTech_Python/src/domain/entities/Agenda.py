@@ -21,6 +21,7 @@ class Agenda(Base):
     duracao: int = Column(Integer, nullable=False) 
     cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True)
     modalidadeAtendimento: Enum = Column(EnumDB(Modalidade), nullable=False)
+    ocupado: bool = Column(Boolean, nullable=True, default=False)
 
 
 class AgendaBase(BaseModel):
@@ -30,6 +31,7 @@ class AgendaBase(BaseModel):
     duracao: int
     cpfProfissional: str
     modalidadeAtendimento: Modalidade 
+    ocupado:bool
 
 class AgendaRequest(AgendaBase):
     '''...'''

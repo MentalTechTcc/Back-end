@@ -30,25 +30,24 @@ export class CadastroPacienteComponent {
     if (this.escolhaPerfil === 'Paciente') {
       const paciente: Paciente = {
         nome: this.nomePaciente,
-        telefone: this.telefone,
-        email: this.emailPaciente,
         senha: this.senhaPaciente,
         dataNascimento: this.dataNascimentoPaciente,
-        sexo: this.genero,
-        administrador: false
+        telefone: this.telefone,
+        email: this.emailPaciente,
+        administrador: false,
+        sexo: this.genero
       };
 
       console.log(paciente);
 
-      // Chame o serviço para cadastrar o paciente
-      // this.cadastroPacienteService.create(paciente).subscribe(
-      //   response => {
-      //     console.log('Cadastro bem-sucedido:', response);
-      //   },
-      //   error => {
-      //     console.error('Erro no cadastro:', error);
-      //   }
-      // );
+      this.cadastroPacienteService.create(paciente).subscribe(
+        response => {
+          console.log('Cadastro bem-sucedido:', response);
+        },
+        error => {
+          console.error('Erro no cadastro:', error);
+        }
+      );
     }
   }
 

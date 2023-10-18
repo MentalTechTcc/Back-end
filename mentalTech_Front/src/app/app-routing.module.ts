@@ -11,6 +11,11 @@ import { EspecialistasComponent } from './views/especialistas/especialistas.comp
 
 const routes: Routes = [
   {
+    path: '',
+    component: PrincipalComponent,
+    pathMatch: 'full' // Certifica-se de que é uma correspondência completa
+  },
+  {
     path: 'home',
     component: PrincipalComponent
   },

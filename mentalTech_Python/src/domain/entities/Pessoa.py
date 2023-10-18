@@ -45,8 +45,6 @@ class PessoaBase(BaseModel):
     email: str
     administrador: bool
     sexo: Sexo
-    dataCadastro: date 
-
 
 class PessoaRequest(PessoaBase):
     '''...'''
@@ -59,5 +57,6 @@ class PessoaRequestId(PessoaBase):
 class PessoaResponse(PessoaBase):
     '''...'''
     idPessoa:int
+    dataCadastro: date 
     class Config:
         orm_mode = True

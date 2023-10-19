@@ -4,7 +4,7 @@
 }
 
 .cabecalho img {
-  width: 20%;
+  width: 16%;
 }
 
 .cabecalho nav ul {
@@ -37,7 +37,7 @@
   float: right;
   font-size: 20px;
   font-family: Sanchez;
-  margin-top: -8%;
+  margin-top: -7%;
 }
 
 @media (max-width: 600px) {

@@ -1,0 +1,53 @@
+<!-- cadastro-esp-end-tem.component.html -->
+<div class="cadastro-esp-end-container">
+  <div class="cadastro-esp-end-box">
+    <label>Cadastro de Profissional</label>
+
+    <div class="label-especialidade">
+      <label>Especialidade:</label>
+    </div>
+
+    <!-- Especialidades -->
+    <div class="especialidade-options">
+      <div *ngFor="let especialidade of especialidades">
+        <input type="checkbox" [id]="especialidade.id" [name]="especialidade.nome" [value]="especialidade.nome">
+        <label [for]="especialidade.id">{{ especialidade.nome }}</label>
+      </div>
+    </div>
+
+    <div class="label-tem-endereco">
+      <label>Possui endereço?</label>
+    </div>
+
+    <!-- Botão de Opção "Possui endereço?" -->
+    <div class="radio-buttons">
+      <input type="radio" id="temEnderecoSim" name="temEndereco" value="Sim" [(ngModel)]="temEndereco">
+      <label for="temEnderecoSim">Sim</label>
+      <input type="radio" id="temEnderecoNao" name="temEndereco" value="Nao" [(ngModel)]="temEndereco">
+      <label for="temEnderecoNao">Não</label>
+    </div>
+
+    <!-- Campos de Endereço (inicialmente ocultos) -->
+    <div *ngIf="temEndereco === 'Sim'" class="endereco-campos">
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep" placeholder="Digite o CEP">
+
+      <label for="estado">Estado:</label>
+      <input type="text" id="estado" name="estado" placeholder="Digite o estado">
+
+      <label for="cidade">Cidade:</label>
+      <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade">
+
+      <label for="bairro">Bairro:</label>
+      <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro">
+
+      <label for="numero">Número:</label>
+      <input type="text" id="numero" name="numero" placeholder="Digite o número">
+
+      <label for="complemento">Complemento:</label>
+      <input type="text" id="complemento" name="complemento" placeholder="Digite o complemento">
+    </div>
+
+    <button class="especialidade-button" (click)="selecionarEspecialidades()">Cadastrar</button>
+  </div>
+</div>

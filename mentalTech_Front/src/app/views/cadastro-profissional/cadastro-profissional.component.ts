@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Profissional } from 'src/app/models/Profissional.models';
 import { CadastroProfissionalService } from 'src/app/services/cadastro-profissional.service';
 import { CadastroUsuarioService } from 'src/app/services/cadastro-usuario.service';
@@ -22,7 +23,7 @@ export class CadastroProfissionalComponent implements OnInit {
   descricaoProfissional: string = '';
   cpf: string = '';
 
-  constructor(private cadastroService: CadastroUsuarioService, private cadastroProfissionalService: CadastroProfissionalService) {
+  constructor(private router: Router,private cadastroService: CadastroUsuarioService, private cadastroProfissionalService: CadastroProfissionalService) {
   }
 
   ngOnInit() {
@@ -30,6 +31,8 @@ export class CadastroProfissionalComponent implements OnInit {
     console.log('Escolha de perfil recebida:', this.escolhaPerfil);
   }
   cadastrar() {
+
+    this.router.navigate(['/cadastro-profissional-proximo']);
 
     if (this.escolhaPerfil === 'Profissional') {
 

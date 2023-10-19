@@ -18,6 +18,7 @@ import { CadastroProfissionalComponent } from './views/cadastro-profissional/cad
 import { SobreComponent } from './views/sobre/sobre.component';
 import { SouProfissionalComponent } from './views/sou-profissional/sou-profissional.component';
 import { EspecialistasComponent } from './views/especialistas/especialistas.component';
+import { CadastroEspEndTemComponent } from './views/cadastro-esp-end-tem/cadastro-esp-end-tem.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EspecialistasComponent } from './views/especialistas/especialistas.comp
     CadastroProfissionalComponent,
     SobreComponent,
     SouProfissionalComponent,
-    EspecialistasComponent
+    EspecialistasComponent,
+    CadastroEspEndTemComponent
   ],
   imports: [
     BrowserModule,

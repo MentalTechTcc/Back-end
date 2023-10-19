@@ -8,6 +8,7 @@ import { CadastroProfissionalComponent } from './views/cadastro-profissional/cad
 import { SobreComponent } from './views/sobre/sobre.component';
 import { SouProfissionalComponent } from './views/sou-profissional/sou-profissional.component';
 import { EspecialistasComponent } from './views/especialistas/especialistas.component';
+import { CadastroEspEndTemComponent } from './views/cadastro-esp-end-tem/cadastro-esp-end-tem.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'cadastro-profissional',
     component: CadastroProfissionalComponent
+  },
+  {
+    path: 'cadastro-profissional-proximo',
+    component: CadastroEspEndTemComponent
   },
   {
     path: 'sobre',

@@ -26,7 +26,7 @@
   font-family: Sanchez;
   box-sizing: border-box; /* Inclui padding no tamanho total da div */
   font-size: 50px; /* Tamanho do texto em pixels, ajuste conforme necessário */
-  color: #9EC4BB; /* Cor do texto, você pode usar um nome de cor ou código hexadecimal */
+  color: #008B8B; /* Cor do texto, você pode usar um nome de cor ou código hexadecimal */
   text-align: center;
 }
 

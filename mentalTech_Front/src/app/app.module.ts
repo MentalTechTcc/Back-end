@@ -21,6 +21,9 @@ import { CadastroEspEndTemComponent } from './views/profissional/cadastro-esp-en
 import { HomeEntrarProfissionalComponent } from './views/profissional/home-entrar-profissional/home-entrar-profissional.component';
 import { CadastroPacienteComponent } from './views/paciente/cadastro-paciente/cadastro-paciente.component';
 import { LoginUsuarioService } from './services/login-usuario.service';
+import { CabecalhoProfissionalComponent } from './views/profissional/cabecalho-profissional/cabecalho-profissional.component';
+import { CabecalhoPacienteComponent } from './views/paciente/cabecalho-paciente/cabecalho-paciente.component';
+import { HomePacienteComponent } from './views/paciente/home-paciente/home-paciente.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { LoginUsuarioService } from './services/login-usuario.service';
     SouProfissionalComponent,
     EspecialistasComponent,
     CadastroEspEndTemComponent,
-    HomeEntrarProfissionalComponent
+    HomeEntrarProfissionalComponent,
+    CabecalhoProfissionalComponent,
+    CabecalhoPacienteComponent,
+    HomePacienteComponent
   ],
   imports: [
     BrowserModule,

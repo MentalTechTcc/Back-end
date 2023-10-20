@@ -10,6 +10,7 @@ import { EspecialistasComponent } from './views/geral/especialistas/especialista
 import { CadastroEspEndTemComponent } from './views/profissional/cadastro-esp-end-tem/cadastro-esp-end-tem.component';
 import { HomeEntrarProfissionalComponent } from './views/profissional/home-entrar-profissional/home-entrar-profissional.component';
 import { CadastroPacienteComponent } from './views/paciente/cadastro-paciente/cadastro-paciente.component';
+import { HomePacienteComponent } from './views/paciente/home-paciente/home-paciente.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'home-profissional',
     component: HomeEntrarProfissionalComponent
+  },
+  {
+    path: 'home-paciente',
+    component: HomePacienteComponent
   }
 ];
 

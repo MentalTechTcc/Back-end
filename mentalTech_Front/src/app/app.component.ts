@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginUsuarioService } from './services/login-usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mentalTech_Front';
+  opcao: string = 'paciente'; // Inicializa com 'paciente'
+  fezLogin: boolean = false;
+
+  constructor(private loginService: LoginUsuarioService) {}
+  ngOnInit() {
+    this.opcao = this.loginService.getPerfil();
+    this.fezLogin = this.loginService.getFezLogin();
+  }
 }

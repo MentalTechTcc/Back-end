@@ -27,11 +27,11 @@ export class EntrarComponent implements OnInit {
     this.loginService.setFezLogin(true);
     if (this.opcao === 'paciente') {
       // Navegar para a rota de paciente
-      // this.router.navigate(['/rota-do-paciente']);
+      this.router.navigate(['/home-paciente']);
     } else if (this.opcao === 'profissional') {
 
       // Navegar para a rota de profissional
-      // this.router.navigate(['/rota-do-profissional']);
+      this.router.navigate(['/home-profissional']);
     }
   }
 }

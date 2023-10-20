@@ -5,11 +5,13 @@
   border: none;
   box-sizing: border-box;
 }
-  footer {
-    background-color: #9EC4BB;
-    height: 50px;
-    border: none;
-  }
+footer {
+  background: linear-gradient(to right, #008B8B, #4C7E6B);
+  padding: 20px 0; 
+  text-align: center;
+  color: white;
+  margin-top: auto;
+}
 
   .TextoCopyright {
     grid-area: TextoCopyright;

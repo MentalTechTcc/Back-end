@@ -6,6 +6,9 @@
 .cabecalho img {
   width: 16%;
 }
+.cabecalho_completo{
+  border-bottom: solid #008B8B;
+}
 
 .cabecalho nav ul {
   list-style: none;

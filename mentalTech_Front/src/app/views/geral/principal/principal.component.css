@@ -2,7 +2,7 @@
 
 .corpo {
   display: flex;
-  height:  67vh; /* 50% da altura da viewport */
+  height:  100%; /* 50% da altura da viewport */
 }
 
 .metade-imagem, .metade-texto {

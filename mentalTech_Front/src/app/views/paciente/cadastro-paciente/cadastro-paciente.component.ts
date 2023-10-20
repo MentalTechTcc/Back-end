@@ -1,6 +1,6 @@
-import { Paciente } from '../../models/Paciente.models';
-import { CadastroPacienteService } from '../../services/cadastro-paciente.service';
 import { Component, OnInit } from '@angular/core';
+import { Paciente } from 'src/app/models/Paciente.models';
+import { CadastroPacienteService } from 'src/app/services/cadastro-paciente.service';
 import { CadastroUsuarioService } from 'src/app/services/cadastro-usuario.service';
 
 @Component({

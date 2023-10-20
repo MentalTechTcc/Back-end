@@ -6,7 +6,7 @@
       <button class="left-button" (click)="selectOption('profissional')">Profissional</button>
     </div>
 
-    <form  *ngIf="selectedOption === 'paciente'">
+    <form  *ngIf="opcao === 'paciente'">
       <div class="form-group">
         <label for="email">Email:</label>
         <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Informe o email">
@@ -15,11 +15,11 @@
         <label for="password">Senha:</label>
         <input type="password" class="form-control" id="password" placeholder="Informe a senha">
       </div>
-      <button type="submit" class="entrar-button">Entrar</button>
+      <button type="submit" (click)="entrar()" class="entrar-button">Entrar</button>
 
     </form>
 
-    <form  *ngIf="selectedOption === 'profissional'">
+    <form  *ngIf="opcao === 'profissional'">
       <div class="form-group">
         <label for="cpf">CPF:</label>
         <input type="text" class="form-control" id="cpf" aria-describedby="emailHelp" placeholder="Informe o cpf">
@@ -28,7 +28,7 @@
         <label for="password">Senha:</label>
         <input type="password" class="form-control" id="password" placeholder="Informe a senha">
       </div>
-      <button type="submit" class="entrar-button">Entrar</button>
+      <button type="submit" (click)="entrar()" class="entrar-button">Entrar</button>
     </form>
 
     <div class="custom-label">

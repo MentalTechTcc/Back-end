@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PrincipalComponent } from './views/principal/principal.component';
-import { EntrarComponent } from './views/entrar/entrar.component';
-import { EscolhaPerfilComponent } from './views/escolha-perfil/escolha-perfil.component';
-import { CadastroPacienteComponent } from './views/cadastro-paciente/cadastro-paciente.component';
-import { CadastroProfissionalComponent } from './views/cadastro-profissional/cadastro-profissional.component';
-import { SobreComponent } from './views/sobre/sobre.component';
-import { SouProfissionalComponent } from './views/sou-profissional/sou-profissional.component';
-import { EspecialistasComponent } from './views/especialistas/especialistas.component';
-import { CadastroEspEndTemComponent } from './views/cadastro-esp-end-tem/cadastro-esp-end-tem.component';
+import { PrincipalComponent } from './views/geral/principal/principal.component';
+import { EntrarComponent } from './views/geral/entrar/entrar.component';
+import { EscolhaPerfilComponent } from './views/geral/escolha-perfil/escolha-perfil.component';
+import { CadastroProfissionalComponent } from './views/profissional/cadastro-profissional/cadastro-profissional.component';
+import { SobreComponent } from './views/geral/sobre/sobre.component';
+import { SouProfissionalComponent } from './views/geral/sou-profissional/sou-profissional.component';
+import { EspecialistasComponent } from './views/geral/especialistas/especialistas.component';
+import { CadastroEspEndTemComponent } from './views/profissional/cadastro-esp-end-tem/cadastro-esp-end-tem.component';
+import { HomeEntrarProfissionalComponent } from './views/profissional/home-entrar-profissional/home-entrar-profissional.component';
+import { CadastroPacienteComponent } from './views/paciente/cadastro-paciente/cadastro-paciente.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'especialistas',
     component: EspecialistasComponent
+  },
+  {
+    path: 'home-profissional',
+    component: HomeEntrarProfissionalComponent
   }
 ];
 

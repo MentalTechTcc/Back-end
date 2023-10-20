@@ -9,9 +9,10 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 62vh; /* 100% da altura da tela */
+  height: 100%; /* 100% da altura da tela */
   background-color: #fff; /* Cinza claro */
   margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 /* Estilo para o retângulo de login */
@@ -120,3 +121,4 @@ input {
 .custom-label a:hover {
   text-decoration: underline; /* Adiciona sublinhado ao passar o mouse sobre o link */
 }
+

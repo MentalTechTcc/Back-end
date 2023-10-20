@@ -5,9 +5,31 @@
   border: none;
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Isso garante que o corpo da página tenha pelo menos 100% da altura da tela. */
+}
+
+main {
+  flex: 1; /* Isso faz com que o conteúdo principal ocupe o espaço restante na tela. */
+}
+
 footer {
   background: linear-gradient(to right, #008B8B, #4C7E6B);
-  padding: 20px 0; 
+  padding: 20px 0;
+  text-align: center;
+  color: white;
+  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer {
+  background: linear-gradient(to right, #008B8B, #4C7E6B);
+  padding: 20px 0;
   text-align: center;
   color: white;
   margin-top: auto;

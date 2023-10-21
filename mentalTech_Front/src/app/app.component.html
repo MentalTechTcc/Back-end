@@ -1,7 +1,3 @@
-<app-cabecalho *ngIf="!fezLogin"></app-cabecalho>
-<app-cabecalho-paciente *ngIf="fezLogin && opcao === 'paciente'"></app-cabecalho-paciente>
-<app-cabecalho-profissional *ngIf="fezLogin && opcao === 'profissional'"></app-cabecalho-profissional>
-
 <main>
   <router-outlet></router-outlet>
 </main>

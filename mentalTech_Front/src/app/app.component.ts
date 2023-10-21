@@ -7,12 +7,7 @@ import { LoginUsuarioService } from './services/login-usuario.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  opcao: string = 'paciente'; // Inicializa com 'paciente'
-  fezLogin: boolean = false;
-
-  constructor(private loginService: LoginUsuarioService) {}
   ngOnInit() {
-    this.opcao = this.loginService.getPerfil();
-    this.fezLogin = this.loginService.getFezLogin();
+
   }
 }

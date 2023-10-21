@@ -1,0 +1,62 @@
+.cabecalho header {
+  padding: 0rem 0rem;
+  float: left;
+}
+
+.cabecalho img {
+  width: 16%;
+}
+.cabecalho_completo{
+  border-bottom: solid #008B8B;
+}
+
+.cabecalho nav ul {
+  list-style: none;
+}
+
+.cabecalho nav li {
+  display: inline-block;
+  margin-right: 60px; /* Ajustei o espaçamento para 20px */
+}
+
+.cabecalho nav li:last-child {
+  margin-right: 100px; /* Removi a margem direita do último item */
+}
+
+.cabecalho nav a {
+  display: block;
+  padding: 5px 10px; /* Ajustei o espaçamento para 5px 10px */
+  text-decoration: none;
+  color: #333;
+  border: 2px solid transparent; /* Adiciona borda transparente inicialmente */
+  transition: border 0.3s ease; /* Adiciona uma transição suave para a mudança de cor da borda */
+}
+
+.cabecalho nav a:hover {
+  border-color: black; /* Muda a cor da borda ao passar o mouse */
+}
+
+.cabecalho nav {
+  float: right;
+  font-size: 20px;
+  font-family: Sanchez;
+  margin-top: -7%;
+}
+
+@media (max-width: 600px) {
+  .cabecalho .logo {
+    padding: 10rem;
+  }
+
+  .cabecalho p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  footer {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+}

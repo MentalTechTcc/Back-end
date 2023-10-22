@@ -21,15 +21,15 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       data: [null, Validators.required],
       hora: [null, Validators.required],
       duracao: [null, Validators.required],
-      modalidadeAtendimento: ['presencial', Validators.required]
+      modalidadeAtendimento: ['presencial', Validators.required],
+      ocupado:false
     });
   }
 
   onSubmit() {
     if (this.disponibilidadeForm.valid) {
       const disponibilidadeData = this.disponibilidadeForm.value as Agenda;
-      // Enviar os dados para o serviço de cadastro
-      // Implemente a comunicação com a API aqui
+  
     }
   }
 }

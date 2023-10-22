@@ -5,5 +5,7 @@ export interface Agenda {
     hora: Time;
     duracao: number;
     modalidadeAtendimento: string;
+    cpfProfissional:String;
+    ocupado:boolean;
   }
   

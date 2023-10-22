@@ -6,6 +6,7 @@ from domain.entities.Profissional import (ProfissionalResponse,
                                    Profissional,
                                    ProfissionalRequestId)
 from application.controllers import  profissionalUseCase
+from fastapi import File, UploadFile
 
 Base.metadata.create_all(bind=engine)
 
@@ -16,20 +17,25 @@ router_profissional = APIRouter(
 )
 
 @router_profissional.post("/", status_code=status.HTTP_201_CREATED)
-def create(profissional_request: ProfissionalRequest):
-
-    validaCampos = profissionalUseCase.valida_profissional_create(Profissional(**profissional_request.__dict__))
+def create(profissional_request: ProfissionalRequest, image: UploadFile = File(None)):
     
+    validaCampos = profissionalUseCase.valida_profissional_create(Profissional(**profissional_request.__dict__))
     if not validaCampos['completeStatus']:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
 
+    imagem_data = None
+    if image:
+        imagem_data = image.file.read()
+
     profissional_entitie = Profissional(**profissional_request.__dict__)
-    
-    profissional_entitie.senha = get_password_hash(profissional_entitie.senha) 
+    profissional_entitie.imagem = imagem_data
+    profissional_entitie.senha = get_password_hash(profissional_entitie.senha)
 
     profissionalUseCase.save(profissionalSent=profissional_entitie)
 
     return profissional_request
+
+
 
 @router_profissional.put("/{idPessoa}", status_code=status.HTTP_201_CREATED)
 def update(profissionalSent: ProfissionalRequestId):

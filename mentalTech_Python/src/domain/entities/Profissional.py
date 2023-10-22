@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean,func , DateTime, Enum as EnumDB
 from sqlalchemy.orm import relationship
+from typing import Optional
 from enum import Enum
 from database import Base
 from domain.entities.Pessoa import PessoaBase, Sexo
@@ -23,6 +24,7 @@ class Profissional(Base):
     codigoProfissional: str = Column(String(100), nullable=False)
     descricaoProfissional: str = Column(String(500), nullable=False)
     dataCadastro = Column(DateTime, server_default=func.now()) 
+    imagem: Optional[bytes]
     enderecos = relationship(
         "Endereco",
         secondary="profissionalPossuiEndereco",
@@ -49,6 +51,7 @@ class ProfissionalBase(PessoaBase):
     codigoProfissional: str
     descricaoProfissional: str
     cpf: str 
+    imagem: Optional[bytes]
 
 class ProfissionalRequest(ProfissionalBase):
     '''...'''

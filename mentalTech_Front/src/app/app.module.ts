@@ -57,7 +57,7 @@ import { MinhasConsultasPacienteComponent } from './views/paciente/minhas-consul
     DicasPacienteComponent,
     DicaProfissionalComponent,
     CadastroAgendaProfissionalComponent,
-    MinhasConsultasPacienteComponent,
+    MinhasConsultasPacienteComponent
   ],
   imports: [
     BrowserModule,

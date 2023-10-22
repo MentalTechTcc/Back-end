@@ -6,7 +6,7 @@ from domain.entities.Profissional import (ProfissionalResponse,
                                    Profissional,
                                    ProfissionalRequestId)
 from application.controllers import  profissionalUseCase
-from fastapi import File, UploadFile
+from fastapi import HTTPException, UploadFile, File, Form
 
 Base.metadata.create_all(bind=engine)
 
@@ -17,18 +17,47 @@ router_profissional = APIRouter(
 )
 
 @router_profissional.post("/", status_code=status.HTTP_201_CREATED)
-def create(profissional_request: ProfissionalRequest, image: UploadFile = File(None)):
-    
+def create(
+    nome: str = Form(...),
+    senha: str = Form(...),
+    dataNascimento: str = Form(...),
+    telefone: str = Form(...),
+    email: str = Form(...),
+    administrador: bool = Form(...),
+    sexo: int = Form(...),
+    codigoProfissional: str = Form(...),
+    descricaoProfissional: str = Form(...),
+    cpf: str = Form(...),
+    image: UploadFile = File(None)
+):
+
+    profissional_request = ProfissionalRequest(
+        nome=nome,
+        senha=senha,
+        dataNascimento=dataNascimento,
+        telefone=telefone,
+        email=email,
+        administrador=administrador,
+        sexo=sexo,
+        codigoProfissional=codigoProfissional,
+        descricaoProfissional=descricaoProfissional,
+        cpf=cpf
+    )
+
     validaCampos = profissionalUseCase.valida_profissional_create(Profissional(**profissional_request.__dict__))
     if not validaCampos['completeStatus']:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=validaCampos)
 
-    imagem_data = None
+    imagem_data = None        
     if image:
         imagem_data = image.file.read()
+        print("Image received:", image.filename)
+    else:
+        print("No image received")
 
-    profissional_entitie = Profissional(**profissional_request.__dict__)
+    profissional_entitie = (Profissional(**profissional_request.__dict__))
     profissional_entitie.imagem = imagem_data
+    print(imagem_data)
     profissional_entitie.senha = get_password_hash(profissional_entitie.senha)
 
     profissionalUseCase.save(profissionalSent=profissional_entitie)

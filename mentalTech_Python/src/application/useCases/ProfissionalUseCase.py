@@ -80,8 +80,7 @@ class ProfissionalUseCase():
                 cpf = profissional_db.cpf,
                 codigoProfissional = profissional_db.codigoProfissional,
                 descricaoProfissional = profissional_db.descricaoProfissional,
-                dataCadastro= profissional_db.dataCadastro,
-                imagem=profissional_db.imagem
+                dataCadastro= profissional_db.dataCadastro
             )
             profissionais.append(profissional)
         return profissionais

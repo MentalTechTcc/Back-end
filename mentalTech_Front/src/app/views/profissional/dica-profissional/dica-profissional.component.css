@@ -1,0 +1,126 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.corpo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  height: 100%;
+  overflow: hidden;
+}
+  
+  .metade-imagem {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .metade-imagem img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .metade-texto {
+    flex: 1;
+    padding: 20px;
+    font-family: "Sanchez", sans-serif;
+    font-size: 20px;
+    color: #333;
+    background-color: #f3f3f3;
+    overflow-y: auto;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    color: #008B8B;
+  }
+  
+  .dica-quadrados {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .dica-quadrado {
+    width: 200px;
+    height: 200px;
+    background-color: #008B8B;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+  }
+  .corpo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    margin-bottom: 50px;
+  }
+  
+  .metade-imagem {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .metade-imagem img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .metade-texto {
+    flex: 1;
+    padding: 20px;
+    font-family: "Sanchez", sans-serif;
+    font-size: 20px;
+    color: #333;
+    background-color: #f3f3f3;
+    overflow-y: auto;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    color: #008B8B;
+  }
+  
+  .dica-quadrados {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .dica-quadrado {
+    width: 200px;
+    height: 200px;
+    background-color: #008B8B;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+  }
+  

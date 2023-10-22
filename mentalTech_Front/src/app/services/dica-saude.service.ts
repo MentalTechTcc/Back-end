@@ -15,4 +15,8 @@ export class DicaSaudeService {
   listar(): Observable<Dica[]> {
     return this.http.get<Dica[]>(`${environment.baseUrl}/dicaSaude`);
   }
+  cadastrarDica(dica: Dica): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/dicaSaude`, dica);
+  }
+  
 }

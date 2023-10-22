@@ -28,6 +28,8 @@ import { MeusDadosComponent } from './views/profissional/meus-dados/meus-dados.c
 import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente/meus-dados-paciente.component';
 import { ListarProfissionaisComponent } from './views/paciente/listar-profissionais/listar-profissionais.component';
 import { DicasPacienteComponent } from './views/paciente/dicas-paciente/dicas-paciente.component';
+import { DicaProfissionalComponent } from './views/profissional/dica-profissional/dica-profissional.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,14 +52,16 @@ import { DicasPacienteComponent } from './views/paciente/dicas-paciente/dicas-pa
     MeusDadosComponent,
     MeusDadosPacienteComponent,
     ListarProfissionaisComponent,
-    DicasPacienteComponent
+    DicasPacienteComponent,
+    DicaProfissionalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [CadastroUsuarioService, CadastroPacienteService, LoginUsuarioService],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ from infrastructure.repositories.TokenRepository import TokensRepository
 from fastapi import APIRouter, Form, Header, HTTPException, status
 
 from ..controllers import pessoaUseCase
+from ..controllers import profissionalUseCase
 
 
 routerLoginPessoa = APIRouter(
@@ -55,3 +56,43 @@ def logout(refresh_token: str = Header(...)):
     return {"message": "Logout realizado com sucesso"}
 
 
+### profissional
+
+@routerLoginPessoa.post("/profissional/")
+async def login(email: str = Form(...), senha: str = Form(...)):
+    access_token, refresh_token = profissionalUseCase.login(
+        email=email, senha=senha
+    )
+
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "bearer",
+    }
+
+
+@routerLoginPessoa.get("/profissional/token", status_code=201)
+async def verificarToken(authorization: str = Header(...)):
+    profissional = profissionalUseCase.verifyToken(authorization)
+    profissional.senha = None
+    return profissional
+
+
+@routerLoginPessoa.post("/profissional/token/refresh", status_code=201)
+async def refreshToken(refresh_token: str = Header(...)):
+    tokens = profissionalUseCase.refreshSession(refresh_token=refresh_token)
+    if tokens:
+        return {
+            "access_token": tokens[0],
+            "refresh_token": tokens[1],
+            "token_type": "bearer",
+        }
+
+    raise HTTPException(401, "Not Allowed")
+
+
+@routerLoginPessoa.post("/profissional/logout")
+def logout(refresh_token: str = Header(...)):
+    profissionalUseCase.deleteRefreshToken(refresh_token)
+
+    return {"message": "Logout realizado com sucesso"}

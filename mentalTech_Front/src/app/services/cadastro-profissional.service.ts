@@ -15,4 +15,7 @@ export class CadastroProfissionalService {
   create(paciente: Profissional): Observable<Profissional> {
     return this.http.post<Profissional>(`${environment.baseUrl}/profissional`, paciente);
   }
+  listar(): Observable<Profissional[]> {
+    return this.http.get<Profissional[]>(`${environment.baseUrl}/profissional`);
+  }
 }

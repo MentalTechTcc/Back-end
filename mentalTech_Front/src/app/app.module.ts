@@ -26,6 +26,7 @@ import { CabecalhoPacienteComponent } from './views/paciente/cabecalho-paciente/
 import { HomePacienteComponent } from './views/paciente/home-paciente/home-paciente.component';
 import { MeusDadosComponent } from './views/profissional/meus-dados/meus-dados.component';
 import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente/meus-dados-paciente.component';
+import { ListarProfissionaisComponent } from './views/paciente/listar-profissionais/listar-profissionais.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente
     CabecalhoPacienteComponent,
     HomePacienteComponent,
     MeusDadosComponent,
-    MeusDadosPacienteComponent
+    MeusDadosPacienteComponent,
+    ListarProfissionaisComponent
   ],
   imports: [
     BrowserModule,

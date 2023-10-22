@@ -25,7 +25,6 @@ class Agenda(Base):
 
 
 class AgendaBase(BaseModel):
-    idAgenda: int 
     data: date
     hora: time
     duracao: int

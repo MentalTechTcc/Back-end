@@ -30,6 +30,7 @@ import { ListarProfissionaisComponent } from './views/paciente/listar-profission
 import { DicasPacienteComponent } from './views/paciente/dicas-paciente/dicas-paciente.component';
 import { DicaProfissionalComponent } from './views/profissional/dica-profissional/dica-profissional.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CadastroAgendaProfissionalComponent } from './views/profissional/cadastro-agenda-profissional/cadastro-agenda-profissional.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListarProfissionaisComponent,
     DicasPacienteComponent,
     DicaProfissionalComponent,
+    CadastroAgendaProfissionalComponent,
   ],
   imports: [
     BrowserModule,

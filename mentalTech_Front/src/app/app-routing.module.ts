@@ -84,7 +84,7 @@ const routes: Routes = [
     component: DicasPacienteComponent
   },
   {
-    path: 'dicas-profissional',
+    path: 'dica-profissional',
     component: DicaProfissionalComponent
   }
 ];

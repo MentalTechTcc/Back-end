@@ -11,6 +11,8 @@ import { CadastroEspEndTemComponent } from './views/profissional/cadastro-esp-en
 import { HomeEntrarProfissionalComponent } from './views/profissional/home-entrar-profissional/home-entrar-profissional.component';
 import { CadastroPacienteComponent } from './views/paciente/cadastro-paciente/cadastro-paciente.component';
 import { HomePacienteComponent } from './views/paciente/home-paciente/home-paciente.component';
+import { MeusDadosComponent } from './views/profissional/meus-dados/meus-dados.component';
+import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente/meus-dados-paciente.component';
 
 const routes: Routes = [
   {
@@ -61,6 +63,14 @@ const routes: Routes = [
   {
     path: 'home-paciente',
     component: HomePacienteComponent
+  },
+  {
+    path: 'meus-dados-profissional',
+    component: MeusDadosComponent
+  },
+  {
+    path: 'meus-dados-paciente',
+    component: MeusDadosPacienteComponent
   }
 ];
 

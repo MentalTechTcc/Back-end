@@ -24,6 +24,8 @@ import { LoginUsuarioService } from './services/login-usuario.service';
 import { CabecalhoProfissionalComponent } from './views/profissional/cabecalho-profissional/cabecalho-profissional.component';
 import { CabecalhoPacienteComponent } from './views/paciente/cabecalho-paciente/cabecalho-paciente.component';
 import { HomePacienteComponent } from './views/paciente/home-paciente/home-paciente.component';
+import { MeusDadosComponent } from './views/profissional/meus-dados/meus-dados.component';
+import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente/meus-dados-paciente.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { HomePacienteComponent } from './views/paciente/home-paciente/home-pacie
     HomeEntrarProfissionalComponent,
     CabecalhoProfissionalComponent,
     CabecalhoPacienteComponent,
-    HomePacienteComponent
+    HomePacienteComponent,
+    MeusDadosComponent,
+    MeusDadosPacienteComponent
   ],
   imports: [
     BrowserModule,

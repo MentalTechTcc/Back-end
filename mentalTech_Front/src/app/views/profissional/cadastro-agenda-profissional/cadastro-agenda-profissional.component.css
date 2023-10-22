@@ -22,7 +22,7 @@ html, body {
     color: #333;
     background-color: #fff; 
     overflow-y: auto;
-    min-height: 100vh;
+    min-height: 85vh;
     text-align: center;
     border-radius: 5px; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 

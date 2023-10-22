@@ -14,6 +14,7 @@ import { HomePacienteComponent } from './views/paciente/home-paciente/home-pacie
 import { MeusDadosComponent } from './views/profissional/meus-dados/meus-dados.component';
 import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente/meus-dados-paciente.component';
 import { ListarProfissionaisComponent } from './views/paciente/listar-profissionais/listar-profissionais.component';
+import { DicasPacienteComponent } from './views/paciente/dicas-paciente/dicas-paciente.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'listar-profissionais',
     component: ListarProfissionaisComponent
+  },
+  {
+    path: 'dicas-paciente',
+    component: DicasPacienteComponent
   }
 ];
 

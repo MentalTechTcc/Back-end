@@ -91,6 +91,10 @@ const routes: Routes = [
   {
     path: 'agenda-profissional',
     component: CadastroAgendaProfissionalComponent
+  },
+  {
+    path: 'home-entrar-profissional',
+    component: HomeEntrarProfissionalComponent
   }
 ];
 

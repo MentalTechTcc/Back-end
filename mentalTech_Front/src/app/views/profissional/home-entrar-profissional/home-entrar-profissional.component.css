@@ -1,0 +1,65 @@
+
+.pagina-inicial {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .imagem {
+    background-image: url('/assets/imagem-inicio4.jpg');
+    background-size: cover;
+    height: 100vh; 
+    /*margin: 20px 0;*/
+    background-size: 50%;
+    background-position: center bottom; 
+    background-repeat: no-repeat;
+}
+
+
+.banner {
+    /*background-color: rgba(0, 139, 139, 0.7);*/ /* Cor com transparência */
+    background-color: #008B8B;
+    color: white;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+  
+  .banner h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .banner p {
+    font-size: 18px;
+  }
+  
+  .recursos h2 {
+    font-size: 24px;
+    margin-top: 30px;
+    color: #008B8B;
+  }
+  
+  .recursos ul {
+    list-style: none;
+    padding: 0;
+    font-size: 30px;
+  }
+  
+  .recursos li {
+    font-size: 25px;
+    margin: 10px 0;
+
+  }
+  
+  .recursos a {
+    text-decoration: none;
+    color: #008B8B;
+    transition: color 0.2s;
+  }
+  
+  .recursos a:hover {
+    color: #006666;
+  }
+  
+  

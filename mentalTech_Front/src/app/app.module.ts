@@ -33,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CadastroAgendaProfissionalComponent } from './views/profissional/cadastro-agenda-profissional/cadastro-agenda-profissional.component';
 import { MinhasConsultasPacienteComponent } from './views/paciente/minhas-consultas-paciente/minhas-consultas-paciente.component';
 import { JitsiComponent } from './views/jitsi-integration/jitsi-integration.component';
+import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/avaliacao-paciente.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { JitsiComponent } from './views/jitsi-integration/jitsi-integration.comp
     DicaProfissionalComponent,
     CadastroAgendaProfissionalComponent,
     MinhasConsultasPacienteComponent,
-    JitsiComponent
+    JitsiComponent,
+    AvaliacaoPacienteComponent
   ],
   imports: [
     BrowserModule,

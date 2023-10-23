@@ -1,0 +1,42 @@
+<app-cabecalho-paciente></app-cabecalho-paciente>
+
+<div class="corpo">
+  <div class="metade-texto">
+    <h2>Avalie o Profissional</h2>
+
+    <form [formGroup]="avaliacaoForm" (ngSubmit)="onSubmit()">
+      <div class="section">
+        <div>
+          <label for="cpfProfissional">CPF do Profissional:</label>
+          <input type="text" id="cpfProfissional" formControlName="cpfProfissional" class="descricaoDica">
+        </div>
+      </div>
+      <div class="section">
+        <div>
+          <label for="notaGeral">Nota Geral:</label>
+          <input type="number" id="notaGeral" formControlName="notaGeral" class="descricaoDica">
+        </div>
+      </div>
+      <div class="section">
+        <div>
+          <label for="notaPontualidade">Nota Pontualidade:</label>
+          <input type="number" id="notaPontualidade" formControlName="notaPontualidade" class="descricaoDica">
+        </div>
+      </div>
+      <div class="section">
+        <div>
+          <label for="notaAtendimento">Nota Atendimento:</label>
+          <input type="number" id="notaAtendimento" formControlName="notaAtendimento" class="descricaoDica">
+        </div>
+      </div>
+      <div class="section">
+        <div>
+          <label for="observacoes">Observações:</label>
+          <textarea id="observacoes" formControlName="observacoes" class="descricaoDica"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="botao">Enviar Avaliação</button>
+    </form>
+
+  </div>
+</div>

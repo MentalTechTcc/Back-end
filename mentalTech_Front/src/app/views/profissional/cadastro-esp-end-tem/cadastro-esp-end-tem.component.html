@@ -30,25 +30,50 @@
 
     <!-- Campos de Endereço (inicialmente ocultos) -->
     <div *ngIf="temEndereco === 'Sim'" class="endereco-campos">
-      <label for="cep">CEP:</label>
-      <input type="text" id="cep" name="cep" placeholder="Digite o CEP">
+      <div *ngFor="let endereco of enderecos; let i = index" class="endereco-campos-item">
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" placeholder="Digite o CEP">
 
-      <label for="estado">Estado:</label>
-      <input type="text" id="estado" name="estado" placeholder="Digite o estado">
+        <label for="estado">Estado:</label>
+        <input type="text" id="estado" name="estado" placeholder="Digite o estado">
 
-      <label for="cidade">Cidade:</label>
-      <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" placeholder="Digite a cidade">
 
-      <label for="bairro">Bairro:</label>
-      <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" placeholder="Digite o bairro">
 
-      <label for="numero">Número:</label>
-      <input type="text" id="numero" name="numero" placeholder="Digite o número">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" name="numero" placeholder="Digite o número">
 
-      <label for="complemento">Complemento:</label>
-      <input type="text" id="complemento" name="complemento" placeholder="Digite o complemento">
+        <label for="complemento">Complemento:</label>
+        <input type="text" id="complemento" name="complemento" placeholder="Digite o complemento">
+      </div>
+      <button class="especialidade-button" (click)="adicionarEndereco()">Adicionar Endereço</button>
+
     </div>
 
-    <button class="especialidade-button" (click)="selecionarEspecialidades()">Cadastrar</button>
+    <!-- Tematica -->
+    <div class="label-especialidade">
+      <label>Tematicas:</label>
+    </div>
+    <div class="tematica-options">
+      <div *ngFor="let tematica of tematicas">
+        <input type="checkbox" [id]="tematica.id" [name]="tematica.nome" [value]="tematica.nome">
+        <label [for]="tematica.id">{{ tematica.nome }}</label>
+      </div>
+    </div>
+
+    <div *ngFor="let tematica of novas_tematicas; let i = index" class="tematica-campos-item">
+      <label for="tematica">Tematica:</label>
+      <input type="text" id="tematica" name="tematica" placeholder="Informe a temática">
+    </div>
+
+    <div>
+      <button class="tematica-button" (click)="adicionarTematica()">Adicionar tematica</button>
+    </div>
+
+    <button type="submit" class="botao">Enviar</button>
+
   </div>
 </div>

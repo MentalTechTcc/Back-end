@@ -9,11 +9,20 @@ import { Component } from '@angular/core';
 export class CadastroEspEndTemComponent {
   temEndereco: string = 'Nao';
   possuiEndereco: string = 'Nao';
+  enderecos: any[] = [];
+  novas_tematicas: any[] = [];
+
 
   especialidades = [
     { id: 'esp1', nome: 'Psicologo' },
     { id: 'esp2', nome: 'Psiquiatra' },
     // Adicione mais especialidades conforme necessário
+  ];
+
+  tematicas = [
+    { id: 'tem1', nome: 'depressão' },
+    { id: 'tem22', nome: 'sindrome do pânico' },
+    // Adicione mais tematicas conforme necessário
   ];
 
   endereco = {
@@ -36,5 +45,24 @@ export class CadastroEspEndTemComponent {
 
   onChangePossuiEndereco(value: string) {
     this.possuiEndereco = value;
+  }
+
+  adicionarEndereco() {
+    // Lógica para adicionar um novo endereço ao array
+    this.enderecos.push({
+      cep: '',
+      estado: '',
+      cidade: '',
+      bairro: '',
+      numero: '',
+      complemento: ''
+    });
+  }
+
+  adicionarTematica() {
+    // Lógica para adicionar um novo endereço ao array
+    this.novas_tematicas.push({
+      nomeTematica: ''
+    });
   }
 }

@@ -51,17 +51,14 @@ export class CadastroProfissionalComponent implements OnInit {
 
       console.log(profissional);
 
-
-
-      // Chame o serviço para cadastrar o paciente
-      // this.cadastroPacienteService.create(paciente).subscribe(
-      //   response => {
-      //     console.log('Cadastro bem-sucedido:', response);
-      //   },
-      //   error => {
-      //     console.error('Erro no cadastro:', error);
-      //   }
-      // );
+      this.cadastroProfissionalService.create(profissional).subscribe(
+        response => {
+          console.log('Cadastro bem-sucedido:', response);
+        },
+        error => {
+          console.error('Erro no cadastro:', error);
+        }
+      );
     }
   }
 

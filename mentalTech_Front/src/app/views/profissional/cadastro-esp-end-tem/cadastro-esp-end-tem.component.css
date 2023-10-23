@@ -4,8 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 170vh;
+  height: 100%;
   background-color: #fff;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .cadastro-esp-end-box {
@@ -50,12 +52,14 @@ input[type="radio"] {
 
 .radio-buttons {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 16px; /* Adicionado para dar algum espaço abaixo dos botões */
   align-items: flex-start; /* Alterado para flex-start */
 }
 
 .radio-buttons input {
   margin-right: 8px;
+  margin-bottom: 20px;
+
 }
 
 .label-especialidade,
@@ -96,4 +100,71 @@ input[type="radio"] {
 .endereco-campos input {
   padding: 8px;
   margin-bottom: 10px;
+}
+
+.botao {
+  background-color: #9EC4BB;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background-color: #82beb0;
+}
+
+
+.especialidade-button{
+  background-color: #9EC4BB;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5%;
+}
+
+.especialidade-button {
+  background-color: #82beb0;
+}
+
+.tematica-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.tematica-options div {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.tematica-button{
+  background-color: #9EC4BB;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.tematica-button::hover {
+  background-color: #82beb0;
+}
+
+.tematica-campos label {
+  margin-bottom: 5px;
+}
+
+.tematica-campos input {
+  padding: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 10%;
 }

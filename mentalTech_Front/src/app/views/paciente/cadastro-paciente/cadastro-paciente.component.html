@@ -3,31 +3,31 @@
   <div class="cadastro-box">
     <label>Cadastro de {{ escolhaPerfil }}</label>
 
-    <div *ngIf="escolhaPerfil === 'Paciente'">
+    <form *ngIf="escolhaPerfil === 'Paciente'">
       <!-- Campos específicos para Paciente -->
       <div class="form-group">
         <label for="nomePaciente">Nome:</label>
-        <input type="text" id="nomePaciente" name="nomePaciente" [(ngModel)]="nomePaciente" required>
+        <input type="text" id="nomePaciente" name="nomePaciente" [(ngModel)]="nomePaciente" placeholder="Informe o nome" required>
       </div>
 
       <div class="form-group">
         <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" [(ngModel)]="telefone" required>
+        <input type="tel" id="telefone" name="telefone" [(ngModel)]="telefone" placeholder="Informe o telefone" required>
       </div>
 
       <div class="form-group">
         <label for="emailPaciente">Email:</label>
-        <input type="email" id="emailPaciente" name="emailPaciente" [(ngModel)]="emailPaciente" required>
+        <input type="email" id="emailPaciente" name="emailPaciente" [(ngModel)]="emailPaciente" placeholder="Informe o email" required>
       </div>
 
       <div class="form-group">
         <label for="senhaPaciente">Senha:</label>
-        <input type="password" id="senhaPaciente" name="senhaPaciente" [(ngModel)]="senhaPaciente" required>
+        <input type="password" id="senhaPaciente" name="senhaPaciente" [(ngModel)]="senhaPaciente" required placeholder="Informe o senha">
       </div>
 
       <div class="form-group">
         <label for="dataNascimentoPaciente">Data de Nascimento:</label>
-        <input type="date" id="dataNascimentoPaciente" name="dataNascimentoPaciente" [(ngModel)]="dataNascimentoPaciente" required>
+        <input type="date" id="dataNascimentoPaciente" name="dataNascimentoPaciente" [(ngModel)]="dataNascimentoPaciente" required placeholder="Informe a data de nascimento">
       </div>
 
       <div class="form-group">
@@ -40,7 +40,7 @@
           <label for="feminino">Feminino</label>
         </div>
       </div>
-    </div>
+    </form>
 
     <button class="cadastrar-button" (click)="cadastrar()">Cadastrar</button>
   </div>

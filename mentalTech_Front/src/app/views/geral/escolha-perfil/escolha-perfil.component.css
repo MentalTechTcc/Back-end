@@ -3,10 +3,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 67vh;
+  height: 100%;
   background-color: #fff;
-  margin-bottom: 100px;
-
+  margin-top: 5%;
 }
 
 .escolha-perfil-box {
@@ -15,8 +14,8 @@
   border-radius: 8px;
   text-align: center;
   width: 500px;
-  height: 300px;
   position: relative;
+  height: 100%;
 }
 
 /* Estilo para o label "Escolha o tipo de perfil" */

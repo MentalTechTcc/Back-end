@@ -17,6 +17,7 @@ import { ListarProfissionaisComponent } from './views/paciente/listar-profission
 import { DicasPacienteComponent } from './views/paciente/dicas-paciente/dicas-paciente.component';
 import { DicaProfissionalComponent } from './views/profissional/dica-profissional/dica-profissional.component';
 import { CadastroAgendaProfissionalComponent } from './views/profissional/cadastro-agenda-profissional/cadastro-agenda-profissional.component';
+import { JitsiComponent } from './views/jitsi-integration/jitsi-integration.component';
 
 const routes: Routes = [
   {
@@ -95,6 +96,10 @@ const routes: Routes = [
   {
     path: 'home-entrar-profissional',
     component: HomeEntrarProfissionalComponent
+  },
+  {
+    path: 'jitsi',
+    component: JitsiComponent
   }
 ];
 

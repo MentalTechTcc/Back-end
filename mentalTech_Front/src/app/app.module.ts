@@ -32,6 +32,7 @@ import { DicaProfissionalComponent } from './views/profissional/dica-profissiona
 import { ReactiveFormsModule } from '@angular/forms';
 import { CadastroAgendaProfissionalComponent } from './views/profissional/cadastro-agenda-profissional/cadastro-agenda-profissional.component';
 import { MinhasConsultasPacienteComponent } from './views/paciente/minhas-consultas-paciente/minhas-consultas-paciente.component';
+import { JitsiComponent } from './views/jitsi-integration/jitsi-integration.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MinhasConsultasPacienteComponent } from './views/paciente/minhas-consul
     DicasPacienteComponent,
     DicaProfissionalComponent,
     CadastroAgendaProfissionalComponent,
-    MinhasConsultasPacienteComponent
+    MinhasConsultasPacienteComponent,
+    JitsiComponent
   ],
   imports: [
     BrowserModule,

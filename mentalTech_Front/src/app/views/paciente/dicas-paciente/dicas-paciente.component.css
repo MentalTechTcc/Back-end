@@ -3,17 +3,17 @@
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   .card-body {
     background-color: #f3f3f3;
     padding: 15px;
   }
-  
+
   .card-text {
     color: #333;
     font-size: 18px;
   }
-  
+
   .card + .card {
     margin-top: 20px;
   }
@@ -23,4 +23,8 @@
     font-size: 28px;
     color: #008B8B;
     text-align: center;
+  }
+
+  .dicas {
+    padding-bottom: 5%;
   }

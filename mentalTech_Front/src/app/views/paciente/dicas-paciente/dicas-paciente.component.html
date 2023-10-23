@@ -1,8 +1,10 @@
 <app-cabecalho-paciente></app-cabecalho-paciente>
-<h2>Dicas de Saúde</h2>
-<div class="card" *ngFor="let dica of dicas; let i = index">
-  <h5 class="card-header">Dica {{i + 1}}</h5>
-  <div class="card-body">
-    <p class="card-text">{{dica.descricaoDica}}</p>
+<div class="dicas">
+  <h2>Dicas de Saúde</h2>
+  <div class="card" *ngFor="let dica of dicas; let i = index">
+    <h5 class="card-header">Dica {{i + 1}}</h5>
+    <div class="card-body">
+      <p class="card-text">{{dica.descricaoDica}}</p>
+    </div>
   </div>
 </div>

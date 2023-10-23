@@ -11,3 +11,7 @@
 .agenda-button:hover {
   background-color: #82beb0; /* Cor mais escura ao passar o mouse */
 }
+
+.profissionais{
+  padding-bottom: 5%;
+}

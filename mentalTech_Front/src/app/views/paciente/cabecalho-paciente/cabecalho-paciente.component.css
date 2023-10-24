@@ -16,7 +16,7 @@
 
 .cabecalho nav li {
   display: inline-block;
-  margin-right: 50px; /* Ajustei o espaçamento para 20px */
+  margin-right: 0%; /* Ajustei o espaçamento para 20px */
 }
 
 .cabecalho nav li:last-child {

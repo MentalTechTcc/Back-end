@@ -4,6 +4,9 @@ import { AvaliacaoPacienteService } from 'src/app/services/avaliacao-paciente.se
 import { CadastroProfissionalService } from 'src/app/services/cadastro-profissional.service';
 import { Avaliacao } from 'src/app/models/Avaliacao.models';
 import { Profissional } from 'src/app/models/Profissional.models';
+import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
+import {Paciente} from 'src/app/models/Paciente.models';
+
 
 @Component({
   selector: 'app-avaliacao-paciente',
@@ -14,11 +17,14 @@ export class AvaliacaoPacienteComponent implements OnInit {
   avaliacaoForm: FormGroup;
   listaAvaliacao: Avaliacao[] = [];
   listaProfissionais: Profissional[] = [];
-  
+  pessoa: any = {};
+  timeZone = 'UTC'; 
+
   constructor(
     private fb: FormBuilder,
     private avaliacaoService: AvaliacaoPacienteService,
-    private profissionalService: CadastroProfissionalService // Adicione o serviço de profissional
+    private profissionalService: CadastroProfissionalService,
+    private loginService: LoginUsuarioService,
   ) {
     this.avaliacaoForm = this.fb.group({
       cpfProfissional: ['', Validators.required],
@@ -27,24 +33,35 @@ export class AvaliacaoPacienteComponent implements OnInit {
       notaPontualidade: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
       notaAtendimento: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
       observacoes: ['', Validators.required],
-      dataCadastro: new Date(),
+      dataCadastro: this.formatarData(new Date()),
     });
   }
 
   ngOnInit(): void {
-    this.carregarAvaliacao();
-    this.carregarProfissionais(); // lista de prof
+    this.loginService.getPerfilPessoa().subscribe(
+      (data: any) => {
+        this.pessoa = data;
+        console.log(this.pessoa.idPessoa); // Agora você pode acessar this.pessoa.idPessoa
+        this.initForm();
+        console.log(data);
+        this.carregarAvaliacao();
+        this.carregarProfissionais(); // lista de profs
+      },
+      (error) => {
+        console.log('error');
+      }
+    );
   }
-
+ 
   initForm() {
     this.avaliacaoForm = this.fb.group({
       cpfProfissional: ['', Validators.required],
-      idPessoa: [0, Validators.required],
+      idPessoa: this.pessoa.idPessoa,
       notaGeral: [0, Validators.required],
       notaPontualidade: [0, Validators.required],
       notaAtendimento: [0, Validators.required],
       observacoes: ['', Validators.required],
-      dataCadastro: new Date(),
+      dataCadastro: this.formatarData(new Date()),
     });
   }
 
@@ -53,7 +70,7 @@ export class AvaliacaoPacienteComponent implements OnInit {
       const avaliacaoData: Avaliacao = this.avaliacaoForm.value;
       this.avaliacaoService.cadastrarAvaliacao(avaliacaoData).subscribe(() => {
         this.avaliacaoForm.reset();
-        this.carregarAvaliacao();
+        /*this.carregarAvaliacao();*/
       });
     }
   }
@@ -68,5 +85,13 @@ export class AvaliacaoPacienteComponent implements OnInit {
     this.profissionalService.listar().subscribe(profissionais => {
       this.listaProfissionais = profissionais;
     });
+  }
+
+
+  formatarData(data: Date): string {
+    const yyyy = data.getFullYear();
+    const mm = (data.getMonth() + 1).toString().padStart(2, '0');
+    const dd = data.getDate().toString().padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
   }
 }

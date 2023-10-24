@@ -65,7 +65,13 @@ export class LoginUsuarioService {
 
   }
 
+  getPerfilPessoa(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.accessToken}`, // token de acesso obtido no login
+    });
 
+    return this.http.get(`${environment.baseUrl}/login/pessoa/token`, { headers });
+  }
 
 
 

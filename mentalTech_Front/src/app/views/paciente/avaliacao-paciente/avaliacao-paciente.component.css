@@ -52,9 +52,9 @@ html, body {
     background-color: #006666;
   }
   
-  .descricaoDica {
+  .descricaoAvaliacao {
     width: 100%;
-    height: 80px;
+    height: 20%;
     padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -63,7 +63,7 @@ html, body {
     transition: border-color 0.2s;
   }
   
-  .descricaoDica:hover, .descricaoDica:focus {
+  .descricaoAvaliacao:hover, .descricaoAvaliacao:focus {
     border-color: #008B8B;
     outline: none;
   }

@@ -8,7 +8,7 @@
       <div class="section">
         <div>
           <label for="cpfProfissional">Selecione o Profissional:</label>
-          <select id="cpfProfissional" formControlName="cpfProfissional" class="descricaoDica">
+          <select id="cpfProfissional" formControlName="cpfProfissional" class="descricaoAvaliacao">
             <option *ngFor="let profissional of listaProfissionais" [value]="profissional.cpf">{{ profissional.nome }}</option>
           </select>
         </div>
@@ -16,25 +16,25 @@
       <div class="section">
         <div>
           <label for="notaGeral">Nota Geral:</label>
-          <input type="number" id="notaGeral" formControlName="notaGeral" class="descricaoDica">
+          <input type="number" id="notaGeral" formControlName="notaGeral" class="descricaoAvaliacao">
         </div>
       </div>
       <div class="section">
         <div>
           <label for="notaPontualidade">Nota Pontualidade:</label>
-          <input type="number" id="notaPontualidade" formControlName="notaPontualidade" class="descricaoDica">
+          <input type="number" id="notaPontualidade" formControlName="notaPontualidade" class="descricaoAvaliacao">
         </div>
       </div>
       <div class="section">
         <div>
           <label for="notaAtendimento">Nota Atendimento:</label>
-          <input type="number" id="notaAtendimento" formControlName="notaAtendimento" class="descricaoDica">
+          <input type="number" id="notaAtendimento" formControlName="notaAtendimento" class="descricaoAvaliacao">
         </div>
       </div>
       <div class="section">
         <div>
           <label for="observacoes">Observações:</label>
-          <textarea id="observacoes" formControlName="observacoes" class="descricaoDica"></textarea>
+          <textarea id="observacoes" formControlName="observacoes" class="descricaoAvaliacao"></textarea>
         </div>
       </div>
       <button type="submit" class="botao">Enviar Avaliação</button>

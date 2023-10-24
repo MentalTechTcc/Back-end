@@ -7,8 +7,10 @@
     <form [formGroup]="avaliacaoForm" (ngSubmit)="onSubmit()">
       <div class="section">
         <div>
-          <label for="cpfProfissional">CPF do Profissional:</label>
-          <input type="text" id="cpfProfissional" formControlName="cpfProfissional" class="descricaoDica">
+          <label for="cpfProfissional">Selecione o Profissional:</label>
+          <select id="cpfProfissional" formControlName="cpfProfissional" class="descricaoDica">
+            <option *ngFor="let profissional of listaProfissionais" [value]="profissional.cpf">{{ profissional.nome }}</option>
+          </select>
         </div>
       </div>
       <div class="section">

@@ -16,3 +16,5 @@ mock-alchemy
 authlib
 httpx
 fastapi-sessions
+python-jose
+jose

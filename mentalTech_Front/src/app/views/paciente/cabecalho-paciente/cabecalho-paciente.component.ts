@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { LoginUsuarioService } from './../../../services/login-usuario.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabecalhoPacienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private service: LoginUsuarioService) { }
 
   ngOnInit(): void {
+  }
+
+  sair(){
+    this.service.logoutPaciente().subscribe(
+      (response) => {
+
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
   }
 
 }

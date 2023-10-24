@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError } from 'rxjs';
+import { Observable, catchError, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,6 +12,8 @@ export class LoginUsuarioService {
 
   private fezLogin: boolean = false;
   private perfil: string = '';
+  private accessToken: any;
+  private refreshToken: any;
 
   setFezLogin(resposta: boolean) {
     this.fezLogin = resposta;
@@ -38,18 +40,34 @@ export class LoginUsuarioService {
       'Content-Type': 'application/x-www-form-urlencoded',
     });
 
-    const request_value = this.http.post(`${environment.baseUrl}/login/pessoa/`, body.toString(), { headers }).pipe(
+    return this.http.post(`${environment.baseUrl}/login/pessoa/`, body.toString(), { headers }).pipe(
       catchError((error) => {
         console.error('Erro na solicitação HTTP:', error);
         throw error;
+      }),
+      map((response: any) => {
+        // Aqui você pode extrair o valor do token da resposta
+        this.accessToken = response.access_token;
+        this.refreshToken = response.refresh_token;
+        console.log('acessToken:  ' + this.accessToken);
+        console.log('refreshToken:  ' + this.refreshToken);
+
       })
     );
+  }
 
-    return request_value
+  logoutPaciente(): Observable<any> {
+    const headers = new HttpHeaders({
+      'refresh-token': this.refreshToken,
+    });
+
+    return this.http.post(`${environment.baseUrl}/login/pessoa/logout`, null, { headers });
+
   }
 
 
-  logout():void{
 
-  }
+
+
+
 }

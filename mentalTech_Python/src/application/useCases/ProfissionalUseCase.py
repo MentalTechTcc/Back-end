@@ -19,8 +19,8 @@ class ProfissionalUseCase():
         self.__profissionalRepository__ = profissionalRepository
         self.__tokensRepository__ = tokensRepository
 
-    def login(self, email: str, senha: str) -> tuple[str, str]:
-        profissional = self.__profissionalRepository__.find_by_email(email)
+    def login(self, cpf: str, senha: str) -> tuple[str, str]:
+        profissional = self.__profissionalRepository__.find_by_cpf(cpf)
 
         if not profissional or not verify_password(senha, profissional.senha):
             raise HTTPException(
@@ -29,15 +29,15 @@ class ProfissionalUseCase():
             )
 
         userToken = self.__tokensRepository__.createUserToken(
-            profissional.email)
+            profissional.cpf)
         refreshToken = self.__tokensRepository__.createRefreshToken(
-            profissional.email)
+            profissional.cpf)
 
         return (userToken, refreshToken)
 
     def verifyToken(self, token: str) -> Profissional:
         userLogin = self.__tokensRepository__.verifyToken(token=token)
-        profissional = self.__profissionalRepository__.find_by_email(
+        profissional = self.__profissionalRepository__.find_by_cpf(
             userLogin)
 
         return profissional
@@ -90,6 +90,9 @@ class ProfissionalUseCase():
 
     def find_by_email(self, email : str) -> ProfissionalBase | None:
         return self.__profissionalRepository__.find_by_email(email=email)
+    
+    def find_by_cpf(self, cpf : str) -> ProfissionalBase | None:
+        return self.__profissionalRepository__.find_by_cpf(cpf=cpf)
 
     def update(self, profissionalSent: ProfissionalRequestId) -> NoReturn:
         """Sobrescreve os dados de profissional, assume que ele já exista"""

@@ -56,6 +56,11 @@ class ProfissionalRepository:
         session = self.database()
         return session.query(Profissional).filter(Profissional.email == email).first()
     
+    def find_by_cpf(self, cpf: str) -> Profissional | None:
+        """Faz uma busca pelo email no banco e retorna o objeto"""
+        session = self.database()
+        return session.query(Profissional).filter(Profissional.cpf == cpf).first()
+    
     
 
 assert isinstance(ProfissionalRepository(

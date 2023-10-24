@@ -29,3 +29,6 @@ class ProfissionalRepositoryBaseModel(Protocol):
     def find_by_email(self, email: str) -> Profissional | None:
         '''Função para fazer uma query por login de um objeto Profissional na DB'''
         ...
+    def find_by_cpf(self, cpf: str) -> Profissional | None:
+        '''Função para fazer uma query por login de um objeto Profissional na DB'''
+        ...

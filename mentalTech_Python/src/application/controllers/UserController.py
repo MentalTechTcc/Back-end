@@ -59,9 +59,9 @@ def logout(refresh_token: str = Header(...)):
 ### profissional
 
 @routerLoginPessoa.post("/profissional/")
-async def login(email: str = Form(...), senha: str = Form(...)):
+async def login(cpf: str = Form(...), senha: str = Form(...)):
     access_token, refresh_token = profissionalUseCase.login(
-        email=email, senha=senha
+        cpf=cpf, senha=senha
     )
 
     return {

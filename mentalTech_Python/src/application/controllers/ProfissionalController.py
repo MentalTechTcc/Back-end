@@ -80,3 +80,13 @@ def find_by_email(email: str):
 
     return profissional
 
+@router_profissional.get("/cpf/{cpf}", response_model=ProfissionalResponse, status_code=status.HTTP_200_OK)
+def find_by_cpf(cpf: str):
+    '''Faz uma query de um objeto pelo cpf'''
+    profissional = profissionalUseCase.find_by_cpf(cpf)
+
+    if profissional is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="cpf não encontrado")
+
+    return profissional
+

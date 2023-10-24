@@ -23,9 +23,9 @@ export class AvaliacaoPacienteComponent implements OnInit {
     this.avaliacaoForm = this.fb.group({
       cpfProfissional: ['', Validators.required],
       idPessoa: [0, Validators.required],
-      notaGeral: [0, Validators.required],
-      notaPontualidade: [0, Validators.required],
-      notaAtendimento: [0, Validators.required],
+      notaGeral: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
+      notaPontualidade: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
+      notaAtendimento: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
       observacoes: ['', Validators.required],
       dataCadastro: new Date(),
     });

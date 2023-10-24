@@ -14,6 +14,7 @@ export class LoginUsuarioService {
   private perfil: string = '';
   private accessToken: any;
   private refreshToken: any;
+  private accessToken_stored: any;
 
   setFezLogin(resposta: boolean) {
     this.fezLogin = resposta;
@@ -47,6 +48,7 @@ export class LoginUsuarioService {
       }),
       map((response: any) => {
         // Aqui você pode extrair o valor do token da resposta
+        localStorage.setItem('accessToken', response.access_token); // para guardar na sessão toda
         this.accessToken = response.access_token;
         this.refreshToken = response.refresh_token;
         console.log('acessToken:  ' + this.accessToken);
@@ -66,8 +68,9 @@ export class LoginUsuarioService {
   }
 
   getPerfilPessoa(): Observable<any> {
+    this.accessToken_stored = localStorage.getItem('accessToken');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.accessToken}`, // token de acesso obtido no login
+      'Authorization': `Bearer ${this.accessToken_stored}`, // token de acesso obtido no login
     });
 
     return this.http.get(`${environment.baseUrl}/login/pessoa/token`, { headers });

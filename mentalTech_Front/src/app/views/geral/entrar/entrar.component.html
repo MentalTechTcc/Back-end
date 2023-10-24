@@ -10,11 +10,11 @@
     <form  *ngIf="opcao === 'paciente'">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Informe o email">
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Informe o email" [(ngModel)]="email">
       </div>
       <div class="form-group">
         <label for="password">Senha:</label>
-        <input type="password" class="form-control" id="password" placeholder="Informe a senha">
+        <input type="password" class="form-control" id="password" name="senha" placeholder="Informe a senha" [(ngModel)]="senha">
       </div>
       <button type="submit" (click)="entrar()" class="entrar-button">Entrar</button>
 

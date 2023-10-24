@@ -10,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class EntrarComponent implements OnInit {
 
   opcao: string = 'paciente'; // Inicializa com 'paciente'
+  email: string = '';
+  senha: string = '';
 
   constructor(private router: Router, private loginService: LoginUsuarioService) {}
 
@@ -22,12 +24,22 @@ export class EntrarComponent implements OnInit {
   }
 
   entrar(): void {
-
     this.loginService.setPerfil(this.opcao);
     this.loginService.setFezLogin(true);
     if (this.opcao === 'paciente') {
+      console.log('senha: ' + this.senha);
+      console.log('email: ' + this.email);
       // Navegar para a rota de paciente
-      this.router.navigate(['/home-paciente']);
+      this.loginService.loginPaciente(this.email, this.senha).subscribe(
+        (response) => {
+
+          this.router.navigate(['/home-paciente']);
+        },
+        (error) => {
+          // Lida com erros (autenticação falhou, etc.)
+          console.error(error);
+        }
+      );
     } else if (this.opcao === 'profissional') {
 
       // Navegar para a rota de profissional

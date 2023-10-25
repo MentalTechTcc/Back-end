@@ -12,6 +12,7 @@ export class EntrarComponent implements OnInit {
   opcao: string = 'paciente'; // Inicializa com 'paciente'
   email: string = '';
   senha: string = '';
+  cpf: string = '';
 
   constructor(private router: Router, private loginService: LoginUsuarioService) {}
 
@@ -43,7 +44,17 @@ export class EntrarComponent implements OnInit {
     } else if (this.opcao === 'profissional') {
 
       // Navegar para a rota de profissional
-      this.router.navigate(['/home-profissional']);
+      this.loginService.loginProfissional(this.cpf, this.senha).subscribe(
+        (response) => {
+
+          this.router.navigate(['/home-profissional']);
+        },
+        (error) => {
+          // Lida com erros (autenticação falhou, etc.)
+          console.error(error);
+        }
+      );
+
     }
   }
 }

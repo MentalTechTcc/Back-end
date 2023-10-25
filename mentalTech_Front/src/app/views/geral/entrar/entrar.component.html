@@ -23,11 +23,11 @@
     <form  *ngIf="opcao === 'profissional'">
       <div class="form-group">
         <label for="cpf">CPF:</label>
-        <input type="text" class="form-control" id="cpf" aria-describedby="emailHelp" placeholder="Informe o cpf">
+        <input type="text" class="form-control" id="cpf" aria-describedby="emailHelp" placeholder="Informe o cpf" name="cpf" [(ngModel)]="cpf">
       </div>
       <div class="form-group">
         <label for="password">Senha:</label>
-        <input type="password" class="form-control" id="password" placeholder="Informe a senha">
+        <input type="password" class="form-control" id="password" placeholder="Informe a senha" name="senha" [(ngModel)]="senha">
       </div>
       <button type="submit" (click)="entrar()" class="entrar-button">Entrar</button>
     </form>

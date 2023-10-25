@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
 
 @Component({
   selector: 'app-cabecalho-profissional',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabecalhoProfissionalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private service: LoginUsuarioService) { }
 
   ngOnInit(): void {
+  }
+  sair(){
+    this.service.logoutProfissional().subscribe(
+      (response) => {
+
+        this.router.navigate(['/home']);
+        console.log('certooooooooooo')
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+
   }
 
 }

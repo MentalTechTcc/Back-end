@@ -79,7 +79,42 @@ export class LoginUsuarioService {
     return this.http.get(`${environment.baseUrl}/login/pessoa/token`, { headers });
   }
 
+  loginProfissional(cpf: string, senha: string): Observable<any> {
+    const body = new HttpParams()
+      .set('cpf', cpf)
+      .set('senha', senha);
 
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+
+    return this.http.post(`${environment.baseUrl}/login/profissional/`, body.toString(), { headers }).pipe(
+      catchError((error) => {
+        console.error('Erro na solicitação HTTP:', error);
+        throw error;
+      }),
+      map((response: any) => {
+        // Aqui você pode extrair o valor do token da resposta
+        localStorage.setItem('accessToken', response.access_token); // para guardar na sessão toda
+        localStorage.setItem('refreshToken', response.refresh_token); // para guardar na sessão toda
+
+        this.accessToken = response.access_token;
+        this.refreshToken = response.refresh_token;
+        console.log('acessToken:  ' + this.accessToken);
+        console.log('refreshToken:  ' + this.refreshToken);
+
+      })
+    );
+  }
+
+  logoutProfissional(): Observable<any> {
+    this.refreshToken_stored = localStorage.getItem('refreshToken');
+    const headers = new HttpHeaders({
+      'refresh-token': this.refreshToken_stored ,
+    });
+    return this.http.post(`${environment.baseUrl}/login/profissional/logout`, null, { headers });
+
+  }
 
 
 }

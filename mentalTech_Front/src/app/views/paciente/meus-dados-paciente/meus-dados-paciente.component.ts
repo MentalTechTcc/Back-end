@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
 
 @Component({
   selector: 'app-meus-dados-paciente',
@@ -12,9 +13,10 @@ export class MeusDadosPacienteComponent implements OnInit {
   emailPaciente: string = '';
   senhaPaciente: string = '';
   dataNascimentoPaciente: Date = new Date();
-  constructor() { }
+  constructor(private loginService: LoginUsuarioService) { }
 
   ngOnInit(): void {
+    console.log(this.loginService.getPerfilPessoa());
   }
 
 }

@@ -38,10 +38,10 @@ export class CadastroProfissionalComponent implements OnInit {
 
       const profissional: Profissional = {
         nome: this.nome,
-        telefone: this.telefone,
-        email: this.email,
         senha: this.senha,
         dataNascimento: this.dataNascimento,
+        telefone: this.telefone,
+        email: this.email,
         administrador: this.administrador,
         sexo: this.genero,
         codigoProfissional: this.codigoProfissional,

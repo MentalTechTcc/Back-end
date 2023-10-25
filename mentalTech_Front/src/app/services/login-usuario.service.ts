@@ -15,6 +15,7 @@ export class LoginUsuarioService {
   private accessToken: any;
   private refreshToken: any;
   private accessToken_stored: any;
+  private refreshToken_stored: any;
 
   setFezLogin(resposta: boolean) {
     this.fezLogin = resposta;
@@ -49,6 +50,8 @@ export class LoginUsuarioService {
       map((response: any) => {
         // Aqui você pode extrair o valor do token da resposta
         localStorage.setItem('accessToken', response.access_token); // para guardar na sessão toda
+        localStorage.setItem('refreshToken', response.refresh_token); // para guardar na sessão toda
+
         this.accessToken = response.access_token;
         this.refreshToken = response.refresh_token;
         console.log('acessToken:  ' + this.accessToken);
@@ -59,10 +62,10 @@ export class LoginUsuarioService {
   }
 
   logoutPaciente(): Observable<any> {
+    this.refreshToken_stored = localStorage.getItem('refreshToken');
     const headers = new HttpHeaders({
       'refresh-token': this.refreshToken,
     });
-    this.accessToken_stored = localStorage.getItem('refreshToken');
     return this.http.post(`${environment.baseUrl}/login/pessoa/logout`, null, { headers });
 
   }

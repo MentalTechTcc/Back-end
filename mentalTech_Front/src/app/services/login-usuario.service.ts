@@ -62,7 +62,7 @@ export class LoginUsuarioService {
     const headers = new HttpHeaders({
       'refresh-token': this.refreshToken,
     });
-
+    this.accessToken_stored = localStorage.getItem('refreshToken');
     return this.http.post(`${environment.baseUrl}/login/pessoa/logout`, null, { headers });
 
   }

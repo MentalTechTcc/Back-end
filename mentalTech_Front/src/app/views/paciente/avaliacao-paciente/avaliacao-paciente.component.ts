@@ -19,6 +19,8 @@ export class AvaliacaoPacienteComponent implements OnInit {
   listaProfissionais: Profissional[] = [];
   pessoa: any = {};
   timeZone = 'UTC'; 
+  sucesso: boolean = false;
+  erro: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -68,10 +70,17 @@ export class AvaliacaoPacienteComponent implements OnInit {
   onSubmit() {
     if (this.avaliacaoForm.valid) {
       const avaliacaoData: Avaliacao = this.avaliacaoForm.value;
-      this.avaliacaoService.cadastrarAvaliacao(avaliacaoData).subscribe(() => {
-        this.avaliacaoForm.reset();
-        /*this.carregarAvaliacao();*/
-      });
+      this.avaliacaoService.cadastrarAvaliacao(avaliacaoData).subscribe(
+        () => {
+          this.sucesso = true;
+          this.erro = ''; // Limpa
+          this.avaliacaoForm.reset();
+        },
+        (error) => {
+          this.sucesso = false;
+          this.erro = 'Ocorreu um erro ao enviar a avaliação. Por favor, tente novamente.';
+        }
+      );
     }
   }
 

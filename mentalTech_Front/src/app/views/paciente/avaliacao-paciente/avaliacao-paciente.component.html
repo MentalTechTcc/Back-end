@@ -39,6 +39,14 @@
       </div>
       <button type="submit" class="botao">Enviar Avaliação</button>
     </form>
+    <div class="mensagem mensagem-sucesso" *ngIf="sucesso">
+      Avaliação enviada com sucesso!
+    </div>
+    
+    <div class="mensagem mensagem-erro" *ngIf="erro">
+      {{ erro }}
+    </div>
+    
 
   </div>
 </div>

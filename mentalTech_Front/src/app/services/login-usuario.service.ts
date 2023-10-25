@@ -64,7 +64,7 @@ export class LoginUsuarioService {
   logoutPaciente(): Observable<any> {
     this.refreshToken_stored = localStorage.getItem('refreshToken');
     const headers = new HttpHeaders({
-      'refresh-token': this.refreshToken,
+      'refresh-token': this.refreshToken_stored ,
     });
     return this.http.post(`${environment.baseUrl}/login/pessoa/logout`, null, { headers });
 

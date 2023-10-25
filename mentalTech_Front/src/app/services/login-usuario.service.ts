@@ -116,5 +116,14 @@ export class LoginUsuarioService {
 
   }
 
+  getPerfilProfissional(): Observable<any> {
+    this.accessToken_stored = localStorage.getItem('accessToken');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.accessToken_stored}`, // token de acesso obtido no login
+    });
+
+    return this.http.get(`${environment.baseUrl}/login/profissional/token`, { headers });
+  }
+
 
 }

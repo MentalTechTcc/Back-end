@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Paciente } from 'src/app/models/Paciente.models';
 import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
 
 @Component({
@@ -8,15 +9,28 @@ import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
 })
 export class MeusDadosPacienteComponent implements OnInit {
 
-  nome: string = "Teste";
+  nome: string = '';
   telefone: string = '';
   emailPaciente: string = '';
   senhaPaciente: string = '';
   dataNascimentoPaciente: Date = new Date();
+  paciente: any;
   constructor(private loginService: LoginUsuarioService) { }
 
   ngOnInit(): void {
-    console.log(this.loginService.getPerfilPessoa());
+    this.loginService.getPerfilPessoa().subscribe(
+      (data: Paciente) => {
+        this.paciente = data;
+
+        this.nome = this.paciente.nome;
+        this.telefone = this.paciente.telefone;
+        this.emailPaciente = this.paciente.email;
+        this.dataNascimentoPaciente = this.paciente.dataNascimento;
+      },
+      error => {
+        console.error('Erro ao buscar especialistas:', error);
+      }
+    );
   }
 
 }

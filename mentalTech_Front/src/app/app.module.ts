@@ -24,7 +24,7 @@ import { LoginUsuarioService } from './services/login-usuario.service';
 import { CabecalhoProfissionalComponent } from './views/profissional/cabecalho-profissional/cabecalho-profissional.component';
 import { CabecalhoPacienteComponent } from './views/paciente/cabecalho-paciente/cabecalho-paciente.component';
 import { HomePacienteComponent } from './views/paciente/home-paciente/home-paciente.component';
-import { MeusDadosComponent } from './views/profissional/meus-dados/meus-dados.component';
+import { MeusDadosProfissionalComponent } from './views/profissional/meus-dados/meus-dados.component-profissional';
 import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente/meus-dados-paciente.component';
 import { ListarProfissionaisComponent } from './views/paciente/listar-profissionais/listar-profissionais.component';
 import { DicasPacienteComponent } from './views/paciente/dicas-paciente/dicas-paciente.component';
@@ -53,7 +53,7 @@ import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/
     CabecalhoProfissionalComponent,
     CabecalhoPacienteComponent,
     HomePacienteComponent,
-    MeusDadosComponent,
+    MeusDadosProfissionalComponent,
     MeusDadosPacienteComponent,
     ListarProfissionaisComponent,
     DicasPacienteComponent,

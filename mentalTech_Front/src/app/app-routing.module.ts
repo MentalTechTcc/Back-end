@@ -11,7 +11,7 @@ import { CadastroEspEndTemComponent } from './views/profissional/cadastro-esp-en
 import { HomeEntrarProfissionalComponent } from './views/profissional/home-entrar-profissional/home-entrar-profissional.component';
 import { CadastroPacienteComponent } from './views/paciente/cadastro-paciente/cadastro-paciente.component';
 import { HomePacienteComponent } from './views/paciente/home-paciente/home-paciente.component';
-import { MeusDadosComponent } from './views/profissional/meus-dados/meus-dados.component';
+import { MeusDadosProfissionalComponent } from './views/profissional/meus-dados/meus-dados.component-profissional';
 import { MeusDadosPacienteComponent } from './views/paciente/meus-dados-paciente/meus-dados-paciente.component';
 import { ListarProfissionaisComponent } from './views/paciente/listar-profissionais/listar-profissionais.component';
 import { DicasPacienteComponent } from './views/paciente/dicas-paciente/dicas-paciente.component';
@@ -72,7 +72,7 @@ const routes: Routes = [
   },
   {
     path: 'meus-dados-profissional',
-    component: MeusDadosComponent
+    component: MeusDadosProfissionalComponent
   },
   {
     path: 'meus-dados-paciente',

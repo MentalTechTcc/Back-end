@@ -4,4 +4,5 @@ export interface Tematica{
 
 export interface TematicaResponse{
   nomeTematica: string;
+  idTematicasPrincipais: number;
 }

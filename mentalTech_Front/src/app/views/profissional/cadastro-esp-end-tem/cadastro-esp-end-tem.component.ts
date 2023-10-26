@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { Endereco } from 'src/app/models/Endereco.models';
 import { Especialidade } from 'src/app/models/Especialidade.models';
+import { Tematica, TematicaResponse } from 'src/app/models/Tematica.models';
 import { EnderecoServiceService } from 'src/app/services/endereco-service.service';
 import { EspecialidadeServiceService } from 'src/app/services/especialidade-service.service';
 import { TematicaServiceService } from 'src/app/services/tematica-service.service';
@@ -28,12 +29,7 @@ export class CadastroEspEndTemComponent {
     complemento: ''
   };
 
-
-  tematicas = [
-    { id: 'tem1', nome: 'depressão' },
-    { id: 'tem22', nome: 'sindrome do pânico' },
-    // Adicione mais tematicas conforme necessário
-  ];
+  tematicas: TematicaResponse[] = []
 
   constructor(private serviceEspecialidade : EspecialidadeServiceService, private serviceTematica: TematicaServiceService, private serviceEndereco: EnderecoServiceService){
 
@@ -45,6 +41,16 @@ export class CadastroEspEndTemComponent {
       (data: Especialidade[]) => {
         this.especialidades = data;
         console.log(this.especialidades);
+      },
+      error => {
+        console.error('Erro ao buscar especialistas:', error);
+      }
+    );
+
+    this.serviceTematica.listar().subscribe(
+      (data: TematicaResponse[]) => {
+        this.tematicas = data;
+        console.log(this.tematicas);
       },
       error => {
         console.error('Erro ao buscar especialistas:', error);

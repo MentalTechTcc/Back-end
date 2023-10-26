@@ -59,8 +59,8 @@
     </div>
     <div class="tematica-options">
       <div *ngFor="let tematica of tematicas">
-        <input type="checkbox" [id]="tematica.id" [name]="tematica.nome" [value]="tematica.nome">
-        <label [for]="tematica.id">{{ tematica.nome }}</label>
+        <input type="checkbox" [id]="tematica.idTematicasPrincipais" [name]="tematica.nomeTematica" [value]="tematica.nomeTematica">
+        <label [for]="tematica.idTematicasPrincipais">{{ tematica.nomeTematica }}</label>
       </div>
     </div>
 

@@ -3,3 +3,7 @@ export interface Especialidade{
   descricaoEspecialidade: string;
 }
 
+export interface ProfissionalTrataEspecialidade{
+  idEspecialidade: number;
+  cpfProfissional: string;
+}

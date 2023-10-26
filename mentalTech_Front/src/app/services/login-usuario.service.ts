@@ -16,6 +16,15 @@ export class LoginUsuarioService {
   private refreshToken: any;
   private accessToken_stored: any;
   private refreshToken_stored: any;
+  private cpfProfissional: any;
+
+  setCpfProfissional(id: string){
+    this.cpfProfissional = id;
+
+  }
+  getCpfProfissional():string{
+    return this.cpfProfissional;
+  }
 
   setFezLogin(resposta: boolean) {
     this.fezLogin = resposta;

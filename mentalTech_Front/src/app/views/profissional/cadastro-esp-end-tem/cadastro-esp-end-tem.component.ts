@@ -1,10 +1,11 @@
 // cadastro-esp-end-tem.component.ts
 import { Component } from '@angular/core';
 import { Endereco } from 'src/app/models/Endereco.models';
-import { Especialidade } from 'src/app/models/Especialidade.models';
+import { Especialidade, ProfissionalTrataEspecialidade } from 'src/app/models/Especialidade.models';
 import { Tematica, TematicaResponse } from 'src/app/models/Tematica.models';
 import { EnderecoServiceService } from 'src/app/services/endereco-service.service';
 import { EspecialidadeServiceService } from 'src/app/services/especialidade-service.service';
+import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
 import { TematicaServiceService } from 'src/app/services/tematica-service.service';
 
 @Component({
@@ -31,7 +32,10 @@ export class CadastroEspEndTemComponent {
 
   tematicas: TematicaResponse[] = []
 
-  constructor(private serviceEspecialidade : EspecialidadeServiceService, private serviceTematica: TematicaServiceService, private serviceEndereco: EnderecoServiceService){
+  constructor(private serviceEspecialidade : EspecialidadeServiceService,
+    private serviceTematica: TematicaServiceService,
+    private serviceEndereco: EnderecoServiceService,
+    private serviceLogin: LoginUsuarioService){
 
   }
 
@@ -91,5 +95,32 @@ export class CadastroEspEndTemComponent {
     });
 
     console.log(this.novas_tematicas);
+  }
+
+  enviar(){
+    console.log("aquiiiiiiiiii");
+    const cpf = this.serviceLogin.getCpfProfissional();
+    if(cpf!=null){
+
+      for(const especialidade of this.especialidades){
+
+        const aux: ProfissionalTrataEspecialidade={
+          idEspecialidade: especialidade.idEspecialidade,
+          cpfProfissional: cpf
+
+        };
+
+        this.serviceEspecialidade.createEspecialidadeProfissional(aux).subscribe(
+          response => {
+            console.log('Cadastro bem-sucedido:', response);
+          },
+          error => {
+            console.error('Erro no cadastro:', error);
+          }
+        );
+      }
+
+    }
+
   }
 }

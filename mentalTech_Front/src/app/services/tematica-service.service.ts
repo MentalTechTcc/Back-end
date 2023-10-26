@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tematica, TematicaResponse } from '../models/Tematica.models';
+import { ProfissionalTrataTematica, Tematica, TematicaResponse } from '../models/Tematica.models';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
@@ -17,5 +17,20 @@ export class TematicaServiceService {
   }
   listar(): Observable<TematicaResponse[]> {
     return this.http.get<TematicaResponse[]>(`${environment.baseUrl}/tematicasPrincipais`);
+  }
+
+  getId(tematicas: TematicaResponse[], atual: String):number{
+
+    for (const tematica of tematicas) {
+      // Lógica para comparar a tematica atual
+      if (tematica.nomeTematica === atual) {
+        return tematica.idTematicasPrincipais;
+      }
+    }
+    return -1;
+  }
+
+  createTematicaProfissional(paciente: ProfissionalTrataTematica): Observable<ProfissionalTrataTematica> {
+    return this.http.post<ProfissionalTrataTematica>(`${environment.baseUrl}/tematicasPrincipais/ProfissionalTrataTematicas`, paciente);
   }
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Profissional } from 'src/app/models/Profissional.models';
 import { CadastroProfissionalService } from 'src/app/services/cadastro-profissional.service';
 import { CadastroUsuarioService } from 'src/app/services/cadastro-usuario.service';
+import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
 
 @Component({
   selector: 'app-cadastro-profissional',
@@ -23,7 +24,9 @@ export class CadastroProfissionalComponent implements OnInit {
   descricaoProfissional: string = '';
   cpf: string = '';
 
-  constructor(private router: Router,private cadastroService: CadastroUsuarioService, private cadastroProfissionalService: CadastroProfissionalService) {
+  constructor(private router: Router,private cadastroService: CadastroUsuarioService,
+     private cadastroProfissionalService: CadastroProfissionalService,
+     private loginService: LoginUsuarioService) {
   }
 
   ngOnInit() {
@@ -53,6 +56,7 @@ export class CadastroProfissionalComponent implements OnInit {
 
       this.cadastroProfissionalService.create(profissional).subscribe(
         response => {
+          this.loginService.setCpfProfissional(profissional.cpf);
           console.log('Cadastro bem-sucedido:', response);
         },
         error => {

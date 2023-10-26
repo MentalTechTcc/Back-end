@@ -66,7 +66,7 @@
 
     <div *ngFor="let tematica of novas_tematicas; let i = index" class="tematica-campos-item">
       <label for="tematica">Tematica:</label>
-      <input type="text" id="tematica" name="tematica" placeholder="Informe a temática">
+      <input type="text" id="tematica" name="tematica" placeholder="Informe a temática" [(ngModel)]="tematica.nomeTematica">
     </div>
 
     <div>

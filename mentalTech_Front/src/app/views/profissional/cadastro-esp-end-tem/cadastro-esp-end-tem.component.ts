@@ -89,5 +89,7 @@ export class CadastroEspEndTemComponent {
     this.novas_tematicas.push({
       nomeTematica: ''
     });
+
+    console.log(this.novas_tematicas);
   }
 }

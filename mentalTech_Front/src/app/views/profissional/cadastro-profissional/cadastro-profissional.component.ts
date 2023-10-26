@@ -32,6 +32,7 @@ export class CadastroProfissionalComponent implements OnInit {
   }
   cadastrar() {
 
+    this.router.navigate(['/cadastro-profissional-proximo']);
 
     if (this.escolhaPerfil === 'Profissional') {
 
@@ -53,7 +54,6 @@ export class CadastroProfissionalComponent implements OnInit {
       this.cadastroProfissionalService.create(profissional).subscribe(
         response => {
           console.log('Cadastro bem-sucedido:', response);
-          this.router.navigate(['/cadastro-profissional-proximo']);
         },
         error => {
           console.error('Erro no cadastro:', error);

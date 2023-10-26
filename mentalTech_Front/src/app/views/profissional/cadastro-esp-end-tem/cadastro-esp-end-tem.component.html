@@ -11,8 +11,8 @@
     <!-- Especialidades -->
     <div class="especialidade-options">
       <div *ngFor="let especialidade of especialidades">
-        <input type="checkbox" [id]="especialidade.id" [name]="especialidade.descricaoEspecialidade" [value]="especialidade.descricaoEspecialidade">
-        <label [for]="especialidade.id">{{ especialidade.descricaoEspecialidade }}</label>
+        <input type="checkbox" [id]="especialidade.id" [name]="especialidade.nome" [value]="especialidade.nome">
+        <label [for]="especialidade.id">{{ especialidade.nome }}</label>
       </div>
     </div>
 

@@ -1,5 +1,8 @@
 // cadastro-esp-end-tem.component.ts
 import { Component } from '@angular/core';
+import { Especialidade } from 'src/app/models/Especialidade.models';
+import { EspecialidadeServiceService } from 'src/app/services/especialidade-service.service';
+import { TematicaServiceService } from 'src/app/services/tematica-service.service';
 
 @Component({
   selector: 'app-cadastro-esp-end-tem',
@@ -13,11 +16,7 @@ export class CadastroEspEndTemComponent {
   novas_tematicas: any[] = [];
 
 
-  especialidades = [
-    { id: 'esp1', nome: 'Psicologo' },
-    { id: 'esp2', nome: 'Psiquiatra' },
-    // Adicione mais especialidades conforme necessário
-  ];
+  especialidades: Especialidade[] = [];
 
   tematicas = [
     { id: 'tem1', nome: 'depressão' },
@@ -34,6 +33,22 @@ export class CadastroEspEndTemComponent {
     complemento: ''
   };
 
+  constructor(private serviceEspecialidade : EspecialidadeServiceService, private serviceTematica: TematicaServiceService){
+
+  }
+
+
+  ngOnInit(): void {
+    this.serviceEspecialidade.listar().subscribe(
+      (data: Especialidade[]) => {
+        this.especialidades = data;
+        console.log(this.especialidades);
+      },
+      error => {
+        console.error('Erro ao buscar especialistas:', error);
+      }
+    );
+  }
   toggleEndereco() {
     this.temEndereco = this.temEndereco === 'Sim' ? 'Nao' : 'Sim';
   }

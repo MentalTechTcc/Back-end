@@ -14,6 +14,14 @@
     </form>
     </div>
 
+    <div class="mensagem mensagem-sucesso" *ngIf="sucesso">
+      Avaliação enviada com sucesso!
+    </div>
+    
+    <div class="mensagem mensagem-erro" *ngIf="erro">
+      {{ erro }}
+    </div>
+
     <h2>Listagem de Dicas de Saúde</h2>
 
     <div class="dica-quadrados">

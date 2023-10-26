@@ -17,7 +17,7 @@ html, body {
   
   .metade-texto {
     padding: 20px;
-    font-family: "Sanchez", sans-serif;
+    font-family: Sanchez;
     font-size: 20px;
     color: #333;
     background-color: #f3f3f3;
@@ -59,7 +59,7 @@ html, body {
   .metade-texto {
     flex: 1;
     padding: 20px;
-    font-family: "Sanchez", sans-serif;
+    font-family: Sanchez;
     font-size: 20px;
     color: #333;
     background-color: #f3f3f3;

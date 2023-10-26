@@ -12,7 +12,7 @@ export class CadastroAgendaProfissionalService {
 
   constructor(private http: HttpClient) { }
 
-  cadastrarAvaliacao(agenda: Agenda): Observable<any> {
+  cadastrarAgenda(agenda: Agenda): Observable<any> {
     return this.http.post(`${environment.baseUrl}/agenda`, agenda);
   }
 

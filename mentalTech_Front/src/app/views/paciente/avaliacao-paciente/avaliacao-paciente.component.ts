@@ -43,7 +43,7 @@ export class AvaliacaoPacienteComponent implements OnInit {
     this.loginService.getPerfilPessoa().subscribe(
       (data: any) => {
         this.pessoa = data;
-        console.log(this.pessoa.idPessoa); // Agora você pode acessar this.pessoa.idPessoa
+        console.log(this.pessoa.idPessoa);
         this.initForm();
         console.log(data);
         this.carregarAvaliacao();

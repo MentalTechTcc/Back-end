@@ -24,3 +24,7 @@ class AgendaRepositoryBaseModel(Protocol):
     def find_by_id(self, agenda_id: int) -> Agenda | None:
         """Faz uma busca pelo id e retorna os dados do agenda caso existe"""
         ...
+    
+    def find_by_cpf(self, cpfProfissional: str) -> list[Agenda] | None:
+        """Faz uma busca pelo id e retorna os dados do agenda caso existe"""
+        ...

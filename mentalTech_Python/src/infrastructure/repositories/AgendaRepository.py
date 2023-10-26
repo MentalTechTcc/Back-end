@@ -51,7 +51,10 @@ class AgendaRepository:
         session.close()
         return session.query(Agenda).filter(Agenda.idAgenda == agenda_id).first()
     
-    
+    def find_by_cpf(self, cpfProfissional: str) -> list[Agenda]| None:
+        session = self.database()
+        session.close()
+        return session.query(Agenda).filter(Agenda.cpfProfissional == cpfProfissional).all()
     
     
 

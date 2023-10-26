@@ -66,5 +66,16 @@ def find_by_id(id: int):
 
     return agenda
 
+@router_agenda.get("/cpf/{cpfProfissional}",
+                  response_model=list[AgendaResponse],
+                  status_code=status.HTTP_200_OK)
+def find_by_cpf(cpf: str):
+    '''Faz uma query de um objeto assistente na DB pelo id'''
+    agenda = agendaUseCase.find_by_cpf(cpf)
+
+    if agenda is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Agenda não encontrado")
+
+    return agenda
 
 

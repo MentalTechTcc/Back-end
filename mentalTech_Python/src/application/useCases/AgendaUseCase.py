@@ -43,6 +43,9 @@ class AgendaUseCase():
     def find_by_id(self, agenda_id : int) -> AgendaBase | None:
         return self.__agendaRepository__.find_by_id(agenda_id=agenda_id)
     
+    def find_by_cpf(self, cpfProfissional : int) -> list[AgendaResponse] | None:
+        return self.__agendaRepository__.find_by_cpf(cpfProfissional=cpfProfissional)
+    
 
     def update(self, agendaSent: AgendaRequestId) -> NoReturn:
         """Sobrescreve os dados de agenda, assume que ele já exista"""

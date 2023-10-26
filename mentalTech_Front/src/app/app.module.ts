@@ -34,6 +34,7 @@ import { CadastroAgendaProfissionalComponent } from './views/profissional/cadast
 import { MinhasConsultasPacienteComponent } from './views/paciente/minhas-consultas-paciente/minhas-consultas-paciente.component';
 import { JitsiComponent } from './views/jitsi-integration/jitsi-integration.component';
 import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/avaliacao-paciente.component';
+import { MinhaAgendaProfissionalComponent } from './views/profissional/minha-agenda-profissional/minha-agenda-profissional.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/
     CadastroAgendaProfissionalComponent,
     MinhasConsultasPacienteComponent,
     JitsiComponent,
-    AvaliacaoPacienteComponent
+    AvaliacaoPacienteComponent,
+    MinhaAgendaProfissionalComponent
   ],
   imports: [
     BrowserModule,

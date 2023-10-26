@@ -28,7 +28,8 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
     hora: ['00:00', Validators.required],
     duracao: [1, Validators.required],
     modalidadeAtendimento: [2, Validators.required],
-    ocupado:false
+    ocupado:false,
+    valorProposto:[50.0, Validators.required]
   });}
 
   ngOnInit(): void {
@@ -36,7 +37,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       (data: any) => {
         this.profissional = data;
         this.initForm();
-        console.log(data);
+        /*console.log(data);*/
       /*  this.carregarAgenda();
         this.carregarProfissionais(); */
       },
@@ -53,7 +54,8 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       hora: [null, Validators.required],
       duracao: [null, Validators.required],
       modalidadeAtendimento: [2, Validators.required],
-      ocupado:false
+      ocupado:false,
+      valorProposto:[50.0, Validators.required]
     });
   }
 
@@ -62,7 +64,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       console.log( this.disponibilidadeForm.value)
       const agendaData: Agenda = this.disponibilidadeForm.value;
       console.log('apertou')
-      console.log(this.disponibilidadeForm.value)
+      /*console.log(this.disponibilidadeForm.value)*/
       agendaData.modalidadeAtendimento = +agendaData.modalidadeAtendimento;
       this.agendaService.cadastrarAgenda(agendaData).subscribe(
         () => {

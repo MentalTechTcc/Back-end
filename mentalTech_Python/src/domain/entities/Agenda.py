@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, Boolean, ForeignKey
+from sqlalchemy import Column, String, Boolean, ForeignKey, Float
 from pydantic import BaseModel
 from sqlalchemy import Column, Integer, String, Enum as EnumDB, Date, Time
 from enum import Enum
@@ -22,6 +22,7 @@ class Agenda(Base):
     cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True)
     modalidadeAtendimento: Enum = Column(EnumDB(Modalidade), nullable=False)
     ocupado: bool = Column(Boolean, nullable=True, default=False)
+    valorProposto: float = Column(Float, nullable=False)
 
 
 class AgendaBase(BaseModel):
@@ -31,6 +32,7 @@ class AgendaBase(BaseModel):
     cpfProfissional: str
     modalidadeAtendimento: Modalidade 
     ocupado:bool
+    valorProposto: float 
 
 class AgendaRequest(AgendaBase):
     '''...'''

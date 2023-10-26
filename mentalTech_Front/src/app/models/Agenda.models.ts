@@ -7,5 +7,6 @@ export interface Agenda {
     modalidadeAtendimento: number;
     cpfProfissional:String;
     ocupado:boolean;
+    valorProposto:number;
   }
   

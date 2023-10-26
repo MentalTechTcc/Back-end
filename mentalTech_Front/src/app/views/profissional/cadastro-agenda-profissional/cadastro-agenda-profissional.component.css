@@ -71,3 +71,24 @@ html, body {
 .botao:hover {
     background-color: #006666;
   }
+
+  .mensagem {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 2px;
+    text-align: center;
+    font-weight: bold;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  
+  .mensagem-sucesso {
+    background-color: #4CAF50; 
+    color: white;
+  }
+  
+  .mensagem-erro {
+    background-color: #f44336;
+    color: white;
+  }

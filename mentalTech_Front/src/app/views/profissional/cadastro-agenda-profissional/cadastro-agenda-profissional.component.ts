@@ -49,9 +49,9 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
   initForm() {
     this.disponibilidadeForm = this.fb.group({
       cpfProfissional: this.profissional.cpf,
-      data: ['2023-01-01', Validators.required],
-      hora: ['00:00', Validators.required],
-      duracao: [1, Validators.required],
+      data: [null, Validators.required],
+      hora: [null, Validators.required],
+      duracao: [null, Validators.required],
       modalidadeAtendimento: [1, Validators.required],
       ocupado:false
     });
@@ -59,6 +59,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
 
   onSubmit() {
     if (this.disponibilidadeForm.valid) {
+      console.log( this.disponibilidadeForm.value)
       const agendaData: Agenda = this.disponibilidadeForm.value;
       console.log('apertou')
       console.log(this.disponibilidadeForm.value)
@@ -67,6 +68,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
           this.sucesso = true;
           this.erro = ''; // Limpa
           this.disponibilidadeForm.reset();
+          this.ngOnInit();
         },
         (error) => {
           this.sucesso = false;

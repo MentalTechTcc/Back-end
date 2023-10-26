@@ -20,11 +20,18 @@
           <label for="modalidade">Modalidade de Atendimento:</label>
           <select id="modalidade" formControlName="modalidadeAtendimento" class="input-campo">
             <option value=1>Presencial</option>
-            <option value=2>Remoto</option>
+            <option value=2>Online</option>
           </select>
         </div>
       </div>
       <button type="submit" class="botao">Enviar</button>
     </form>
+    <div class="mensagem mensagem-sucesso" *ngIf="sucesso">
+      Agenda enviada com sucesso!
+    </div>
+    
+    <div class="mensagem mensagem-erro" *ngIf="erro">
+      {{ erro }}
+    </div>
   </div>
 </div>

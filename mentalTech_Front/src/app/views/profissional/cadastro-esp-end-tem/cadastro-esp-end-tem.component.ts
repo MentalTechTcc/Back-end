@@ -1,6 +1,8 @@
 // cadastro-esp-end-tem.component.ts
 import { Component } from '@angular/core';
+import { Endereco } from 'src/app/models/Endereco.models';
 import { Especialidade } from 'src/app/models/Especialidade.models';
+import { EnderecoServiceService } from 'src/app/services/endereco-service.service';
 import { EspecialidadeServiceService } from 'src/app/services/especialidade-service.service';
 import { TematicaServiceService } from 'src/app/services/tematica-service.service';
 
@@ -12,11 +14,20 @@ import { TematicaServiceService } from 'src/app/services/tematica-service.servic
 export class CadastroEspEndTemComponent {
   temEndereco: string = 'Nao';
   possuiEndereco: string = 'Nao';
-  enderecos: any[] = [];
   novas_tematicas: any[] = [];
 
 
   especialidades: Especialidade[] = [];
+  enderecos: Endereco[] = [];
+  endereco = {
+    cep: '',
+    estado: '',
+    cidade: '',
+    bairro: '',
+    numero: 0,
+    complemento: ''
+  };
+
 
   tematicas = [
     { id: 'tem1', nome: 'depressão' },
@@ -24,16 +35,7 @@ export class CadastroEspEndTemComponent {
     // Adicione mais tematicas conforme necessário
   ];
 
-  endereco = {
-    cep: '',
-    estado: '',
-    cidade: '',
-    bairro: '',
-    numero: '',
-    complemento: ''
-  };
-
-  constructor(private serviceEspecialidade : EspecialidadeServiceService, private serviceTematica: TematicaServiceService){
+  constructor(private serviceEspecialidade : EspecialidadeServiceService, private serviceTematica: TematicaServiceService, private serviceEndereco: EnderecoServiceService){
 
   }
 
@@ -69,9 +71,11 @@ export class CadastroEspEndTemComponent {
       estado: '',
       cidade: '',
       bairro: '',
-      numero: '',
+      numero: 0,
       complemento: ''
     });
+    console.log(this.enderecos);
+
   }
 
   adicionarTematica() {

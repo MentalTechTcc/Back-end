@@ -1,4 +1,4 @@
-export interface EnderecoBase {
+export interface Endereco {
   cep: string;
   estado: string;
   cidade: string;

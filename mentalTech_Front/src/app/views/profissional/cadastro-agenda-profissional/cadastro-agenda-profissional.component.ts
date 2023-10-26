@@ -27,7 +27,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
     data: ['2023-01-01', Validators.required],
     hora: ['00:00', Validators.required],
     duracao: [1, Validators.required],
-    modalidadeAtendimento: [1, Validators.required],
+    modalidadeAtendimento: [2, Validators.required],
     ocupado:false
   });}
 
@@ -52,7 +52,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       data: [null, Validators.required],
       hora: [null, Validators.required],
       duracao: [null, Validators.required],
-      modalidadeAtendimento: [1, Validators.required],
+      modalidadeAtendimento: [2, Validators.required],
       ocupado:false
     });
   }
@@ -63,6 +63,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       const agendaData: Agenda = this.disponibilidadeForm.value;
       console.log('apertou')
       console.log(this.disponibilidadeForm.value)
+      agendaData.modalidadeAtendimento = +agendaData.modalidadeAtendimento;
       this.agendaService.cadastrarAgenda(agendaData).subscribe(
         () => {
           this.sucesso = true;

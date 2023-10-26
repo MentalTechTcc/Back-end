@@ -1,0 +1,31 @@
+<app-cabecalho-profissional></app-cabecalho-profissional>
+
+<div class="login-container">
+  <div class="login-box">
+    <form>
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" [(ngModel)]="nome" name="nome" placeholder="{{nome}}">
+      </div>
+      <div class="form-group">
+        <label for="tel">Telefone:</label>
+        <input type="text" class="form-control" id="tel" [(ngModel)]="telefone" name="telefone" placeholder="{{telefone}}">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="emailProfissional" name="emailProfissional" placeholder="{{emailProfissional}}">
+      </div>
+      <div class="form-group">
+        <label for="data">Data de Nascimento:</label>
+        <input type="date" class="form-control" id="data" [(ngModel)]="dataNascimentoProfissional" name="dataNascimentoProfissional" placeholder="{{dataNascimentoProfissional}}">
+      </div>
+      <div class="form-group">
+        <label for="data">Código Profissional:</label>
+        <input type="date" class="form-control" id="data" [(ngModel)]="codigoProfissional" name="codigoProfissional" placeholder="{{codigoProfissional}}">
+      </div>
+
+      <button type="submit" class="entrar-button">Salvar</button>
+    </form>
+  </div>
+</div>
+

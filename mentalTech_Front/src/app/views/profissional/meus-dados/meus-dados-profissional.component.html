@@ -2,14 +2,14 @@
 
 <div class="login-container">
   <div class="login-box">
-    <form>
+    <form (ngSubmit)="atualizarProfissional()">
       <div class="form-group">
         <label for="nome">Nome:</label>
         <input type="text" class="form-control" id="nome" [(ngModel)]="nome" name="nome" placeholder="{{nome}}">
       </div>
       <div class="form-group">
         <label for="tel">Telefone:</label>
-        <input type="text" class="form-control" id="tel" [(ngModel)]="telefone" name="telefone" placeholder="{{telefone}}">
+        <input type="text" class= "form-control" id="tel" [(ngModel)]="telefone" name="telefone" placeholder="{{telefone}}">
       </div>
       <div class="form-group">
         <label for="email">Email:</label>

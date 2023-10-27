@@ -61,6 +61,7 @@ export class DicaProfissionalComponent implements OnInit {
           this.sucesso = true;
           this.erro = ''; // Limpa
           this.dicaForm.reset();
+          this.ngOnInit();
         },
         (error) => {
           this.sucesso = false;

@@ -11,10 +11,11 @@
     <!-- Especialidades -->
     <div class="especialidade-options">
       <div *ngFor="let especialidade of especialidades">
-        <input type="checkbox" [id]="especialidade.idEspecialidade" [name]="especialidade.descricaoEspecialidade" [value]="especialidade.descricaoEspecialidade">
+        <input type="checkbox" [id]="especialidade.idEspecialidade" [name]="especialidade.descricaoEspecialidade" [value]="especialidade.descricaoEspecialidade" [(ngModel)]="especialidade.selecionada">
         <label [for]="especialidade.idEspecialidade">{{ especialidade.descricaoEspecialidade }}</label>
       </div>
     </div>
+
 
     <div class="label-tem-endereco">
       <label>Possui endereço?</label>

@@ -1,4 +1,3 @@
-// cadastro-esp-end-tem.component.ts
 import { Component } from '@angular/core';
 import { Endereco } from 'src/app/models/Endereco.models';
 import { Especialidade, ProfissionalTrataEspecialidade } from 'src/app/models/Especialidade.models';
@@ -18,7 +17,6 @@ export class CadastroEspEndTemComponent {
   possuiEndereco: string = 'Nao';
   novas_tematicas: any[] = [];
 
-
   especialidades: Especialidade[] = [];
   enderecos: Endereco[] = [];
   endereco = {
@@ -30,20 +28,19 @@ export class CadastroEspEndTemComponent {
     complemento: ''
   };
 
-  tematicas: TematicaResponse[] = []
+  tematicas: TematicaResponse[] = [];
 
-  constructor(private serviceEspecialidade : EspecialidadeServiceService,
+  constructor(
+    private serviceEspecialidade: EspecialidadeServiceService,
     private serviceTematica: TematicaServiceService,
     private serviceEndereco: EnderecoServiceService,
-    private serviceLogin: LoginUsuarioService){
-
-  }
-
+    private serviceLogin: LoginUsuarioService
+  ) {}
 
   ngOnInit(): void {
     this.serviceEspecialidade.listar().subscribe(
       (data: Especialidade[]) => {
-        this.especialidades = data;
+        this.especialidades = data.map(especialidade => ({ ...especialidade, selecionada: false }));
         console.log(this.especialidades);
       },
       error => {
@@ -61,21 +58,12 @@ export class CadastroEspEndTemComponent {
       }
     );
   }
+
   toggleEndereco() {
     this.temEndereco = this.temEndereco === 'Sim' ? 'Nao' : 'Sim';
   }
 
-  selecionarEspecialidades() {
-    // Adicione a lógica para processar as especialidades selecionadas
-    console.log('Especialidades selecionadas');
-  }
-
-  onChangePossuiEndereco(value: string) {
-    this.possuiEndereco = value;
-  }
-
   adicionarEndereco() {
-    // Lógica para adicionar um novo endereço ao array
     this.enderecos.push({
       cep: '',
       estado: '',
@@ -85,32 +73,36 @@ export class CadastroEspEndTemComponent {
       complemento: ''
     });
     console.log(this.enderecos);
-
   }
 
   adicionarTematica() {
-    // Lógica para adicionar um novo endereço ao array
     this.novas_tematicas.push({
       nomeTematica: ''
     });
-
     console.log(this.novas_tematicas);
   }
 
-  enviar(){
-    console.log("aquiiiiiiiiii");
+  enviar() {
     const cpf = this.serviceLogin.getCpfProfissional();
-    if(cpf!=null){
 
-      for(const especialidade of this.especialidades){
+    console.log('aquii cpf: ' + cpf);
 
-        const aux: ProfissionalTrataEspecialidade={
+
+    if (cpf != null) {
+      // Filtrar apenas as especialidades selecionadas
+      const especialidadesSelecionadas = this.especialidades
+        .filter(especialidade => especialidade.selecionada)
+        .map(especialidade => ({
           idEspecialidade: especialidade.idEspecialidade,
           cpfProfissional: cpf
+        }));
 
-        };
-
-        this.serviceEspecialidade.createEspecialidadeProfissional(aux).subscribe(
+      console.log(especialidadesSelecionadas);
+      console.log(this.novas_tematicas);
+      console.log(this.enderecos);
+      // Enviar para o backend apenas as especialidades selecionadas
+      for (const especialidade of especialidadesSelecionadas) {
+        this.serviceEspecialidade.createEspecialidadeProfissional(especialidade).subscribe(
           response => {
             console.log('Cadastro bem-sucedido:', response);
           },
@@ -119,8 +111,6 @@ export class CadastroEspEndTemComponent {
           }
         );
       }
-
     }
-
   }
 }

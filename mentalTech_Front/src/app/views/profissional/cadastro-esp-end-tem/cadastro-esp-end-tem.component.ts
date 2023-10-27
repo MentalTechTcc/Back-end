@@ -105,7 +105,6 @@ export class CadastroEspEndTemComponent {
 
   }
 
-
   adicionaTematicasSelecionadas(cpf: string){
     const tematicasSelecionadas = this.tematicas
     .filter(tematica => tematica.selecionada)
@@ -125,7 +124,6 @@ export class CadastroEspEndTemComponent {
       );
     }
   }
-
 
   adicionaTematicasAdicionadas(cpf: string){
     for(const tem of this.novas_tematicas){
@@ -172,6 +170,48 @@ export class CadastroEspEndTemComponent {
 
 
   }
+
+  adicionaEnderecoBanco(cpf:string){
+    for(const endereco of this.enderecos){
+      this.serviceEndereco.create(endereco).subscribe(
+        response => {
+          console.log('Cadastro bem-sucedido:', response);
+
+          this.serviceEndereco.listar().subscribe(
+            (data: EnderecoResponse[]) => {
+              this.enderecos_cadastrados = data
+
+              for(const endereco_aux of this.enderecos){
+                const id = this.serviceEndereco.getId(this.enderecos_cadastrados, endereco_aux.cep, endereco_aux.numero);
+
+                const profissional_endereco: ProfissionalTemEndereco = {
+                  idEndereco: id,
+                  cpfProfissional: cpf
+                }
+
+                this.serviceEndereco.createEnderecoProfissional(profissional_endereco).subscribe(
+                  response => {
+                    console.log('Cadastro bem-sucedido:', response);
+                  },
+                  error => {
+                    console.error('Erro no cadastro:', error);
+                  }
+                );
+              }
+            },
+            error => {
+              console.error('Erro ao buscar especialistas:', error);
+            }
+          );
+
+        },
+        error => {
+          console.error('Erro no cadastro:', error);
+        }
+      );
+    }
+  }
+
   enviar() {
     const cpf = this.serviceLogin.getCpfProfissional();
 
@@ -182,60 +222,10 @@ export class CadastroEspEndTemComponent {
 
       this.adicionaTematicasAdicionadas(cpf);
 
-
-      // endereco
-      // for(const endereco of this.enderecos){
-      //   this.serviceEndereco.create(endereco).subscribe(
-      //     response => {
-      //       console.log('Cadastro bem-sucedido:', response);
-      //       this.serviceEndereco.listar().subscribe(
-      //         (data: EnderecoResponse[]) => {
-      //           this.enderecos_cadastrados = data
-      //           console.log(this.enderecos_cadastrados);
-
-      //           for(const endereco of this.enderecos){
-      //             const id = this.serviceEndereco.getId(this.enderecos_cadastrados, endereco.cep, endereco.numero);
-      //             const profissional_endereco: ProfissionalTemEndereco = {
-      //               idEndereco: id,
-      //               cpfProfissional: cpf
-      //             }
-
-      //             this.serviceEndereco.createEnderecoProfissional(profissional_endereco).subscribe(
-      //               response => {
-      //                 console.log('Cadastro bem-sucedido:', response);
-      //               },
-      //               error => {
-      //                 console.error('Erro no cadastro:', error);
-      //               }
-      //             );
-      //           }
-      //         },
-      //         error => {
-      //           console.error('Erro ao buscar especialistas:', error);
-      //         }
-      //       );
-
-        //   },
-        //   error => {
-        //     console.error('Erro no cadastro:', error);
-        //   }
-        // );
-
-      }
-
-
-
-
-      //Parte que envia pro backend para cadastrar os enderecos dos proficionais
-
-
-
-
-
-
-
-
+      this.adicionaEnderecoBanco(cpf);
 
     }
+
+  }
 }
 

@@ -17,16 +17,19 @@ export class EnderecoServiceService {
   }
 
   listar(): Observable<EnderecoResponse[]> {
-    return this.http.get<EnderecoResponse[]>(`${environment.baseUrl}/tematicasPrincipais`);
+    return this.http.get<EnderecoResponse[]>(`${environment.baseUrl}/endereco`);
   }
 
 
-  getId(enderecos: EnderecoResponse[], atual_cpf: String, atual_numero: number):number{
+  getId(enderecos: EnderecoResponse[], atual_cep: String, atual_numero: number): number {
+    for (const endereco of enderecos) {
+      console.log("hi hi hi :", endereco.cep, endereco.numero);
+      console.log("atual_cep:", atual_cep);
+      console.log("atual_numero:", atual_numero);
 
-    for (const endeco of enderecos) {
-      // Lógica para comparar a endeco atual
-      if (endeco.cep === atual_cpf && endeco.numero == atual_numero) {
-        return endeco.idEndereco;
+      // Lógica para comparar a endereco atual
+      if (endereco.cep === atual_cep && endereco.numero == atual_numero) {
+        return endereco.idEndereco;
       }
     }
     return -1;

@@ -8,13 +8,13 @@ export interface Endereco {
 }
 
 export interface EnderecoResponse {
-  idEndereco: number;
   cep: string;
   estado: string;
   cidade: string;
   bairro: string;
   numero: number;
   complemento: string;
+  idEndereco: number;
 }
 
 export interface ProfissionalTemEndereco{

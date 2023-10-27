@@ -17,7 +17,10 @@
             <p class="modalidade"><i class="fas fa-users"></i> {{ agenda.modalidadeAtendimento === 1 ? 'Presencial' : 'Online' }}</p>
             <p class="valor"><i class="fas fa-money-bill-wave"></i> {{ agenda.valorProposto | currency: 'BRL' }}</p>
             <p class="ocupado">{{ getOcupadoLabel(agenda.ocupado) }}</p>
-            <button (click)="deletarAgenda(agenda.idAgenda)" class="botao-excluir">Excluir</button>
+            <div>
+              <button routerLink="/jitsi" class="botao-excluir">Sala de Reunião</button>
+              <i class="fas fa-trash-alt botao-excluir" (click)="deletarAgenda(agenda.idAgenda)"></i>
+          </div>
         </div>
       </div>
     </div>

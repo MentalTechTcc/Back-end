@@ -13,12 +13,20 @@
     padding: 10px 20px; 
     border-radius: 5px; 
     cursor: pointer; 
-  }
-  
+    font-size: small;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
   .botao-excluir:hover {
-    background-color: #006666;
+      background-color: #006666;
   }
-  
+
+  .botao-excluir i {
+      display: block; 
+      margin-top: 5px;
+  }
+
   
   .agendas {
     display: flex;

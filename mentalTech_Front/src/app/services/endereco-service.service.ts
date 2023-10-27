@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { Endereco, EnderecoResponse } from '../models/Endereco.models';
+import { Endereco, EnderecoResponse, ProfissionalTemEndereco } from '../models/Endereco.models';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -30,5 +30,9 @@ export class EnderecoServiceService {
       }
     }
     return -1;
+  }
+
+  createEnderecoProfissional(paciente: ProfissionalTemEndereco): Observable<ProfissionalTemEndereco> {
+    return this.http.post<ProfissionalTemEndereco>(`${environment.baseUrl}/endereco/PessoaPossuiEndereco`, paciente);
   }
 }

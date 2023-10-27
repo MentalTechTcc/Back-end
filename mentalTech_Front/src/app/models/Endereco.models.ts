@@ -16,3 +16,8 @@ export interface EnderecoResponse {
   numero: number;
   complemento: string;
 }
+
+export interface ProfissionalTemEndereco{
+  idEndereco: number;
+  cpfProfissional: string;
+}

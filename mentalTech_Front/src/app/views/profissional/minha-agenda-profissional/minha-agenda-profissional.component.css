@@ -5,6 +5,20 @@
     text-align: center; 
     padding-top: 5%;
   }
+
+  .botao-excluir {
+    background-color: #008B8B;
+    color: white; 
+    border: none;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+  }
+  
+  .botao-excluir:hover {
+    background-color: #006666;
+  }
+  
   
   .agendas {
     display: flex;

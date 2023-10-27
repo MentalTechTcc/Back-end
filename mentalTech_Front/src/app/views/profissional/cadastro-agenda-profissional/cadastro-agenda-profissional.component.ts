@@ -37,7 +37,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       (data: any) => {
         this.profissional = data;
         this.initForm();
-        /*console.log(data);*/
+        console.log(data);
       /*  this.carregarAgenda();
         this.carregarProfissionais(); */
       },

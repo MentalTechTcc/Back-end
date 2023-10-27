@@ -1,0 +1,64 @@
+.titulo {
+    font-size: 34px;
+    color: #008B8B;
+    text-align: center; 
+    padding-top: 5%;
+  }
+  
+  .agendas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .agenda {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s;
+    width: 200px; 
+    margin: 10px;
+  }
+  
+  .agenda:hover {
+    transform: scale(1.02);
+  }
+  
+  .info-agenda {
+    text-align: center;
+  }
+  
+  .data {
+    font-size: 18px;
+    color: #008B8B;
+  }
+  
+  .hora {
+    font-size: 16px;
+  }
+  
+  .modalidade {
+    font-size: 16px;
+    color: #777;
+  }
+  
+  .valor {
+    font-size: 20px;
+    color: #4CAF50;
+  }
+  
+  .mensagem-sucesso {
+    background-color: #f0f0f0;
+    color: #4CAF50;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 5px;
+  }
+  

@@ -20,6 +20,10 @@ export class CadastroAgendaProfissionalService {
     return this.http.get<Agenda[]>(`${environment.baseUrl}/agenda`);
   }
 
+  listarPorCpf(cpfProfissional: string): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${environment.baseUrl}/agenda/cpf/{cpfProfissional}?cpf=${cpfProfissional}`);
+  }
+
 }
 
 

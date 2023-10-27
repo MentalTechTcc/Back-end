@@ -1,1 +1,23 @@
-<p>minha-agenda-profissional works!</p>
+<app-cabecalho-profissional></app-cabecalho-profissional>
+
+<div class="corpo">
+  <div class="metade-texto">
+    <h2 class="titulo">Minha Agenda</h2>
+
+    <div class="agendas">
+      <div *ngIf="listaAgendas.length === 0" class="mensagem mensagem-sucesso">
+        Nenhuma agenda disponível.
+      </div>
+
+      <div class="agenda" *ngFor="let agenda of listaAgendas">
+        <div class="info-agenda">
+          <p class="data">{{ agenda.data | date: 'dd/MM/yyyy' }}</p>
+          <p class="hora">{{ agenda.hora }}</p>
+          <p class="modalidade">{{ agenda.modalidadeAtendimento === 1 ? 'Presencial' : 'Online' }}</p>
+          <p class="valor">{{ agenda.valorProposto | currency: 'BRL' }}</p>
+          <p class="ocupado">{{ getOcupadoLabel(agenda.ocupado) }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

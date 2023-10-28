@@ -13,22 +13,27 @@ export class AgendaModalComponent implements OnInit {
   @Input() agendaDoProfissional: AgendaRequestId[]=[];
   @Output() fecharModalEvent = new EventEmitter<void>(); 
   pessoa: any = {};
+  permitirCompartilhamentoMap: { [key: number]: boolean } = {};
+
 
   constructor(
     private consultaService: ConsultaService,
     private loginService: LoginUsuarioService,) {}
 
-  ngOnInit(): void {
-    this.loginService.getPerfilPessoa().subscribe(
-      (data: any) => {
-        this.pessoa = data;
-        console.log('aquiiii'); 
-      },
-      (error) => {
-        console.log('error');
-      }
-    );
-  }
+    ngOnInit(): void {
+      this.loginService.getPerfilPessoa().subscribe(
+        (data: any) => {
+          this.pessoa = data;
+          this.agendaDoProfissional.forEach((agenda) => {
+            this.permitirCompartilhamentoMap[agenda.idAgenda] = false;
+          });
+        },
+        (error) => {
+          console.log('error');
+        }
+      );
+    }
+    
 
   fecharModal() {
     this.fecharModalEvent.emit();
@@ -42,7 +47,7 @@ export class AgendaModalComponent implements OnInit {
       valor: agenda.valorProposto,
       idAgenda: agenda.idAgenda,
       idPessoa: this.pessoa.idPessoa,
-      permiteCompartilharConhecimento: false, 
+      permiteCompartilharConhecimento: this.permitirCompartilhamentoMap[agenda.idAgenda], 
       ocorreu: false,
     };
 
@@ -58,4 +63,10 @@ export class AgendaModalComponent implements OnInit {
       }
     );
   }
+
+  atualizarPermissao(event: any, idAgenda: number) {
+    this.permitirCompartilhamentoMap[idAgenda] = event;
+  }
+  
+  
 }

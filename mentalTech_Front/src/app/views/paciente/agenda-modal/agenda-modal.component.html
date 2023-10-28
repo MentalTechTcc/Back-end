@@ -11,7 +11,7 @@
               </div>
               <div class="agenda-actions">
                 <label class="checkbox check-label">Permito compartilhar minha história em anônimo para fins acadêmicos</label>
-                <input class="checkbox" type="checkbox">
+                <input class="checkbox" type="checkbox" (ngModelChange)="atualizarPermissao($event, agenda.idAgenda)" [(ngModel)]="permitirCompartilhamentoMap[agenda.idAgenda]" >
                 <button class="agenda-button" (click)="agendarConsulta(agenda)">Agendar</button>
               </div>
             </div>

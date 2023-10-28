@@ -9,7 +9,7 @@
         <div class="card-body">
           <h5 class="card-title">{{ especialista.nome }}</h5>
           <p>{{ especialista.descricaoProfissional }}</p>
-          <button type="submit" class="agenda-button">Agenda</button>
+          <button (click)="exibirAgenda(especialista.cpf)" class="agenda-button">Agenda</button>
         </div>
       </div>
     </div>

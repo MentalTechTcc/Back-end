@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Agenda } from 'src/app/models/Agenda.models';
+import { Agenda, AgendaRequestId } from 'src/app/models/Agenda.models';
+import { Consulta } from 'src/app/models/Consulta.models';
+import { ConsultaService } from 'src/app/services/consulta.service';
+import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
 
 @Component({
   selector: 'app-agenda-modal',
@@ -7,12 +10,24 @@ import { Agenda } from 'src/app/models/Agenda.models';
   styleUrls: ['./agenda-modal.component.css']
 })
 export class AgendaModalComponent implements OnInit {
-  @Input() agendaDoProfissional: Agenda[]=[];
+  @Input() agendaDoProfissional: AgendaRequestId[]=[];
   @Output() fecharModalEvent = new EventEmitter<void>(); 
+  pessoa: any = {};
 
-  constructor() { }
+  constructor(
+    private consultaService: ConsultaService,
+    private loginService: LoginUsuarioService,) {}
 
   ngOnInit(): void {
+    this.loginService.getPerfilPessoa().subscribe(
+      (data: any) => {
+        this.pessoa = data;
+        console.log('aquiiii'); 
+      },
+      (error) => {
+        console.log('error');
+      }
+    );
   }
 
   fecharModal() {
@@ -20,5 +35,27 @@ export class AgendaModalComponent implements OnInit {
   }
   getModalidadeLabel(modalidade: number): string {
     return modalidade === 1 ? 'Online' : 'Presencial';
+  }
+
+  agendarConsulta(agenda: AgendaRequestId) {
+    const consulta: Consulta = {
+      valor: agenda.valorProposto,
+      idAgenda: agenda.idAgenda,
+      idPessoa: this.pessoa.idPessoa,
+      permiteCompartilharConhecimento: false, 
+      ocorreu: false,
+    };
+
+    this.consultaService.cadastrarConsulta(consulta).subscribe(
+      (response) => {
+
+        /*console.log(consulta);*/
+        console.log('Consulta agendada com sucesso', response);
+      },
+      (error) => {
+
+        console.error('Erro ao agendar consulta', error);
+      }
+    );
   }
 }

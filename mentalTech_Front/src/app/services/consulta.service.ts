@@ -15,7 +15,7 @@ export class ConsultaService {
   listar(): Observable<Consulta[]> {
     return this.http.get<Consulta[]>(`${environment.baseUrl}/consulta`);
   }
-  cadastrarDica(consulta: Consulta): Observable<any> {
+  cadastrarConsulta(consulta: Consulta): Observable<any> {
     return this.http.post(`${environment.baseUrl}/consulta`, consulta);
   }
 }

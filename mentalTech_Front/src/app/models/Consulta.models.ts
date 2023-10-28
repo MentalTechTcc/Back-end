@@ -2,7 +2,7 @@ export interface Consulta {
     valor:number;
     idAgenda: number;
     idPessoa:number;
-    permiteCompartilhamento:boolean;
+    permiteCompartilharConhecimento:boolean;
     ocorreu:boolean;
   }
   

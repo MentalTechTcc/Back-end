@@ -18,4 +18,7 @@ export class AgendaModalComponent implements OnInit {
   fecharModal() {
     this.fecharModalEvent.emit();
   }
+  getModalidadeLabel(modalidade: number): string {
+    return modalidade === 1 ? 'Online' : 'Presencial';
+  }
 }

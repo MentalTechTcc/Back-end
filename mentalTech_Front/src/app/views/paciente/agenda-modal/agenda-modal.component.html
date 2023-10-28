@@ -4,7 +4,16 @@
       <h2>Agenda do Profissional</h2>
       <ul>
         <li *ngFor="let agenda of agendaDoProfissional">
-          {{ agenda.data }} - {{ agenda.hora }}
+          <div class="agenda-item">
+            <div class="agenda-info">
+              <span>{{ agenda.data }} - {{ agenda.hora }} - {{ agenda.duracao }} minutos - {{ getModalidadeLabel(agenda.modalidadeAtendimento) }} - {{ agenda.valorProposto }} R$</span>
+            </div>
+            <div class="agenda-actions">
+              <label class="checkbox check-label">Permito compartilhar minha história em anônimo para fins acadêmicos</label>
+              <input class="checkbox" type="checkbox">
+              <button class="agenda-button">Agendar</button>
+            </div>
+          </div>
         </li>
       </ul>
     </div>

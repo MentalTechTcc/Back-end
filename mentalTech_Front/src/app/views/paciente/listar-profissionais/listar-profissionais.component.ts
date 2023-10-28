@@ -12,7 +12,8 @@ import { Agenda } from 'src/app/models/Agenda.models';
 export class ListarProfissionaisComponent implements OnInit {
 
   especialistas: Profissional[] = [];
-  agendaDoProfissional: Agenda[] = [];
+  agendaDoProfissional: Agenda[]=[];
+  isModalOpen = false;
 
   constructor(
     private service: CadastroProfissionalService,
@@ -34,11 +35,16 @@ export class ListarProfissionaisComponent implements OnInit {
     this.agendaService.listarPorCpf(cpfProfissional).subscribe(
       (data: Agenda[]) => {
         this.agendaDoProfissional = data;
-        console.log('Agenda do Profissional:', this.agendaDoProfissional);
+        this.isModalOpen = true;
+        /*console.log(this.agendaDoProfissional);*/
       },
       (error) => {
         console.error('Erro ao buscar a agenda do profissional:', error);
       }
     );
+  }
+
+  fecharModal() {
+    this.isModalOpen = false;
   }
 }

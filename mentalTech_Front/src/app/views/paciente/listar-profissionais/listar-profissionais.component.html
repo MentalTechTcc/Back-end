@@ -15,3 +15,11 @@
     </div>
   </div>
 </div>
+
+
+<app-agenda-modal
+  *ngIf="isModalOpen"
+  [agendaDoProfissional]="agendaDoProfissional"
+  (fecharModalEvent)="fecharModal()"
+></app-agenda-modal>
+

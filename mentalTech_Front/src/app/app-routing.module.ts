@@ -20,6 +20,7 @@ import { CadastroAgendaProfissionalComponent } from './views/profissional/cadast
 import { JitsiComponent } from './views/jitsi-integration/jitsi-integration.component';
 import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/avaliacao-paciente.component';
 import { MinhaAgendaProfissionalComponent } from './views/profissional/minha-agenda-profissional/minha-agenda-profissional.component';
+import {AgendaModalComponent}from './views/paciente/agenda-modal/agenda-modal.component';
 
 const routes: Routes = [
   {
@@ -110,6 +111,10 @@ const routes: Routes = [
   {
     path: 'minha-agenda',
     component: MinhaAgendaProfissionalComponent
+  },
+  {
+    path: 'agenda-modal',
+    component: AgendaModalComponent
   }
 ];
 

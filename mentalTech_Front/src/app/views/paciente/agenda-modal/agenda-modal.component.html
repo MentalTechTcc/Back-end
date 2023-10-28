@@ -1,0 +1,12 @@
+<div class="modal" *ngIf="agendaDoProfissional.length > 0">
+    <div class="modal-content">
+      <span class="close" (click)="fecharModal()">&times;</span>
+      <h2>Agenda do Profissional</h2>
+      <ul>
+        <li *ngFor="let agenda of agendaDoProfissional">
+          {{ agenda.data }} - {{ agenda.hora }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  

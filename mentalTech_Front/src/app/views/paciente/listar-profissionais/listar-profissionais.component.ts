@@ -36,7 +36,7 @@ export class ListarProfissionaisComponent implements OnInit {
       (data: Agenda[]) => {
         this.agendaDoProfissional = data;
         this.isModalOpen = true;
-        /*console.log(this.agendaDoProfissional);*/
+        console.log(this.isModalOpen);
       },
       (error) => {
         console.error('Erro ao buscar a agenda do profissional:', error);

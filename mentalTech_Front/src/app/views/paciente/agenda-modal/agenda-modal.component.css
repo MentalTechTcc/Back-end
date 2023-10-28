@@ -37,6 +37,7 @@
   
   h2 {
     text-align: center;
+    color: #008B8B;
   }
   
   ul {
@@ -70,13 +71,46 @@
     font-weight: normal;
   }
 
-  .checkbox{
-    padding-left: 1%;
+  .checkbox {
+    margin-left: 5px; 
     padding-right: 1%;
+    margin-right: 2%;
   }
 
 .check-label{
-    font-size: 15px;
+    font-size: 12px;
 }
 
+.agenda-block {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .agenda-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .agenda-button {
+    background-color: #9EC4BB;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .center-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Para centralizar verticalmente */
+    text-align: center; /* Para centralizar horizontalmente */
+  }
   

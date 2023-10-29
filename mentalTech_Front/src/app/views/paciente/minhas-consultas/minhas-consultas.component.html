@@ -1,2 +1,31 @@
 <app-cabecalho-paciente></app-cabecalho-paciente>
-<p>minhas-consultas works!</p>
+
+<div class="corpo">
+  <div class="metade-texto">
+    <h2 class="titulo">Minhas Consultas</h2>
+
+    <div class="agendas">
+      <div *ngIf="listaAgendas.length === 0" class="mensagem mensagem-sucesso">
+        Nenhuma agenda disponível.
+      </div>
+
+      <div class="agenda" *ngFor="let agenda of listaAgendas">
+        <img class="imagem" src="../assets/calendario.png" alt="Ícone de calendário">
+        <div class="info-agenda">
+            <p class="data"><i class="fas fa-calendar"></i> {{ agenda.data | date: 'dd/MM/yyyy' }}</p>
+            <p class="hora"><i class="fas fa-clock"></i> {{ agenda.hora }}</p>
+            <p class="modalidade"><i class="fas fa-users"></i> {{ agenda.modalidadeAtendimento === 1 ? 'Presencial' : 'Online' }}</p>
+            <p class="valor"><i class="fas fa-money-bill-wave"></i> {{ agenda.valorProposto | currency: 'BRL' }}</p>
+            <p class="ocupado">{{ getOcupadoLabel(agenda.ocupado) }}</p>
+            <div>
+              <button routerLink="/jitsi" class="botao-excluir">Sala de Reunião</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  

@@ -34,22 +34,48 @@ export class MinhasConsultasComponent implements OnInit {
     );
   }
 
-  carregarConsulta(idPessoa:number) {
-     this.consultaService.listarPorIdPessoa(idPessoa).subscribe(consultas => {
-       this.listaConsultas = consultas;
-       console.log(this.listaConsultas);
-      /* this.carregarAgenda(this.listaConsultas.idAgenda);*/
-     });
-    
-   }
-
-   carregarAgenda(idAgenda:number) {
-     this.agendaService.listarPorIdAgenda(idAgenda).subscribe(consultas => {
-       this.listaAgendas = consultas;
-       console.log(this.listaAgendas);
-     });
+  carregarConsulta(idPessoa: number) {
+    this.consultaService.listarPorIdPessoa(idPessoa).subscribe(consultas => {
      
-   }
+      if (Array.isArray(consultas)) {
+        this.listaConsultas = consultas;
+        console.log(this.listaConsultas);
+  
+        this.listaAgendas = [];
+  
+        for (const consulta of this.listaConsultas) {
+          this.carregarAgenda(consulta.idAgenda);
+        }
+      } else {
+        console.error('Dados de consulta não são um array:', consultas);
+      }
+    });
+  }
+  
+  carregarAgenda(idAgenda: number) {
+    this.agendaService.listarPorIdAgenda(idAgenda).subscribe(agendas => {
+     
+      if (Array.isArray(agendas)) {
+        
+        this.listaAgendas = this.listaAgendas.concat(agendas);
+        console.log(this.listaAgendas);
+      } else {
+       
+        this.listaAgendas = this.listaAgendas.concat([agendas]);
+        console.log(this.listaAgendas);
+      }
+    });
+  }
+  
+
+   getOcupadoLabel(ocupado: boolean): string {
+    return ocupado ? 'Ocupado' : 'Disponível';
+  }
+
+   getModalidadeLabel(modalidade: number): string {
+    return modalidade === 1 ? 'Presencial' : 'Online';
+  }
+
 
 }
 

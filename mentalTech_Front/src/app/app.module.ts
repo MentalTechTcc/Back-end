@@ -36,6 +36,7 @@ import { JitsiComponent } from './views/jitsi-integration/jitsi-integration.comp
 import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/avaliacao-paciente.component';
 import { MinhaAgendaProfissionalComponent } from './views/profissional/minha-agenda-profissional/minha-agenda-profissional.component';
 import {AgendaModalComponent}from './views/paciente/agenda-modal/agenda-modal.component';
+import { MinhasConsultasComponent } from './views/paciente/minhas-consultas/minhas-consultas.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import {AgendaModalComponent}from './views/paciente/agenda-modal/agenda-modal.co
     JitsiComponent,
     AvaliacaoPacienteComponent,
     MinhaAgendaProfissionalComponent,
-    AgendaModalComponent
+    AgendaModalComponent,
+    MinhasConsultasComponent
   ],
   imports: [
     BrowserModule,

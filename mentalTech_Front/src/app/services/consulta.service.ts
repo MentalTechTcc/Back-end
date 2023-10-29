@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
-import { Consulta } from '../models/Consulta.models';
+import { Consulta, ConsultaRequestId } from '../models/Consulta.models';
 
 @Injectable({
   providedIn: 'root'
@@ -18,4 +18,9 @@ export class ConsultaService {
   cadastrarConsulta(consulta: Consulta): Observable<any> {
     return this.http.post(`${environment.baseUrl}/consulta`, consulta);
   }
+
+  listarPorIdPessoa(idPessoa: number): Observable<ConsultaRequestId[]> {
+    return this.http.get<ConsultaRequestId[]>(`${environment.baseUrl}/consulta/idPessoa/${idPessoa}`);
+  }
+
 }

@@ -46,6 +46,10 @@ class ConsultaUseCase():
         """Sobrescreve os dados de consulta, assume que ele já exista"""
         self.__consultaRepository__.update(Consulta(**consultaSent.__dict__))
 
+    def find_by_idPessoa(self, pessoa_id : int) -> list[ConsultaResponse] | None:
+        return self.__consultaRepository__.find_by_idPessoa(pessoa_id=pessoa_id)
+
+
     def valida_consulta_create(self, consulta: Consulta) -> dict:
 
         fieldInfoDict = {}

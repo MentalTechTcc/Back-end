@@ -39,7 +39,7 @@ export class AgendaModalComponent implements OnInit {
     this.fecharModalEvent.emit();
   }
   getModalidadeLabel(modalidade: number): string {
-    return modalidade === 1 ? 'Online' : 'Presencial';
+    return modalidade === 1 ? 'Presencial' : 'Online';
   }
 
   agendarConsulta(agenda: AgendaRequestId) {

@@ -15,7 +15,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
   profissional: any = {};
   sucesso: boolean = false;
   erro: string = '';
-  
+
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +29,8 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
     duracao: [1, Validators.required],
     modalidadeAtendimento: [2, Validators.required],
     ocupado:false,
-    valorProposto:[50.0, Validators.required]
+    valorProposto:[50.0, Validators.required],
+    linkPagamento: ''
   });}
 
   ngOnInit(): void {
@@ -55,7 +56,8 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       duracao: [null, Validators.required],
       modalidadeAtendimento: [2, Validators.required],
       ocupado:false,
-      valorProposto:[50.0, Validators.required]
+      valorProposto:[50.0, Validators.required],
+      linkPagamento:''
     });
   }
 

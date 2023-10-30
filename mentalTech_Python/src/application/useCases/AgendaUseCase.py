@@ -35,7 +35,8 @@ class AgendaUseCase():
                 cpfProfissional=agenda_db.cpfProfissional,
                 modalidadeAtendimento=agenda_db.modalidadeAtendimento,
                 ocupado= agenda_db.ocupado,
-                valorProposto= agenda_db.valorProposto
+                valorProposto= agenda_db.valorProposto,
+                linkPagamento=agenda_db.linkPagamento
             )
             profissionais.append(agenda)
         return profissionais

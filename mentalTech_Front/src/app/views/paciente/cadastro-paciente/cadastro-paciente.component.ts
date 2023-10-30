@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Paciente } from 'src/app/models/Paciente.models';
 import { CadastroPacienteService } from 'src/app/services/cadastro-paciente.service';
@@ -18,7 +19,7 @@ export class CadastroPacienteComponent {
   dataNascimentoPaciente: Date = new Date();
   genero: number = 1;
 
-  constructor(private cadastroService: CadastroUsuarioService, private cadastroPacienteService: CadastroPacienteService) {
+  constructor(private router: Router, private cadastroService: CadastroUsuarioService, private cadastroPacienteService: CadastroPacienteService) {
   }
 
   ngOnInit() {
@@ -43,6 +44,8 @@ export class CadastroPacienteComponent {
       this.cadastroPacienteService.create(paciente).subscribe(
         response => {
           console.log('Cadastro bem-sucedido:', response);
+          this.router.navigate(['/login']);
+
         },
         error => {
           console.error('Erro no cadastro:', error);

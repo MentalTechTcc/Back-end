@@ -1,6 +1,10 @@
+import { Profissional } from 'src/app/models/Profissional.models';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Agenda, AgendaRequestId } from 'src/app/models/Agenda.models';
 import { Consulta } from 'src/app/models/Consulta.models';
+import { CadastroAgendaProfissionalService } from 'src/app/services/cadastro-agenda-profissional.service';
+import { CadastroProfissionalService } from 'src/app/services/cadastro-profissional.service';
 import { ConsultaService } from 'src/app/services/consulta.service';
 import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
 
@@ -11,14 +15,17 @@ import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
 })
 export class AgendaModalComponent implements OnInit {
   @Input() agendaDoProfissional: AgendaRequestId[]=[];
-  @Output() fecharModalEvent = new EventEmitter<void>(); 
+  @Output() fecharModalEvent = new EventEmitter<void>();
   pessoa: any = {};
   permitirCompartilhamentoMap: { [key: number]: boolean } = {};
 
 
   constructor(
     private consultaService: ConsultaService,
-    private loginService: LoginUsuarioService,) {}
+    private loginService: LoginUsuarioService,
+    private router: Router,
+    private agendaService: CadastroAgendaProfissionalService,
+    private profissionalService: CadastroProfissionalService) {}
 
     ngOnInit(): void {
       this.loginService.getPerfilPessoa().subscribe(
@@ -33,7 +40,7 @@ export class AgendaModalComponent implements OnInit {
         }
       );
     }
-    
+
 
   fecharModal() {
     this.fecharModalEvent.emit();
@@ -47,12 +54,24 @@ export class AgendaModalComponent implements OnInit {
       valor: agenda.valorProposto,
       idAgenda: agenda.idAgenda,
       idPessoa: this.pessoa.idPessoa,
-      permiteCompartilharConhecimento: this.permitirCompartilhamentoMap[agenda.idAgenda], 
+      permiteCompartilharConhecimento: this.permitirCompartilhamentoMap[agenda.idAgenda],
       ocorreu: false,
     };
 
+    this.agendaService.setLinkPagamento(agenda.linkPagamento);
+
     this.consultaService.cadastrarConsulta(consulta).subscribe(
       (response) => {
+        this.profissionalService.listarPorCpf(agenda.cpfProfissional).subscribe(
+          (data: Profissional) => {
+            this.agendaService.setPix(data.pix);
+
+          },
+          (error) => {
+            console.error('Erro ao buscar especialistas:', error);
+          }
+        );
+        this.router.navigate(['/pagamento']);
 
         /*console.log(consulta);*/
         console.log('Consulta agendada com sucesso', response);
@@ -67,6 +86,6 @@ export class AgendaModalComponent implements OnInit {
   atualizarPermissao(event: any, idAgenda: number) {
     this.permitirCompartilhamentoMap[idAgenda] = event;
   }
-  
-  
+
+
 }

@@ -16,6 +16,7 @@
             <p class="hora"><i class="fas fa-clock"></i> {{ agenda.hora }}</p>
             <p class="modalidade"><i class="fas fa-users"></i> {{ agenda.modalidadeAtendimento === 1 ? 'Presencial' : 'Online' }}</p>
             <p class="valor"><i class="fas fa-money-bill-wave"></i> {{ agenda.valorProposto | currency: 'BRL' }}</p>
+            <p class="linkPagamento">{{ agenda.linkPagamento }}</p>
             <p class="ocupado">{{ getOcupadoLabel(agenda.ocupado) }}</p>
             <div>
               <button routerLink="/jitsi" class="botao-excluir">Sala de Reunião</button>

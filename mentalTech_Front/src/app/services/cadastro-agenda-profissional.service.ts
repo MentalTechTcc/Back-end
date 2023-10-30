@@ -10,7 +10,28 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CadastroAgendaProfissionalService {
 
+  private linkPagamento: string = '';
+  private pix: string = '';
+
+
   constructor(private http: HttpClient) { }
+
+
+  setPix(pix: string){
+    this.pix = pix;
+  }
+
+  getPix(): string{
+    return this.pix;
+  }
+
+  setLinkPagamento(linkPagamento: string){
+    this.linkPagamento = linkPagamento;
+  }
+
+  getLinkPagamento(): string{
+    return this.linkPagamento;
+  }
 
   cadastrarAgenda(agenda: Agenda): Observable<any> {
     return this.http.post(`${environment.baseUrl}/agenda`, agenda);

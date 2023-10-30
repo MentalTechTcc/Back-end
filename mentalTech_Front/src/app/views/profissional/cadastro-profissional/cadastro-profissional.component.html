@@ -55,8 +55,14 @@
         <label for="cpf">CPF:</label>
         <input type="text" id="cpf" name="cpf" [(ngModel)]="cpf" placeholder="Informe o cpf" required>
       </div>
-    </form>
 
-    <button class="cadastrar-button" (click)="cadastrar()">Proximo</button>
+      <div class="form-group">
+        <label for="pix">Informe a chave pix:</label>
+        <input type="text" id="pix" name="pix" [(ngModel)]="pix" placeholder="Informe a chave pix" required>
+      </div>
+    </form>
+    <a routerLink="/cadastro-profissional-proximo">
+      <button class="cadastrar-button" (click)="cadastrar()">Proximo</button>
+    </a>
   </div>
 </div>

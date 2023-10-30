@@ -10,6 +10,19 @@ import { Profissional } from '../models/Profissional.models';
 })
 export class CadastroProfissionalService {
 
+  private profissional: Profissional = {
+    nome: '',
+    senha: '',
+    dataNascimento: new Date,
+    telefone: '',
+    email: '',
+    administrador: false,
+    sexo: 1,
+    codigoProfissional: '',
+    descricaoProfissional: '',
+    cpf: '',
+    pix: '',
+  };
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
   create(paciente: Profissional): Observable<Profissional> {
@@ -17,5 +30,17 @@ export class CadastroProfissionalService {
   }
   listar(): Observable<Profissional[]> {
     return this.http.get<Profissional[]>(`${environment.baseUrl}/profissional`);
+  }
+
+  listarPorCpf(cpf: any): Observable<Profissional> {
+    return this.http.get<Profissional>(`${environment.baseUrl}/profissional/cpf/${cpf}`);
+  }
+
+  setProfissional(profissional: Profissional){
+   this.profissional = profissional;
+  }
+
+  getProfissional():Profissional{
+    return this.profissional;
   }
 }

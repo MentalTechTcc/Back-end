@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Endereco, EnderecoResponse, ProfissionalTemEndereco } from 'src/app/models/Endereco.models';
 import { Especialidade, ProfissionalTrataEspecialidade } from 'src/app/models/Especialidade.models';
 import { ProfissionalTrataTematica, Tematica, TematicaResponse } from 'src/app/models/Tematica.models';
+import { CadastroProfissionalService } from 'src/app/services/cadastro-profissional.service';
 import { EnderecoServiceService } from 'src/app/services/endereco-service.service';
 import { EspecialidadeServiceService } from 'src/app/services/especialidade-service.service';
 import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
@@ -34,7 +36,9 @@ export class CadastroEspEndTemComponent {
     private serviceEspecialidade: EspecialidadeServiceService,
     private serviceTematica: TematicaServiceService,
     private serviceEndereco: EnderecoServiceService,
-    private serviceLogin: LoginUsuarioService
+    private serviceLogin: LoginUsuarioService,
+    private cadastroProfissionalService: CadastroProfissionalService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -213,18 +217,28 @@ export class CadastroEspEndTemComponent {
   }
 
   enviar() {
-    const cpf = this.serviceLogin.getCpfProfissional();
+    const profissional = this.cadastroProfissionalService.getProfissional();
 
-    if (cpf != null) {
-      this.adicionaEspecialidade(cpf);
+    this.cadastroProfissionalService.create(profissional).subscribe(
+      response => {
+        console.log('Cadastro bem-sucedido:', response);
 
-      this.adicionaTematicasSelecionadas(cpf);
+        this.adicionaEspecialidade(profissional.cpf);
 
-      this.adicionaTematicasAdicionadas(cpf);
+        this.adicionaTematicasSelecionadas(profissional.cpf);
 
-      this.adicionaEnderecoBanco(cpf);
+        this.adicionaTematicasAdicionadas(profissional.cpf);
 
-    }
+        this.adicionaEnderecoBanco(profissional.cpf);
+
+        this.router.navigate(['/login']);
+
+      },
+      error => {
+        console.error('Erro no cadastro:', error);
+      }
+      );
+
 
   }
 }

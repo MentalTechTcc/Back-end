@@ -24,6 +24,7 @@ class Profissional(Base):
     codigoProfissional: str = Column(String(100), nullable=False)
     descricaoProfissional: str = Column(String(500), nullable=False)
     dataCadastro = Column(DateTime, server_default=func.now()) 
+    pix: str = Column(String(500), nullable=False)
     imagem=Optional[bytes]
     enderecos = relationship(
         "Endereco",
@@ -51,6 +52,7 @@ class ProfissionalBase(PessoaBase):
     codigoProfissional: str
     descricaoProfissional: str
     cpf: str 
+    pix: str
     
 
 class ProfissionalRequest(ProfissionalBase):

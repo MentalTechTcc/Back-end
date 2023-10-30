@@ -23,6 +23,8 @@ class Agenda(Base):
     modalidadeAtendimento: Enum = Column(EnumDB(Modalidade), nullable=False)
     ocupado: bool = Column(Boolean, nullable=True, default=False)
     valorProposto: float = Column(Float, nullable=False)
+    linkPagamento: str = Column(String(500), nullable=True)
+
 
 
 class AgendaBase(BaseModel):
@@ -33,6 +35,7 @@ class AgendaBase(BaseModel):
     modalidadeAtendimento: Modalidade 
     ocupado:bool
     valorProposto: float 
+    linkPagamento: str
 
 class AgendaRequest(AgendaBase):
     '''...'''

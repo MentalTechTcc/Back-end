@@ -22,6 +22,7 @@ import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/
 import { MinhaAgendaProfissionalComponent } from './views/profissional/minha-agenda-profissional/minha-agenda-profissional.component';
 import {AgendaModalComponent}from './views/paciente/agenda-modal/agenda-modal.component';
 import {MinhasConsultasComponent} from './views/paciente/minhas-consultas/minhas-consultas.component'
+import { PagamentoComponent } from './views/paciente/pagamento/pagamento.component';
 
 const routes: Routes = [
   {
@@ -120,6 +121,10 @@ const routes: Routes = [
   {
     path: 'minhas-consultas',
     component: MinhasConsultasComponent
+  },
+  {
+    path: 'pagamento',
+    component: PagamentoComponent
   }
 ];
 

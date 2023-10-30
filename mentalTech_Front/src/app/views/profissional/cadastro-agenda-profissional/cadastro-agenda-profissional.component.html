@@ -21,6 +21,10 @@
           <input type="number" id="valorProposto" formControlName="valorProposto" class="input-campo">
         </div>
         <div class="campo">
+          <label for="linkPagamento">Link para pagamento:</label>
+          <input type="text" id="linkPagamento" formControlName="linkPagamento" class="input-campo">
+        </div>
+        <div class="campo">
           <label for="modalidade">Modalidade de Atendimento:</label>
           <select id="modalidade" formControlName="modalidadeAtendimento" class="input-campo">
             <option type="number" [value]=1>Presencial</option>
@@ -33,7 +37,7 @@
     <div class="mensagem mensagem-sucesso" *ngIf="sucesso">
       Agenda enviada com sucesso!
     </div>
-    
+
     <div class="mensagem mensagem-erro" *ngIf="erro">
       {{ erro }}
     </div>

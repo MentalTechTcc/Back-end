@@ -8,7 +8,8 @@ export interface Profissional{
   sexo: number;
   codigoProfissional: string;
   descricaoProfissional: string;
-  cpf: string
+  cpf: string;
+  pix: string;
 }
 
 export interface ProfissionalRequestId{
@@ -22,5 +23,6 @@ export interface ProfissionalRequestId{
   sexo: number;
   codigoProfissional: string;
   descricaoProfissional: string;
-  cpf: string
+  cpf: string;
+  linkPagamento: string;
 }

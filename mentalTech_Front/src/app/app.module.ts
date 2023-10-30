@@ -37,6 +37,7 @@ import { AvaliacaoPacienteComponent } from './views/paciente/avaliacao-paciente/
 import { MinhaAgendaProfissionalComponent } from './views/profissional/minha-agenda-profissional/minha-agenda-profissional.component';
 import {AgendaModalComponent}from './views/paciente/agenda-modal/agenda-modal.component';
 import { MinhasConsultasComponent } from './views/paciente/minhas-consultas/minhas-consultas.component';
+import { PagamentoComponent } from './views/paciente/pagamento/pagamento.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { MinhasConsultasComponent } from './views/paciente/minhas-consultas/minh
     AvaliacaoPacienteComponent,
     MinhaAgendaProfissionalComponent,
     AgendaModalComponent,
-    MinhasConsultasComponent
+    MinhasConsultasComponent,
+    PagamentoComponent
   ],
   imports: [
     BrowserModule,

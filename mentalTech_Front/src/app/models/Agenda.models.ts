@@ -8,8 +8,9 @@ export interface Agenda {
     cpfProfissional:String;
     ocupado:boolean;
     valorProposto:number;
+    linkPagamento: string;
   }
-  
+
 
 export interface AgendaRequestId {
   idAgenda:number;
@@ -20,5 +21,6 @@ export interface AgendaRequestId {
   cpfProfissional:String;
   ocupado:boolean;
   valorProposto:number;
+  linkPagamento: string;
+
 }
-  

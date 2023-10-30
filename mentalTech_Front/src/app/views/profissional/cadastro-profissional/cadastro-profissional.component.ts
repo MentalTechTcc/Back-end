@@ -23,6 +23,7 @@ export class CadastroProfissionalComponent implements OnInit {
   codigoProfissional: string = '';
   descricaoProfissional: string = '';
   cpf: string = '';
+  pix: string = '';
 
   constructor(private router: Router,private cadastroService: CadastroUsuarioService,
      private cadastroProfissionalService: CadastroProfissionalService,
@@ -48,22 +49,13 @@ export class CadastroProfissionalComponent implements OnInit {
         sexo: this.genero,
         codigoProfissional: this.codigoProfissional,
         descricaoProfissional: this.descricaoProfissional,
-        cpf: this.cpf
+        cpf: this.cpf,
+        pix: this.pix
+
       };
 
-      console.log(profissional);
+      this.cadastroProfissionalService.setProfissional(profissional);
 
-      this.cadastroProfissionalService.create(profissional).subscribe(
-        response => {
-          this.loginService.setCpfProfissional(profissional.cpf);
-          console.log('Cadastro bem-sucedido:', response);
-          this.router.navigate(['/cadastro-profissional-proximo']);
-
-        },
-        error => {
-          console.error('Erro no cadastro:', error);
-        }
-      );
     }
   }
 

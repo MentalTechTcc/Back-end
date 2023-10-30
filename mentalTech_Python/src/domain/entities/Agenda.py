@@ -6,6 +6,7 @@ from enum import Enum
 from database import Base
 from pydantic import BaseModel
 from datetime import date, time
+from typing import Optional
 
 class Modalidade(Enum):
     PRESENCIAL = 1
@@ -35,7 +36,7 @@ class AgendaBase(BaseModel):
     modalidadeAtendimento: Modalidade 
     ocupado:bool
     valorProposto: float 
-    linkPagamento: str
+    linkPagamento: Optional[str]
 
 class AgendaRequest(AgendaBase):
     '''...'''

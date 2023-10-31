@@ -18,6 +18,9 @@ class ConsultaRepositoryBaseModel(Protocol):
     def delete_by_id(self, consulta_id: int)-> NoReturn:
         '''Função para apagar um Consulta do banco pelo id'''
         ...
+    def delete_by_idAgenda(self, agenda_id: int)-> NoReturn:
+        '''Função para apagar um Consulta do banco pelo id'''
+        ...
 
     def find_all(self, database: Session) -> list[Consulta]:
         '''Função para fazer uma query de todas as consultas do DB'''

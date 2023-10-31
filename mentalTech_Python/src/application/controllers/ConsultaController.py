@@ -5,7 +5,7 @@ from domain.entities.Consulta import (ConsultaResponse,
                                    ConsultaRequest,
                                    Consulta,
                                    ConsultaRequestId)
-from application.controllers import consultaUseCase
+from application.controllers import consultaUseCase, agendaUseCase
 
 Base.metadata.create_all(bind=engine)
 
@@ -46,6 +46,12 @@ def delete(id: int):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Consulta não encontrado")
 
     consultaUseCase.delete_by_id(consulta_id=consulta.idConsulta)
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+@router_consulta.delete("/idAgenda/{idAgenda}", status_code=status.HTTP_204_NO_CONTENT)
+def delete(id: int):
+    consultaUseCase.delete_by_idAgenda(agenda_id=int(id))
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 

@@ -76,6 +76,23 @@ export class MinhasConsultasComponent implements OnInit {
     return modalidade === 1 ? 'Presencial' : 'Online';
   }
 
+  deletarConsulta(idAgenda: number): void { // deleta consulta pela agenda
+    if (confirm('Tem certeza de que deseja desistir dessa consulta?')) {
+      this.agendaService.deletar(idAgenda).subscribe(
+        () => {
+          this.carregarConsulta(this.pessoa.idPessoa);
+        },
+        (error) => {
+          console.error('Erro ao excluir a agenda:', error);
+        }
+      );
+    }
+  }
+  getConsultaIdByAgenda(agenda: any): number | undefined {
+    const consulta = this.listaConsultas.find(c => c.idAgenda === agenda.id);
+    return consulta ? consulta.idConsulta : undefined;
+  }
+
 
 }
 

@@ -21,6 +21,9 @@ class ConsultaUseCase():
 
     def delete_by_id(self, consulta_id: int) -> None:
         return self.__consultaRepository__.delete_by_id(consulta_id=consulta_id)
+    
+    def delete_by_idAgenda(self, agenda_id: int) -> None:
+        return self.__consultaRepository__.delete_by_idAgenda(agenda_id=agenda_id)
 
 
     def find_all(self) -> list[ConsultaResponse]:

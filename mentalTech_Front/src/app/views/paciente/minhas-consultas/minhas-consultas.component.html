@@ -19,7 +19,7 @@
             <p class="ocupado">{{ getOcupadoLabel(agenda.ocupado) }}</p>
             <div>
               <button routerLink="/jitsi" class="botao-excluir">Sala de Reunião</button>
-          
+              <i class="fas fa-trash-alt botao-excluir" (click)="deletarConsulta(agenda.idAgenda)"></i>
           </div>
         </div>
       </div>

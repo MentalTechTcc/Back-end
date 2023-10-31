@@ -34,10 +34,14 @@ def create(pessoa_request: PessoaRequest):
 
 @router_pessoa.put("/{idPessoa}", status_code=status.HTTP_201_CREATED)
 def update(pessoaSent: PessoaRequestId):
+
     if pessoaUseCase.find_by_id(pessoaSent.idPessoa) is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND,
                             detail="Pessoa não existente")
-    pessoaUseCase.update(pessoaSent)
+    
+    pessoa_entitie = PessoaRequestId(**pessoaSent.__dict__)
+    pessoa_entitie.senha = get_password_hash(pessoa_entitie.senha) 
+    pessoaUseCase.update(pessoa_entitie)
 
 
 @router_pessoa.delete("/{idPessoa}", status_code=status.HTTP_204_NO_CONTENT)

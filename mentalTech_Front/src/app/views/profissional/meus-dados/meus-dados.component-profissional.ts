@@ -17,7 +17,8 @@ export class MeusDadosProfissionalComponent implements OnInit {
   Profissional: any;
   ProfissionalRequestId: any;
   idPessoa:number=0;
-  
+  senha: string='';
+
   constructor(
     private loginService: LoginUsuarioService,
     private atualizacaoService: AtualizacaoDadosProfisionalService
@@ -34,6 +35,7 @@ export class MeusDadosProfissionalComponent implements OnInit {
         this.dataNascimentoProfissional = this.Profissional.dataNascimento;
         this.idPessoa= this.Profissional.idPessoa
 
+        this.senha = this.loginService.getSenha();
 
         this.ProfissionalRequestId = {
           cpf: this.Profissional.cpf,

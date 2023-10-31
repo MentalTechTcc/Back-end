@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Relatorio } from 'src/app/models/Relatorio.models';
+import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
+import {RelatorioService} from 'src/app/services/relatorio.service'
+
 
 @Component({
   selector: 'app-educacional',
@@ -8,14 +11,36 @@ import { Relatorio } from 'src/app/models/Relatorio.models';
 })
 export class EducacionalComponent implements OnInit {
 
-  relatorios: Relatorio[] = [
-    {descricao: 'testando123', idRelatorio: 123, idConsulta: 134, dataCadastro: new Date},
-    {descricao: 'testando12345', idRelatorio: 124, idConsulta: 135, dataCadastro: new Date},
-  ];
+  relatorios: Relatorio[] = [];
+  profissional:any=[];
 
-  constructor() { }
+  constructor(
+    private serviceRelatorio: RelatorioService,
+    private serviceProfissional: LoginUsuarioService,
+    ) { }
 
   ngOnInit(): void {
+    this.serviceProfissional.getPerfilProfissional().subscribe(
+      (data: any) => {
+        this.profissional = data;
+        console.log(data)
+        this.serviceRelatorio.listarPorCpfProfissional(this.profissional.cpf).subscribe(
+          (data: Relatorio[]) => {
+            this.relatorios = data;
+            console.log(data)
+          },
+          error => {
+            console.error('Erro ao buscar dicas:', error);
+          }
+        );
+      },
+      (error) => {
+        console.log('error');
+      }
+    );
+
+    
+
   }
 
 }

@@ -39,6 +39,7 @@ import {AgendaModalComponent}from './views/paciente/agenda-modal/agenda-modal.co
 import { MinhasConsultasComponent } from './views/paciente/minhas-consultas/minhas-consultas.component';
 import { PagamentoComponent } from './views/paciente/pagamento/pagamento.component';
 import { EducacionalComponent } from './views/profissional/educacional/educacional.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -72,7 +73,7 @@ import { EducacionalComponent } from './views/profissional/educacional/educacion
     AgendaModalComponent,
     MinhasConsultasComponent,
     PagamentoComponent,
-    EducacionalComponent
+    EducacionalComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +81,8 @@ import { EducacionalComponent } from './views/profissional/educacional/educacion
     FormsModule,
     MatSnackBarModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [CadastroUsuarioService, CadastroPacienteService, LoginUsuarioService],
   bootstrap: [AppComponent]

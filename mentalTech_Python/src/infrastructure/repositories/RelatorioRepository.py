@@ -54,14 +54,14 @@ class RelatorioRepository:
         session.close()
         return session.query(Relatorio).filter(Relatorio.idRelatorio == relatorio_id).first()
 
-    def find_by_cpfProfissional(self, cpfProfissional:str) ->  list[Relatorio]|None:
+    def find_by_cpfProfissional(self, cpfProfissional:str) ->  list[Relatorio]|None: #apenas os que permitiram compartilhar conhecimento
         session = self.database()
         session.close()
         return session.query(Relatorio) \
             .join(Consulta, Consulta.idConsulta == Relatorio.idConsulta) \
             .join(Agenda, Agenda.idAgenda == Consulta.idAgenda) \
             .join(Profissional, Profissional.cpf == Agenda.cpfProfissional) \
-            .filter(Profissional.cpf == cpfProfissional) \
+            .filter(Profissional.cpf == cpfProfissional, Consulta.permiteCompartilharConhecimento==True) \
             .all()
     
     

@@ -1,5 +1,8 @@
 from sqlalchemy.orm import Session
 from domain.entities.Relatorio import Relatorio
+from domain.entities.Agenda import Agenda
+from domain.entities.Consulta import Consulta
+from domain.entities.Profissional import Profissional
 from typing import Callable
 from typing import NoReturn
 from src.domain.repositories import RelatorioRepositoryBaseModel
@@ -50,6 +53,16 @@ class RelatorioRepository:
         session = self.database()
         session.close()
         return session.query(Relatorio).filter(Relatorio.idRelatorio == relatorio_id).first()
+
+    def find_by_cpfProfissional(self, cpfProfissional:str) ->  list[Relatorio]|None:
+        session = self.database()
+        session.close()
+        return session.query(Relatorio) \
+            .join(Consulta, Consulta.idConsulta == Relatorio.idConsulta) \
+            .join(Agenda, Agenda.idAgenda == Consulta.idAgenda) \
+            .join(Profissional, Profissional.cpf == Agenda.cpfProfissional) \
+            .filter(Profissional.cpf == cpfProfissional) \
+            .all()
     
     
     

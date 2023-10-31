@@ -38,6 +38,8 @@ class RelatorioUseCase():
     def find_by_id(self, relatorio_id : int) -> RelatorioBase | None:
         return self.__relatorioRepository__.find_by_id(relatorio_id=relatorio_id)
     
+    def find_by_cpfProfissional(self, cpfProfissional : str) -> list[RelatorioResponse] | None:
+        return self.__relatorioRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
 
     def update(self, relatorioSent: RelatorioRequestId) -> NoReturn:
         """Sobrescreve os dados de relatorio, assume que ele já exista"""

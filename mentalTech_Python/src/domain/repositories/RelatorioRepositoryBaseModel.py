@@ -26,4 +26,7 @@ class RelatorioRepositoryBaseModel(Protocol):
     def find_by_id(self, relatorio_id: int) -> Relatorio | None:
         """Faz uma busca pelo id e retorna os dados do Relatorio caso existe"""
         ...
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Relatorio] | None:
+        """Faz uma busca pelo cpfProfissional e retorna os dados do Relatorio caso existe"""
+        ...
    

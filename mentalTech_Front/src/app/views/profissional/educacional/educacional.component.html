@@ -1,14 +1,25 @@
 <app-cabecalho-profissional></app-cabecalho-profissional>
-<div class="profissionais">
-  <div class="card mb-3" style="max-width: 99%;" *ngFor="let relatorio of relatorios">
-    <div class="row no-gutters">
-      <div class="col-md-8">
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Relatos para Fins Educacionais</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6" *ngFor="let relatorio of relatorios">
+      <div class="card">
         <div class="card-body">
-          <p>{{ relatorio.descricao }}</p>
-          <button class="agenda-button">Detalhes</button>
+          <p class="card-text" *ngIf="relatorio.descricao.length > 70">
+            {{ relatorio.descricao | slice:0:70 }}...
+          </p>
+          <p class="card-text" *ngIf="relatorio.descricao.length <= 50">
+            {{ relatorio.descricao }}
+          </p>
+          <button class="btn btn-primary">Detalhes</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-

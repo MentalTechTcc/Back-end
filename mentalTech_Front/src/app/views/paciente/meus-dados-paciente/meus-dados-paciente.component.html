@@ -5,27 +5,26 @@
     <form>
       <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" class="form-control" id="nome" [(ngModel)]="nome" name="nome" placeholder="{{nome}}">
+        <input type="text" class="form-control" id="nome" [(ngModel)]="nome" name="nome" placeholder="{{nome}}" (ngModelChange)="onCampoAlterado('nome')">
       </div>
       <div class="form-group">
         <label for="tel">Telefone:</label>
-        <input type="text" class="form-control" id="tel" [(ngModel)]="telefone" name="telefone" placeholder="{{telefone}}">
+        <input type="text" class="form-control" id="tel" [(ngModel)]="telefone" name="telefone" placeholder="{{telefone}}" (ngModelChange)="onCampoAlterado('telefone')">
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="emailPaciente" name="emailPaciente" placeholder="{{emailPaciente}}">
+        <input type="email" class="form-control" id="email" [(ngModel)]="emailPaciente" name="emailPaciente" placeholder="{{emailPaciente}}" (ngModelChange)="onCampoAlterado('emailPaciente')">
       </div>
       <div class="form-group">
         <label for="password">Senha:</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="senhaPaciente" name="senha">
+        <input type="password" class="form-control" id="password" [(ngModel)]="senhaPaciente" name="senha" (ngModelChange)="onCampoAlterado('senhaPaciente')">
       </div>
       <div class="form-group">
         <label for="data">Data de Nascimento:</label>
-        <input type="date" class="form-control" id="data" [(ngModel)]="dataNascimentoPaciente" name="dataNascimentoPaciente" placeholder="{{dataNascimentoPaciente}}">
+        <input type="date" class="form-control" id="data" [(ngModel)]="dataNascimentoPaciente" name="dataNascimentoPaciente" placeholder="{{dataNascimentoPaciente}}" (ngModelChange)="onCampoAlterado('dataNascimentoPaciente')">
       </div>
 
-      <button type="submit" class="entrar-button">Salvar</button>
+      <button type="submit" (click)="alterar()" class="entrar-button">Salvar</button>
     </form>
   </div>
 </div>
-

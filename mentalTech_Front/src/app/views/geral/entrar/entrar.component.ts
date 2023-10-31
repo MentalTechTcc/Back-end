@@ -28,12 +28,10 @@ export class EntrarComponent implements OnInit {
     this.loginService.setPerfil(this.opcao);
     this.loginService.setFezLogin(true);
     if (this.opcao === 'paciente') {
-      console.log('senha: ' + this.senha);
-      console.log('email: ' + this.email);
       // Navegar para a rota de paciente
       this.loginService.loginPaciente(this.email, this.senha).subscribe(
         (response) => {
-
+          this.loginService.setSenha(this.senha);
           this.router.navigate(['/home-paciente']);
         },
         (error) => {
@@ -46,6 +44,7 @@ export class EntrarComponent implements OnInit {
       // Navegar para a rota de profissional
       this.loginService.loginProfissional(this.cpf, this.senha).subscribe(
         (response) => {
+          this.loginService.setSenha(this.senha);
 
           this.router.navigate(['/home-profissional']);
         },

@@ -17,6 +17,15 @@ export class LoginUsuarioService {
   private accessToken_stored: any;
   private refreshToken_stored: any;
   private cpfProfissional: any;
+  private senha: any;
+
+  setSenha(senha: string){
+    this.senha = senha;
+
+  }
+  getSenha():string{
+    return this.senha;
+  }
 
   setCpfProfissional(id: string){
     this.cpfProfissional = id;

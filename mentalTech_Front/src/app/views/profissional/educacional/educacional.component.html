@@ -1,1 +1,15 @@
-<p>educacional works!</p>
+<app-cabecalho-profissional></app-cabecalho-profissional>
+<div class="profissionais">
+  <div class="card mb-3" style="max-width: 99%;" *ngFor="let relatorio of relatorios">
+    <div class="row no-gutters">
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ relatorio.idRelatorio }}</h5>
+          <p>{{ relatorio.descricao }}</p>
+          <button class="agenda-button">Detalhes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

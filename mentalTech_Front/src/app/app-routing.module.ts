@@ -23,6 +23,7 @@ import { MinhaAgendaProfissionalComponent } from './views/profissional/minha-age
 import {AgendaModalComponent}from './views/paciente/agenda-modal/agenda-modal.component';
 import {MinhasConsultasComponent} from './views/paciente/minhas-consultas/minhas-consultas.component'
 import { PagamentoComponent } from './views/paciente/pagamento/pagamento.component';
+import { EducacionalComponent } from './views/profissional/educacional/educacional.component';
 
 const routes: Routes = [
   {
@@ -125,6 +126,10 @@ const routes: Routes = [
   {
     path: 'pagamento',
     component: PagamentoComponent
+  },
+  {
+    path: 'educacional',
+    component: EducacionalComponent
   }
 ];
 

@@ -13,6 +13,9 @@ export class EducacionalComponent implements OnInit {
 
   relatorios: Relatorio[] = [];
   profissional:any=[];
+  isModalOpen = false;
+  relatorioModal: Relatorio | null = null;
+
 
   constructor(
     private serviceRelatorio: RelatorioService,
@@ -39,8 +42,17 @@ export class EducacionalComponent implements OnInit {
       }
     );
 
-    
-
   }
+
+  abrirModal(relatorio: Relatorio) {
+    this.relatorioModal = relatorio;
+    this.isModalOpen = true;
+  }
+  
+
+  fecharModal() {
+    this.isModalOpen = false;
+  }
+
 
 }

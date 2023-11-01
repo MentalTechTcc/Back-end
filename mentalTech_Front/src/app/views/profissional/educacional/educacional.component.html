@@ -12,14 +12,19 @@
       <div class="card">
         <div class="card-body">
           <p class="card-text" *ngIf="relatorio.descricao.length > 70">
-            {{ relatorio.descricao | slice:0:70 }}...
+            {{ relatorio.descricao | slice: 0:70 }}...
           </p>
-          <p class="card-text" *ngIf="relatorio.descricao.length <= 50">
+          <p class="card-text" *ngIf="relatorio.descricao.length <= 70">
             {{ relatorio.descricao }}
           </p>
-          <button class="btn btn-primary">Detalhes</button>
+          <button class="btn btn-primary" (click)="abrirModal(relatorio)">Detalhes</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+<app-educacional-modal
+  *ngIf="isModalOpen"
+  [relatorio]="relatorioModal"
+  (fecharModalEvent)="fecharModal()"
+></app-educacional-modal>

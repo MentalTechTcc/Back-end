@@ -1,8 +1,11 @@
 from sqlalchemy.orm import Session
 from domain.entities.Consulta import Consulta
+from domain.entities.Agenda import Agenda
 from typing import Callable
 from typing import NoReturn
 from src.domain.repositories import ConsultaRepositoryBaseModel
+from datetime import datetime
+from fastapi import HTTPException
 
 class ConsultaRepository:
 
@@ -73,6 +76,28 @@ class ConsultaRepository:
         session.close()
         return session.query(Consulta).filter(Consulta.idAgenda == pessoa_id).all()
     
+
+    def delete_by_idAgenda(self, agenda_id: int) -> NoReturn:
+        session = self.database()
+        consulta_session = session.query(Consulta).filter(Consulta.idAgenda == agenda_id).first()
+
+        if consulta_session is not None:
+            agenda = session.query(Agenda).filter(Agenda.idAgenda == agenda_id).first()
+            if agenda is None:
+                session.close()
+                raise HTTPException(status_code=404, detail="Agenda não encontrada")
+
+            current_date = datetime.now().date()
+
+            if agenda.data > current_date:
+                session.delete(consulta_session)
+                session.commit()
+            else:
+                session.close()
+                raise HTTPException(status_code=400, detail="Não é possível excluir consulta em uma agenda passada")
+
+        session.close()
+
     
     
 

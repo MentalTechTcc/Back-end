@@ -21,6 +21,10 @@ export class RelatorioService {
     return this.http.get<RelatorioRequestId[]>(`${environment.baseUrl}/relatorio/cpfProfissional/{CpfProfissional}?cpf=${cpfProfissional}`);
   }
 
+  listarPorCpfProfissionalCompleto(cpfProfissional:string): Observable<RelatorioRequestId[]> {
+    return this.http.get<RelatorioRequestId[]>(`${environment.baseUrl}/relatorio/cpfProfissional/completo/{CpfProfissional}?cpf=${cpfProfissional}`);
+  }
+
  
 }
 

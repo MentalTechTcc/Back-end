@@ -1,0 +1,49 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+.card {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  h2 {
+    font-size: 34px;
+    color: #008B8B;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    color: black;
+    height: 100px;
+    font-family: "Sanchez";
+    overflow: hidden;
+    padding: 10px;
+    font-size: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #008B8B;
+    border-color: #008B8B;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #006666;
+    border-color: #006666;
+  }
+  
+  .container {
+    padding-top: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  

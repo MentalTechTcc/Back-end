@@ -41,6 +41,7 @@ import { PagamentoComponent } from './views/paciente/pagamento/pagamento.compone
 import { EducacionalComponent } from './views/profissional/educacional/educacional.component';
 import { CommonModule } from '@angular/common';
 import { EducacionalModalComponent } from './views/profissional/educacional-modal/educacional-modal.component';
+import { MeusPacientesComponent } from './views/profissional/meus-pacientes/meus-pacientes.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { EducacionalModalComponent } from './views/profissional/educacional-moda
     PagamentoComponent,
     EducacionalComponent,
     EducacionalModalComponent,
+    MeusPacientesComponent,
   ],
   imports: [
     BrowserModule,

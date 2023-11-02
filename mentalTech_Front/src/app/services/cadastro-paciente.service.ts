@@ -19,4 +19,10 @@ export class CadastroPacienteService {
   update(paciente: PacienteResponse): Observable<PacienteResponse> {
     return this.http.put<PacienteResponse>(`${environment.baseUrl}/pessoa/${paciente.idPessoa}`, paciente);
   }
+
+  listarPacientesPorCpfProfissional(cpfProfissional: string): Observable<PacienteResponse[]> {
+    return this.http.get<PacienteResponse[]>(`${environment.baseUrl}/pessoa/cpfProfissional/${cpfProfissional}`);
+  }
+
+
 }

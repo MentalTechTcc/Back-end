@@ -24,5 +24,5 @@ export interface ProfissionalRequestId{
   codigoProfissional: string;
   descricaoProfissional: string;
   cpf: string;
-  linkPagamento: string;
+  pix: string;
 }

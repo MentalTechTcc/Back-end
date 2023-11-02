@@ -37,7 +37,12 @@ def update(profissionalSent: ProfissionalRequestId):
     if profissionalUseCase.find_by_id(profissionalSent.idPessoa) is None:
         raise HTTPException(status.HTTP_404_NOT_FOUND,
                             detail="Profissional não existente")
-    profissionalUseCase.update(profissionalSent)
+    
+    profissional_entitie = ProfissionalRequestId(**profissionalSent.__dict__)
+
+    profissional_entitie.senha = get_password_hash(profissional_entitie.senha) 
+    
+    profissionalUseCase.update(profissional_entitie)
 
 
 @router_profissional.delete("/{idPessoa}", status_code=status.HTTP_204_NO_CONTENT)

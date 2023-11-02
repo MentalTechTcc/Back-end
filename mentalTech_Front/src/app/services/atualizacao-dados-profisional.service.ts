@@ -10,12 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AtualizacaoDadosProfisionalService {
 
-  
+
   constructor(private http: HttpClient) { }
 
   atualizarProfissional(profissional: ProfissionalRequestId): Observable<any> {
-    const url = `${environment.baseUrl}/profissionais/${profissional.idPessoa}`;
+    const url = `${environment.baseUrl}/profissional/${profissional.idPessoa}`;
     return this.http.put(url, profissional);
   }
-
 }

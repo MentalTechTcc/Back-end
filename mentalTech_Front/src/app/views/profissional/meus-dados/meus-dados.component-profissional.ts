@@ -15,9 +15,10 @@ export class MeusDadosProfissionalComponent implements OnInit {
   dataNascimentoProfissional: Date = new Date();
   codigoProfissional: string = '';
   Profissional: any;
-  ProfissionalRequestId: any;
-  idPessoa:number=0;
+  profissionalRequestId: any;
+  idPessoa:any;
   senha: string='';
+  profissionalResult: any;
 
   constructor(
     private loginService: LoginUsuarioService,
@@ -27,22 +28,21 @@ export class MeusDadosProfissionalComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.getPerfilProfissional().subscribe(
       (data: Profissional) => {
-        this.Profissional = data;
-        this.nome = this.Profissional.nome;
-        this.telefone = this.Profissional.telefone;
-        this.emailProfissional = this.Profissional.email;
-        this.codigoProfissional = this.Profissional.codigoProfissional;
-        this.dataNascimentoProfissional = this.Profissional.dataNascimento;
-        this.idPessoa= this.Profissional.idPessoa
 
+        this.profissionalResult = data;
+        this.nome = this.profissionalResult.nome;
+        this.telefone = this.profissionalResult.telefone;
+        this.emailProfissional = this.profissionalResult.email;
+        this.codigoProfissional = this.profissionalResult.codigoProfissional;
+        this.dataNascimentoProfissional = this.profissionalResult.dataNascimento;
+        this.idPessoa= this.profissionalResult.idPessoa
         this.senha = this.loginService.getSenha();
 
-        this.ProfissionalRequestId = {
-          cpf: this.Profissional.cpf,
-          senha: this.Profissional.senha,
-          administrador: this.Profissional.administrador,
-          sexo: this.Profissional.sexo,
-          descricaoProfissional: this.Profissional.descricaoProfissional
+        this.profissionalRequestId = {
+          cpf: this.profissionalResult.cpf,
+          administrador: this.profissionalResult.administrador,
+          sexo: this.profissionalResult.sexo,
+          descricaoProfissional: this.profissionalResult.descricaoProfissional
         };
       },
       (error) => {
@@ -55,17 +55,25 @@ export class MeusDadosProfissionalComponent implements OnInit {
 
     const dadosFormulario = {
       nome: this.nome,
+      senha: this.senha,
+      dataNascimento: this.dataNascimentoProfissional,
       telefone: this.telefone,
       email: this.emailProfissional,
-      dataNascimento: this.dataNascimentoProfissional,
+      administrador: this.profissionalResult.administrador,
+      sexo: this.profissionalResult.sexo,
       codigoProfissional: this.codigoProfissional,
-      idPessoa: this.idPessoa,
+      descricaoProfissional: this.profissionalResult.descricaoProfissional,
+      cpf: this.profissionalResult.cpf,
+      pix: this.profissionalResult.pix,
+      idPessoa: this.idPessoa
     };
 
 
-    const dadosAtualizados = { ...this.ProfissionalRequestId, ...dadosFormulario };
+    const dadosAtualizados = { ...this.profissionalRequestId, ...dadosFormulario };
 
-    this.atualizacaoService.atualizarProfissional(dadosAtualizados).subscribe(
+    console.log(dadosAtualizados);
+
+    this.atualizacaoService.atualizarProfissional(dadosFormulario).subscribe(
       (response) => {
         console.log('Dados atualizados com sucesso:', response);
       },

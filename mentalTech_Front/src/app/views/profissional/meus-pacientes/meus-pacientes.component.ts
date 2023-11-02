@@ -48,8 +48,8 @@ export class MeusPacientesComponent implements OnInit {
 
   }
 
-  irParaRelatorios(idPessoa: number) {
-    this.router.navigate(['/relatorios-paciente', idPessoa]);
+  irParaRelatorios(idPessoa: number, cpfProfissional:string) {
+    this.router.navigate(['/relatorios-paciente', idPessoa, cpfProfissional]);
   }
 
 

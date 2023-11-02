@@ -7,8 +7,8 @@
         <ul *ngIf="relatorios.length > 0">
           <li *ngFor="let relatorio of relatorios" class="relatorio-item">
             <div class="relatorio-content">
-              <h3>{{ relatorio.descricao }}</h3>
-              <p>Data de Cadastro: {{ relatorio.dataCadastro | date }}</p>
+              <p>{{ relatorio.descricao }}</p>
+              <p class="data-cadastro">Data de Cadastro: {{ relatorio.dataCadastro }}</p>
             </div>
           </li>
         </ul>

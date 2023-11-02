@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {RelatorioService} from 'src/app/services/relatorio.service'
-import { Relatorio } from 'src/app/models/Relatorio.models'
+import { RelatorioService } from 'src/app/services/relatorio.service';
+import { Relatorio } from 'src/app/models/Relatorio.models';
 import { ActivatedRoute } from '@angular/router';
-
 
 @Component({
   selector: 'app-relatorios-paciente',
@@ -14,17 +13,17 @@ export class RelatoriosPacienteComponent implements OnInit {
   relatorios: Relatorio[] = [];
 
   constructor(
-    private serviceRelatorio:RelatorioService,
+    private serviceRelatorio: RelatorioService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-   
     this.route.paramMap.subscribe(params => {
       const idPessoa = params.get('idPessoa');
-      if (idPessoa) {
-        
-        this.serviceRelatorio.listarPorIdPessoa(Number(idPessoa)).subscribe(
+      const cpfProfissional = params.get('cpfProfissional');
+      
+      if (idPessoa && cpfProfissional) {
+        this.serviceRelatorio.listarPorIdPessoa(Number(idPessoa), cpfProfissional).subscribe(
           (data: Relatorio[]) => {
             this.relatorios = data;
             console.log(data);
@@ -36,6 +35,4 @@ export class RelatoriosPacienteComponent implements OnInit {
       }
     });
   }
-  
-
 }

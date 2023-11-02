@@ -75,13 +75,14 @@ class RelatorioRepository:
             .filter(Profissional.cpf == cpfProfissional) \
             .all()
 
-    def find_by_idPessoa(self, idPessoa:int) ->  list[Relatorio]|None:
+    def find_by_idPessoa(self, idPessoa:int, cpfProfissional:str) ->  list[Relatorio]|None:
         session = self.database()
         session.close()
         return session.query(Relatorio) \
             .join(Consulta, Consulta.idConsulta == Relatorio.idConsulta) \
             .join(Pessoa, Pessoa.idPessoa == Consulta.idPessoa) \
-            .filter(Pessoa.idPessoa == idPessoa) \
+            .join(Agenda, Agenda.idAgenda == Consulta.idAgenda) \
+            .filter(Pessoa.idPessoa == idPessoa, Agenda.cpfProfissional==cpfProfissional) \
             .all()
     
 assert isinstance(RelatorioRepository(

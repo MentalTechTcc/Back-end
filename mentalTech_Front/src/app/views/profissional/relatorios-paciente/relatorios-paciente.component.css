@@ -1,7 +1,8 @@
 h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 34px;
+    color: #008B8B;
     text-align: center;
+    font-weight: bold;
   }
   
   .relatorio-item {
@@ -15,7 +16,11 @@ h2 {
   
   .relatorio-content {
     color: #333;
+    font-size: large; 
+    font-weight: normal; 
+    font-family: "Sanchez";
   }
+  
   
   ul {
     list-style: none;
@@ -26,4 +31,8 @@ h2 {
     margin-bottom: 10px;
   }
   
+  .data-cadastro{
+    font-weight: bold;
+    font-size: small;
+  }
   

@@ -139,7 +139,7 @@ const routes: Routes = [
     component: MeusPacientesComponent
   },
   {
-    path: 'relatorios-paciente/:idPessoa',
+    path: 'relatorios-paciente/:idPessoa/:cpfProfissional',
     component:RelatoriosPacienteComponent
   }
  

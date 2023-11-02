@@ -34,5 +34,5 @@ class RelatorioRepositoryBaseModel(Protocol):
        """Faz uma busca pelo cpfProfissional e retorna os dados do Relatorio completos"""
        ...
    
-    def find_by_idPessoa(self, idPessoa:int) ->  list[Relatorio]|None:
+    def find_by_idPessoa(self, idPessoa:int, cpfProfissional:str) ->  list[Relatorio]|None:
        ...

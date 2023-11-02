@@ -93,12 +93,12 @@ def find_by_cpfProfissional(cpf: str):
 
     return relatorio
 
-@router_relatorio.get("/pessoa/{idPessoa}",
+@router_relatorio.get("/pessoa/{idPessoa}/{cpfProfissional}",
                   response_model=list[RelatorioResponse],
                   status_code=status.HTTP_200_OK)
-def find_by_idPessoa(idPessoa: int):
+def find_by_idPessoa(idPessoa: int, cpfProfissional:str):
 
-    relatorio = relatorioUseCase.find_by_idPessoa(idPessoa)
+    relatorio = relatorioUseCase.find_by_idPessoa(idPessoa, cpfProfissional)
 
     if relatorio is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Relatorio não encontrado")

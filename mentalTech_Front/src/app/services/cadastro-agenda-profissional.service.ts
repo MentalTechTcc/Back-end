@@ -45,12 +45,16 @@ export class CadastroAgendaProfissionalService {
     return this.http.get<AgendaRequestId[]>(`${environment.baseUrl}/agenda/cpf/{cpfProfissional}?cpf=${cpfProfissional}`);
   }
 
-  listarPorIdAgenda(idAgenda: number): Observable<AgendaRequestId[]> {
-    return this.http.get<AgendaRequestId[]>(`${environment.baseUrl}/agenda/{idAgenda}?id=${idAgenda}`);
+  listarPorIdAgenda(idAgenda: number): Observable<AgendaRequestId> {
+    return this.http.get<AgendaRequestId>(`${environment.baseUrl}/agenda/{idAgenda}?id=${idAgenda}`);
   }
 
   deletar(idAgenda: number): Observable<AgendaRequestId[]> {
-    return this.http.delete<AgendaRequestId[]>(`${environment.baseUrl}/agenda/{idAgenda}?id=${idAgenda}`);
+    return this.http.delete<AgendaRequestId[]>(`${environment.baseUrl}/consulta/idConsulta/{idConsulta}?id=${idAgenda}`);
+  }
+
+  updateAgendaMarcacao(agenda: AgendaRequestId): Observable<any> {
+    return this.http.put(`${environment.baseUrl}/agenda/{idAgenda}?id=${agenda.idAgenda}`, agenda);
   }
 
 

@@ -66,6 +66,17 @@ export class AgendaModalComponent implements OnInit {
           (data: Profissional) => {
             this.agendaService.setPix(data.pix);
 
+            agenda.ocupado=true
+
+            this.agendaService.updateAgendaMarcacao(agenda).subscribe(
+              response => {
+                console.log('Cadastro bem-sucedido:', response);
+              },
+              error => {
+                console.error('Erro no cadastro:', error);
+              }
+            );
+
           },
           (error) => {
             console.error('Erro ao buscar especialistas:', error);

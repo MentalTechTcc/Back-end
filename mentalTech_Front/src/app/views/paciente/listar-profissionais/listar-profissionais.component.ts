@@ -34,7 +34,7 @@ export class ListarProfissionaisComponent implements OnInit {
   exibirAgenda(cpfProfissional: string): void {
     this.agendaService.listarPorCpf(cpfProfissional).subscribe(
       (data: AgendaRequestId[]) => {
-        this.agendaDoProfissional = data;
+        this.agendaDoProfissional = data.filter(agenda => !agenda.ocupado);
         this.isModalOpen = true;
         console.log(this.isModalOpen);
       },

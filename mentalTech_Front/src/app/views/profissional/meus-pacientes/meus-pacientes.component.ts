@@ -4,6 +4,7 @@ import { PacienteResponse } from 'src/app/models/Paciente.models';
 import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
 import {RelatorioService} from 'src/app/services/relatorio.service'
 import {CadastroPacienteService} from 'src/app/services/cadastro-paciente.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meus-pacientes',
@@ -22,6 +23,7 @@ export class MeusPacientesComponent implements OnInit {
     private service: RelatorioService,
     private serviceProfissional: LoginUsuarioService,
     private servicePaciente:CadastroPacienteService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -46,6 +48,9 @@ export class MeusPacientesComponent implements OnInit {
 
   }
 
+  irParaRelatorios(idPessoa: number) {
+    this.router.navigate(['/relatorios-paciente', idPessoa]);
+  }
 
 
 

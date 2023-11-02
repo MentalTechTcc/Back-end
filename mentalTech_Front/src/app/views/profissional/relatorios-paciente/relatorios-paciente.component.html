@@ -1,0 +1,18 @@
+<app-cabecalho-profissional></app-cabecalho-profissional>
+<div class="container">
+    <h2>Relatórios do Paciente</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="relatorios.length === 0">Nenhum relatório disponível.</div>
+        <ul *ngIf="relatorios.length > 0">
+          <li *ngFor="let relatorio of relatorios" class="relatorio-item">
+            <div class="relatorio-content">
+              <h3>{{ relatorio.descricao }}</h3>
+              <p>Data de Cadastro: {{ relatorio.dataCadastro | date }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

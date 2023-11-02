@@ -18,7 +18,7 @@
                 <i class="fas fa-calendar-alt"></i> Data de Nascimento: {{ paciente.dataNascimento }}
               </p>
             </div>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" (click)="irParaRelatorios(paciente.idPessoa)">
               <i class="fas fa-file-alt"></i> Relatórios
             </button>
           </div>

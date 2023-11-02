@@ -25,6 +25,7 @@ import {MinhasConsultasComponent} from './views/paciente/minhas-consultas/minhas
 import { PagamentoComponent } from './views/paciente/pagamento/pagamento.component';
 import { EducacionalComponent } from './views/profissional/educacional/educacional.component';
 import { MeusPacientesComponent } from './views/profissional/meus-pacientes/meus-pacientes.component'
+import { RelatoriosPacienteComponent } from './views/profissional/relatorios-paciente/relatorios-paciente.component'
 
 const routes: Routes = [
   {
@@ -136,7 +137,13 @@ const routes: Routes = [
   {
     path: 'meus-pacientes',
     component: MeusPacientesComponent
+  },
+  {
+    path: 'relatorios-paciente/:idPessoa',
+    component:RelatoriosPacienteComponent
   }
+ 
+
 ];
 
 @NgModule({

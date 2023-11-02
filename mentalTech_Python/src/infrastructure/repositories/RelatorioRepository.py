@@ -3,6 +3,7 @@ from domain.entities.Relatorio import Relatorio
 from domain.entities.Agenda import Agenda
 from domain.entities.Consulta import Consulta
 from domain.entities.Profissional import Profissional
+from domain.entities.Pessoa import Pessoa
 from typing import Callable
 from typing import NoReturn
 from src.domain.repositories import RelatorioRepositoryBaseModel
@@ -73,7 +74,15 @@ class RelatorioRepository:
             .join(Profissional, Profissional.cpf == Agenda.cpfProfissional) \
             .filter(Profissional.cpf == cpfProfissional) \
             .all()
-    
 
+    def find_by_idPessoa(self, idPessoa:int) ->  list[Relatorio]|None:
+        session = self.database()
+        session.close()
+        return session.query(Relatorio) \
+            .join(Consulta, Consulta.idConsulta == Relatorio.idConsulta) \
+            .join(Pessoa, Pessoa.idPessoa == Consulta.idPessoa) \
+            .filter(Pessoa.idPessoa == idPessoa) \
+            .all()
+    
 assert isinstance(RelatorioRepository(
     {}), RelatorioRepositoryBaseModel.RelatorioRepositoryBaseModel)

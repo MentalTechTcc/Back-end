@@ -87,6 +87,9 @@ class PessoaUseCase():
 
     def find_by_email(self, email : str) -> PessoaBase | None:
         return self.__pessoaRepository__.find_by_email(email=email)
+    
+    def find_by_cpfProfissional(self, cpfProfissional: int) -> list[Pessoa] | None: 
+        return self.__pessoaRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
 
     def update(self, pessoaSent: PessoaRequestId) -> NoReturn:
         """Sobrescreve os dados de pessoa, assume que ele já exista"""

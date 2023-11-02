@@ -84,3 +84,16 @@ def find_by_email(email: str):
 
     return pessoa
 
+
+
+@router_pessoa.get("/cpfProfissional/{cpfProfissional}", response_model=list[PessoaResponse], status_code=status.HTTP_200_OK)
+def find_by_cpfProfissional(cpfProfissional: str):
+    '''Faz uma query de um objeto assistente na DB pelo email'''
+    pessoa = pessoaUseCase.find_by_cpfProfissional(cpfProfissional)
+
+    if pessoa is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="cpf não encontrado")
+
+    return pessoa
+
+

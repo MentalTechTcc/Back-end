@@ -81,3 +81,16 @@ def find_by_cpfProfissional(cpf: str):
     return relatorio
 
 
+@router_relatorio.get("/cpfProfissional/completo/{cpfProfissional}",
+                  response_model=list[RelatorioResponse],
+                  status_code=status.HTTP_200_OK)
+def find_by_cpfProfissional(cpf: str):
+    '''Faz uma query de um objeto assistente na DB pelo id'''
+    relatorio = relatorioUseCase.find_by_cpfProfissional_completo(cpf)
+
+    if relatorio is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Relatorio não encontrado")
+
+    return relatorio
+
+

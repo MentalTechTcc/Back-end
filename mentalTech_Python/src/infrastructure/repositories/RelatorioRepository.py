@@ -64,8 +64,15 @@ class RelatorioRepository:
             .filter(Profissional.cpf == cpfProfissional, Consulta.permiteCompartilharConhecimento==True) \
             .all()
     
-    
-    
+    def find_by_cpfProfissional_completo(self, cpfProfissional:str) ->  list[Relatorio]|None:
+        session = self.database()
+        session.close()
+        return session.query(Relatorio) \
+            .join(Consulta, Consulta.idConsulta == Relatorio.idConsulta) \
+            .join(Agenda, Agenda.idAgenda == Consulta.idAgenda) \
+            .join(Profissional, Profissional.cpf == Agenda.cpfProfissional) \
+            .filter(Profissional.cpf == cpfProfissional) \
+            .all()
     
 
 assert isinstance(RelatorioRepository(

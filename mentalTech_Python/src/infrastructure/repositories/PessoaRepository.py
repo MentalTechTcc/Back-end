@@ -1,5 +1,8 @@
 from sqlalchemy.orm import Session
 from domain.entities.Pessoa import Pessoa
+from domain.entities.Agenda import Agenda
+from domain.entities.Consulta import Consulta
+from domain.entities.Profissional import Profissional
 from typing import Callable
 from domain.repositories import PessoaRepositoryBaseModel
 from typing import NoReturn
@@ -56,6 +59,18 @@ class PessoaRepository:
         session = self.database()
         return session.query(Pessoa).filter(Pessoa.email == email).first()
     
+    def find_by_cpfProfissional(self, cpfProfissional: int) -> list[Pessoa] | None: 
+        session = self.database()
+        try:
+            result = session.query(Pessoa) \
+                .join(Consulta, Consulta.idPessoa == Pessoa.idPessoa) \
+                .join(Agenda, Agenda.idAgenda == Consulta.idAgenda) \
+                .join(Profissional, Profissional.cpf == Agenda.cpfProfissional) \
+                .filter(Profissional.cpf == cpfProfissional) \
+                .all()
+            return result
+        finally:
+            session.close()
     
 
 assert isinstance(PessoaRepository(

@@ -41,6 +41,9 @@ class RelatorioUseCase():
     def find_by_cpfProfissional(self, cpfProfissional : str) -> list[RelatorioResponse] | None:
         return self.__relatorioRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
 
+    def find_by_cpfProfissional_completo(self, cpfProfissional : str) -> list[RelatorioResponse] | None:
+        return self.__relatorioRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
+
     def update(self, relatorioSent: RelatorioRequestId) -> NoReturn:
         """Sobrescreve os dados de relatorio, assume que ele já exista"""
         self.__relatorioRepository__.update(Relatorio(**relatorioSent.__dict__))

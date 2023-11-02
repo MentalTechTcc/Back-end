@@ -29,3 +29,7 @@ class PessoaRepositoryBaseModel(Protocol):
     def find_by_email(self, email: str) -> Pessoa | None:
         '''Função para fazer uma query por login de um objeto Pessoa na DB'''
         ...
+    
+    def find_by_cpfProfissional(self, cpfProfissional: int) -> list[Pessoa] | None: 
+        '''Função para fazer uma query pelo cpfProfissional e seus pacientes'''
+        ...

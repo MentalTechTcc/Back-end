@@ -68,6 +68,11 @@ class ConsultaRepository:
         return session.query(Consulta).filter(Consulta.idPessoa == pessoa_id).all()
     
     
+    def find_by_idAgenda(self, pessoa_id: int) -> list[Consulta] | None:
+        session = self.database()
+        session.close()
+        return session.query(Consulta).filter(Consulta.idAgenda == pessoa_id).all()
+    
     
     
 

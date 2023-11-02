@@ -23,8 +23,8 @@ export class ConsultaService {
     return this.http.get<ConsultaRequestId[]>(`${environment.baseUrl}/consulta/idPessoa/${idPessoa}`);
   }
 
-  deletar(idConsulta: number): Observable<ConsultaRequestId[]> {
-    return this.http.delete<ConsultaRequestId[]>(`${environment.baseUrl}/consulta/idAgenda/{idAgenda}?id=${idConsulta}`);
+  deletar(idAgenda: number): Observable<any> {
+    return this.http.delete(`${environment.baseUrl}/consulta/idAgenda/{idAgenda}?id=${idAgenda}`);
   }
 
 }

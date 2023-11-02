@@ -46,7 +46,7 @@ export class CadastroAgendaProfissionalService {
   }
 
   listarPorIdAgenda(idAgenda: number): Observable<AgendaRequestId> {
-    return this.http.get<AgendaRequestId>(`${environment.baseUrl}/agenda/{idAgenda}?id=${idAgenda}`);
+    return this.http.get<AgendaRequestId>(`${environment.baseUrl}/agenda/${idAgenda}`);
   }
 
   deletar(idAgenda: number): Observable<AgendaRequestId[]> {

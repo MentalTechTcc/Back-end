@@ -57,9 +57,9 @@ def find_all():
 @router_agenda.get("/{idAgenda}",
                   response_model=AgendaResponse,
                   status_code=status.HTTP_200_OK)
-def find_by_id(id: int):
+def find_by_id(idAgenda: int):
     '''Faz uma query de um objeto assistente na DB pelo id'''
-    agenda = agendaUseCase.find_by_id(id)
+    agenda = agendaUseCase.find_by_id(idAgenda)
 
     if agenda is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Agenda não encontrado")

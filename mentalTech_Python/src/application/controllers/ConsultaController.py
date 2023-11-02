@@ -88,6 +88,20 @@ def find_by_idPessoa(idPessoa: int):
     return consulta
 
 
+@router_consulta.get("/idAgenda/{idAgenda}",
+                  response_model=list[ConsultaResponse],
+                  status_code=status.HTTP_200_OK)
+def find_by_idAgenda(idPessoa: int):
+
+    consulta = consultaUseCase.find_by_idAgenda(idPessoa)
+
+    if consulta is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Agenda não encontrado")
+
+    return consulta
+
+
+
 
 
 

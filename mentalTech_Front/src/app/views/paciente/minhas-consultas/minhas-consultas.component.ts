@@ -1,9 +1,11 @@
+import { Agenda } from './../../../models/Agenda.models';
 import { Component, OnInit } from '@angular/core';
 import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
 import {ConsultaService} from 'src/app/services/consulta.service'
 import {CadastroAgendaProfissionalService} from 'src/app/services/cadastro-agenda-profissional.service'
 import { AgendaRequestId } from 'src/app/models/Agenda.models';
 import { ConsultaRequestId } from 'src/app/models/Consulta.models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-minhas-consultas',
@@ -36,13 +38,13 @@ export class MinhasConsultasComponent implements OnInit {
 
   carregarConsulta(idPessoa: number) {
     this.consultaService.listarPorIdPessoa(idPessoa).subscribe(consultas => {
-     
+
       if (Array.isArray(consultas)) {
         this.listaConsultas = consultas;
         console.log(this.listaConsultas);
-  
+
         this.listaAgendas = [];
-  
+
         for (const consulta of this.listaConsultas) {
           this.carregarAgenda(consulta.idAgenda);
         }
@@ -51,22 +53,22 @@ export class MinhasConsultasComponent implements OnInit {
       }
     });
   }
-  
+
   carregarAgenda(idAgenda: number) {
     this.agendaService.listarPorIdAgenda(idAgenda).subscribe(agendas => {
-     
+
       if (Array.isArray(agendas)) {
-        
+
         this.listaAgendas = this.listaAgendas.concat(agendas);
         console.log(this.listaAgendas);
       } else {
-       
+
         this.listaAgendas = this.listaAgendas.concat([agendas]);
         console.log(this.listaAgendas);
       }
     });
   }
-  
+
 
    getOcupadoLabel(ocupado: boolean): string {
     return ocupado ? 'Ocupado' : 'Disponível';
@@ -78,9 +80,13 @@ export class MinhasConsultasComponent implements OnInit {
 
   deletarConsulta(idAgenda: number): void { // deleta consulta pela agenda
     if (confirm('Tem certeza de que deseja desistir dessa consulta?')) {
-      this.agendaService.deletar(idAgenda).subscribe(
+      this.consultaService.deletar(idAgenda).subscribe(
         () => {
           this.carregarConsulta(this.pessoa.idPessoa);
+          console.log('primeiro id: ' + idAgenda);
+          this.atualizaAgendaMarcacao(idAgenda);
+
+
         },
         (error) => {
           console.error('Erro ao excluir a agenda:', error);
@@ -88,9 +94,32 @@ export class MinhasConsultasComponent implements OnInit {
       );
     }
   }
-  getConsultaIdByAgenda(agenda: any): number | undefined {
-    const consulta = this.listaConsultas.find(c => c.idAgenda === agenda.id);
-    return consulta ? consulta.idConsulta : undefined;
+
+  atualizaAgendaMarcacao(agendaId: number): void {
+    console.log('segundo id: ' + agendaId);
+
+    this.buscarAgenda(agendaId).subscribe(
+      (agenda: AgendaRequestId | undefined) => {
+        console.log('resultado ', agenda);
+
+        if (agenda !== undefined) {
+          agenda.ocupado = false;
+
+          this.agendaService.updateAgendaMarcacao(agenda).subscribe(
+            response => {
+              console.log('Cadastro bem-sucedido:', response);
+            },
+            error => {
+              console.error('Erro no cadastro:', error);
+            }
+          );
+        }
+      }
+    );
+  }
+
+  buscarAgenda(idAgenda: number): Observable<AgendaRequestId | undefined> {
+    return this.agendaService.listarPorIdAgenda(idAgenda);
   }
 
 

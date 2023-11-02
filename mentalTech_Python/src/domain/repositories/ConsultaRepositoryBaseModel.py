@@ -33,3 +33,7 @@ class ConsultaRepositoryBaseModel(Protocol):
         """Faz uma busca pelo id e retorna os dados de consulta caso existe"""
         ...
 
+    def find_by_idAgenda(self, pessoa_id: int) -> list[Consulta] | None:
+        """Faz uma busca pelo id e retorna os dados de consulta caso existe"""
+        ...
+

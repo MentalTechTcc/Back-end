@@ -52,7 +52,7 @@ class ProfissionalBase(PessoaBase):
     codigoProfissional: str
     descricaoProfissional: str
     cpf: str 
-    pix: str
+    pix: Optional[str]
     
 
 class ProfissionalRequest(ProfissionalBase):

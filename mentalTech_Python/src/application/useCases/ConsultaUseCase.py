@@ -52,6 +52,8 @@ class ConsultaUseCase():
     def find_by_idPessoa(self, pessoa_id : int) -> list[ConsultaResponse] | None:
         return self.__consultaRepository__.find_by_idPessoa(pessoa_id=pessoa_id)
 
+    def find_by_idAgenda(self, pessoa_id : int) -> list[ConsultaResponse] | None:
+        return self.__consultaRepository__.find_by_idAgenda(pessoa_id=pessoa_id)
 
     def valida_consulta_create(self, consulta: Consulta) -> dict:
 

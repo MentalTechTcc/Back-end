@@ -10,3 +10,15 @@ export interface Avaliacao {
     dataCadastro :  Date;
   }
   
+
+  export interface AvaliacaoRequestId {
+    idAvaliacao:number;
+    cpfProfissional: string ;
+    idPessoa: number ;
+    notaGeral: number ;
+    notaPontualidade: number ;
+    notaAtendimento: number ;
+    observacoes: string ;
+    dataCadastro :  Date;
+    observacoesExpandidas: boolean;
+  }

@@ -1,1 +1,23 @@
-<p>minhas-avaliacoes works!</p>
+<app-cabecalho-profissional></app-cabecalho-profissional>
+
+<div class="corpo">
+  <div class="metade-texto">
+    <h2 class="titulo"><i class="fas fa-star"></i>Minhas Avaliações</h2>
+    <div class="avaliacoes">
+      <div *ngIf="listaAvaliacoes.length === 0" class="mensagem mensagem-sucesso">
+        Nenhuma avaliação disponível.
+      </div>
+      <div class="avaliacao" *ngFor="let avaliacao of listaAvaliacoes">
+        <div class="info-avaliacao">
+          <p class="nota-geral"><i class="fas fa-star"></i> Nota Geral: {{ avaliacao.notaGeral }}</p>
+          <p class="nota-pontualidade"><i class="fas fa-clock"></i> Nota Pontualidade: {{ avaliacao.notaPontualidade }}</p>
+          <p class="nota-atendimento"><i class="fas fa-user"></i> Nota Atendimento: {{ avaliacao.notaAtendimento }}</p>
+          <div class="observacoes-container">
+            <p class="observacoes">{{ avaliacao.observacoes }}</p>
+          </div>
+          <p class="data-cadastro"><i class="far fa-calendar"></i> Data de Cadastro: {{ avaliacao.dataCadastro | date: 'dd/MM/yyyy' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

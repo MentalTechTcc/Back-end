@@ -75,6 +75,7 @@ export class AvaliacaoPacienteComponent implements OnInit {
           this.sucesso = true;
           this.erro = ''; // Limpa
           this.avaliacaoForm.reset();
+          this.ngOnInit();
         },
         (error) => {
           this.sucesso = false;

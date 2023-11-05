@@ -43,6 +43,7 @@ import { CommonModule } from '@angular/common';
 import { EducacionalModalComponent } from './views/profissional/educacional-modal/educacional-modal.component';
 import { MeusPacientesComponent } from './views/profissional/meus-pacientes/meus-pacientes.component';
 import { RelatoriosPacienteComponent } from './views/profissional/relatorios-paciente/relatorios-paciente.component';
+import { MinhasAvaliacoesComponent } from './views/profissional/minhas-avaliacoes/minhas-avaliacoes.component';
 
 
 @NgModule({
@@ -80,6 +81,7 @@ import { RelatoriosPacienteComponent } from './views/profissional/relatorios-pac
     EducacionalModalComponent,
     MeusPacientesComponent,
     RelatoriosPacienteComponent,
+    MinhasAvaliacoesComponent,
   ],
   imports: [
     BrowserModule,

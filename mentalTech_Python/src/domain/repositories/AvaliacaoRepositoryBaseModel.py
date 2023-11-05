@@ -26,3 +26,7 @@ class AvaliacaoRepositoryBaseModel(Protocol):
     def find_by_id(self, avaliacao_id: int) -> Avaliacao | None:
         """Faz uma busca pelo id e retorna os dados da Avaliacao caso exista"""
         ...
+
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Avaliacao] | None:
+        """Faz uma busca pelo cpf e retorna os dados da Avaliacao caso exista"""
+        ...

@@ -26,6 +26,7 @@ import { PagamentoComponent } from './views/paciente/pagamento/pagamento.compone
 import { EducacionalComponent } from './views/profissional/educacional/educacional.component';
 import { MeusPacientesComponent } from './views/profissional/meus-pacientes/meus-pacientes.component'
 import { RelatoriosPacienteComponent } from './views/profissional/relatorios-paciente/relatorios-paciente.component'
+import { MinhasAvaliacoesComponent } from './views/profissional/minhas-avaliacoes/minhas-avaliacoes.component'
 
 const routes: Routes = [
   {
@@ -141,6 +142,9 @@ const routes: Routes = [
   {
     path: 'relatorios-paciente/:idPessoa/:cpfProfissional',
     component:RelatoriosPacienteComponent
+  },
+  { path: 'minhas-avaliacoes',
+    component:MinhasAvaliacoesComponent
   }
  
 

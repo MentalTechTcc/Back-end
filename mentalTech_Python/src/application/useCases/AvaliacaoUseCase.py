@@ -48,6 +48,9 @@ class AvaliacaoUseCase():
         """Sobrescreve os dados de avaliacao, assume que ele já exista"""
         self.__avaliacaoRepository__.update(Avaliacao(**avaliacaoSent.__dict__))
 
+    def find_by_cpfProfisional(self, cpfProfissional : str) -> list[AvaliacaoResponse] | None:
+        return self.__avaliacaoRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
+
     def valida_avaliacao_create(self, avaliacao: Avaliacao) -> dict:
 
         fieldInfoDict = {}

@@ -9,7 +9,7 @@ from src.application.controllers.TematicasPrincipaisController import router_tem
 from src.application.controllers.EnderecoController import router_endereco
 from src.application.controllers.EspecialidadeController import router_especialidade
 from src.application.controllers.DicaSaudeController import router_dica_saude
-from src.application.controllers.Avaliacao import router_avaliacao
+from src.application.controllers.AvaliacaoController import router_avaliacao
 from src.application.controllers.DiagnosticoController import router_diagnostico
 from src.application.controllers.ZoomController import route_zoom
 

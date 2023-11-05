@@ -69,4 +69,14 @@ def find_by_id(id: int):
     return avaliacao
 
 
+@router_avaliacao.get("/cpfProfissional/{cpfProfissional}",
+                  response_model=list[AvaliacaoResponse],
+                  status_code=status.HTTP_200_OK)
+def find_by_cpfProfissional(cpfProfissional: str):
 
+    avaliacao = avaliacaoUseCase.find_by_cpfProfisional(cpfProfissional)
+
+    if avaliacao is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="avaliação não encontrada")
+
+    return avaliacao

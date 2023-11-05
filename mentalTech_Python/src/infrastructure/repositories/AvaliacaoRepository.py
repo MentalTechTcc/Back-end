@@ -51,8 +51,10 @@ class AvaliacaoRepository:
         session.close()
         return session.query(Avaliacao).filter(Avaliacao.idAvaliacao == avaliacao_id).first()
     
-    
-    
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Avaliacao] | None:
+        session = self.database()
+        session.close()
+        return session.query(Avaliacao).filter(Avaliacao.cpfProfissional == cpfProfissional).all()
     
 
 assert isinstance(AvaliacaoRepository(

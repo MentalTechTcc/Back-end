@@ -1,13 +1,20 @@
 <app-cabecalho></app-cabecalho>
 
-<div *ngIf="errorMessage" class="error-message">
+<div *ngIf="errorMessage && opcao === 'paciente'" class="error-message">
   <!-- {{ errorMessage }} -->
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Falha no login: </strong>Verifique seu email/cpf e senha.
+    <strong>Falha no login: </strong>Verifique seu email e senha.
   </div>
 
 </div>
 
+<div *ngIf="errorMessage && opcao === 'profissional'" class="error-message">
+  <!-- {{ errorMessage }} -->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Falha no login: </strong>Verifique seu cpf e senha.
+  </div>
+
+</div>
 
 <div class="login-container">
   <div class="login-box">

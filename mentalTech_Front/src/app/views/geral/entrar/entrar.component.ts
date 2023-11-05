@@ -39,6 +39,7 @@ export class EntrarComponent implements OnInit {
           // Lida com erros (autenticação falhou, etc.)
           this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
           console.error(error);
+          this.delayErrorMessageRemoval();
         }
       );
     } else if (this.opcao === 'profissional') {
@@ -54,9 +55,17 @@ export class EntrarComponent implements OnInit {
           // Lida com erros (autenticação falhou, etc.)
           this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
           console.error(error);
+          this.delayErrorMessageRemoval();
+
         }
       );
 
     }
+  }
+
+  delayErrorMessageRemoval(): void {
+    setTimeout(() => {
+      this.errorMessage = ''; // Remove a mensagem após alguns segundos
+    }, 5000); // 5000 milissegundos = 5 segundos, ajuste conforme necessário
   }
 }

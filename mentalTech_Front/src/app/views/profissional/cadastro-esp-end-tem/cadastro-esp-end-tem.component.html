@@ -1,4 +1,11 @@
 <app-cabecalho></app-cabecalho>
+<div *ngIf="errorMessage" class="error-message">
+  <!-- {{ errorMessage }} -->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Erro ao realizar o cadastro. </strong>Tente novamente mais tarde.
+  </div>
+
+</div>
 <!-- cadastro-esp-end-tem.component.html -->
 <div class="cadastro-esp-end-container">
   <div class="cadastro-esp-end-box">
@@ -78,3 +85,5 @@
 
   </div>
 </div>
+
+

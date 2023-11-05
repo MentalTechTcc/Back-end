@@ -18,6 +18,7 @@ export class CadastroPacienteComponent {
   senhaPaciente: string = '';
   dataNascimentoPaciente: Date = new Date();
   genero: number = 1;
+  errorMessage: string = '';
 
   constructor(private router: Router, private cadastroService: CadastroUsuarioService, private cadastroPacienteService: CadastroPacienteService) {
   }
@@ -49,6 +50,8 @@ export class CadastroPacienteComponent {
         },
         error => {
           console.error('Erro no cadastro:', error);
+          this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
+          this.delayErrorMessageRemoval();
         }
       );
     }
@@ -60,5 +63,11 @@ export class CadastroPacienteComponent {
     } else if (generoSelecionado === 'masculino') {
       this.genero = 2;
     }
+  }
+
+  delayErrorMessageRemoval(): void {
+    setTimeout(() => {
+      this.errorMessage = ''; // Remove a mensagem após alguns segundos
+    }, 5000); // 5000 milissegundos = 5 segundos, ajuste conforme necessário
   }
 }

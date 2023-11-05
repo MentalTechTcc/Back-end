@@ -31,6 +31,8 @@ export class CadastroEspEndTemComponent {
   tematicas: TematicaResponse[] = [];
   enderecos_cadastrados: EnderecoResponse[] = [];
   tematicas_cadastradas: TematicaResponse[] = [];
+  errorMessage: string = '';
+
 
   constructor(
     private serviceEspecialidade: EspecialidadeServiceService,
@@ -236,10 +238,18 @@ export class CadastroEspEndTemComponent {
       },
       error => {
         console.error('Erro no cadastro:', error);
+        this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
+        this.delayErrorMessageRemoval();
       }
       );
 
 
+  }
+
+  delayErrorMessageRemoval(): void {
+    setTimeout(() => {
+      this.errorMessage = ''; // Remove a mensagem após alguns segundos
+    }, 5000); // 5000 milissegundos = 5 segundos, ajuste conforme necessário
   }
 }
 

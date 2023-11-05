@@ -64,4 +64,22 @@ export class MeusDadosPacienteComponent implements OnInit {
     );
   }
 
+  deletarDados(): void { // deleta consulta pela agenda
+    if (confirm('Tem certeza de que deseja excluir sua conta?')) {
+      // this.consultaService.deletar(idAgenda).subscribe(
+      //   () => {
+      //     this.carregarConsulta(this.pessoa.idPessoa);
+      //     console.log('primeiro id: ' + idAgenda);
+      //     this.atualizaAgendaMarcacao(idAgenda);
+
+
+      //   },
+      //   (error) => {
+      //     console.error('Erro ao excluir a agenda:', error);
+      //   }
+      // );
+    }
+  }
+
+
 }

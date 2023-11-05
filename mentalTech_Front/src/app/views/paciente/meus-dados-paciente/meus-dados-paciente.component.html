@@ -1,7 +1,9 @@
 <app-cabecalho-paciente></app-cabecalho-paciente>
-
 <div class="login-container">
   <div class="login-box">
+    <!-- <div>
+      <i class="fas fa-trash-alt botao-excluir" (click)="deletarConsulta()"></i>
+    </div> -->
     <form>
       <div class="form-group">
         <label for="nome">Nome:</label>
@@ -25,6 +27,12 @@
       </div>
 
       <button type="submit" (click)="alterar()" class="entrar-button">Salvar</button>
+
+      <button type="submit" (click)="deletarDados()" class="deletar-button">Deletar Conta</button>
+<!--
+      <div>
+        <i class="fas fa-trash-alt botao-excluir" (click)="deletarConsulta()"></i>
+      </div> -->
     </form>
   </div>
 </div>

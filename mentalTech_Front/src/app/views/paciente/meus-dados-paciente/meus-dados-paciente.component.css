@@ -61,7 +61,6 @@ input {
   border-radius: 4px;
   font-family: Sanchez;
   font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
-
 }
 .entrar-button:hover {
   background-color: #82beb0; /* Cor mais escura ao passar o mouse */
@@ -75,3 +74,18 @@ input {
   margin-top: 16px; /* Adicione espaço entre os campos e os botões */
 }
 
+.deletar-button {
+  margin-top: 20px;
+  background-color: #9EC4BB; /* Cor de sua escolha para o botão "deletar" */
+  color: black; /* Texto branco */
+  padding: 15px 20px; /* Ajuste o tamanho do padding conforme necessário */
+  font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
+  border: none;
+  border-radius: 4px;
+  font-family: Sanchez;
+  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+
+}
+.deletar-button:hover {
+  background-color: red; /* Cor mais escura ao passar o mouse */
+}

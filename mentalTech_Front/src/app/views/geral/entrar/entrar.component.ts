@@ -13,6 +13,7 @@ export class EntrarComponent implements OnInit {
   email: string = '';
   senha: string = '';
   cpf: string = '';
+  errorMessage: string = '';
 
   constructor(private router: Router, private loginService: LoginUsuarioService) {}
 
@@ -36,6 +37,7 @@ export class EntrarComponent implements OnInit {
         },
         (error) => {
           // Lida com erros (autenticação falhou, etc.)
+          this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
           console.error(error);
         }
       );
@@ -50,6 +52,7 @@ export class EntrarComponent implements OnInit {
         },
         (error) => {
           // Lida com erros (autenticação falhou, etc.)
+          this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
           console.error(error);
         }
       );

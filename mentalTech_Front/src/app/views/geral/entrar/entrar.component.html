@@ -1,4 +1,14 @@
 <app-cabecalho></app-cabecalho>
+
+<div *ngIf="errorMessage" class="error-message">
+  <!-- {{ errorMessage }} -->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Falha no login: </strong>Verifique seu email/cpf e senha.
+  </div>
+
+</div>
+
+
 <div class="login-container">
   <div class="login-box">
     <div class="button-row">
@@ -39,3 +49,4 @@
     </div>
   </div>
 </div>
+

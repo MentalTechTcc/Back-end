@@ -11,8 +11,8 @@ class ProfissionalTrataTematicas(Base):
     '''Classe para estabelecer o modelo da tabela na DB'''
     __tablename__ = "profissionalTrataTematicasPrincipais"
 
-    idTematicasPrincipais: int =  Column("idTematicasPrincipais", ForeignKey("tematicasPrincipais.idTematicasPrincipais"), index=True,  primary_key=True)
-    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+    idTematicasPrincipais: int =  Column("idTematicasPrincipais", ForeignKey("tematicasPrincipais.idTematicasPrincipais", ondelete="CASCADE"), index=True,  primary_key=True)
+    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf", ondelete="CASCADE"), index=True,  primary_key=True)
 
 class ProfissionalTrataTematicasBase(BaseModel):
     idTematicasPrincipais:str

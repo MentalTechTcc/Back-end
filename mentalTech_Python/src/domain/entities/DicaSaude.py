@@ -15,7 +15,7 @@ class DicaSaude(Base):
 
     idDicaSaude: int = Column(Integer, primary_key=True, nullable=False,  index= True)
     descricaoDica: str = Column(String(500), nullable=False)
-    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True)
+    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf", ondelete="CASCADE"), index=True)
     dataCadastro = Column(DateTime, server_default=func.now()) 
     
 

@@ -12,8 +12,8 @@ class PessoaPossuiDiagnostico(Base):
     '''Classe para estabelecer o modelo da tabela na DB'''
     __tablename__ = "pessoaPossuiDiagnostico"
 
-    idDiagnostico: int = Column("idDiagnostico", ForeignKey("diagnostico.idDiagnostico"), index=True,  primary_key=True)
-    cpfProfissional: str =  Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+    idDiagnostico: int = Column("idDiagnostico", ForeignKey("diagnostico.idDiagnostico", ondelete="CASCADE"), index=True,  primary_key=True)
+    cpfProfissional: str =  Column("cpfProfissional", ForeignKey("profissional.cpf", ondelete="CASCADE"), index=True,  primary_key=True)
     idPessoa: int = Column("idPessoa", ForeignKey("pessoa.idPessoa"), index=True, primary_key=True)
     
 

@@ -14,8 +14,8 @@ class Avaliacao(Base):
     __tablename__ = "avaliacao"
 
     idAvaliacao: int = Column(Integer, primary_key=True, nullable=False,  index= True)
-    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True)
-    idPessoa: int = Column("idPessoa", ForeignKey("pessoa.idPessoa"), index=True)
+    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf", ondelete="CASCADE"), index=True)
+    idPessoa: int = Column("idPessoa", ForeignKey("pessoa.idPessoa", ondelete="CASCADE"), index=True)
     notaGeral: int = Column(Integer, nullable=False)
     notaPontualidade: int = Column(Integer, nullable=True)
     notaAtendimento: int = Column(Integer, nullable=True)

@@ -9,8 +9,8 @@ class ProfissionalPossuiEspecialidade(Base):
     '''Classe para estabelecer o modelo da tabela na DB'''
     __tablename__ = "profissionalPossuiEspecialidade"
 
-    idEspecialidade: int =  Column("idEspecialidade", ForeignKey("especialidade.idEspecialidade"), index=True,  primary_key=True)
-    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+    idEspecialidade: int =  Column("idEspecialidade", ForeignKey("especialidade.idEspecialidade", ondelete="CASCADE"), index=True,  primary_key=True)
+    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf", ondelete="CASCADE"), index=True,  primary_key=True)
 
 class ProfissionalPossuiEspecialidadeBase(BaseModel):
     idEspecialidade:str

@@ -11,7 +11,7 @@ class ProfissionalPossuiEndereco(Base):
     __tablename__ = "profissionalPossuiEndereco"
 
     idEndereco: int = Column("idEndereco", ForeignKey("endereco.idEndereco"), index=True,  primary_key=True)
-    cpfProfissional: str =  Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True,  primary_key=True)
+    cpfProfissional: str =  Column("cpfProfissional", ForeignKey("profissional.cpf", ondelete="CASCADE"), index=True,  primary_key=True)
  
 class ProfissionalPossuiEnderecoBase(BaseModel):
     idEndereco:int

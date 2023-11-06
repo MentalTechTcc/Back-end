@@ -46,8 +46,8 @@ def update(profissionalSent: ProfissionalRequestId):
 
 
 @router_profissional.delete("/{idPessoa}", status_code=status.HTTP_204_NO_CONTENT)
-def delete(id: int):
-    profissional = profissionalUseCase.find_by_id(id)
+def delete(idPessoa: int):
+    profissional = profissionalUseCase.find_by_id(idPessoa)
     if profissional is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Profissional não encontrado")
 

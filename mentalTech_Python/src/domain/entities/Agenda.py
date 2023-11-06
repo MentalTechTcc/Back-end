@@ -20,7 +20,7 @@ class Agenda(Base):
     data= Column(Date, nullable=False)
     hora = Column(Time, nullable=False)
     duracao: int = Column(Integer, nullable=False) 
-    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf"), index=True)
+    cpfProfissional: str = Column("cpfProfissional", ForeignKey("profissional.cpf", ondelete="CASCADE"), index=True)
     modalidadeAtendimento: Enum = Column(EnumDB(Modalidade), nullable=False)
     ocupado: bool = Column(Boolean, nullable=True, default=False)
     valorProposto: float = Column(Float, nullable=False)

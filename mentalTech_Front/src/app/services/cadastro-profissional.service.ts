@@ -36,6 +36,10 @@ export class CadastroProfissionalService {
     return this.http.get<Profissional>(`${environment.baseUrl}/profissional/cpf/${cpf}`);
   }
 
+  deletar(idPessoa: number): Observable<any> {
+    return this.http.delete<number>(`${environment.baseUrl}/profissional/${idPessoa}`);
+  }
+
   setProfissional(profissional: Profissional){
    this.profissional = profissional;
   }

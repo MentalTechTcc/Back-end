@@ -1,5 +1,13 @@
 <app-cabecalho-profissional></app-cabecalho-profissional>
 
+<div *ngIf="errorMessage" class="error-message">
+  <!-- {{ errorMessage }} -->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Falha ao deletar os dados. </strong>Tente novamente mais tarde.
+  </div>
+
+</div>
+
 <div class="login-container">
   <div class="login-box">
     <form (ngSubmit)="atualizarProfissional()">

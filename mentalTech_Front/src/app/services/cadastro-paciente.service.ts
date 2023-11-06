@@ -24,5 +24,10 @@ export class CadastroPacienteService {
     return this.http.get<PacienteResponse[]>(`${environment.baseUrl}/pessoa/cpfProfissional/${cpfProfissional}`);
   }
 
+  deletar(idPessoa: number): Observable<any> {
+    return this.http.delete<number>(`${environment.baseUrl}/pessoa/${idPessoa}`);
+  }
+
+
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Paciente, PacienteResponse } from 'src/app/models/Paciente.models';
 import { CadastroPacienteService } from 'src/app/services/cadastro-paciente.service';
 import { LoginUsuarioService } from 'src/app/services/login-usuario.service';
@@ -17,7 +18,11 @@ export class MeusDadosPacienteComponent implements OnInit {
   dataNascimentoPaciente: Date = new Date();
   paciente: any;
   idPessoa: any;
-  constructor(private loginService: LoginUsuarioService, private cadastroPaciente: CadastroPacienteService) { }
+  errorMessage: string = '';
+
+  constructor(private loginService: LoginUsuarioService,
+    private cadastroPaciente: CadastroPacienteService,
+    private route: Router) { }
 
   ngOnInit(): void {
     this.loginService.getPerfilPessoa().subscribe(
@@ -60,25 +65,33 @@ export class MeusDadosPacienteComponent implements OnInit {
       },
       error => {
         console.error('Erro ao buscar especialistas:', error);
+        this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
+        this.delayErrorMessageRemoval();
       }
     );
   }
 
   deletarDados(): void { // deleta consulta pela agenda
     if (confirm('Tem certeza de que deseja excluir sua conta?')) {
-      // this.consultaService.deletar(idAgenda).subscribe(
-      //   () => {
-      //     this.carregarConsulta(this.pessoa.idPessoa);
-      //     console.log('primeiro id: ' + idAgenda);
-      //     this.atualizaAgendaMarcacao(idAgenda);
+      this.cadastroPaciente.deletar(this.idPessoa).subscribe(
+        () => {
+          this.route.navigate(['/home']);
 
-
-      //   },
-      //   (error) => {
-      //     console.error('Erro ao excluir a agenda:', error);
-      //   }
-      // );
+        },
+        (error) => {
+          console.error('Erro ao excluir a agenda:', error);
+          this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
+          this.delayErrorMessageRemoval();
+        }
+      );
     }
+
+  }
+
+  delayErrorMessageRemoval(): void {
+    setTimeout(() => {
+      this.errorMessage = ''; // Remove a mensagem após alguns segundos
+    }, 5000); // 5000 milissegundos = 5 segundos, ajuste conforme necessário
   }
 
 

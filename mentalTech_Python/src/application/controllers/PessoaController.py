@@ -45,8 +45,8 @@ def update(pessoaSent: PessoaRequestId):
 
 
 @router_pessoa.delete("/{idPessoa}", status_code=status.HTTP_204_NO_CONTENT)
-def delete(id: int):
-    pessoa = pessoaUseCase.find_by_id(id)
+def delete(idPessoa: int):
+    pessoa = pessoaUseCase.find_by_id(idPessoa)
     if pessoa is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Pessoa não encontrado")
 

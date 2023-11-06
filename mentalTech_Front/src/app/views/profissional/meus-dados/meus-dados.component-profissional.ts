@@ -85,6 +85,8 @@ export class MeusDadosProfissionalComponent implements OnInit {
       },
       (error) => {
         console.error('Erro na atualização de dados:', error);
+        this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
+        this.delayErrorMessageRemoval();
       }
     );
   }

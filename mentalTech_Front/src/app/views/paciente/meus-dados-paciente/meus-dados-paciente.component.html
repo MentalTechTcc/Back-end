@@ -1,4 +1,12 @@
 <app-cabecalho-paciente></app-cabecalho-paciente>
+<div *ngIf="errorMessage" class="error-message">
+  <!-- {{ errorMessage }} -->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Ocorreu uma falha. </strong>Tente novamente mais tarde.
+  </div>
+
+</div>
+
 <div class="login-container">
   <div class="login-box">
     <!-- <div>

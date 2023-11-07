@@ -9,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntrarComponent implements OnInit {
 
-  opcao: string = 'paciente'; // Inicializa com 'paciente'
+  opcao: string = 'paciente';
   email: string = '';
   senha: string = '';
   cpf: string = '';
   errorMessage: string = '';
+  esqueciSenhaVisible: boolean = false;
+  forgotEmail: string = '';
 
   constructor(private router: Router, private loginService: LoginUsuarioService) {}
 
@@ -26,46 +28,66 @@ export class EntrarComponent implements OnInit {
   }
 
   entrar(): void {
-    this.loginService.setPerfil(this.opcao);
-    this.loginService.setFezLogin(true);
-    if (this.opcao === 'paciente') {
-      // Navegar para a rota de paciente
-      this.loginService.loginPaciente(this.email, this.senha).subscribe(
-        (response) => {
-          this.loginService.setSenha(this.senha);
-          this.router.navigate(['/home-paciente']);
-        },
-        (error) => {
-          // Lida com erros (autenticação falhou, etc.)
-          this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
-          console.error(error);
-          this.delayErrorMessageRemoval();
-        }
-      );
-    } else if (this.opcao === 'profissional') {
+    // Se não estiver visível, trata como o login normal
+    if (!this.esqueciSenhaVisible) {
+      this.loginService.setPerfil(this.opcao);
+      this.loginService.setFezLogin(true);
 
-      // Navegar para a rota de profissional
-      this.loginService.loginProfissional(this.cpf, this.senha).subscribe(
-        (response) => {
-          this.loginService.setSenha(this.senha);
+      if (this.opcao === 'paciente') {
+        this.loginService.loginPaciente(this.email, this.senha).subscribe(
+          (response) => {
+            this.loginService.setSenha(this.senha);
+            this.router.navigate(['/home-paciente']);
+          },
+          (error) => {
+            this.errorMessage = 'Falha no login. Verifique seu email e senha.';
+            console.error(error);
+            this.delayErrorMessageRemoval();
+          }
+        );
+      } else if (this.opcao === 'profissional') {
+        this.loginService.loginProfissional(this.cpf, this.senha).subscribe(
+          (response) => {
+            this.loginService.setSenha(this.senha);
+            this.router.navigate(['/home-profissional']);
+          },
+          (error) => {
+            this.errorMessage = 'Falha no login. Verifique seu cpf e senha.';
+            console.error(error);
+            this.delayErrorMessageRemoval();
+          }
+        );
+      }
+    } else {
+      // Se estiver visível, trata como "Esqueci Minha Senha"
+      this.enviarEsqueciSenha();
+    }
+  }
 
-          this.router.navigate(['/home-profissional']);
-        },
-        (error) => {
-          // Lida com erros (autenticação falhou, etc.)
-          this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
-          console.error(error);
-          this.delayErrorMessageRemoval();
+  toggleEsqueciSenhaForm(): void {
+    this.esqueciSenhaVisible = !this.esqueciSenhaVisible;
+  }
 
-        }
-      );
-
+  enviarEsqueciSenha(): void {
+    if (this.forgotEmail && this.opcao) {
+      console.log("email: " + this.forgotEmail);
+      console.log("perfil" + this.opcao)
+      // this.loginService.enviarEsqueciSenha(this.opcao, this.forgotEmail).subscribe(
+      //   (response) => {
+      //     console.log(response);
+      //     // Adicione lógica para exibir mensagem ao usuário se necessário
+      //   },
+      //   (error) => {
+      //     console.error(error);
+      //     // Adicione lógica para exibir mensagem de erro ao usuário se necessário
+      //   }
+      // );
     }
   }
 
   delayErrorMessageRemoval(): void {
     setTimeout(() => {
-      this.errorMessage = ''; // Remove a mensagem após alguns segundos
-    }, 5000); // 5000 milissegundos = 5 segundos, ajuste conforme necessário
+      this.errorMessage = '';
+    }, 5000);
   }
 }

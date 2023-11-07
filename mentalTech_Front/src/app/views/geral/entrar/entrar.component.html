@@ -50,10 +50,26 @@
     </form>
 
     <div class="custom-label">
+      <a (click)="toggleEsqueciSenhaForm()">
+        <label>Esqueci minha senha</label>
+      </a>
       <a routerLink="/escolha-perfil">
         <label>Ainda não é um MenteTechie? Inscreva-se</label>
       </a>
     </div>
+    <div *ngIf="esqueciSenhaVisible" class="forgot-password-form">
+      <form>
+        <div class="form-group">
+          <label for="forgotEmail">Email:</label>
+          <input type="email" class="form-control" id="forgotEmail" name="forgotEmail" [(ngModel)]="forgotEmail">
+        </div>
+        <button type="submit" (click)="enviarEsqueciSenha()" class="forgot-password-button">Enviar</button>
+      </form>
+    </div>
+
   </div>
 </div>
+<!-- ... Seu HTML existente ... -->
+
+
 

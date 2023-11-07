@@ -39,6 +39,7 @@ from src.infrastructure.repositories.ProfissionalPossuiEspecialidadeRepository i
 from src.application.useCases.ProfissionalTrataTematicasUseCase import ProfissionalTrataTematicasUseCase
 from src.infrastructure.repositories.ProfissionalTrataTematicasRepository import ProfissionalTrataTematicasRepository
 
+from src.application.useCases.ResetSenhaUseCase import ResetSenhaUseCase
 
 
 databaseSessionGenerator = SessionLocal
@@ -127,4 +128,10 @@ profissionalPossuiEspecialidadeUseCase = ProfissionalPossuiEspecialidadeUseCase(
 profissionalTrataTematicasRepository = ProfissionalTrataTematicasRepository(databaseSessionGenerator)
 profissionalTrataTematicasUseCase = ProfissionalTrataTematicasUseCase(
     profissionalTrataTematicasRepository=profissionalTrataTematicasRepository
+)
+
+
+resetSenhaUseCase = ResetSenhaUseCase(
+    pessoaRepository = pessoaRepository,
+    professionalRepository=profissionalRepository
 )

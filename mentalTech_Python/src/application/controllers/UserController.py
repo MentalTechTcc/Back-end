@@ -7,6 +7,7 @@ from fastapi import APIRouter, Form, Header, HTTPException, status
 
 from ..controllers import pessoaUseCase
 from ..controllers import profissionalUseCase
+from ..controllers import resetSenhaUseCase
 
 
 routerLoginPessoa = APIRouter(
@@ -96,3 +97,11 @@ def logout(refresh_token: str = Header(...)):
     profissionalUseCase.deleteRefreshToken(refresh_token)
 
     return {"message": "Logout realizado com sucesso"}
+
+
+@routerLoginPessoa.post("/resetSenha", status_code=status.HTTP_200_OK)
+def reset_password(email: str):
+
+    resetSenhaUseCase.resetSenha(email)
+
+    return {"message": "Senha recuperada com sucesso"}

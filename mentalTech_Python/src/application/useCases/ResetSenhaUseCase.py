@@ -1,7 +1,9 @@
 from domain.repositories.PessoaRepositoryBaseModel import PessoaRepositoryBaseModel
 from domain.repositories.ProfissionalRepositoryBaseModel import ProfissionalRepositoryBaseModel
+from src.security import get_password_hash
 from email.mime.text import MIMEText
 import smtplib
+import random
 import ssl
 
 
@@ -27,14 +29,27 @@ class ResetSenhaUseCase():
         }
 
         pessoa_reset = self.__pessoaRepository__.find_by_email(email=email)
+            
+        senha = random.randint(100000, 999999)
+      
+        perfil = "paciente"
 
         if pessoa_reset is None:
             pessoa_reset = self.__profissionalRepository__.find_by_email(email=email)
+            perfil="profissional"
 
         if pessoa_reset is not None:
-            body = f"Olá, sua senha atual é {pessoa_reset.senha}, para uma maior segurança, altere sua senha na tela de meus dados."
+
+            if(perfil=='paciente'):
+                pessoa_reset.senha = get_password_hash(str(senha))
+                self.__pessoaRepository__.update(pessoa_reset)
+            elif(perfil=='profissional'):
+                pessoa_reset.senha = get_password_hash(str(senha))
+                self.__profissionalRepository__.update(pessoa_reset)
+
+            body = f"Olá {pessoa_reset.nome}!\nEspero que esteja bem. Sua atual senha  é {senha}. Entretanto, é uma senha gerada pelo sistema para acesso imediato, para uma maior segurança, altere sua senha na tela de meus dados ao realizar o login.\n\nAtenciosanemte, MentalTech."
             message = MIMEText(body)
-            message["Subject"] = "Recuperação de senha"
+            message["Subject"] = "Recuperação de senha MentalTech"
             message["From"] = email_config["sender_email"]
             message["To"] = email
 

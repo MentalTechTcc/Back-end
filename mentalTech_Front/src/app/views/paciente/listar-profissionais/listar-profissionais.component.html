@@ -9,6 +9,20 @@
         <div class="card-body">
           <h5 class="card-title">{{ especialista.nome }}</h5>
           <p>{{ especialista.descricaoProfissional }}</p>
+          <p>
+            <i class="fas fa-medal"></i> Especialidades:
+            <ng-container *ngFor="let especialidade of especialidadesPorProfissional[especialista.cpf]; let last = last">
+              {{ especialidade }}
+              <ng-container *ngIf="!last">, </ng-container>
+            </ng-container>
+          </p>
+          <p>
+            <i class="fas fa-book"></i> Principais Temáticas:
+            <ng-container *ngFor="let tematica of tematicasPorProfissional[especialista.cpf]; let last = last">
+              {{ tematica }}
+              <ng-container *ngIf="!last">, </ng-container>
+            </ng-container>
+          </p>
           <button (click)="exibirAgenda(especialista.cpf)" class="agenda-button">Agenda</button>
         </div>
       </div>

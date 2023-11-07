@@ -1,15 +1,16 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
 .agenda-button {
-  background-color: #9EC4BB; /* Cor de sua escolha para o botão "agenda" */
-  color: black; /* Texto branco */
-  padding: 15px 20px; /* Ajuste o tamanho do padding conforme necessário */
-  font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
+  background-color: #9EC4BB; 
+  color: black; 
+  padding: 15px 20px; 
+  font-size: 16px;
   border: none;
   border-radius: 4px;
   font-family: Sanchez;
-  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+  font-size: 18px; 
 }
 .agenda-button:hover {
-  background-color: #82beb0; /* Cor mais escura ao passar o mouse */
+  background-color: #82beb0; 
 }
 
 .profissionais{

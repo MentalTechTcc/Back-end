@@ -53,11 +53,20 @@ class TematicasPrincipaisRepository:
     
     def find_by_cpfProfissional(self, cpfProfissional: str) -> list[TematicasPrincipais] | None:
         session = self.database()
-        session.close()
-        return session.query(TematicasPrincipais) \
-        .join(ProfissionalTrataTematicas, ProfissionalTrataTematicas.idTematicasPrincipais == TematicasPrincipais.idTematicasPrincipais) \
-        .filter(ProfissionalTrataTematicas.cpfProfissional == cpfProfissional) \
-        .all()
+        try:
+            tematicas_principais = session.query(TematicasPrincipais) \
+                .join(ProfissionalTrataTematicas, ProfissionalTrataTematicas.idTematicasPrincipais == TematicasPrincipais.idTematicasPrincipais) \
+                .filter(ProfissionalTrataTematicas.cpfProfissional == cpfProfissional) \
+                .all()
+            
+            return tematicas_principais
+        except Exception as e:
+   
+            print(f"Erro ao buscar Temáticas Principais do profissional: {e}")
+            return None
+        finally:
+            session.close()
+
     
     
 

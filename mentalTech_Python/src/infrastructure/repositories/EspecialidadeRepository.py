@@ -53,11 +53,20 @@ class EspecialidadeRepository:
     
     def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Especialidade] | None:
         session = self.database()
-        session.close()
-        return session.query(Especialidade) \
-        .join(ProfissionalPossuiEspecialidade, ProfissionalPossuiEspecialidade.idEspecialidade == Especialidade.idEspecialidade) \
-        .filter(ProfissionalPossuiEspecialidade.cpfProfissional == cpfProfissional) \
-        .all()
+        
+        try:
+            especialidades = session.query(Especialidade) \
+                .join(ProfissionalPossuiEspecialidade, ProfissionalPossuiEspecialidade.idEspecialidade == Especialidade.idEspecialidade) \
+                .filter(ProfissionalPossuiEspecialidade.cpfProfissional == cpfProfissional) \
+                .all()
+            
+            return especialidades
+        except Exception as e:
+            print(f"Erro ao buscar especialidades do profissional: {e}")
+            return None
+        finally:
+            session.close()
+
 
      
 assert isinstance(EspecialidadeRepository(

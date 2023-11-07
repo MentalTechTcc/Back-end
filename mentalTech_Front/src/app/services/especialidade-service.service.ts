@@ -30,4 +30,8 @@ export class EspecialidadeServiceService {
     return -1;
   }
 
+  listarEspecialidadesProfissional(cpfProfissional:string):Observable<Especialidade[]>{
+    return this.http.get<Especialidade[]>(`${environment.baseUrl}/especialidade/cpf/${cpfProfissional}`);
+  }
+
 }

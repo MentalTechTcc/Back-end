@@ -33,4 +33,10 @@ export class TematicaServiceService {
   createTematicaProfissional(paciente: ProfissionalTrataTematica): Observable<ProfissionalTrataTematica> {
     return this.http.post<ProfissionalTrataTematica>(`${environment.baseUrl}/tematicasPrincipais/ProfissionalTrataTematicas`, paciente);
   }
+
+  listarTematicasProfissional(cpfProfissional:string):Observable<Tematica[]>{
+    return this.http.get<Tematica[]>(`${environment.baseUrl}/tematicasPrincipais/cpf/${cpfProfissional}`);
+  }
+
 }
+

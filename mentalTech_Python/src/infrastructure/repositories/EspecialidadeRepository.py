@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from domain.entities.Especialidade import Especialidade
+from domain.entities.Especialidade import Especialidade, ProfissionalPossuiEspecialidade
 from typing import Callable
 from typing import NoReturn
 from src.domain.repositories import EspecialidadeRepositoryBaseModel
@@ -51,6 +51,14 @@ class EspecialidadeRepository:
         session.close()
         return session.query(Especialidade).filter(Especialidade.idEspecialidade == especialidade_id).first()
     
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Especialidade] | None:
+        session = self.database()
+        session.close()
+        return session.query(Especialidade) \
+        .join(ProfissionalPossuiEspecialidade, ProfissionalPossuiEspecialidade.idEspecialidade == Especialidade.idEspecialidade) \
+        .filter(ProfissionalPossuiEspecialidade.cpfProfissional == cpfProfissional) \
+        .all()
+
      
 assert isinstance(EspecialidadeRepository(
     {}), EspecialidadeRepositoryBaseModel.EspecialidadeRepositoryBaseModel)

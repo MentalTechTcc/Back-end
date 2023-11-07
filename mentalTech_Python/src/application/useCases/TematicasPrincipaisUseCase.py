@@ -41,6 +41,9 @@ class TematicasPrincipaisUseCase():
         """Sobrescreve os dados de tematicasPrincipais, assume que ele já exista"""
         self.__tematicasPrincipaisRepository__.update(TematicasPrincipais(**tematicasPrincipaisSent.__dict__))
 
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[TematicasPrincipais] | None:
+        return self.__tematicasPrincipaisRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
+
     def valida_tematica_create(self, tematicas: TematicasPrincipais) -> dict:
 
         fieldInfoDict = {}

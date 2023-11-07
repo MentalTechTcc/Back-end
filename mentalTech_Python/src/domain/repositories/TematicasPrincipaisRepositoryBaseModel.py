@@ -26,4 +26,7 @@ class TematicasPrincipaisRepositoryBaseModel(Protocol):
     def find_by_id(self, tematicasPrincipais_id: int) -> TematicasPrincipais | None:
         """Faz uma busca pelo id e retorna os dados do TematicasPrincipais caso existe"""
         ...
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[TematicasPrincipais] | None:
+        """Faz uma busca pelo cpf e retorna os dados do TematicasPrincipais caso existe"""
+        ...
    

@@ -110,3 +110,15 @@ def delete(cpf: str,  idEspecialidade:int):
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
+@router_especialidade.get("/cpf/{cpfProfissional}",
+                  response_model=list[EspecialidadeResponse],
+                  status_code=status.HTTP_200_OK)
+def find_by_cpfProfissional( cpfProfissional:str):
+
+    especialidades = especialidadeUseCase.find_by_cpfProfissional(cpfProfissional)
+
+    if especialidades is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="especialidades não encontrado")
+
+    return especialidades
+

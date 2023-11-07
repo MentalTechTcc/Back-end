@@ -24,3 +24,7 @@ class EspecialidadeRepositoryBaseModel(Protocol):
     def find_by_id(self, especialidade_id: int) -> Especialidade | None:
         """Faz uma busca pelo id e retorna os dados do especialidade caso existe"""
         ...
+
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Especialidade] | None:
+        """Faz uma busca pelo cpf e retorna os dados do especialidade caso existe"""
+        ...

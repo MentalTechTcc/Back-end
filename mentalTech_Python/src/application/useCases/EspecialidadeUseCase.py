@@ -33,6 +33,9 @@ class EspecialidadeUseCase():
     def find_by_id(self, especialidade_id : int) -> EspecialidadeBase | None:
         return self.__especialidadeRepository__.find_by_id(especialidade_id=especialidade_id)
 
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Especialidade] | None:
+        return self.__especialidadeRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
+
     def update(self, especialidadeSent: EspecialidadeRequestId) -> NoReturn:
         """Sobrescreve os dados de especialidade, assume que ele já exista"""
         self.__especialidadeRepository__.update(Especialidade(**especialidadeSent.__dict__))

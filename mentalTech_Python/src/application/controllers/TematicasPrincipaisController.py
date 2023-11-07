@@ -119,4 +119,14 @@ def delete(cpf: str,  idTematicasPrincipais:int):
 
 
 
+@router_tematicas_principais.get("/cpf/{cpfProfissional}",
+                  response_model=list[TematicasPrincipaisResponse],
+                  status_code=status.HTTP_200_OK)
+def find_by_cpfProfissional( cpfProfissional:str):
 
+    tematicas = tematicasPrincipaisUseCase.find_by_cpfProfissional(cpfProfissional)
+
+    if tematicas is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="temáticas não encontrado")
+
+    return tematicas

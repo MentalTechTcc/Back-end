@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from domain.entities.TematicasPrincipais import TematicasPrincipais
+from domain.entities.TematicasPrincipais import TematicasPrincipais, ProfissionalTrataTematicas
 from typing import Callable
 from typing import NoReturn
 from src.domain.repositories import TematicasPrincipaisRepositoryBaseModel
@@ -51,7 +51,13 @@ class TematicasPrincipaisRepository:
         session.close()
         return session.query(TematicasPrincipais).filter(TematicasPrincipais.idTematicasPrincipais == tematicasPrincipais_id).first()
     
-    
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[TematicasPrincipais] | None:
+        session = self.database()
+        session.close()
+        return session.query(TematicasPrincipais) \
+        .join(ProfissionalTrataTematicas, ProfissionalTrataTematicas.idTematicasPrincipais == TematicasPrincipais.idTematicasPrincipais) \
+        .filter(ProfissionalTrataTematicas.cpfProfissional == cpfProfissional) \
+        .all()
     
     
 

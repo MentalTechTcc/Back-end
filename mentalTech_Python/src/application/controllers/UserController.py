@@ -100,8 +100,10 @@ def logout(refresh_token: str = Header(...)):
 
 
 @routerLoginPessoa.post("/resetSenha", status_code=status.HTTP_200_OK)
-def reset_password(email: str):
+def reset_password(email: str, perfil: str):
+    try:
+        resetSenhaUseCase.resetSenha(email, perfil)
 
-    resetSenhaUseCase.resetSenha(email)
-
-    return {"message": "Senha recuperada com sucesso"}
+        return {"message": "Senha recuperada com sucesso"}
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))

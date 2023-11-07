@@ -1,5 +1,34 @@
 <app-cabecalho></app-cabecalho>
-<div class="quadrado" *ngFor="let especialista of especialistas">
-    <h3>{{ especialista.nome }}</h3>
-    <p>{{ especialista.descricaoProfissional }}</p>
+<div class="profissionais">
+  <h2>Nossos Profissionais</h2>
+  <div class="card mb-3" style="max-width: 99%;" *ngFor="let especialista of especialistas">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="https://www.petz.com.br/blog/wp-content/uploads/2018/04/cachorro-sonha-1-1280x720.jpg" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ especialista.nome }}</h5>
+          <p>{{ especialista.descricaoProfissional }}</p>
+          <p>
+            <i class="fas fa-medal"></i> Especialidades:
+            <ng-container *ngFor="let especialidade of especialidadesPorProfissional[especialista.cpf]; let last = last">
+              {{ especialidade }}
+              <ng-container *ngIf="!last">, </ng-container>
+            </ng-container>
+          </p>
+          <p>
+            <i class="fas fa-book"></i> Principais Temáticas:
+            <ng-container *ngFor="let tematica of tematicasPorProfissional[especialista.cpf]; let last = last">
+              {{ tematica }}
+              <ng-container *ngIf="!last">, </ng-container>
+            </ng-container>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+
+

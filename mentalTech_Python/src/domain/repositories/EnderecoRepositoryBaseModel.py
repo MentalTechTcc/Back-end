@@ -25,5 +25,4 @@ class EnderecoRepositoryBaseModel(Protocol):
         """Faz uma busca pelo id e retorna os dados do endereco caso existe"""
         ...
 
-    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Endereco] | None:
-        ...
+    

@@ -38,4 +38,14 @@ export class EnderecoServiceService {
   createEnderecoProfissional(paciente: ProfissionalTemEndereco): Observable<ProfissionalTemEndereco> {
     return this.http.post<ProfissionalTemEndereco>(`${environment.baseUrl}/endereco/PessoaPossuiEndereco`, paciente);
   }
+
+  listarEnderecoProfissional(cpfProfissional:string): Observable<ProfissionalTemEndereco[]> {
+    return this.http.get<ProfissionalTemEndereco[]>(`${environment.baseUrl}/endereco/PessoaPossuiEndereco/${cpfProfissional}`);
+  }
+
+  listarEnderecoPorId(idEndereco:number): Observable<EnderecoResponse> {
+    return this.http.get<EnderecoResponse>(`${environment.baseUrl}/endereco/{idEndereco}?id=${idEndereco}`);
+  }
+
 }
+

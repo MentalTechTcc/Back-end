@@ -113,14 +113,3 @@ def delete(cpf: str,  enderecoId:int):
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
-@router_endereco.get("/cpfProfissional/{cpfProfissional}",
-                  response_model=list[EnderecoResponse],
-                  status_code=status.HTTP_200_OK)
-def find_by_cpfProfissional(cpfProfissional:str):
-
-    endereco = enderecoUseCase.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
-
-    if endereco is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="endereco não encontrado")
-
-    return endereco

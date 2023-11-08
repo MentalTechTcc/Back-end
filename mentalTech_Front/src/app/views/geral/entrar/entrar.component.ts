@@ -15,7 +15,8 @@ export class EntrarComponent implements OnInit {
   cpf: string = '';
   errorMessage: string = '';
   esqueciSenhaVisible: boolean = false;
-  forgotEmail: string = '';
+  forgotEmail: any = null;
+  sucesso = false
 
   constructor(private router: Router, private loginService: LoginUsuarioService) {}
 
@@ -72,6 +73,12 @@ export class EntrarComponent implements OnInit {
     if (this.forgotEmail && this.opcao) {
       this.loginService.esqueciSenha(this.forgotEmail, this.opcao).subscribe(
         (response) => {
+          this.sucesso = true
+
+          setTimeout(() => {
+            window.location.reload(); // Recarrega a página atual
+          }, 2000);
+
           console.log("Enviado com sucesso");
         },
         (error) => {

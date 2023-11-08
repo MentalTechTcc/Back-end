@@ -143,5 +143,20 @@ export class LoginUsuarioService {
     return this.http.get(`${environment.baseUrl}/login/profissional/token`, { headers });
   }
 
+  esqueciSenha(email: string, perfil: string): Observable<any> {
+    const url = `${environment.baseUrl}/login/resetSenha`;
+    const body = new HttpParams()
+      .set('email', email)
+      .set('perfil', perfil);
+
+    const headers = new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+    });
+
+
+    return this.http.post(url, body.toString(), { headers });
+  }
+
+
 
 }

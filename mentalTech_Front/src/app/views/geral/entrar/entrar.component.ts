@@ -70,20 +70,20 @@ export class EntrarComponent implements OnInit {
 
   enviarEsqueciSenha(): void {
     if (this.forgotEmail && this.opcao) {
-      console.log("email: " + this.forgotEmail);
-      console.log("perfil" + this.opcao)
-      // this.loginService.enviarEsqueciSenha(this.opcao, this.forgotEmail).subscribe(
-      //   (response) => {
-      //     console.log(response);
-      //     // Adicione lógica para exibir mensagem ao usuário se necessário
-      //   },
-      //   (error) => {
-      //     console.error(error);
-      //     // Adicione lógica para exibir mensagem de erro ao usuário se necessário
-      //   }
-      // );
+      this.loginService.esqueciSenha(this.forgotEmail, this.opcao).subscribe(
+        (response) => {
+          console.log("Enviado com sucesso");
+        },
+        (error) => {
+          this.errorMessage = 'Falha no login. Verifique seu cpf e senha.';
+          console.error(error);
+          this.delayErrorMessageRemoval();
+        }
+      );
+
     }
   }
+
 
   delayErrorMessageRemoval(): void {
     setTimeout(() => {

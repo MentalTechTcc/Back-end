@@ -32,11 +32,18 @@ class ProfissionalPossuiEnderecoRepository:
                 raise e
 
         
-    def find_by_cpfProfissional(self, cpf: str) -> ProfissionalPossuiEndereco | None:
-        """Faz uma busca pelo id no banco e retorna o objeto"""
+    def find_by_cpfProfissional(self, cpf: str) -> list[ProfissionalPossuiEndereco]:
+        """Faz uma busca pelo CPF no banco e retorna os objetos"""
         session = self.database()
-        resultado = session.query(ProfissionalPossuiEndereco).filter(ProfissionalPossuiEndereco.cpfProfissional==cpf).all()
-        session.close()
-        return resultado
+
+        try:
+            resultado = session.query(ProfissionalPossuiEndereco).filter(ProfissionalPossuiEndereco.cpfProfissional == cpf).all()
+            return resultado
+        except Exception as e:
+            print(f"Erro ao buscar endereços por CPF do profissional: {e}")
+            return None
+        finally:
+            session.close()
+
 
     

@@ -48,8 +48,15 @@ class EnderecoRepository:
     def find_by_id(self, endereco_id: int) -> Endereco | None:
         """Faz uma busca pelo id no banco e retorna o objeto"""
         session = self.database()
-        session.close()
-        return session.query(Endereco).filter(Endereco.idEndereco == endereco_id).first()
+        
+        try:
+            return session.query(Endereco).filter(Endereco.idEndereco == endereco_id).first()
+        except Exception as e:
+            print(f"Erro ao buscar endereço por ID: {e}")
+            return None
+        finally:
+            session.close()
+
     
     
      

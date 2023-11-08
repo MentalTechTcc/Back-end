@@ -1,64 +1,63 @@
-html, body {
+  html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
     overflow: hidden;
-}
+  }
 
-.corpo {
+  .corpo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f9f9f9; 
-    height: 100vh;
+    background-color: #f9f9f9;
     margin: 0;
     overflow: hidden;
-}
-
-.metade-texto {
-    padding: 20px;
-    font-family: Sanchez;
-    font-size: 18px; 
-    color: #333;
-    background-color: #fff; 
-    overflow-y: auto;
-    min-height: 85vh;
-    text-align: center;
-    border-radius: 5px; 
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
   }
 
-.titulo {
-    font-size: 24px; 
+  .metade-texto {
+    padding: 20px;
+    font-family: Sanchez;
+    font-size: 18px;
+    color: #333;
+    background-color: #fff;
+    overflow-y: auto;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5%;
+    margin-top: 3%;
+  }
+
+  .titulo {
+    font-size: 24px;
     color: #008B8B;
   }
 
-.section {
+  .section {
     margin-bottom: 30px;
   }
 
-.campo {
-    margin-bottom: 20px; 
-    text-align: left; 
+  .campo {
+    margin-bottom: 20px;
+    text-align: left;
   }
 
-.input-campo {
+  .input-campo {
     width: 100%;
-    height: 40px; 
+    height: 40px;
     padding: 10px;
-    font-size: 16px; 
+    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: border-color 0.2s;
   }
 
-.input-campo:hover, .input-campo:focus {
+  .input-campo:hover, .input-campo:focus {
     border-color: #008B8B;
     outline: none;
   }
 
-.botao {
+  .botao {
     background-color: #008B8B;
     color: white;
     font-size: 18px;
@@ -68,7 +67,7 @@ html, body {
     cursor: pointer;
   }
 
-.botao:hover {
+  .botao:hover {
     background-color: #006666;
   }
 
@@ -81,18 +80,16 @@ html, body {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
   }
-  
-  
+
   .mensagem-sucesso {
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
     color: white;
   }
-  
+
   .mensagem-erro {
     background-color: #f44336;
     color: white;
   }
-
 
   .checkbox-container {
     display: block;
@@ -102,14 +99,15 @@ html, body {
     cursor: pointer;
     font-size: 16px;
     color: #333;
+    margin: 10px; /* Margem antes e depois do checkbox */
   }
-  
+
   .checkbox-container input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
   }
-  
+
   .checkmark {
     position: absolute;
     top: 0;
@@ -120,26 +118,26 @@ html, body {
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  
+
   .checkbox-container:hover input ~ .checkmark {
     background-color: #008B8B;
   }
-  
+
   .checkbox-container input:checked ~ .checkmark {
     background-color: #008B8B;
     border: 1px solid #008B8B;
   }
-  
+
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   .checkbox-container input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   .checkbox-container .checkmark:after {
     left: 9px;
     top: 5px;
@@ -149,11 +147,9 @@ html, body {
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }
-  
+
   .checkbox-container span {
     font-size: 16px;
     color: #333;
     margin-left: 10px;
   }
-  
-  

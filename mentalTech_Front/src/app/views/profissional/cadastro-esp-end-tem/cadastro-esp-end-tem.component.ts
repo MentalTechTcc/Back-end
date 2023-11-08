@@ -221,28 +221,33 @@ export class CadastroEspEndTemComponent {
   enviar() {
     const profissional = this.cadastroProfissionalService.getProfissional();
 
-    this.cadastroProfissionalService.create(profissional).subscribe(
-      response => {
-        console.log('Cadastro bem-sucedido:', response);
+    if (this.especialidades.length > 0){
+      this.cadastroProfissionalService.create(profissional).subscribe(
+        response => {
+          console.log('Cadastro bem-sucedido:', response);
 
-        this.adicionaEspecialidade(profissional.cpf);
+          this.adicionaEspecialidade(profissional.cpf);
 
-        this.adicionaTematicasSelecionadas(profissional.cpf);
+          this.adicionaTematicasSelecionadas(profissional.cpf);
 
-        this.adicionaTematicasAdicionadas(profissional.cpf);
+          this.adicionaTematicasAdicionadas(profissional.cpf);
 
-        this.adicionaEnderecoBanco(profissional.cpf);
+          this.adicionaEnderecoBanco(profissional.cpf);
 
-        this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
 
-      },
-      error => {
-        console.error('Erro no cadastro:', error);
-        this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
-        this.delayErrorMessageRemoval();
-      }
-      );
-
+        },
+        error => {
+          console.error('Erro no cadastro:', error);
+          this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
+          this.delayErrorMessageRemoval();
+        }
+        );
+    }
+    else{
+      this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
+      this.delayErrorMessageRemoval();
+    }
 
   }
 

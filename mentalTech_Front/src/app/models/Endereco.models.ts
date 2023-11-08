@@ -20,4 +20,5 @@ export interface EnderecoResponse {
 export interface ProfissionalTemEndereco{
   idEndereco: number;
   cpfProfissional: string;
+  detalhes?: EnderecoResponse; 
 }

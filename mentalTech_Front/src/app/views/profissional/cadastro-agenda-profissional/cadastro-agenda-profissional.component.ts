@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Agenda } from 'src/app/models/Agenda.models';
 import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
 import {CadastroAgendaProfissionalService} from 'src/app/services/cadastro-agenda-profissional.service'
+import { ProfissionalTemEndereco } from 'src/app/models/Endereco.models';
+import {EnderecoServiceService} from 'src/app/services/endereco-service.service'
 
 @Component({
   selector: 'app-cadastro-agenda-profissional',
@@ -15,12 +17,14 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
   profissional: any = {};
   sucesso: boolean = false;
   erro: string = '';
-
+  enderecosDisponiveis: ProfissionalTemEndereco[] = [];
+  enderecoSelecionadoId: number | null = null;
 
   constructor(
     private fb: FormBuilder,
     private loginService: LoginUsuarioService,
     private agendaService: CadastroAgendaProfissionalService,
+    private enderecoService: EnderecoServiceService
     ) {
    this.disponibilidadeForm = this.fb.group({
     cpfProfissional: ['', Validators.required],
@@ -41,6 +45,7 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
         console.log(data);
       /*  this.carregarAgenda();
         this.carregarProfissionais(); */
+        this.carregarEnderecosDisponiveis();
       },
       (error) => {
         console.log('error');
@@ -57,7 +62,8 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       modalidadeAtendimento: [2, Validators.required],
       ocupado:false,
       valorProposto:[50.0, Validators.required],
-      linkPagamento:''
+      linkPagamento:'',
+      idEndereco: this.enderecoSelecionadoId
     });
   }
 
@@ -82,6 +88,25 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
       );
     }
   }
+
+  carregarEnderecosDisponiveis() {
+    this.enderecoService.listarEnderecoProfissional(this.profissional.cpf).subscribe((enderecos) => {
+      this.enderecosDisponiveis = enderecos;
+  
+      this.enderecosDisponiveis.forEach((endereco) => {
+        this.enderecoService.listarEnderecoPorId(endereco.idEndereco).subscribe((detalhesEndereco) => {
+       
+          endereco.detalhes = detalhesEndereco;
+        });
+      });
+    });
+  }
+
+
+  selecionarEndereco(idEndereco: number) {
+    this.enderecoSelecionadoId = idEndereco;
+  }
+
 }
 
 

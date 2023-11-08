@@ -31,6 +31,23 @@
             <option type="number" [value]=2>Online</option>
           </select>
         </div>
+
+        <div class="enderecos-disponiveis">
+          <h5>Endereços Para Consultas Presenciais:</h5>
+          <ul>
+            <li *ngFor="let endereco of enderecosDisponiveis">
+              <label class="checkbox-container">
+                <input type="checkbox" [value]="endereco.idEndereco" (change)="selecionarEndereco(endereco.idEndereco)" [checked]="enderecoSelecionadoId === endereco.idEndereco">
+                {{ endereco.detalhes?.bairro }} - {{ endereco.detalhes?.cep }}
+                <span class="checkmark"></span>
+              </label>
+            </li>
+          </ul>
+        </div>
+        
+        
+        
+
       </div>
       <button type="submit" class="botao">Enviar</button>
     </form>

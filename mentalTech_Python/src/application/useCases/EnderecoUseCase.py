@@ -43,6 +43,9 @@ class EnderecoUseCase():
         """Sobrescreve os dados de endereco, assume que ele já exista"""
         self.__enderecoRepository__.update(Endereco(**enderecoSent.__dict__))
 
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Endereco] | None:
+        self.__enderecoRepository__.find_by_cpfProfissional(cpfProfissional=cpfProfissional)
+
     def valida_endereco_create(self, endereco: Endereco) -> dict:
 
         fieldInfoDict = {}

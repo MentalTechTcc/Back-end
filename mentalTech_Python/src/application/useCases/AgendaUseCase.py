@@ -36,7 +36,8 @@ class AgendaUseCase():
                 modalidadeAtendimento=agenda_db.modalidadeAtendimento,
                 ocupado= agenda_db.ocupado,
                 valorProposto= agenda_db.valorProposto,
-                linkPagamento=agenda_db.linkPagamento
+                linkPagamento=agenda_db.linkPagamento,
+                idEndereco=agenda_db.idEndereco
             )
             profissionais.append(agenda)
         return profissionais

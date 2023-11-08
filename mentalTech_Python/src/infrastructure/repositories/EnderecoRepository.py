@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from domain.entities.Endereco import Endereco
+from domain.entities.Endereco import Endereco, ProfissionalPossuiEndereco
 from typing import Callable
 from typing import NoReturn
 from src.domain.repositories import EnderecoRepositoryBaseModel
@@ -50,6 +50,20 @@ class EnderecoRepository:
         session = self.database()
         session.close()
         return session.query(Endereco).filter(Endereco.idEndereco == endereco_id).first()
+    
+    def find_by_cpfProfissional(self, cpfProfissional: str) -> list[Endereco] | None:
+        """Faz uma busca pelo cpf no banco e retorna o objeto"""
+        session = self.database()
+    
+        enderecos = session.query(Endereco) \
+            .join(ProfissionalPossuiEndereco, ProfissionalPossuiEndereco.idEndereco == Endereco.idEndereco) \
+            .filter(ProfissionalPossuiEndereco.cpfProfissional == cpfProfissional) \
+            .all()
+
+        session.close()
+
+        return enderecos
+    
     
      
 assert isinstance(EnderecoRepository(

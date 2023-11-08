@@ -25,6 +25,7 @@ class Agenda(Base):
     ocupado: bool = Column(Boolean, nullable=True, default=False)
     valorProposto: float = Column(Float, nullable=False)
     linkPagamento: str = Column(String(500), nullable=True)
+    idEndereco: int = Column("idEndereco", ForeignKey("endereco.idEndereco"), index=True)
 
 
 
@@ -37,6 +38,7 @@ class AgendaBase(BaseModel):
     ocupado:bool
     valorProposto: float 
     linkPagamento: Optional[str]
+    idEndereco: Optional[int]
 
 class AgendaRequest(AgendaBase):
     '''...'''

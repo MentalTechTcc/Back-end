@@ -32,6 +32,7 @@ export class CadastroEspEndTemComponent {
   enderecos_cadastrados: EnderecoResponse[] = [];
   tematicas_cadastradas: TematicaResponse[] = [];
   errorMessage: string = '';
+  especialidadesSelecionadas: any[] = [];
 
 
   constructor(
@@ -88,17 +89,21 @@ export class CadastroEspEndTemComponent {
     console.log(this.novas_tematicas);
   }
 
-  adicionaEspecialidade(cpf: string){
+
+  buscaEspecialidadesAdicionadas(cpf: string){
+
     // Filtrar apenas as especialidades selecionadas
-    const especialidadesSelecionadas = this.especialidades
+      this.especialidadesSelecionadas = this.especialidades
       .filter(especialidade => especialidade.selecionada)
       .map(especialidade => ({
         idEspecialidade: especialidade.idEspecialidade,
         cpfProfissional: cpf
       }));
+  }
 
+  adicionaEspecialidade(cpf: string){
     // Enviar para o backend apenas as especialidades selecionadas
-    for (const especialidade of especialidadesSelecionadas) {
+    for (const especialidade of this.especialidadesSelecionadas) {
       this.serviceEspecialidade.createEspecialidadeProfissional(especialidade).subscribe(
         response => {
           console.log('Cadastro bem-sucedido:', response);
@@ -221,7 +226,9 @@ export class CadastroEspEndTemComponent {
   enviar() {
     const profissional = this.cadastroProfissionalService.getProfissional();
 
-    if (this.especialidades.length > 0){
+    this.buscaEspecialidadesAdicionadas(profissional.cpf);
+
+    if (this.especialidadesSelecionadas.length > 0){
       this.cadastroProfissionalService.create(profissional).subscribe(
         response => {
           console.log('Cadastro bem-sucedido:', response);
@@ -247,6 +254,11 @@ export class CadastroEspEndTemComponent {
     else{
       this.errorMessage = 'Falha no login. Verifique seu CPF e senha.';
       this.delayErrorMessageRemoval();
+      // setTimeout(() => {
+      //   this.router.navigate(['/login']);
+      //   // Recarrega a página atual
+      // }, 2000);
+
     }
 
   }

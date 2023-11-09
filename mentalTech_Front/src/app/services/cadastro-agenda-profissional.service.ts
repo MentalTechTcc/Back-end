@@ -50,7 +50,7 @@ export class CadastroAgendaProfissionalService {
   }
 
   deletar(idAgenda: number): Observable<AgendaRequestId[]> {
-    return this.http.delete<AgendaRequestId[]>(`${environment.baseUrl}/consulta/idConsulta/{idConsulta}?id=${idAgenda}`);
+    return this.http.delete<AgendaRequestId[]>(`${environment.baseUrl}/agenda/{idAgenda}?id=${idAgenda}`);
   }
 
   updateAgendaMarcacao(agenda: AgendaRequestId): Observable<any> {

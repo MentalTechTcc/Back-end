@@ -5,7 +5,9 @@ import {ConsultaService} from 'src/app/services/consulta.service'
 import {CadastroAgendaProfissionalService} from 'src/app/services/cadastro-agenda-profissional.service'
 import { AgendaRequestId } from 'src/app/models/Agenda.models';
 import { ConsultaRequestId } from 'src/app/models/Consulta.models';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {EnderecoServiceService} from 'src/app/services/endereco-service.service';
 
 @Component({
   selector: 'app-minhas-consultas',
@@ -16,11 +18,13 @@ export class MinhasConsultasComponent implements OnInit {
   listaAgendas: AgendaRequestId[] = [];
   pessoa: any = {};
   listaConsultas: ConsultaRequestId[] = [];
+  cacheDescricao: { [id: number]: string } = {};
 
   constructor(
     private loginService: LoginUsuarioService,
     private agendaService: CadastroAgendaProfissionalService,
-    private consultaService: ConsultaService
+    private consultaService: ConsultaService,
+    private enderecoService: EnderecoServiceService 
     ) { }
 
   ngOnInit(): void {
@@ -122,6 +126,24 @@ export class MinhasConsultasComponent implements OnInit {
     return this.agendaService.listarPorIdAgenda(idAgenda);
   }
 
+  traduzirIdEnderecoParaDescricao(idEndereco: number): Observable<string> {
+    if (idEndereco === null || idEndereco === undefined) {
+      return of('Sem endereço');
+    }
+
+    const descricaoCache = this.cacheDescricao[idEndereco];
+    if (descricaoCache) {
+      return of(descricaoCache);
+    }
+
+    return this.enderecoService.listarEnderecoPorId(idEndereco).pipe(
+      map((detalhesEndereco) => {
+        const descricao = `${detalhesEndereco.cidade}-${detalhesEndereco.estado}, ${detalhesEndereco.bairro}, ${detalhesEndereco.numero}`;
+        this.cacheDescricao[idEndereco] = descricao;
+        return descricao;
+      })
+    );
+  }
 
 }
 

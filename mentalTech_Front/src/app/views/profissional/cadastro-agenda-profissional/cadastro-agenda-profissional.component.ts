@@ -34,18 +34,19 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
     modalidadeAtendimento: [2, Validators.required],
     ocupado:false,
     valorProposto:[50.0, Validators.required],
-    linkPagamento: ''
+    linkPagamento: '',
+    idEndereco: this.enderecoSelecionadoId
   });}
 
   ngOnInit(): void {
     this.loginService.getPerfilProfissional().subscribe(
       (data: any) => {
         this.profissional = data;
+        this.carregarEnderecosDisponiveis();
         this.initForm();
         console.log(data);
       /*  this.carregarAgenda();
         this.carregarProfissionais(); */
-        this.carregarEnderecosDisponiveis();
       },
       (error) => {
         console.log('error');
@@ -69,9 +70,12 @@ export class CadastroAgendaProfissionalComponent implements OnInit {
 
   onSubmit() {
     if (this.disponibilidadeForm.valid) {
+      const idEnderecoControl = this.disponibilidadeForm.get('idEndereco');
+      if (idEnderecoControl) {
+        idEnderecoControl.setValue(this.enderecoSelecionadoId);
+      }
       console.log( this.disponibilidadeForm.value)
       const agendaData: Agenda = this.disponibilidadeForm.value;
-      console.log('apertou')
       /*console.log(this.disponibilidadeForm.value)*/
       agendaData.modalidadeAtendimento = +agendaData.modalidadeAtendimento;
       this.agendaService.cadastrarAgenda(agendaData).subscribe(

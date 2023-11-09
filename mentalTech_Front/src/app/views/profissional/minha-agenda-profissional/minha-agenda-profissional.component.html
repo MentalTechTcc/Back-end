@@ -18,6 +18,7 @@
             <p class="valor"><i class="fas fa-money-bill-wave"></i> {{ agenda.valorProposto | currency: 'BRL' }}</p>
             <p class="linkPagamento">{{ agenda.linkPagamento }}</p>
             <p class="ocupado">{{ getOcupadoLabel(agenda.ocupado) }}</p>
+            <p class="endereco" *ngIf="agenda.idEndereco !== undefined"><i class="fas fa-map"></i> {{ traduzirIdEnderecoParaDescricao(agenda.idEndereco) | async }}</p>
             <div>
               <button routerLink="/jitsi" class="botao-excluir">Sala de Reunião</button>
               <i class="fas fa-trash-alt botao-excluir" (click)="deletarAgenda(agenda.idAgenda)"></i>

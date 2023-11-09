@@ -9,6 +9,7 @@ export interface Agenda {
     ocupado:boolean;
     valorProposto:number;
     linkPagamento: string;
+    idEndereco?:number;
   }
 
 
@@ -22,5 +23,6 @@ export interface AgendaRequestId {
   ocupado:boolean;
   valorProposto:number;
   linkPagamento: string;
+  idEndereco?:number;
 
 }

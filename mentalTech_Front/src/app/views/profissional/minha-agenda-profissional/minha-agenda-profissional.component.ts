@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Agenda, AgendaRequestId } from 'src/app/models/Agenda.models';
 import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
-import {CadastroAgendaProfissionalService} from 'src/app/services/cadastro-agenda-profissional.service'
+import {CadastroAgendaProfissionalService} from 'src/app/services/cadastro-agenda-profissional.service';
+import {EnderecoServiceService} from 'src/app/services/endereco-service.service';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-minha-agenda-profissional',
@@ -13,11 +16,13 @@ export class MinhaAgendaProfissionalComponent implements OnInit {
   cpfProfissional:string = '';
   profissional: any = {};
   listaAgendas: AgendaRequestId[] = [];
+  cacheDescricao: { [id: number]: string } = {};
   
 
   constructor(
     private loginService: LoginUsuarioService,
     private agendaService: CadastroAgendaProfissionalService,
+    private enderecoService: EnderecoServiceService 
     ) {
  }
 
@@ -55,6 +60,26 @@ deletarAgenda(idAgenda: number): void {
       );
     }
   }
+  
+  traduzirIdEnderecoParaDescricao(idEndereco: number): Observable<string> {
+    if (idEndereco === null || idEndereco === undefined) {
+      return of('Sem endereço');
+    }
+
+    const descricaoCache = this.cacheDescricao[idEndereco];
+    if (descricaoCache) {
+      return of(descricaoCache);
+    }
+
+    return this.enderecoService.listarEnderecoPorId(idEndereco).pipe(
+      map((detalhesEndereco) => {
+        const descricao = `${detalhesEndereco.cidade}-${detalhesEndereco.estado}, ${detalhesEndereco.bairro}, ${detalhesEndereco.numero}`;
+        this.cacheDescricao[idEndereco] = descricao;
+        return descricao;
+      })
+    );
+  }
+  
   
 
   getOcupadoLabel(ocupado: boolean): string {

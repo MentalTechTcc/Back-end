@@ -6,7 +6,7 @@ from domain.entities.Profissional import Profissional
 from domain.entities.Pessoa import Pessoa
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import RelatorioRepositoryBaseModel
+from domain.repositories import RelatorioRepositoryBaseModel
 
 class RelatorioRepository:
 

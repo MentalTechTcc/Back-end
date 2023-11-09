@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domain.entities.Endereco import Endereco, ProfissionalPossuiEndereco
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import EnderecoRepositoryBaseModel
+from domain.repositories import EnderecoRepositoryBaseModel
 
 class EnderecoRepository:
 

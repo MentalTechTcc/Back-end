@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domain.entities.TematicasPrincipais import TematicasPrincipais, ProfissionalTrataTematicas
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import TematicasPrincipaisRepositoryBaseModel
+from domain.repositories import TematicasPrincipaisRepositoryBaseModel
 
 class TematicasPrincipaisRepository:
 

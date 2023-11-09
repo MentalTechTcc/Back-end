@@ -3,7 +3,7 @@ from domain.entities.Consulta import Consulta
 from domain.entities.Agenda import Agenda
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import ConsultaRepositoryBaseModel
+from domain.repositories import ConsultaRepositoryBaseModel
 from datetime import datetime
 from fastapi import HTTPException
 

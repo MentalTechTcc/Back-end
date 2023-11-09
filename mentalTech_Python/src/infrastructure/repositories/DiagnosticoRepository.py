@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domain.entities.Diagnostico import Diagnostico
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import DiagnosticoRepositoryBaseModel
+from domain.repositories import DiagnosticoRepositoryBaseModel
 
 class DiagnosticoRepository:
 

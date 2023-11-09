@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domain.entities.Profissional import Profissional
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import ProfissionalRepositoryBaseModel
+from domain.repositories import ProfissionalRepositoryBaseModel
 
 class ProfissionalRepository:
 

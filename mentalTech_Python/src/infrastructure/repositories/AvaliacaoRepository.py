@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domain.entities.Avaliacao import Avaliacao
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import AvaliacaoRepositoryBaseModel
+from domain.repositories import AvaliacaoRepositoryBaseModel
 
 class AvaliacaoRepository:
 

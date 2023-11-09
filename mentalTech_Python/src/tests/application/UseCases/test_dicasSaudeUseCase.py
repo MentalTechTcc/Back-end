@@ -61,8 +61,6 @@ test_list = [
 )
 def testSaveDicaSaudeValido(dicaSaude_sent):
     """Testa se o dicaSaude é salvo com sucesso, assume que sempre recebe um dicaSaude válido"""
-    print(dicaSaude_sent.__dict__)
-    print(dicaSaudeUseCase.find_all())
     response = dicaSaudeUseCase.save(dicaSaudeSent=dicaSaude_sent)
     assert dicaSaude_sent == response, response.__dict__
 

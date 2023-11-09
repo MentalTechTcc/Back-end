@@ -1,4 +1,11 @@
-<app-cabecalho-profissional></app-cabecalho-profissional>
+
+<ng-container *ngIf="tipoConta === 'profissional'; else pacienteHeader">
+  <app-cabecalho-profissional></app-cabecalho-profissional>
+</ng-container>
+
+<ng-template #pacienteHeader>
+  <app-cabecalho-paciente></app-cabecalho-paciente>
+</ng-template>
 
 <div class="jitsi-container">
   <div id="jitsi-iframe" class="jitsi"></div>

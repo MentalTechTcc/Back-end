@@ -107,7 +107,7 @@ const routes: Routes = [
     component: HomeEntrarProfissionalComponent
   },
   {
-    path: 'jitsi',
+    path: 'jitsi/:tipoConta/:idAgenda',
     component: JitsiComponent
   },
   {

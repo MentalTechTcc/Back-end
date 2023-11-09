@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 declare var JitsiMeetExternalAPI: any;
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-jitsi',
@@ -14,21 +15,26 @@ export class JitsiComponent implements OnInit, AfterViewInit {
   options: any;
   api: any;
   user: any;
+  tipoConta:any;
 
  
   isAudioMuted = false;
   isVideoMuted = false;
 
   constructor(
-      private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-      this.room = 'Bianca-teste';
-      this.user = {
-          name: 'Bianca' 
-      }
-      
+    this.route.params.subscribe(params => {
+     this.tipoConta = params['tipoConta'];
+      this.room = params['idAgenda'];
+    });
+
+    this.user = {
+      name: 'Bianca'
+    };
   }
 
   ngAfterViewInit(): void {

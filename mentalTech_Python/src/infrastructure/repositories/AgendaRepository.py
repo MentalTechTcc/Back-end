@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domain.entities.Agenda import Agenda
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import AgendaRepositoryBaseModel
+from domain.repositories import AgendaRepositoryBaseModel
 
 class AgendaRepository:
 

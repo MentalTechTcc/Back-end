@@ -1,10 +1,11 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
 .modal {
-    display: none; /* Inicialmente oculto */
+    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 10%; 
+    left: 10%; 
+    width: 80%; 
+    height: 80%; 
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
     display: flex;
@@ -15,10 +16,12 @@
   .modal-content {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px; 
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    width: 60%;
-    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    border: 2px solid #008B8B; 
   }
   
   .close {
@@ -38,6 +41,7 @@
   h2 {
     text-align: center;
     color: #008B8B;
+    font-size: 24px;
   }
   
   ul {
@@ -49,7 +53,6 @@
     margin: 10px 0;
   }
   
-
   .agenda-button {
     background-color: #9EC4BB;
     color: white;
@@ -57,60 +60,49 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100px;
   }
   
   .agenda-button:hover {
     background-color: #82beb0;
   }
-
+  
   input[type="checkbox"] {
     margin-right: 5px;
   }
-
+  
   label {
     font-weight: normal;
   }
-
+  
   .checkbox {
-    margin-left: 5px; 
+    margin-left: 5px;
     padding-right: 1%;
     margin-right: 2%;
   }
-
-.check-label{
+  
+  .check-label {
     font-size: 12px;
-}
-
-.agenda-block {
+  }
+  
+  .agenda-block {
     background-color: #f9f9f9;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
   
   .agenda-actions {
     display: flex;
     align-items: center;
-  }
-  
-  .agenda-button {
-    background-color: #9EC4BB;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    justify-content: space-between;
   }
   
   .center-text {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; /* Para centralizar verticalmente */
-    text-align: center; /* Para centralizar horizontalmente */
+    height: 100%;
+    text-align: center;
   }
-  

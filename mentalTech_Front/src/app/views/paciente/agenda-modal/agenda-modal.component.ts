@@ -7,6 +7,9 @@ import { CadastroAgendaProfissionalService } from 'src/app/services/cadastro-age
 import { CadastroProfissionalService } from 'src/app/services/cadastro-profissional.service';
 import { ConsultaService } from 'src/app/services/consulta.service';
 import {LoginUsuarioService} from 'src/app/services/login-usuario.service'
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {EnderecoServiceService} from 'src/app/services/endereco-service.service';
 
 @Component({
   selector: 'app-agenda-modal',
@@ -18,6 +21,7 @@ export class AgendaModalComponent implements OnInit {
   @Output() fecharModalEvent = new EventEmitter<void>();
   pessoa: any = {};
   permitirCompartilhamentoMap: { [key: number]: boolean } = {};
+  cacheDescricao: { [id: number]: string } = {};
 
 
   constructor(
@@ -25,7 +29,9 @@ export class AgendaModalComponent implements OnInit {
     private loginService: LoginUsuarioService,
     private router: Router,
     private agendaService: CadastroAgendaProfissionalService,
-    private profissionalService: CadastroProfissionalService) {}
+    private profissionalService: CadastroProfissionalService,
+    private enderecoService: EnderecoServiceService 
+    ) {}
 
     ngOnInit(): void {
       this.loginService.getPerfilPessoa().subscribe(
@@ -98,5 +104,23 @@ export class AgendaModalComponent implements OnInit {
     this.permitirCompartilhamentoMap[idAgenda] = event;
   }
 
+  traduzirIdEnderecoParaDescricao(idEndereco: number): Observable<string> {
+    if (idEndereco === null || idEndereco === undefined) {
+      return of('Sem endereço');
+    }
+
+    const descricaoCache = this.cacheDescricao[idEndereco];
+    if (descricaoCache) {
+      return of(descricaoCache);
+    }
+
+    return this.enderecoService.listarEnderecoPorId(idEndereco).pipe(
+      map((detalhesEndereco) => {
+        const descricao = `${detalhesEndereco.cidade}-${detalhesEndereco.estado}, ${detalhesEndereco.bairro}, ${detalhesEndereco.numero}`;
+        this.cacheDescricao[idEndereco] = descricao;
+        return descricao;
+      })
+    );
+  }
 
 }

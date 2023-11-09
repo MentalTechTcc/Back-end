@@ -8,6 +8,7 @@
             <div class="agenda-block">
               <div class="agenda-info">
                 <span>{{ agenda.data }} - {{ agenda.hora }} - {{ agenda.duracao }} minutos - {{ getModalidadeLabel(agenda.modalidadeAtendimento) }} - {{ agenda.valorProposto }} R$</span>
+                <p class="endereco" *ngIf="agenda.idEndereco !== undefined"><i class="fas fa-map"></i> {{ traduzirIdEnderecoParaDescricao(agenda.idEndereco) | async }}</p>
               </div>
               <div class="agenda-actions">
                 <label class="checkbox check-label">Permito compartilhar minha história em anônimo para fins acadêmicos</label>

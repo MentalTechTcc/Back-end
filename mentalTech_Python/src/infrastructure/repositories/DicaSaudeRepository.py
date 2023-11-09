@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from domain.entities.DicaSaude import DicaSaude
 from typing import Callable
 from typing import NoReturn
-from src.domain.repositories import DicaSaudeRepositoryBaseModel
+from domain.repositories import DicaSaudeRepositoryBaseModel
 
 class DicaSaudeRepository:
 

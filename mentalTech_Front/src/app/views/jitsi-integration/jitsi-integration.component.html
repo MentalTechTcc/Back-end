@@ -9,11 +9,13 @@
 
 <div class="jitsi-container">
   <div id="jitsi-iframe" class="jitsi"></div>
+  <ng-container *ngIf="tipoConta === 'profissional'">
   <div class="relatorio-container">
     <label for="relatorio">Relatório do Paciente:</label>
     <textarea id="relatorio"  rows="20" cols="15"></textarea>
     <button >Enviar Relatório</button>
   </div>
+</ng-container>
 </div>
 
 <!--

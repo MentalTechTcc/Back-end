@@ -70,7 +70,7 @@
 }
 
 .relatorio-container button {
-  background-color: #9EC4BB;
+  background-color: #008B8B;
   color: white;
   padding: 8px 12px;
   border: none;
@@ -79,5 +79,5 @@
 }
 
 .relatorio-container button:hover {
-  background-color: #82beb0;
+  background-color: #006666;
 }

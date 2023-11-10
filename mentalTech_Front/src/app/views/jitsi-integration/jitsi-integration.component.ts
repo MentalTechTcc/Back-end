@@ -40,8 +40,8 @@ export class JitsiComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
       this.options = {
           roomName: this.room,
-          width: 1200,
-          height: 620,
+          width: 1199,
+          height: 680,
           configOverwrite: { prejoinPageEnabled: false },
           interfaceConfigOverwrite: {
               // overwrite interface properties

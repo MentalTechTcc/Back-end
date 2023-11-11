@@ -4,6 +4,9 @@ declare var JitsiMeetExternalAPI: any;
 import { ActivatedRoute } from '@angular/router';
 import {RelatorioService} from 'src/app/services/relatorio.service';
 import {RelatorioSave } from 'src/app/models/Relatorio.models';
+import {ConsultaService} from 'src/app/services/consulta.service';
+import { switchMap } from 'rxjs/operators';
+import {ConsultaRequestId} from 'src/app/models/Consulta.models';
 
 @Component({
     selector: 'app-jitsi',
@@ -18,7 +21,7 @@ export class JitsiComponent implements OnInit, AfterViewInit {
   api: any;
   user: any;
   tipoConta:any;
-
+  idConsulta: number =0;
  
   isAudioMuted = false;
   isVideoMuted = false;
@@ -32,6 +35,7 @@ export class JitsiComponent implements OnInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private relatorioService: RelatorioService,
+    private consultaService:ConsultaService,
   ) {
   }
 
@@ -39,6 +43,28 @@ export class JitsiComponent implements OnInit, AfterViewInit {
     this.route.params.subscribe(params => {
      this.tipoConta = params['tipoConta'];
       this.room = params['idAgenda'];
+      // coletar a consulta
+      this.consultaService.listarPorIdAgenda(params['idAgenda']).subscribe(
+        (consulta) => {
+          if (consulta) {
+            const consultas: ConsultaRequestId[] = Array.isArray(consulta) ? consulta : [consulta];
+            if (consultas.length > 0) {
+              const primeiraConsulta = consultas[0];
+              console.log(primeiraConsulta);
+              this.idConsulta = primeiraConsulta.idConsulta;
+              // console.log(this.idConsulta);
+              // console.log(primeiraConsulta.idConsulta);
+            } else {
+              console.error('A resposta da API não contém dados de consulta válidos.');
+            }
+          }
+        },
+        (error) => {
+          console.error('Erro ao obter idConsulta:', error);
+        }
+      );
+      
+
     });
 
     this.user = {
@@ -134,10 +160,10 @@ executeCommand(command: string) {
 enviarRelatorio() {
   const relatorio: RelatorioSave = {
     descricao: this.relatorioPaciente,
-    idConsulta: 25,
+    idConsulta: this.idConsulta,
     dataCadastro: this.formatarDataParaSalvar(new Date())
   };
-
+    //console.log(this.idConsulta)
     this.relatorioService.cadastrarRelatorio(relatorio).subscribe(
       () => this.handleEnvioRelatorioSucesso(),
       error => this.handleEnvioRelatorioErro(error)

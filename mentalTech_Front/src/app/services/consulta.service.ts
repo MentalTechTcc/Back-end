@@ -23,6 +23,10 @@ export class ConsultaService {
     return this.http.get<ConsultaRequestId[]>(`${environment.baseUrl}/consulta/idPessoa/${idPessoa}`);
   }
 
+  listarPorIdAgenda(idAgenda: number): Observable<ConsultaRequestId> {
+    return this.http.get<ConsultaRequestId>(`${environment.baseUrl}/consulta/idAgenda/${idAgenda}`);
+  }
+
   deletar(idAgenda: number): Observable<any> {
     return this.http.delete(`${environment.baseUrl}/consulta/idAgenda/{idAgenda}?id=${idAgenda}`);
   }

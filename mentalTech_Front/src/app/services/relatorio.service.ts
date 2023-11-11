@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material';
-import { Relatorio, RelatorioRequestId } from '../models/Relatorio.models';
+import { Relatorio, RelatorioRequestId , RelatorioSave} from '../models/Relatorio.models';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class RelatorioService {
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
 
-  cadastrarRelatorio(relatorio: Relatorio): Observable<any> {
+  cadastrarRelatorio(relatorio: RelatorioSave): Observable<any> {
     return this.http.post(`${environment.baseUrl}/relatorio`, relatorio);
   }
 

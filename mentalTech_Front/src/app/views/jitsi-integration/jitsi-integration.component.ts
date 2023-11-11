@@ -2,6 +2,9 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 declare var JitsiMeetExternalAPI: any;
 import { ActivatedRoute } from '@angular/router';
+import {RelatorioService} from 'src/app/services/relatorio.service';
+import { MatSnackBar } from '@angular/material';
+import { Relatorio, RelatorioSave } from 'src/app/models/Relatorio.models';
 
 @Component({
     selector: 'app-jitsi',
@@ -21,9 +24,13 @@ export class JitsiComponent implements OnInit, AfterViewInit {
   isAudioMuted = false;
   isVideoMuted = false;
 
+  relatorioPaciente: string = '';
+
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private relatorioService: RelatorioService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -121,4 +128,43 @@ executeCommand(command: string) {
       this.isVideoMuted = !this.isVideoMuted;
   }
 }
+
+enviarRelatorio() {
+    const relatorio: RelatorioSave = {
+      descricao: this.relatorioPaciente,
+      idConsulta: 25,
+      dataCadastro: this.formatarDataParaSalvar(new Date())
+    };
+
+    this.relatorioService.cadastrarRelatorio(relatorio).subscribe(
+      () => this.handleEnvioRelatorioSucesso(),
+      error => this.handleEnvioRelatorioErro(error)
+    );
+  }
+  
+
+  private formatarDataParaSalvar(data: Date): string {
+    const yyyy = data.getFullYear();
+    const mm = (data.getMonth() + 1).toString().padStart(2, '0');
+    const dd = data.getDate().toString().padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}`;
+  }
+  
+  
+  private handleEnvioRelatorioSucesso() {
+    this.snackBar.open('Relatório enviado com sucesso!', 'Fechar', {
+      duration: 3000,
+    });
+  }
+
+  private handleEnvioRelatorioErro(error: any) {
+    console.error('Erro ao enviar o relatório:', error);
+    this.snackBar.open('Erro ao enviar o relatório. Por favor, tente novamente mais tarde.', 'Fechar', {
+      duration: 5000,
+    });
+  }
+
+  
+
+
 }

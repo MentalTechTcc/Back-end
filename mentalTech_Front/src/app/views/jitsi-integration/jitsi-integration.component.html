@@ -12,8 +12,8 @@
   <ng-container *ngIf="tipoConta === 'profissional'">
   <div class="relatorio-container">
     <label for="relatorio">Relatório do Paciente:</label>
-    <textarea id="relatorio"  rows="20" cols="15"></textarea>
-    <button >Enviar Relatório</button>
+    <textarea id="relatorio" [(ngModel)]="relatorioPaciente"  rows="20" cols="15"></textarea>
+    <button (click)="enviarRelatorio()" >Enviar Relatório</button>
   </div>
 </ng-container>
 </div>

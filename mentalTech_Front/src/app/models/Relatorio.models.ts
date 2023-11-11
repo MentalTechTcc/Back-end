@@ -10,3 +10,8 @@ export interface RelatorioRequestId{
   idConsulta: number;
   dataCadastro: Date;
 }
+export interface RelatorioSave{
+  descricao: string;
+  idConsulta: number;
+  dataCadastro: string;
+}

@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 declare var JitsiMeetExternalAPI: any;
 import { ActivatedRoute } from '@angular/router';
 import {RelatorioService} from 'src/app/services/relatorio.service';
-import { MatSnackBar } from '@angular/material';
-import { Relatorio, RelatorioSave } from 'src/app/models/Relatorio.models';
+import {RelatorioSave } from 'src/app/models/Relatorio.models';
 
 @Component({
     selector: 'app-jitsi',
@@ -23,6 +22,9 @@ export class JitsiComponent implements OnInit, AfterViewInit {
  
   isAudioMuted = false;
   isVideoMuted = false;
+  mostrarMensagemSucesso = false;
+  mostrarMensagemErro = false;
+
 
   relatorioPaciente: string = '';
 
@@ -30,8 +32,8 @@ export class JitsiComponent implements OnInit, AfterViewInit {
     private router: Router,
     private route: ActivatedRoute,
     private relatorioService: RelatorioService,
-    private snackBar: MatSnackBar,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -74,35 +76,35 @@ export class JitsiComponent implements OnInit, AfterViewInit {
   }
 
   handleClose = () => {
-    console.log("handleClose");
+    //console.log("handleClose");
 }
 
 handleParticipantLeft = async () => {
-    console.log("handleParticipantLeft", );
+    //console.log("handleParticipantLeft", );
     const data = await this.getParticipants();
 }
 
 handleParticipantJoined = async () => {
-    console.log("handleParticipantJoined", ); 
+    //console.log("handleParticipantJoined", ); 
     const data = await this.getParticipants();
 }
 
 handleVideoConferenceJoined = async () => {
-    console.log("handleVideoConferenceJoined", );
+    //console.log("handleVideoConferenceJoined", );
     const data = await this.getParticipants();
 }
 
 handleVideoConferenceLeft = () => {
-    console.log("handleVideoConferenceLeft");
+    //console.log("handleVideoConferenceLeft");
     this.router.navigate(['/thank-you']);
 }
 
 handleMuteStatus = () => {
-    console.log("handleMuteStatus", ); // { muted: true }
+    //console.log("handleMuteStatus", ); // { muted: true }
 }
 
 handleVideoStatus = () => {
-    console.log("handleVideoStatus", ); // { muted: true }
+    //console.log("handleVideoStatus", ); // { muted: true }
 }
 
 getParticipants() {
@@ -130,38 +132,47 @@ executeCommand(command: string) {
 }
 
 enviarRelatorio() {
-    const relatorio: RelatorioSave = {
-      descricao: this.relatorioPaciente,
-      idConsulta: 25,
-      dataCadastro: this.formatarDataParaSalvar(new Date())
-    };
+  const relatorio: RelatorioSave = {
+    descricao: this.relatorioPaciente,
+    idConsulta: 25,
+    dataCadastro: this.formatarDataParaSalvar(new Date())
+  };
 
     this.relatorioService.cadastrarRelatorio(relatorio).subscribe(
       () => this.handleEnvioRelatorioSucesso(),
       error => this.handleEnvioRelatorioErro(error)
     );
-  }
-  
+
+}
+
+handleEnvioRelatorioSucesso() {
+  console.log('Relatório enviado com sucesso!');
+  this.mostrarMensagemSucesso = true;
+  console.log(this.mostrarMensagemSucesso )
+  this.mostrarMensagemErro = false;
+
+  // Oculta a mensagem
+  setTimeout(() => {
+    this.mostrarMensagemSucesso = false;
+  }, 4000);
+}
+
+handleEnvioRelatorioErro(error: any) {
+  console.error('Erro ao enviar o relatório:', error);
+  this.mostrarMensagemErro = true;
+  this.mostrarMensagemSucesso = false;
+
+ 
+  setTimeout(() => {
+    this.mostrarMensagemErro = false;
+  }, 4000);
+}
 
   private formatarDataParaSalvar(data: Date): string {
     const yyyy = data.getFullYear();
     const mm = (data.getMonth() + 1).toString().padStart(2, '0');
     const dd = data.getDate().toString().padStart(2, '0');
     return `${yyyy}-${mm}-${dd}`;
-  }
-  
-  
-  private handleEnvioRelatorioSucesso() {
-    this.snackBar.open('Relatório enviado com sucesso!', 'Fechar', {
-      duration: 3000,
-    });
-  }
-
-  private handleEnvioRelatorioErro(error: any) {
-    console.error('Erro ao enviar o relatório:', error);
-    this.snackBar.open('Erro ao enviar o relatório. Por favor, tente novamente mais tarde.', 'Fechar', {
-      duration: 5000,
-    });
   }
 
   

@@ -8,6 +8,16 @@
 </ng-template>
 
 <div class="jitsi-container">
+  <div *ngIf="mostrarMensagemSucesso" class="error-message">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Relatório Enviado com Sucesso!</strong>
+  </div>
+  </div>
+  <div *ngIf="mostrarMensagemErro" class="error-message">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong> Erro ao enviar o relatório. Por favor, tente novamente mais tarde.</strong>
+    </div>
+  </div>
   <div id="jitsi-iframe" class="jitsi"></div>
   <ng-container *ngIf="tipoConta === 'profissional'">
   <div class="relatorio-container">

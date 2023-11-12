@@ -18,21 +18,23 @@ def get_mock_db_session():
 
 
 RelatorioRepo = RelatorioRepository(session=get_mock_db_session)
-RelatorioUseCase = RelatorioUseCase(
+relatorioUseCase = RelatorioUseCase(
     relatorioRepository=RelatorioRepo,
 )
 
  
 from domain.entities.Profissional import Profissional
 
+from domain.entities.TematicasPrincipais import TematicasPrincipais
+
 test_list = [
-    (RelatorioResponse(
+    (Relatorio(
         descricao= 'Paciente relata melhora após inciar tratamento.',
         idConsulta= 1,
         dataCadastro= '2023-11-12', 
         idRelatorio=1,
     )),
-    (RelatorioResponse(
+    (Relatorio(
         descricao= 'Paciente está sofrendo com ansiedade severa.',
         idConsulta= 2,
         dataCadastro= '2023-11-13', 
@@ -46,12 +48,13 @@ test_list = [
 )
 def testSaveRelatorioValido(relatorio_sent):
     """Testa se o Relatorio é salvo com sucesso, assume que sempre recebe um Relatorio válido"""
-    response = RelatorioUseCase.save(relatorioSent=relatorio_sent)
-    assert relatorio_sent.dict() == response.dict(), response.dict()
+    response = relatorioUseCase.save(relatorioSent=relatorio_sent)
+    assert relatorio_sent == response, response.__dict__
+
 
 
 def testRelatorioFindAllCadastrados():
-    response = RelatorioUseCase.find_all()
+    response = relatorioUseCase.find_all()
     response = [r.__dict__ for r in response]
     sorted_response = sorted(response, key=lambda x: x['idRelatorio'])
     #print(sorted_response)

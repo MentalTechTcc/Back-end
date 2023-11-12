@@ -22,7 +22,7 @@ enderecoUseCase = EnderecoUseCase(
     enderecoRepository=enderecoRepo,
 )
 
-# Se 'Profissional' é a classe relacionada, você pode precisar importá-la aqui
+
 from domain.entities.Profissional import Profissional
 
 test_list = [

@@ -69,10 +69,10 @@ def testDicaSaudeFindAllCadastrados():
     response = dicaSaudeUseCase.find_all()
     response = [r.__dict__ for r in response]
     sorted_response = sorted(response, key=lambda x: x['idDicaSaude'])
-    print(sorted_response)
+    #print(sorted_response)
 
     expected = [r.__dict__ for r in test_list]
     sorted_expected = sorted(expected, key=lambda x: x['idDicaSaude'])
-    print(sorted_expected)
+    #print(sorted_expected)
 
     assert len(response) == len(test_list), response

@@ -30,7 +30,7 @@
   flex: 1;
   padding: 20px;
   font-family: "Sanchez", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   color: #333;
   background-color: #f3f3f3;
   overflow-y: auto;
@@ -42,8 +42,9 @@
 }
 
 .section h2 {
-  font-size: 24px;
+  font-size: 25px;
   color: #008B8B;
+  font-weight: bold;
 }
 
 /* Media query para telas menores */

@@ -7,7 +7,7 @@
   margin: 0;
   overflow: hidden; /*para ir o cinza até o final*/
   margin-bottom: 50px;
-  height:  100%; /* 50% da altura da viewport */
+  height:  100%; 
 
 
 }
@@ -31,7 +31,7 @@
   flex: 1;
   padding: 20px;
   font-family: "Sanchez", sans-serif;
-  font-size: 20px;
+  font-size: 25px;
   color: #333;
   background-color: #f3f3f3;
   overflow-y: auto;
@@ -48,8 +48,9 @@
 }
 
 h2 {
-  font-size: 28px; /* Tamanho do título maior para destaque */
+  font-size: 35px; /* Tamanho do título maior para destaque */
   color: #008B8B; /* Cor do título mais escura */
+  font-weight: bold;
 }
 
 /* Media query para telas menores */

@@ -42,7 +42,7 @@ export class JitsiComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
      this.tipoConta = params['tipoConta'];
-      this.room = params['idAgenda'];
+      this.room = params['idAgenda']+'-mentalTech-consulta';
       // coletar a consulta
       this.consultaService.listarPorIdAgenda(params['idAgenda']).subscribe(
         (consulta) => {

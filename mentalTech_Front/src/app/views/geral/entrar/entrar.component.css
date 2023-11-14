@@ -35,7 +35,7 @@ label {
   align-items: center;
   margin-bottom: 8px;
   font-family: Sanchez;
-  font-size: 20px; 
+  font-size: 20px;
 
 }
 
@@ -44,7 +44,7 @@ label > span {
 }
 
 input {
-  width: calc(100% - 20px); 
+  width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
@@ -56,11 +56,11 @@ input {
   background-color: #9EC4BB; /* Cor de sua escolha para o botão "Entrar" */
   color: black; /* Texto branco */
   padding: 15px 20px;
-  font-size: 20px; 
+  font-size: 20px;
   border: none;
   border-radius: 4px;
   font-family: Sanchez;
-  font-size: 20px; 
+  font-size: 20px;
 
 }
 .entrar-button:hover {
@@ -72,14 +72,14 @@ input {
 .button-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px; 
+  margin-top: 16px;
 }
 
 /* Estilo para os botões */
 .right-button,
 .left-button {
-  padding: 15px 20px; 
-  font-size: 20px; 
+  padding: 15px 20px;
+  font-size: 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -104,26 +104,26 @@ input {
 .right-button:focus,
 .left-button:focus {
   background-color: #82beb0;
-  outline: none; 
+  outline: none;
 }
 
 .right-button:hover,
 .left-button:hover {
-  background-color: #9EC4BB; 
+  background-color: #9EC4BB;
 }
 .custom-label label {
   display: block;
-  font-size: 18px;
+  font-size: 17px;
   margin-top: 20px; /* Adicione margem superior para distanciar do botão */
   font-family: Sanchez;
 }
 
 .custom-label a {
-  color: black; 
-  text-decoration: none; 
+  color: black;
+  text-decoration: none;
 }
 
 .custom-label a:hover {
-  text-decoration: underline; 
+  text-decoration: underline;
 }
 

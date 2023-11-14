@@ -4,7 +4,7 @@
 }
 
 .cabecalho img {
-  width: 16%;
+  width: 13%;
 }
 .cabecalho_completo{
   border-bottom: solid #008B8B;
@@ -38,9 +38,9 @@
 
 .cabecalho nav {
   float: right;
-  font-size: 20px;
+  font-size: 22px;
   font-family: Sanchez;
-  margin-top: -7%;
+  margin-top: -5%;
 }
 
 @media (max-width: 600px) {

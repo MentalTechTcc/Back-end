@@ -35,16 +35,16 @@ label {
   align-items: center;
   margin-bottom: 8px;
   font-family: Sanchez;
-  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+  font-size: 20px; 
 
 }
 
 label > span {
-  margin-right: 10px; /* Espaço entre o rótulo e o campo de entrada */
+  margin-right: 10px;
 }
 
 input {
-  width: calc(100% - 20px); /* Largura do input com descontos para o padding */
+  width: calc(100% - 20px); 
   padding: 10px;
   margin-bottom: 16px;
   border: 1px solid #ccc;
@@ -55,12 +55,12 @@ input {
 .entrar-button {
   background-color: #9EC4BB; /* Cor de sua escolha para o botão "Entrar" */
   color: black; /* Texto branco */
-  padding: 15px 20px; /* Ajuste o tamanho do padding conforme necessário */
-  font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */
+  padding: 15px 20px;
+  font-size: 20px; 
   border: none;
   border-radius: 4px;
   font-family: Sanchez;
-  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+  font-size: 20px; 
 
 }
 .entrar-button:hover {
@@ -72,19 +72,19 @@ input {
 .button-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 16px; /* Adicione espaço entre os campos e os botões */
+  margin-top: 16px; 
 }
 
 /* Estilo para os botões */
 .right-button,
 .left-button {
-  padding: 15px 20px; /* Ajuste o tamanho do padding conforme necessário */
-  font-size: 18px; /* Ajuste o tamanho da fonte conforme necessário */
+  padding: 15px 20px; 
+  font-size: 20px; 
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin-top: -5px;
-  margin-bottom: 15px;/* Adicione margem superior para distanciar dos campos */
+  margin-bottom: 15px;
   font-family: Sanchez;
 
 }
@@ -101,24 +101,29 @@ input {
   color: black; /* Texto branco */
 }
 
+.right-button:focus,
+.left-button:focus {
+  background-color: #82beb0;
+  outline: none; 
+}
+
 .right-button:hover,
 .left-button:hover {
-  /* Adicione estilos de hover conforme necessário */
-  background-color: #9EC4BB;
+  background-color: #9EC4BB; 
 }
 .custom-label label {
   display: block;
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 20px; /* Adicione margem superior para distanciar do botão */
   font-family: Sanchez;
 }
 
 .custom-label a {
-  color: black; /* Define a cor do texto do link como preto */
-  text-decoration: none; /* Remove o sublinhado padrão do link */
+  color: black; 
+  text-decoration: none; 
 }
 
 .custom-label a:hover {
-  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse sobre o link */
+  text-decoration: underline; 
 }
 

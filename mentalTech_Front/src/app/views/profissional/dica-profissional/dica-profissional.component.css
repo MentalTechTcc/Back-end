@@ -18,7 +18,7 @@ html, body {
   .metade-texto {
     padding: 20px;
     font-family: Sanchez;
-    font-size: 20px;
+    font-size: 25px;
     color: #333;
     background-color: #f3f3f3;
     overflow-y: auto;
@@ -33,6 +33,7 @@ html, body {
     font-size: 28px;
     color: #008B8B;
     text-align: center;
+    font-weight: bold;
   }
   
   .dica-quadrados {
@@ -41,6 +42,7 @@ html, body {
     justify-content: center; /* Centraliza horizontalmente */
     align-items: center; /* Centraliza verticalmente */
     margin-top: 20px; /* Espaçamento na parte superior dos quadrados */
+    margin-bottom: 10px;
   }
   
   .dica-quadrado {
@@ -60,7 +62,7 @@ html, body {
     flex: 1;
     padding: 20px;
     font-family: Sanchez;
-    font-size: 20px;
+    font-size: 25px;
     color: #333;
     background-color: #f3f3f3;
     overflow-y: auto;
@@ -96,7 +98,7 @@ html, body {
   .botao {
     background-color: #008B8B;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -115,7 +117,7 @@ html, body {
     width: 100%;
     height: 150px;
     padding: 12px;
-    font-size: 16px;
+    font-size: 25px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -142,7 +144,7 @@ html, body {
     margin-left: auto; 
     margin-right: auto; 
     margin-bottom: 1%;
-    font-size: medium;
+    font-size: 25px;
   }
   
   .mensagem-sucesso {

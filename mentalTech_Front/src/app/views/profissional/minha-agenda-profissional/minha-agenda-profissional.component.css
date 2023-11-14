@@ -3,7 +3,9 @@
     font-size: 34px;
     color: #008B8B;
     text-align: center; 
-    padding-top: 5%;
+    /*padding-top: 5%;*/
+    margin-top: 10px;
+    font-weight: bold;
   }
 
   .botao-excluir {

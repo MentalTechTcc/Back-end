@@ -13,7 +13,7 @@ class Relatorio(Base):
     __tablename__ = "relatorio"
 
     idRelatorio: int = Column(Integer, primary_key=True, nullable=False,  index= True)
-    descricao: str = Column(String(500), nullable=False)
+    descricao: str = Column(String(2000), nullable=False)
     idConsulta: int = Column("idConsulta", ForeignKey("consulta.idConsulta", ondelete="CASCADE"), index=True)
     dataCadastro = Column(DateTime, server_default=func.now())    
 

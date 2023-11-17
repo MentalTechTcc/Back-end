@@ -3,6 +3,7 @@ from domain.entities.Agenda import Agenda
 from typing import Callable
 from typing import NoReturn
 from domain.repositories import AgendaRepositoryBaseModel
+from sqlalchemy import desc
 
 class AgendaRepository:
 
@@ -53,8 +54,15 @@ class AgendaRepository:
     
     def find_by_cpf(self, cpfProfissional: str) -> list[Agenda]| None:
         session = self.database()
+        result = (
+            session.query(Agenda)
+            .filter(Agenda.cpfProfissional == cpfProfissional)
+            .order_by(desc(Agenda.data), desc(Agenda.hora))
+            .all()
+        )
         session.close()
-        return session.query(Agenda).filter(Agenda.cpfProfissional == cpfProfissional).all()
+        return result
+
     
     
 

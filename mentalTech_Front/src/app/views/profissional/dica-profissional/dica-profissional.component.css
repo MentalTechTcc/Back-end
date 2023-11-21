@@ -13,6 +13,7 @@ html, body {
     height: 100vh; /* Altura da viewport */
     margin: 0;
     overflow: hidden;
+    margin-bottom: 5%;
   }
   
   .metade-texto {

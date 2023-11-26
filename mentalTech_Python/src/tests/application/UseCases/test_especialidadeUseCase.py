@@ -5,6 +5,9 @@ from infrastructure.repositories.EspecialidadeRepository import EspecialidadeRep
 from domain.entities.Especialidade import Especialidade, EspecialidadeRequestId, EspecialidadeResponse
 from sqlalchemy.orm import Session
 from unittest.mock import MagicMock
+from domain.entities.Profissional import Profissional
+
+from domain.entities.TematicasPrincipais import TematicasPrincipais
 
 test_session = UnifiedAlchemyMagicMock()
 
@@ -20,11 +23,11 @@ especialidadeUseCase = EspecialidadeUseCase(
 )
 
 test_list = [
-    (EspecialidadeRequestId(
+    (Especialidade(
         descricaoEspecialidade="Cardiologia",
         idEspecialidade=1,
     )),
-    (EspecialidadeRequestId(
+    (Especialidade(
         descricaoEspecialidade="Ortopedia",
         idEspecialidade=2,
     ))
@@ -37,13 +40,18 @@ test_list = [
 def testSaveEspecialidadeValida(especialidade_sent):
     """Testa se a especialidade é salva com sucesso, assume que sempre recebe uma especialidade válida"""
     response = especialidadeUseCase.save(especialidadeSent=especialidade_sent)
-    assert especialidade_sent.dict() == response.dict(), response.dict()
+    assert especialidade_sent == response, response.__dict__
 
 
-# def testEspecialidadeFindAll():
-#     response = especialidadeUseCase.find_all()
-#     response_ids = sorted([r.idEspecialidade for r in response])
 
-#     expected_ids = sorted([r.idEspecialidade for r in test_list])
+def testEspecialidadeFindAll():
+    response = especialidadeUseCase.find_all()
+    response = [r.__dict__ for r in response]
+    sorted_response = sorted(response, key=lambda x: x['idEspecialidade'])
+    #print(sorted_response)
 
-#     assert response_ids == expected_ids, response_ids
+    expected = [r.__dict__ for r in test_list]
+    sorted_expected = sorted(expected, key=lambda x: x['idEspecialidade'])
+    #print(sorted_expected)
+
+    assert len(response) == len(test_list), response

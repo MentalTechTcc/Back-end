@@ -31,7 +31,7 @@ class SexoEnum(enum.Enum):
     FEMININO = 'Feminino'
 
 test_list = [
-    (PessoaResponse(
+    (Pessoa(
         nome="João",
         idPessoa=1,
         senha="senha123",
@@ -43,7 +43,7 @@ test_list = [
         dataCadastro=datetime.now(),
         diagnosticos=[],
     )),
-    (PessoaResponse(
+    (Pessoa(
         nome="Maria",
         idPessoa=2,
         senha="senha456",
@@ -64,13 +64,16 @@ test_list = [
 def testSavePessoaValida(pessoa_sent):
     """Testa se a pessoa é salva com sucesso, assume que sempre recebe uma pessoa válida"""
     response = pessoaUseCase.save(pessoaSent=pessoa_sent)
-    assert pessoa_sent.dict() == response.dict(), response.dict()
+    assert pessoa_sent == response, response.__dict__
 
+def testPessoaFindAll():
+    response = pessoaUseCase.find_all()
+    response = [r.__dict__ for r in response]
+    sorted_response = sorted(response, key=lambda x: x['idPessoa'])
+    #print(sorted_response)
 
-# def testPessoaFindAll():
-#     response = pessoaUseCase.find_all()
-#     response_ids = sorted([r.idPessoa for r in response])
+    expected = [r.__dict__ for r in test_list]
+    sorted_expected = sorted(expected, key=lambda x: x['idPessoa'])
+    #print(sorted_expected)
 
-#     expected_ids = sorted([r.idPessoa for r in test_list])
-
-#     assert response_ids == expected_ids, response_ids
+    assert len(response) == len(test_list), response

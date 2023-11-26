@@ -28,7 +28,7 @@ profissionalUseCase = ProfissionalUseCase(
 from domain.entities.Profissional import Profissional
 
 test_list = [
-    (ProfissionalRequestId(
+    (Profissional(
         nome="João",
         idPessoa=1,
         senha="senha123",
@@ -52,13 +52,17 @@ test_list = [
 def test_save_profissional_valido(profissional_sent):
     """Testa se o profissional é salvo com sucesso, assume que sempre recebe um profissional válido"""
     response = profissionalUseCase.save(profissionalSent=profissional_sent)
-    assert profissional_sent.dict() == response.dict(), response.dict()
+    assert profissional_sent == response, response.__dict__
 
 
-# def test_profissional_find_all():
-#     response = profissionalUseCase.find_all()
-#     response_ids = sorted([r.idPessoa for r in response])
+def testProfissionalFindAll():
+    response = profissionalUseCase.find_all()
+    response = [r.__dict__ for r in response]
+    sorted_response = sorted(response, key=lambda x: x['idPessoa'])
+    #print(sorted_response)
 
-#     expected_ids = sorted([r.idPessoa for r in test_list])
+    expected = [r.__dict__ for r in test_list]
+    sorted_expected = sorted(expected, key=lambda x: x['idPessoa'])
+    #print(sorted_expected)
 
-#     assert response_ids == expected_ids, response_ids
+    assert len(response) == len(test_list), response

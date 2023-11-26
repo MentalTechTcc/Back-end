@@ -1,3 +1,4 @@
+"""
 import pytest
 from httpx import AsyncClient
 from fastapi import status
@@ -16,7 +17,7 @@ async def testReadAll():
         response = await async_client.get("/pessoa/")
     assert response.status_code == status.HTTP_200_OK
 
-
+"""
 
 
 

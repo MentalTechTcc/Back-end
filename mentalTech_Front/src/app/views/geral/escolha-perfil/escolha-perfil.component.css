@@ -23,7 +23,7 @@ label {
   display: block;
   font-size: 20px;
   margin-bottom: 20px;
-  font-family: Sanchez;
+  font-family: "Sanchez", sans-serif;
 }
 
 /* Estilo para os botões "Profissional" e "Paciente" */
@@ -41,7 +41,7 @@ label {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-family: Sanchez;
+  font-family: "Sanchez", sans-serif;
 }
 
 .left-button {
@@ -67,7 +67,7 @@ label {
   font-size: 18px;
   border: none;
   border-radius: 4px;
-  font-family: Sanchez;
+  font-family: "Sanchez", sans-serif;
   margin-top: 50px;
 }
 

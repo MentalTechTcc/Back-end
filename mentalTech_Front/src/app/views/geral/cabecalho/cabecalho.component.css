@@ -39,7 +39,7 @@
 .cabecalho nav {
   float: right;
   font-size: 25px;
-  font-family: Sanchez;
+  font-family:"Sanchez", sans-serif;
   margin-top: -5%;
 }
 

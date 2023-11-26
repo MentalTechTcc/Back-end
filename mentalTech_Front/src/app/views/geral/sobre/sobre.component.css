@@ -3,7 +3,6 @@
   display: flex;
   justify-content: center;
   background-color: #fff; /* Fundo branco */
-  height: 100vh;
   margin: 0;
   overflow: hidden; /*para ir o cinza até o final*/
   margin-bottom: 50px;

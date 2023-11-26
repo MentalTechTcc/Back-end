@@ -1,4 +1,4 @@
-/* Seus estilos existentes aqui */
+
 
 .corpo {
   display: flex;
@@ -7,38 +7,38 @@
 
 .metade-imagem, .metade-texto {
   flex: 1; /* Cada div ocupa metade da largura disponível */
-  overflow: hidden; /* Garante que a imagem não ultrapasse sua div */
+  overflow: hidden; 
 }
 
 .metade-imagem img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Mantém a proporção da imagem e a corta se necessário */
+  object-fit: cover; 
 }
 
 .metade-texto {
   padding: 20px;
-  box-sizing: border-box; /* Inclui padding no tamanho total da div */
+  box-sizing: border-box; 
 }
 
 .metade-texto {
   padding: 20px;
-  font-family: Sanchez;
-  box-sizing: border-box; /* Inclui padding no tamanho total da div */
-  font-size: 50px; /* Tamanho do texto em pixels, ajuste conforme necessário */
-  color: #008B8B; /* Cor do texto, você pode usar um nome de cor ou código hexadecimal */
+  font-family: "Sanchez", sans-serif;
+  box-sizing: border-box; 
+  font-size: 50px; 
+  color: #008B8B; 
   text-align: center;
 }
 
 /* Media query para telas menores, ajuste conforme necessário */
 @media (max-width: 768px) {
   .corpo {
-    flex-direction: column; /* Empilhe as divs verticalmente em telas menores */
+    flex-direction: column; 
     height: auto; /* Altura automática para se ajustar ao conteúdo */
   }
 
   .metade-imagem, .metade-texto {
-    flex: none; /* Retire a flexibilidade para que as divs tenham largura total */
+    flex: none; 
     width: 100%;
   }
 

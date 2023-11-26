@@ -43,7 +43,7 @@ input {
 
 /* Estilo para o botão "Cadastrar" */
 .cadastrar-button {
-  background-color: #9EC4BB;
+  background-color: #008B8B;
   color: #fff;
   padding: 15px 20px;
   font-size: 18px;
@@ -53,7 +53,7 @@ input {
 }
 
 .cadastrar-button:hover {
-  background-color: #82beb0;
+  background-color: #006666;
 }
 /* Estilo para os botões de gênero */
 .radio-buttons {

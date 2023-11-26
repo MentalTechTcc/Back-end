@@ -34,7 +34,7 @@ label {
   display: flex;
   align-items: center;
   margin-bottom: 8px;
-  font-family: "Sanchez", sans-serif;
+  font-family: "Sanchez";
   font-size: 20px;
 
 }
@@ -59,7 +59,7 @@ input {
   font-size: 20px;
   border: none;
   border-radius: 4px;
-  font-family: "Sanchez", sans-serif;
+  font-family: "Sanchez";
 
 }
 .entrar-button:hover {
@@ -84,7 +84,7 @@ input {
   cursor: pointer;
   margin-top: -5px;
   margin-bottom: 15px;
-  font-family: "Sanchez", sans-serif;
+  font-family: "Sanchez";
 
 }
 
@@ -114,7 +114,7 @@ input {
   display: block;
   font-size: 17px;
   margin-top: 20px; 
-  font-family: "Sanchez", sans-serif;
+  font-family: "Sanchez";
 }
 
 .custom-label a {

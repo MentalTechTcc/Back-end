@@ -15,7 +15,7 @@
     </div>
 
     <div class="mensagem mensagem-sucesso" *ngIf="sucesso">
-      Avaliação enviada com sucesso!
+      Dica enviada com sucesso!
     </div>
     
     <div class="mensagem mensagem-erro" *ngIf="erro">
@@ -27,6 +27,9 @@
     <div class="dica-quadrados">
       <div *ngFor="let dica of listaDicas" class="dica-quadrado">
         <p>{{ dica.descricaoDica }}</p>
+        <button  class="delete-button" (click)="deletarDica(dica.idDicaSaude, dica.cpfProfissional)">
+          <i class="fas fa-trash-alt"></i> <!-- Substitua "fas fa-trash" com a classe do seu ícone de lixeira -->
+        </button>
       </div>
     </div>
   </div>

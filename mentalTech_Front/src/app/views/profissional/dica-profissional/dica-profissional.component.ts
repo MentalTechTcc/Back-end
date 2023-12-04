@@ -65,7 +65,7 @@ export class DicaProfissionalComponent implements OnInit {
         },
         (error) => {
           this.sucesso = false;
-          this.erro = 'Ocorreu um erro ao enviar a avaliação. Por favor, tente novamente.';
+          this.erro = 'Ocorreu um erro ao enviar a dica. Por favor, tente novamente.';
         }
       );
     }
@@ -75,6 +75,22 @@ export class DicaProfissionalComponent implements OnInit {
       this.listaDicas = dicas;
     });
   }
+
+  deletarDica(idDicaSaude: number, cpfProfissional: string): void { 
+    if (confirm('Tem certeza de que deseja excluir esta dica? Você só pode excluir as dicas que você cadastrou.')) {
+      console.log(idDicaSaude+ ' '+ cpfProfissional)
+      this.dicaService.deletarDica(idDicaSaude,cpfProfissional ).subscribe(
+        () => {
+          this.carregarDicas();
+        },
+        (error) => {
+          console.error('Erro ao excluir dica, você só pode exluir as dicas que cadastrou.', error);
+        }
+      );
+    }
+  }
+  
+  
 
   formatarData(data: Date): string {
     const yyyy = data.getFullYear();

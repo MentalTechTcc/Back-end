@@ -19,4 +19,8 @@ export class DicaSaudeService {
     return this.http.post(`${environment.baseUrl}/dicaSaude`, dica);
   }
   
+  deletarDica(idDicaSaude: number, cpfProfissional:string): Observable<any> {
+    return this.http.delete<number>(`${environment.baseUrl}/dicaSaude/${idDicaSaude}/${cpfProfissional}?id=${idDicaSaude}`);
+  }
+  
 }

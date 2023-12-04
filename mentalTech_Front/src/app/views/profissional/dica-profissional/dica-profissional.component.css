@@ -1,55 +1,62 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-  
-  .corpo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    height: 100vh; /* Altura da viewport */
-    margin: 0;
-    overflow: hidden;
-    margin-bottom: 5%;
-  }
-  
-  .metade-texto {
-    padding: 20px;
-    font-family: Sanchez;
-    font-size: 25px;
-    color: #333;
-    background-color: #f3f3f3;
-    overflow-y: auto;
-    min-height: 100vh; /* Adiciona altura mínima para ocupar a tela inteira */
-  }
-  
-  .section {
-    margin-bottom: 30px;
-  }
-  
-  h2 {
+  margin: 0;
+  padding: 0;
+  background-color: #f3f3f3;
+  margin-bottom: 5%;
+}
+
+.corpo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding-top: 2%;
+  font-family: Sanchez;
+  font-size: 25px;
+  color: #333;
+  background-color: #f3f3f3;
+}
+
+.container {
+  width: 100%;
+  padding: 0 20px; 
+  box-sizing: border-box;
+  max-width: 1200px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.metade-texto {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+h2 {
     font-size: 28px;
     color: #008B8B;
     text-align: center;
     font-weight: bold;
-  }
-  
-  .dica-quadrados {
+}
+
+.dica-quadrados {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    margin-top: 20px; /* Espaçamento na parte superior dos quadrados */
+    justify-content: center;
+    margin-top: 20px;
     margin-bottom: 10px;
-  }
-  
-  .dica-quadrado {
-    width: 200px;
-    height: 200px;
-    background-color: #008B8B;
+}
+
+.dica-quadrado {
+    width: calc(33.33% - 20px);
     margin: 10px;
     display: flex;
     justify-content: center;
@@ -57,46 +64,22 @@ html, body {
     color: white;
     font-size: 16px;
     text-align: center;
-  }
-  
-  .metade-texto {
-    flex: 1;
-    padding: 20px;
-    font-family: Sanchez;
-    font-size: 25px;
-    color: #333;
-    background-color: #f3f3f3;
-    overflow-y: auto;
-  }
-  
-  .section {
-    margin-bottom: 30px;
-  }
-  
-  h2 {
-    font-size: 28px;
-    color: #008B8B;
-  }
-  
-  .dica-quadrados {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .dica-quadrado {
-    width: 200px;
-    height: 200px;
-    background-color: #008B8B;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 16px;
-    text-align: center;
-  }
-  
-  .botao {
+    position: relative;
+}
+
+@media screen and (max-width: 768px) {
+    .dica-quadrado {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .dica-quadrado {
+        width: calc(100% - 20px);
+    }
+}
+
+.botao {
     background-color: #008B8B;
     color: white;
     font-size: 20px;
@@ -104,17 +87,18 @@ html, body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .botao:hover {
+    margin-top: 1%;
+}
+
+.botao:hover {
     background-color: #006666;
-  }
+}
 
-  .espacamento {
+.espacamento {
     margin-bottom: 5%;
-  }
+}
 
-  .descricaoDica {
+.descricaoDica {
     width: 100%;
     height: 150px;
     padding: 12px;
@@ -123,16 +107,14 @@ html, body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: border-color 0.2s;
-  }
-  
-  .descricaoDica:hover, .descricaoDica:focus {
-    border-color: #008B8B; 
+}
+
+.descricaoDica:hover, .descricaoDica:focus {
+    border-color: #008B8B;
     outline: none;
-  }
-  
-  
-  
-  .mensagem {
+}
+
+.mensagem {
     padding: 10px;
     margin-top: 10px;
     border-radius: 3px;
@@ -142,20 +124,43 @@ html, body {
     transition: opacity 0.5s ease-in-out;
     max-width: 300px;
     max-height: fit-content;
-    margin-left: auto; 
-    margin-right: auto; 
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 1%;
     font-size: 25px;
-  }
-  
-  .mensagem-sucesso {
+}
+
+.mensagem-sucesso {
     background-color: #4CAF50;
     color: white;
-  }
-  
-  .mensagem-erro {
+}
+
+.mensagem-erro {
     background-color: #f44336;
     color: white;
-  }
-  
-  
+}
+
+.dica-quadrado {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #008B8B;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}

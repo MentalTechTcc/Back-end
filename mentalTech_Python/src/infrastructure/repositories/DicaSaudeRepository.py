@@ -34,10 +34,14 @@ class DicaSaudeRepository:
         session.close()
         return res
 
-    def delete_by_id(self, dicaSaude_id: int) -> NoReturn:
+
+    def delete_by_id(self, dicaSaude_id: int, cpfProfissional: str) -> NoReturn:
         """Função para deletar uma dica de saúde do DB, caso exista"""
         session = self.database()
-        dicaSaude_session = session.query(DicaSaude).filter(DicaSaude.idDicaSaude == dicaSaude_id).first()
+        dicaSaude_session = session.query(DicaSaude).filter(
+            DicaSaude.idDicaSaude == dicaSaude_id,
+            DicaSaude.cpfProfissional == cpfProfissional
+        ).first()
 
         if dicaSaude_session is not None:
             session.delete(dicaSaude_session)

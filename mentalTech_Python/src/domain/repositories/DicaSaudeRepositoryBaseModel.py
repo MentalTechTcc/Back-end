@@ -15,7 +15,7 @@ class DicaSaudeRepositoryBaseModel(Protocol):
         """Funçãop para atualizar um DicaSaude, assume que o DicaSaude já existe."""
         ...
 
-    def delete_by_id(self, dicaSaude_id: int)-> NoReturn:
+    def delete_by_id(self, dicaSaude_id: int, cpfProfissional: str) -> NoReturn:
         '''Função para apagar um DicaSaude do banco pelo id'''
         ...
 

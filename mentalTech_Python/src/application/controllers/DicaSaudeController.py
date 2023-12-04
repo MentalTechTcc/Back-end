@@ -39,13 +39,13 @@ def update(dicaSaudeSent: DicaSaudeRequestId):
     dicaSaudeUseCase.update(dicaSaudeSent)
 
 
-@router_dica_saude.delete("/{idDicaSaude}", status_code=status.HTTP_204_NO_CONTENT)
-def delete(id: int):
+@router_dica_saude.delete("/{idDicaSaude}/{cpfProfissional}", status_code=status.HTTP_204_NO_CONTENT)
+def delete(id: int, cpfProfissional:str ):
     dicaSaude = dicaSaudeUseCase.find_by_id(id)
     if dicaSaude is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="DicaSaude não encontrado")
 
-    dicaSaudeUseCase.delete_by_id(dicaSaude_id=dicaSaude.idDicaSaude)
+    dicaSaudeUseCase.delete_by_id(dicaSaude_id=dicaSaude.idDicaSaude, cpfProfissional=dicaSaude.cpfProfissional)
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 

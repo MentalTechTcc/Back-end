@@ -16,9 +16,9 @@ class DicaSaudeUseCase():
     def save(self, dicaSaudeSent: DicaSaude) -> DicaSaude:
 
         return self.__dicaSaudeRepository__.save(dicaSaudeSent=dicaSaudeSent)
-
-    def delete_by_id(self, dicaSaude_id: int) -> None:
-        return self.__dicaSaudeRepository__.delete_by_id(dicaSaude_id=dicaSaude_id)
+    
+    def delete_by_id(self, dicaSaude_id: int, cpfProfissional: str) -> None:
+        return self.__dicaSaudeRepository__.delete_by_id(dicaSaude_id=dicaSaude_id,cpfProfissional=cpfProfissional )
 
 
     def find_all(self) -> list[DicaSaudeResponse]:

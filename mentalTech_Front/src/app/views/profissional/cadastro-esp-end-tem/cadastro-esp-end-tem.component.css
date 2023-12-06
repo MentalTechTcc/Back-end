@@ -103,7 +103,7 @@ input[type="radio"] {
 }
 
 .botao {
-  background-color: #9EC4BB;
+  background-color: #008B8B;
   color: white;
   font-size: 18px;
   padding: 10px 20px;
@@ -113,12 +113,12 @@ input[type="radio"] {
 }
 
 .botao:hover {
-  background-color: #82beb0;
+  background-color: #006666;
 }
 
 
 .especialidade-button{
-  background-color: #9EC4BB;
+  background-color: #008B8B;
   color: white;
   font-size: 18px;
   padding: 10px 20px;
@@ -129,7 +129,7 @@ input[type="radio"] {
 }
 
 .especialidade-button {
-  background-color: #82beb0;
+  background-color: #008B8B;
 }
 
 .tematica-options {
@@ -144,7 +144,7 @@ input[type="radio"] {
 }
 
 .tematica-button{
-  background-color: #9EC4BB;
+  background-color: #008B8B;
   color: white;
   font-size: 18px;
   padding: 10px 20px;
@@ -156,7 +156,7 @@ input[type="radio"] {
 }
 
 .tematica-button::hover {
-  background-color: #82beb0;
+  background-color: #006666;
 }
 
 .tematica-campos label {

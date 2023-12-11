@@ -148,7 +148,7 @@ class ValidacaoCamposUseCase:
     
     @classmethod
     def descricaoValidation(cls, descricao:str):
-        if len(descricao) > 100:
+        if len(descricao) > 2000:
             return CampoInfo(False,"Descrição muito grande")
         return CampoInfo(True,"Descrição válida")
     

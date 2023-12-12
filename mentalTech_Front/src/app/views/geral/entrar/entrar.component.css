@@ -126,3 +126,15 @@ input {
   text-decoration: underline;
 }
 
+.forget{
+  background-color: #82beb0;
+  border-radius: 5px;
+  border: none;
+
+}
+
+
+.forget:hover {
+  background-color: #9EC4BB;
+
+}
